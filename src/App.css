@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Raleway:wght@300;400;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	@apply m-0 p-0 box-border outline-none;
+}
+
+html {
+    @apply scroll-smooth;
+}
+
+body {
+	@apply bg-teal-50 text-black antialiased overflow-x-hidden min-h-screen font-Lato text-base;
+}
+
+textarea {
+	@apply resize-none;
+};
+
+@layer components {
+	.nav-link-shadow {
+		text-shadow: 1px 1px 2px #6b0e0033;
+	}
+
+	.hero-h1 {
+		text-shadow: 2.5px 2.5px 3.5px #9e574c4d;
+	}
+
+	.hero-btn {
+		text-shadow: 2px 2px 3px #4a1e174d;
+	}
+};
