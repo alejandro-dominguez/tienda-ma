@@ -1,4 +1,5 @@
-import { HeroSection, BenefitsSection } from '../components/homeComponents';
+import { HeroSection } from '../components';
+import { BenefitsSection } from '../components/homeComponents';
 
 const HomePage = () => {
     return (
