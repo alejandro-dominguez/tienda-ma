@@ -30,10 +30,12 @@ const HeroSection = () => {
                     className='block w-full grayscale-[.4] blur-[2px]'
                 />
                 <div className='absolute top-40 -translate-x-1/2 md:left-[35%]'>
-                    <h1 className='hero-h1-shadow text-white font-Raleway
-                    font-bold md:text-7xl drop-shadow-md'>
+                    <h1 className='hero-h-shadow text-white font-Raleway font-bold md:text-7xl drop-shadow-md'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
+                    <h2 className='mt-2 hero-h-shadow text-white font-Raleway tracking-wider md:text-2xl drop-shadow-md'>
+                        Tu pañalera de confianza
+                    </h2>
                 </div>
                 <div className='absolute flex justify-between items-center gap-16 md:mt-[29rem]'>
                     {btnsData.map((data, i) => {

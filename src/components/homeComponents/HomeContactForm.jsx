@@ -12,7 +12,6 @@ const HomeContactForm = () => {
     const onSubmit = handleSubmit((data) => {
         const todaysDate = new Date().getDate()
         setDate(todaysDate)
-        console.log(data)
         reset()
     })
 
@@ -22,7 +21,7 @@ const HomeContactForm = () => {
             className='grid place-items-center py-10 w-full bg-teal-400 mb-24'
         >
             <form
-                className='md:w-[62.25%] rounded-lg py-8 bg-teal-50 md:px-8 shadow-md'
+                className='md:w-[62.25%] rounded-lg py-8 bg-teal-100/90 md:px-8 shadow-md'
                 onSubmit={onSubmit}
                 autoComplete='off'
             >

@@ -1,8 +1,10 @@
-import React from 'react';
+import { PiShoppingCartSimpleFill } from "react-icons/pi";
 
 const CartCounter = () => {
     return (
-        <div>CartCounter</div>
+        <PiShoppingCartSimpleFill
+            className='text-[#2dd4bf] text-4xl drop-shadow-sm cursor-pointer'
+        />
     )
 };
 
