@@ -4,6 +4,6 @@ const FeaturedItemCard = () => {
     return (
         <div>FeaturedItemCard</div>
     )
-}
+};
 
 export default FeaturedItemCard;

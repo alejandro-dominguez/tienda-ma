@@ -4,6 +4,6 @@ const FeaturedItemContainer = () => {
     return (
         <div>FeaturedItemContainer</div>
     )
-}
+};
 
 export default FeaturedItemContainer;

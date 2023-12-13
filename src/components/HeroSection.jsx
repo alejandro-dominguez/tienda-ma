@@ -29,10 +29,12 @@ const HeroSection = () => {
                     type={'video/mp4'}
                     className='block w-full grayscale-[.4] blur-[2px]'
                 />
-                <h1 className='hero-h1 absolute top-40 -translate-x-1/2 md: left-[29.5rem] text-white font-Raleway font-bold
-                md:text-7xl drop-shadow-md'>
-                    ¡Bienvenido a Tienda Má!
-                </h1>
+                <div className='absolute top-40 -translate-x-1/2 md:left-[35%]'>
+                    <h1 className='hero-h1-shadow text-white font-Raleway
+                    font-bold md:text-7xl drop-shadow-md'>
+                        ¡Bienvenido a Tienda Má!
+                    </h1>
+                </div>
                 <div className='absolute flex justify-between items-center gap-16 md:mt-[29rem]'>
                     {btnsData.map((data, i) => {
                         return <HeroBtn btnData={data} key={i}/>
@@ -41,6 +43,6 @@ const HeroSection = () => {
             </div>
         </main>
     )
-}
+};
 
 export default HeroSection;

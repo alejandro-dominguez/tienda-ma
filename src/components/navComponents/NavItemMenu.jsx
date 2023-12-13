@@ -1,4 +1,4 @@
-import NavItem from './navComponents/NavItem';
+import NavItem from './navBar/NavItem';
 
 
 const NavItemMenu = ({ navData }) => {

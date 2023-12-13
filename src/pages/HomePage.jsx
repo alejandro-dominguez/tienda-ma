@@ -1,11 +1,12 @@
 import { HeroSection } from '../components';
-import { BenefitsSection } from '../components/homeComponents';
+import { BenefitsSection, HomeContactForm } from '../components/homeComponents';
 
 const HomePage = () => {
     return (
         <div className='grid place-items-center'>
             <HeroSection />
             <BenefitsSection />
+            <HomeContactForm />
         </div>
     )
 };

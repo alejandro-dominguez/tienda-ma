@@ -4,6 +4,6 @@ const shortenText = (text, n) => {
         return shortenedText
     }
     return text
-}
+};
 
 export default shortenText;

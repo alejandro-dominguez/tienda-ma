@@ -28,6 +28,6 @@ const useGetNavLinks = () => {
     }, [])
 
     return [navData, error, loading]
-}
+};
 
 export default useGetNavLinks;

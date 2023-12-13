@@ -3,6 +3,6 @@ const scrollToElement = (element) => {
     return (
         el.scrollIntoView()
     )
-}
+};
 
 export default scrollToElement;
