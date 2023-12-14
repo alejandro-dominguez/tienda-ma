@@ -18,7 +18,7 @@ const Footer = () => {
             </Link>
             <BiSolidCaretUpCircle
                 className='text-5xl cursor-pointer text-teal-50 drop-shadow transition-colors
-                hover:text-[#ffe6e2] focus:text-[#ffe6e2]'
+                hover:text-[#70faff] focus:text-[#f1b4b4]'
                 onClick={() => scrollTop()}
             />
             <div className=' w-16'>

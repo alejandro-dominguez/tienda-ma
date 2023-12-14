@@ -38,15 +38,19 @@ textarea::-webkit-scrollbar {
 
 @layer components {
 	.nav-link-shadow {
-		text-shadow: 1px 1px 2px #6b0e0033;
+		text-shadow: 1px 1px 2px #b3483740;
 	}
 
 	.hero-h-shadow {
-		text-shadow: 2.5px 2.5px 3.5px #9e574c4d;
+		text-shadow: 2.5px 2.5px 3px #b3483740;
+	}
+
+	.hero-icon-shadow {
+		filter: drop-shadow(0 2px 2px #b3483740);
 	}
 
 	.hero-btn-shadow {
-		text-shadow: 2px 2px 3px #4a1e174d;
+		text-shadow: 2px 2px 3px #b3483740;
 	}
 
 	.contact-input {
