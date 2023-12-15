@@ -1,1 +1,1 @@
-export { default as useGetNavLinks } from './useGetNavLinks';
+export { default as useGetFirebaseData } from './useGetFirebaseData';

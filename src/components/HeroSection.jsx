@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { HeroBtn } from './homeComponents';
 import { BsBagHeartFill } from 'react-icons/bs';
-import video from '../assets/production-ID_4178704.mp4'; 
+import video from '../assets/video-hero.mp4'; 
 
 const HeroSection = () => {
     const [btnsData,] = useState([
@@ -34,11 +34,11 @@ const HeroSection = () => {
                     <h1 className='hero-h-shadow text-teal-50 font-Raleway font-bold md:text-7xl drop-shadow-md'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
-                    <div className='flex md:flex-row items-center gap-4 md:mt-5 md:ml-1'>
+                    <div className='flex md:flex-row items-center gap-3 md:mt-5 md:ml-1'>
+                        <BsBagHeartFill className='hero-icon-shadow block text-[#ff7c92] text-[2.05rem] mb-2' />
                         <h2 className='hero-h-shadow text-teal-50 font-Raleway tracking-wider md:text-3xl drop-shadow-md'>
                             Tu pañalera de confianza
                         </h2>
-                        <BsBagHeartFill className='hero-icon-shadow text-[#ff98a1] text-[2.1rem]' />
                     </div>
                 </div>
                 <div className='absolute flex justify-between items-center gap-16 md:mt-[29rem]'>

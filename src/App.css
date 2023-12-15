@@ -9,7 +9,7 @@
 }
 
 html {
-    @apply scroll-smooth md:scroll-p-[10.5rem];
+    @apply scroll-smooth md:scroll-p-[8rem];
 }
 
 body {
@@ -46,7 +46,7 @@ textarea::-webkit-scrollbar {
 	}
 
 	.hero-icon-shadow {
-		filter: drop-shadow(0 2px 2px #b3483740);
+		filter: drop-shadow(0 2px 2px #83322566);
 	}
 
 	.hero-btn-shadow {
@@ -54,7 +54,7 @@ textarea::-webkit-scrollbar {
 	}
 
 	.contact-input {
-		@apply text-sm mt-2 bg-white shadow-sm shadow-teal-600/50 py-2 px-3 rounded drop-shadow-sm text-black md:w-72;
+		@apply text-sm mt-2 bg-white shadow-sm shadow-red-400/50 py-2 px-3 rounded drop-shadow-sm text-black md:w-72;
 	}
 	
 	.contact-input::placeholder {
@@ -63,5 +63,25 @@ textarea::-webkit-scrollbar {
 	
 	.contact-input::-webkit-scrollbar {
 		@apply hidden;
+	}
+
+	.contact-textarea {
+		@apply mt-2 bg-white shadow-sm shadow-red-400/50 py-2 px-3 rounded drop-shadow-sm text-black md:w-[22rem] max-h-36;
+	}
+	
+	.about-us-banner {
+		background-image: url('./assets/about-us-banner.jpg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		@apply flex flex-col w-full h-screen brightness-[.6] grayscale-[.4] saturate-150;
+	}
+
+	.about-h1-shadow {
+		text-shadow: 2.5px 2.5px 2.5px #f7412533;
+	}
+
+	.about-p-shadow {
+		text-shadow: 2px 2px 2px #380a0381;
 	}
 };

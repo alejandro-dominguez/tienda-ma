@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ItemDetailContainer, ItemListContainer, CartContainer } from '../containers/';
-import { HomePage, ErrorPage } from '../pages/';
+import { HomePage, AboutUsPage, ErrorPage } from '../pages/';
 import Root from './root/Root';
 
 const router = createBrowserRouter([
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/detalle/:id',
                 element: <ItemDetailContainer />,
+            },
+            {
+                path: '/nosotros',
+                element: <AboutUsPage />,
             },
             {
                 path: '/carrito',

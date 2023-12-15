@@ -5,7 +5,7 @@ const BenefitsSection = () => {
     return (
         <section
             id='benefits-section'
-            className='flex flex-col md:flex-row justify-center md:items-start md:justify-between my-10 w-full md:px-64'
+            className='flex flex-col md:flex-row justify-center md:items-start md:justify-between py-10 w-full md:px-64'
         >
             <div className='grid place-items-center'>
                 <BiSolidCreditCardAlt className='block text-[6rem] text-rose-400/90' />
@@ -31,7 +31,7 @@ const BenefitsSection = () => {
                 </div>
                 <div className="grid place-items-center">
                     <span className='font-black text-teal-500 mt-2 tracking-wider drop-shadow-sm'>
-                        LUNES | MIÉRCOLES | VIERNES
+                        LUNES | MARTES | VIERNES
                     </span>
                     <span className='text-center font-bold mt-1 leading-5 tracking-wide'>
                         Aprovecha tus compras

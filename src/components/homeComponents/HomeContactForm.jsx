@@ -101,15 +101,15 @@ const HomeContactForm = () => {
                             minLength={10}
                             placeholder='Deja tu mensaje'
                             {...register('message')}
-                            className='mt-2 bg-white shadow-sm shadow-teal-600/50 py-2 px-3 rounded dropshadow-sm text-black
-                            md:w-[22rem] max-h-36'
+                            className='contact-textarea'
                         />
                     </div>
                 </div>
                 <button
                     type='submit'
                     className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6 bg-rose-500
-                    text-white rounded-md transition-colors ease-out duration-[180ms] hover:bg-teal-600 focus:bg-teal-600'
+                    text-white rounded-md transition-colors ease-out duration-[180ms] hover:bg-teal-600 focus:bg-teal-600
+                    shadow-sm'
                 >
                     <span className='drop-shadow'>
                         Enviar
