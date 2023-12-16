@@ -16,7 +16,12 @@ const FeaturedItemContainer = () => {
                 <div className='w-full flex md:flex-row flex-col items-center md:justify-between justify-center md:px-10 py-8
                 bg-rose-500/95 rounded-lg shadow-md'>
                     {data.map(product => {
-                        return <ItemCard product={product} />
+                        return (
+                            <ItemCard
+                                product={product}
+                                itemList={false}
+                            />
+                        )
                     })}
                 </div>
             </section>

@@ -1,11 +1,19 @@
 import { FaPlusCircle } from 'react-icons/fa';
 import { shortenText } from '../utilities';
 
-const ItemCard = ({ product }) => {
+const ItemCard = ({ product, itemList }) => {
+    const { brand, name } = product
+
     return (
         <div className='flex flex-col items-start justify-center py-5 md:px-8 bg-rose-300/70 rounded gap-3 shadow'>
             <h3 className='text-white font-bold drop-shadow-sm tracking-wide'>
-                {shortenText((`${product.brand} ${product.name}`), 21)}
+                <span className={!itemList ? 'block text-base' : 'block text-[.9rem]'}>
+                    {
+                        !itemList ?
+                            shortenText((`${brand} ${name}`), 21)
+                        : `${brand} ${name}`
+                    }
+                </span>
             </h3>
             <div className='md:w-48 aspect-square object-cover'>
                 <img
@@ -27,10 +35,10 @@ const ItemCard = ({ product }) => {
                 </button>
                 <button
                     type='button'
-                    className='pr-1 text-white drop-shadow-sm transition-colors ease-in-out
-                    hover:text-[#ff2045f2] focus:text-[#ff2045f2]'
+                    className='pr-1 text-white drop-shadow-sm transition-[color,filter] ease-in-out
+                    hover:text-[#38f7ce] focus:text-[#38f7ce] hover:drop-shadow'
                 >
-                    <FaPlusCircle className='text-2xl'/>
+                    <FaPlusCircle className='text-[1.6rem]'/>
                 </button>
             </div>
         </div>

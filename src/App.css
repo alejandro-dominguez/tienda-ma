@@ -49,7 +49,7 @@ textarea::-webkit-scrollbar {
 		filter: drop-shadow(0 2px 2px #83322566);
 	}
 
-	.hero-btn-shadow {
+	.btn-shadow {
 		text-shadow: 2px 2px 3px #b3483740;
 	}
 
@@ -76,9 +76,9 @@ textarea::-webkit-scrollbar {
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');
 		background-size: cover;
-		background-position: center;
+		background-position: left top;
 		background-repeat: no-repeat;
-		@apply flex flex-col w-full h-screen brightness-[.6] grayscale-[.4] saturate-150;
+		@apply flex flex-col w-full h-screen brightness-[.75] grayscale-[.35] saturate-150;
 	}
 
 	.about-h1-shadow {
