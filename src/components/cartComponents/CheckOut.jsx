@@ -1,4 +1,4 @@
-import React from 'react';
+import { FaMinusCircle } from 'react-icons/fa';
 
 const CheckOutPage = () => {
     return (

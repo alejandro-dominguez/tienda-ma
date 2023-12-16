@@ -1,5 +1,5 @@
-import { FeaturedItemCard } from '../components/homeComponents';
-import { useGetFirebaseData } from '../customHooks/';
+import { ItemCard } from '../components';
+import { useGetFirebaseData } from '../customHooks';
 import { useParams } from 'react-router-dom';
 
 const FeaturedItemContainer = () => {
@@ -16,7 +16,7 @@ const FeaturedItemContainer = () => {
                 <div className='w-full flex md:flex-row flex-col items-center md:justify-between justify-center md:px-10 py-8
                 bg-rose-500/95 rounded-lg shadow-md'>
                     {data.map(product => {
-                        return <FeaturedItemCard product={product} />
+                        return <ItemCard product={product} />
                     })}
                 </div>
             </section>

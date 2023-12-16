@@ -1,7 +1,7 @@
 import { FaPlusCircle } from 'react-icons/fa';
-import { shortenText } from '../../utilities';
+import { shortenText } from '../utilities';
 
-const FeaturedItemCard = ({ product }) => {
+const ItemCard = ({ product }) => {
     return (
         <div className='flex flex-col items-start justify-center py-5 md:px-8 bg-rose-300/70 rounded gap-3 shadow'>
             <h3 className='text-white font-bold drop-shadow-sm tracking-wide'>
@@ -27,14 +27,14 @@ const FeaturedItemCard = ({ product }) => {
                 </button>
                 <button
                     type='button'
-                    className='pr-1 text-white drop-shadow-sm transition-colors hover:text-[#ff2045f2] focus:text-[#ff2045f2]'
+                    className='pr-1 text-white drop-shadow-sm transition-colors ease-in-out
+                    hover:text-[#ff2045f2] focus:text-[#ff2045f2]'
                 >
                     <FaPlusCircle className='text-2xl'/>
                 </button>
-
             </div>
         </div>
     )
 };
 
-export default FeaturedItemCard;
+export default ItemCard;

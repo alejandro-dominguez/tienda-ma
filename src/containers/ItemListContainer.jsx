@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetFirebaseData } from '../customHooks';
-import { FeaturedItemCard } from '../components/homeComponents';
+import { ItemCard } from '../components';
 
 const ItemListContainer = () => {
     const { categoryId } = useParams()
@@ -9,17 +9,32 @@ const ItemListContainer = () => {
     return (
         <>
         {(data.length && !loading && !error) ?
-            <section
-                id='featured-section'
-                className='w-full grid place-items-center md:px-10 py-10 bg-rose-300/70'
-            >
-                <div className='w-full flex md:flex-row flex-col items-center md:justify-between justify-center md:px-10 py-8
-                bg-rose-500/95 rounded-lg shadow-md'>
+            <main className='w-full grid place-items-center md:px-10 py-40 bg-rose-300/70'>
+                <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow'>
+                    {categoryId === 'bebe' ?
+                        <span className='block'>
+                            Selección de productos para bebés
+                        </span>
+                    : categoryId === 'mama' ?
+                        <span className='block'>
+                            Selección de productos para mamá
+                        </span>
+                    : categoryId === 'adultos' ?
+                        <span className='block'>
+                            Selección de productos para adultos
+                        </span>
+                    : categoryId === 'accesorios' ?
+                        <span className='block'>
+                            Selección de productos accesorios
+                        </span>
+                    : null}
+                </h1>
+                <div className='grid grid-cols-4 my-4 md:px-10 py-8 gap-10 bg-rose-500/95 rounded-lg shadow-md'>
                     {data.map(product => {
-                        return <FeaturedItemCard product={product} />
+                        return <ItemCard product={product} />
                     })}
                 </div>
-            </section>
+            </main>
         : null}
         </>
     )

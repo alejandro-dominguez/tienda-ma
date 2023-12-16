@@ -68,6 +68,10 @@ textarea::-webkit-scrollbar {
 	.contact-textarea {
 		@apply mt-2 bg-white shadow-sm shadow-red-400/50 py-2 px-3 rounded drop-shadow-sm text-black md:w-[22rem] max-h-36;
 	}
+
+	.items-section-h1-shadow {
+		text-shadow: 2.5px 2.5px 2.5px hsla(189, 82%, 24%, 0.1);
+	}
 	
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');
