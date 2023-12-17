@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const NavBar = ({ navData }) => {
     const location = useLocation()
     const navigate = useNavigate()
-    const [navigateHome, setNavigateHome] = useState(false)
+    const [ navigateHome, setNavigateHome ] = useState(false)
 
     useEffect(() => {
         location.pathname !== '/' ? setNavigateHome(true) : setNavigateHome(false)
@@ -18,7 +18,7 @@ const NavBar = ({ navData }) => {
         py-4 md:px-10 shadow-md shadow-red-600/10 z-40 backdrop-blur-[3px]'>
             <div
                 className={navigateHome ? 'w-24 cursor-pointer' : 'w-24 cursor-auto'}
-                onClick={() => {navigateHome ? navigate("/") : null}}
+                onClick={() => {navigateHome ? navigate('/') : null}}
             >
                 <img
                     src={headerLogo}

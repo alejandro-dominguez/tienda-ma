@@ -1,8 +1,12 @@
-import React from 'react';
+import { useGetProductDetail } from '../customHooks';
 
 const ItemDetailContainer = () => {
+    const [ product, error, loading ] = useGetProductDetail()
+
     return (
-        <div>ItemDetailContainer</div>
+        <main className='w-full grid place-items-center md:px-10 py-40 bg-rose-300/70 min-h-screen'>
+        
+        </main>
     )
 };
 

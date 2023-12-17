@@ -7,7 +7,7 @@ const HomeContactForm = () => {
         handleSubmit,
         reset
     } = useForm()
-    const [date, setDate] = useState({})
+    const [ date, setDate ] = useState({})
 
     const onSubmit = handleSubmit((data) => {
         const todaysDate = new Date().getDate()

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetFirebaseData = (categoryId) => {
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
+const useGetFirebaseData = ( categoryId ) => {
+    const [ error, setError ] = useState('')
+    const [ loading, setLoading ] = useState(false)
+    const [ data, setData ] = useState([])
 
     useEffect(() => {
         (async () => {
@@ -33,7 +33,7 @@ const useGetFirebaseData = (categoryId) => {
         })()
     }, [categoryId])
 
-    return [data, error, loading]
+    return [ data, error, loading ]
 };
 
 export default useGetFirebaseData;

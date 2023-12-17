@@ -3,7 +3,7 @@ import { NavBar, Footer } from '../../components';
 import { useState } from 'react';
 
 const Root = () => {
-    const [navData,] = useState([
+    const [ navData, ] = useState([
         {
             'name': 'bebé',
             'url': 'categorias/bebe'

@@ -4,7 +4,7 @@ import { BsBagHeartFill } from 'react-icons/bs';
 import video from '../assets/video-hero.mp4'; 
 
 const HeroSection = () => {
-    const [btnsData,] = useState([
+    const [ btnsData, ] = useState([
         {
             'name': 'Destacados',
             'section': 'featured-section'

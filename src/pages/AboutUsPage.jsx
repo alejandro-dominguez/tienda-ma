@@ -23,9 +23,9 @@ const AboutUsPage = () => {
                     <Link
                         to={'/categorias/bebe'}
                         className='btn-shadow w-fit mt-2 text-sm uppercase tracking-wider text-teal-50/90 shadow-sm drop-shadow
-                        px-[1.2rem] py-[.6rem] bg-zinc-800/10 border-2 border-white/60 rounded-full transition-colors ease-in-out
-                        hover:border-white/80 hover:text-white hover:bg-zinc-700/30 focus:border-white/80
-                        focus:text-white focus:bg-zinc-700/30'
+                        px-[1.2rem] py-[.6rem] bg-zinc-900/20 border-2 border-white/60 rounded-full transition-[colors,filter]
+                        ease-in-out duration-200 hover:border-white/80 hover:text-white hover:bg-zinc-800/10 hover:drop-shadow-md
+                        focus:border-white/80 focus:text-white focus:bg-zinc-800/10 focus:drop-shadow-md'
                     >
                         Ver Productos
                     </Link>

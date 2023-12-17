@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import footerLogo from '../assets/logo-footer.svg';
 
 const Footer = () => {
-    const [showBtn, setshowBtn] = useState(true)
+    const [ showBtn, setshowBtn ] = useState(true)
     const location = useLocation()
 
     useEffect(() => {
@@ -27,12 +27,12 @@ const Footer = () => {
                 </Link>
                 {showBtn ?
                     <BiSolidCaretUpCircle
-                        className='absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 block text-5xl cursor-pointer
+                        className='absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 block mb-2 text-4xl cursor-pointer
                         text-teal-50 drop-shadow transition-colors hover:text-[#70faff] focus:text-[#f1b4b4]'
                         onClick={() => scrollTop()}
                     />
                 : null}
-                <div className=' w-16'>
+                <div className='w-16'>
                     <img
                         src={footerLogo}
                         alt='icono tienda ma'
