@@ -1,5 +1,5 @@
 import { BiSolidCaretUpCircle } from 'react-icons/bi';
-import { scrollTop } from '../utilities/';
+import { scrollTop, shortenText } from '../utilities/';
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import footerLogo from '../assets/logo-footer.svg';
@@ -7,9 +7,13 @@ import footerLogo from '../assets/logo-footer.svg';
 const Footer = () => {
     const [ showBtn, setshowBtn ] = useState(true)
     const location = useLocation()
+    const detailLocation = shortenText(location.pathname, 9)
+    const cartLocation = shortenText(location.pathname, 9)  
 
     useEffect(() => {
-        location.pathname === '/nosotros' ? setshowBtn(false) : setshowBtn(true)
+        location.pathname === '/nosotros' || detailLocation === '/detalle/...'|| cartLocation === '/carrito/...' ? 
+            setshowBtn(false)
+        : setshowBtn(true)
     }, [location])
 
     return (
@@ -21,8 +25,16 @@ const Footer = () => {
                     rel='noopener'
                     target='_blank'
                 >
-                    <small className='text-white tracking-wide text-sm drop-shadow-sm'>
-                        &copy; 2023 Alejandro Dominguez
+                    <small className='text-white tracking-wide text-sm drop-shadow-sm grid place-items-center'>
+                        <span>
+                            &copy; 2023 
+                        </span>
+                        <span>
+                            Alejandro Dominguez
+                        </span>
+                        <span>
+                            Yamil Gaggiotti
+                        </span>
                     </small>
                 </Link>
                 {showBtn ?

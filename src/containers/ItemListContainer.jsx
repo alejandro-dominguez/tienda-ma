@@ -13,19 +13,19 @@ const ItemListContainer = () => {
             <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow'>
                 {
                     categoryId === 'bebe' ?
-                        <span className='block'>
+                        <span>
                             Selección de productos para bebés
                         </span>
                     : categoryId === 'mama' ?
-                        <span className='block'>
+                        <span>
                             Selección de productos para mamá
                         </span>
                     : categoryId === 'adultos' ?
-                        <span className='block'>
+                        <span>
                             Selección de productos para adultos
                         </span>
                     : categoryId === 'accesorios' ?
-                        <span className='block'>
+                        <span>
                             Selección de productos accesorios
                         </span>
                     : null
@@ -39,20 +39,21 @@ const ItemListContainer = () => {
                                 <ItemCard
                                     product={product}
                                     itemList={true}
+                                    key={product.id}
                                 />
                             )
                         })}
                     </div>
                 : !error ?
-                <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg shadow-md'>
-                    <RotatingLines
-                        strokeColor='white'
-                        strokeWidth='5'
-                        animationDuration='0.75'
-                        width='96'
-                        visible={true}
-                    />
-                </div>
+                    <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg shadow-md min-h-[17.5rem]'>
+                        <RotatingLines
+                            strokeColor='white'
+                            strokeWidth='5'
+                            animationDuration='0.75'
+                            width='96'
+                            visible={true}
+                        />
+                    </div>
                 : <ErrorPage />
             }
         </main>

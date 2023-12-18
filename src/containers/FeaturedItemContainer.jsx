@@ -22,6 +22,7 @@ const FeaturedItemContainer = () => {
                                 <ItemCard
                                     product={product}
                                     itemList={false}
+                                    key={product.id}
                                 />
                             )
                         })

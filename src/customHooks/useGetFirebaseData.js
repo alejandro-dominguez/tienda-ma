@@ -37,3 +37,5 @@ const useGetFirebaseData = ( categoryId ) => {
 };
 
 export default useGetFirebaseData;
+
+/* https://firebase.google.com/docs/firestore/manage-data/add-data?hl=es&authuser=0 */

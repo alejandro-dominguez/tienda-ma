@@ -4,7 +4,9 @@ import App from './App.jsx';
 import ShopContextProvider from './contexts/shopContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ShopContextProvider>
-        <App />
-    </ShopContextProvider>
+    <React.StrictMode>
+        <ShopContextProvider>
+            <App />
+        </ShopContextProvider>
+    </React.StrictMode>
 );

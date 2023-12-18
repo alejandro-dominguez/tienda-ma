@@ -1,2 +1,2 @@
 export { default as useGetFirebaseData } from './useGetFirebaseData';
-export { default as useGetProductDetail } from './useGetProductDetail';
+export { default as useGetItemDetail } from './useGetItemDetail';

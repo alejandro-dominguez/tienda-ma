@@ -11,11 +11,11 @@ const ItemCard = ({ product, itemList }) => {
             id={id}
             className={
                 !itemList ? 'flex flex-col items-start justify-start py-5 md:px-8 bg-rose-300/70 rounded gap-3 shadow'
-                : 'flex flex-col items-stretch justify-start my-4 mx-4 py-4 px-5 bg-rose-300/70 rounded gap-2 shadow'
+                : 'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-rose-300/70 rounded gap-2 shadow'
             }
         >
             <h3 className='text-white font-bold drop-shadow-sm tracking-wide'>
-                <span className='block'>
+                <span>
                     {
                         !itemList ?
                             shortenText((`${brand} ${name}`), 21)
@@ -23,7 +23,7 @@ const ItemCard = ({ product, itemList }) => {
                     }
                 </span>
             </h3>
-            <div className={!itemList ? 'md:w-48 aspect-square object-cover' : 'md:w-32 aspect-square object-cover'}>
+            <div className={!itemList ? 'md:w-48 aspect-square' : 'md:w-32 aspect-square'}>
                 <img
                     src={img}
                     alt={name}
