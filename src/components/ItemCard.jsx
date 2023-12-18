@@ -1,4 +1,3 @@
-import { FaPlusCircle } from 'react-icons/fa';
 import { shortenText } from '../utilities';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,40 +36,31 @@ const ItemCard = ({ product, itemList }) => {
                     </p>
                 : null
             }
-            <div className='flex w-full justify-between items-center'>
-                <button
-                    type='button'
+            <button
+                type='button'
+                className={
+                    !itemList ?
+                        `mt-1 px-6 py-2 bg-teal-600/95 text-white rounded-lg shadow-sm transition-colors ease-in-out
+                        duration-200 hover:bg-rose-600 focus:bg-rose-600`
+                    : 
+                        `mt-1 px-6 py-2 bg-teal-600/95 text-white rounded-lg shadow-sm transition-colors ease-in-out
+                        duration-200 hover:bg-rose-600 focus:bg-rose-600`
+                }
+                onClick={() => navigate(`/detalle/${id}`)}
+            >
+                <span 
                     className={
-                        !itemList ?
-                            `mt-1 px-6 py-2 bg-teal-600/95 text-white rounded-lg shadow-sm transition-colors ease-in-out
-                            duration-200 hover:bg-rose-600 focus:bg-rose-600`
-                        : 
-                            `mt-1 px-6 py-2 bg-teal-600/95 text-white rounded-lg shadow-sm transition-colors ease-in-out
-                            duration-200 hover:bg-rose-600 focus:bg-rose-600`
+                        !itemList ? 'block drop-shadow tracking-wide text-[1.025rem] font-Raleway'
+                        : 'block drop-shadow tracking-wide text-sm font-Raleway'
                     }
-                    onClick={() => navigate(`/detalle/${id}`)}
                 >
-                    <span 
-                        className={
-                            !itemList ? 'block drop-shadow tracking-wide text-[1.025rem] font-Raleway'
-                            : 'block drop-shadow tracking-wide text-sm font-Raleway'
-                        }
-                    >
-                        {
-                            !itemList ?
-                                'Ver más'
-                            : 'Detalle'
-                        }
-                    </span>
-                </button>
-                <button
-                    type='button'
-                    className='pr-1 text-white drop-shadow-sm transition-[color,filter] ease-in-out
-                    hover:text-[#38f7ce] focus:text-[#38f7ce] hover:drop-shadow'
-                >
-                    <FaPlusCircle className={!itemList ? 'block text-[1.6rem]' : 'block text-[1.45rem]'}/>
-                </button>
-            </div>
+                    {
+                        !itemList ?
+                            'Ver más'
+                        : 'Detalle'
+                    }
+                </span>
+            </button>
         </div>
     )
 };

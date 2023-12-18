@@ -21,19 +21,19 @@ const ItemCount = ({ onAdd, quantity, initial }) => {
     }
 
     return (
-        <div className='flex flex-col self-end gap-3 drop-shadow-md'>
+        <div className='flex flex-col self-end gap-5 drop-shadow-md'>
             <div className='flex items-center justify-between px-8'>
                 <FaPlusCircle 
-                    className='block cursor-pointer text-[1.25rem] text-teal-50 transition-colors
-                    hover:text-[#229188] focus:text-[#229188]'
+                    className='block cursor-pointer text-[1.425rem] text-teal-50 transition-colors
+                    hover:text-[#1b9461f2] focus:text-[#1b9461f2]'
                     onClick={() => onPlus()}
                 />
-                <span className='font-bold text-2xl text-red-50 drop-shadow-sm tracking-wider'>
+                <span className='font-bold text-[1.7rem] text-red-50 drop-shadow-sm tracking-wider'>
                     {count}
                 </span>
                 <FaMinusCircle 
-                    className='block cursor-pointer text-[1.25rem] text-teal-50 transition-colors
-                    hover:text-rose-600/95 focus:text-rose-600/95'
+                    className='block cursor-pointer text-[1.425rem] text-teal-50 transition-colors
+                    hover:text-[#f74251f2] focus:text-[#f74251f2]'
                     onClick={() => onDecrement()}
                 />
             </div>
