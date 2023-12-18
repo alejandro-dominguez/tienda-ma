@@ -23,11 +23,11 @@ const ItemCard = ({ product, itemList }) => {
                     }
                 </span>
             </h3>
-            <div className={!itemList ? 'md:w-48 aspect-square' : 'md:w-32 aspect-square'}>
+            <div className={!itemList ? 'md:w-48' : 'md:w-32'}>
                 <img
                     src={img}
                     alt={name}
-                    className='block w-full rounded drop-shadow-sm'
+                    className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                 />
             </div>
             {
@@ -68,7 +68,7 @@ const ItemCard = ({ product, itemList }) => {
                     className='pr-1 text-white drop-shadow-sm transition-[color,filter] ease-in-out
                     hover:text-[#38f7ce] focus:text-[#38f7ce] hover:drop-shadow'
                 >
-                    <FaPlusCircle className={!itemList ? 'text-[1.6rem]' : 'text-[1.45rem]'}/>
+                    <FaPlusCircle className={!itemList ? 'block text-[1.6rem]' : 'block text-[1.45rem]'}/>
                 </button>
             </div>
         </div>

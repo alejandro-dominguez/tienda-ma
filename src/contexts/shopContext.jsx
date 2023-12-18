@@ -6,7 +6,7 @@ const ShopProvider = ({ children }) => {
     const [ products, setProducts ] = useState([])
 
     const addProduct = (productToAdd) => {
-        const repeated = isProductRepeated(productToAdd.id)
+        const repeated = repeatedProduct(productToAdd.id)
         if (repeated) {
             const productRepeated = products.find(productsInCart => productsInCart.id === productToAdd.id)
             productRepeated.quantity += productToAdd.quantity
@@ -17,7 +17,7 @@ const ShopProvider = ({ children }) => {
         }
     }
 
-    const isProductRepeated = (id) => {
+    const repeatedProduct = (id) => {
         return products.some(product => product.id === id)
     }
 
@@ -39,6 +39,7 @@ const ShopProvider = ({ children }) => {
         <ShopContext.Provider
             value={{
                 products,
+                addProduct,
                 removeProduct,
                 emptyCart,
                 calculateCartQuantity

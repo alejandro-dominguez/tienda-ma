@@ -1,4 +1,4 @@
-import { PiShoppingCartSimpleFill } from "react-icons/pi";
+import { PiShoppingCartSimpleFill } from 'react-icons/pi';
 
 const CartCounter = () => {
     return (
