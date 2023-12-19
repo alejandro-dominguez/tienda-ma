@@ -1,10 +1,8 @@
-import React from 'react';
+import { HomeContactForm } from '../homeComponents'
 
 const CartModalForm = () => {
     return (
-        <div>
-            CartModalForm
-        </div>
+        <HomeContactForm />
     )
 };
 

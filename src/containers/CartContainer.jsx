@@ -18,8 +18,8 @@ const CartContainer = () => {
             </h1>
             {
                 !showModal && products.length ?
-                    <div className='grid place-items-center mt-4 mb-16 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md w-full'>
-                        <div className='w-full grid grid-cols-3 gap-[1.35rem]'>
+                    <div className='grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md w-full'>
+                        <div className='w-full grid grid-cols-4 gap-[1.35rem]'>
                             {
                                 products.map(product => {
                                     return (
@@ -51,9 +51,7 @@ const CartContainer = () => {
                         </button>
                     </div>
                 : showModal && products.length ?
-                    <div className='w-full py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
-                        <CartModalForm />
-                    </div>
+                    <CartModalForm />
                 :
                     <div className='w-full grid justify-center items-center my-4 py-5 px-7 bg-teal-600/80 rounded-lg shadow-md'>
                         <Link
@@ -71,7 +69,7 @@ const CartContainer = () => {
                                 <BiSolidShare className='block text-red-300 text-3xl drop-shadow' />
                             </div>
                         </h1>
-                        <div className=' w-40'>
+                        <div className='w-40'>
                             <img
                                 src={logo}
                                 alt='logo tienda Ma'
@@ -86,3 +84,7 @@ const CartContainer = () => {
 };
 
 export default CartContainer;
+
+{/* <div className='w-full py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
+    <CartModalForm />
+</div> */}
