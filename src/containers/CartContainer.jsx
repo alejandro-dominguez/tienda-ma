@@ -13,10 +13,13 @@ const CartContainer = () => {
     
     return (
         <main className='w-full grid place-items-start md:px-10 py-40 bg-rose-300/70 min-h-screen section-scrollbar'>
+            <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow justify-self-center'>
+                Carrito
+            </h1>
             {
                 !showModal && products.length ?
-                    <div className='grid place-items-center py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
-                        <div className='w-full grid grid-cols-4'>
+                    <div className='grid place-items-center mt-4 mb-16 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md w-full'>
+                        <div className='w-full grid grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map(product => {
                                     return (
@@ -28,21 +31,21 @@ const CartContainer = () => {
                             }
                         </div>
                         <button
-                            className='flex items-center justify-center justify-self-center
-                            px-5 py-3 gap-3 mt-6 bg-[#0d3da5] rounded-lg shadow shadow-teal-teal-500/50 transition
-                            ease-out duration-200 hover:shadow-teal-300/50 hover:text-teal-600 hover:bg-[#0d5aa3]
-                            focus:shadow-teal-300/50 focus:text-teal-600 focus:bg-[#0d5aa3]'
+                            className='flex items-center justify-center justify-self-center px-6 py-3 gap-3 mt-6
+                            bg-[#004eb4] rounded-md shadow shadow-teal-950/80 transition ease-in-out duration-[225ms]
+                            hover:shadow-teal-400/40 hover:bg-[#01268b] hover:shadow
+                            focus:shadow-teal-400/40 focus:bg-[#01268b] focus:shadow'
                             type='button'
                             onClick={() => setShowModal(true)}
                         >
-                            <div className='w-8 drop-shadow-md'>
+                            <div className='w-7 drop-shadow-md mb-1'>
                                 <img 
                                     src={cartCheck}
                                     alt='carrito de compras tildado'
-                                    className='block w-full text-teal-50'
+                                    className='block w-full'
                                 />
                             </div>
-                            <span className='text-teal-50 font-Raleway font-bold text-lg tracking-wider drop-shadow'>
+                            <span className='text-white font-Raleway text-[1.1rem] tracking-wider drop-shadow-md'>
                                 Formulario de compra
                             </span>
                         </button>
@@ -52,23 +55,23 @@ const CartContainer = () => {
                         <CartModalForm />
                     </div>
                 :
-                    <div className='w-full grid justify-center items-center py-6 px-7 bg-teal-600/80 rounded-lg shadow-md'>
+                    <div className='w-full grid justify-center items-center my-4 py-5 px-7 bg-teal-600/80 rounded-lg shadow-md'>
                         <Link
                             to='/'
                             className='flex flex-col items-center justify-center gap-6 md:px-10'
                         >
-                        <h1 className='text-teal-50 text-xl tracking-wider font-bold font-Raleway grid place-items-center'>
+                        <h1 className='text-teal-50 text-lg tracking-wide font-Raleway grid place-items-center leading-6'>
                             <span className='drop-shadow-md'>
                                 Aún no hay productos
                             </span>
                             <div className='flex items-center justify-center gap-2'>
-                                <span className='drop-shadow-d'>
+                                <span className='drop-shadow-md'>
                                     en el carrito
                                 </span>
                                 <BiSolidShare className='block text-red-300 text-3xl drop-shadow' />
                             </div>
                         </h1>
-                        <div className='w-52'>
+                        <div className=' w-40'>
                             <img
                                 src={logo}
                                 alt='logo tienda Ma'

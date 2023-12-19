@@ -7,7 +7,6 @@ const ItemCard = ({ product, itemList }) => {
 
     return (
         <div
-            id={id}
             className={
                 !itemList ? 'flex flex-col items-start justify-start py-5 md:px-8 bg-rose-300/70 rounded gap-3 shadow'
                 : 'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-rose-300/70 rounded gap-2 shadow'
