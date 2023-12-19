@@ -45,7 +45,8 @@ const ItemListContainer = () => {
                         })}
                     </div>
                 : !error ?
-                    <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg shadow-md min-h-[17.5rem]'>
+                    <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg
+                    shadow-md min-h-[17.5rem]'>
                         <RotatingLines
                             strokeColor='white'
                             strokeWidth='5'

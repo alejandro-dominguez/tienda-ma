@@ -9,17 +9,23 @@ import cartCheck from '../assets/cart-check.svg';
 
 const CartContainer = () => {
     const { products } = useContext(ShopContext)
-    const [ showModal, setShowModal ] = useState(false)
+    const [ showForm, setShowForm ] = useState(false)
     
     return (
         <main className='w-full grid place-items-start md:px-10 py-40 bg-rose-300/70 min-h-screen section-scrollbar'>
             <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow justify-self-center'>
-                Carrito
+                {
+                    !showForm && products.length ?
+                        'Carrito'
+                    : showForm && products.length ?
+                        'Formulario de Compra'
+                    : 'Carrito'
+                }
             </h1>
             {
-                !showModal && products.length ?
-                    <div className='grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md w-full'>
-                        <div className='w-full grid grid-cols-4 gap-[1.35rem]'>
+                !showForm && products.length ?
+                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
+                        <div className='w-full grid grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map(product => {
                                     return (
@@ -36,7 +42,7 @@ const CartContainer = () => {
                             hover:shadow-teal-400/40 hover:bg-[#01268b] hover:shadow
                             focus:shadow-teal-400/40 focus:bg-[#01268b] focus:shadow'
                             type='button'
-                            onClick={() => setShowModal(true)}
+                            onClick={() => setShowForm(true)}
                         >
                             <div className='w-7 drop-shadow-md mb-1'>
                                 <img 
@@ -50,8 +56,10 @@ const CartContainer = () => {
                             </span>
                         </button>
                     </div>
-                : showModal && products.length ?
-                    <CartModalForm />
+                : showForm && products.length ?
+                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
+                        <CartModalForm showForm={showForm} setShowForm={setShowForm} />
+                    </div>
                 :
                     <div className='w-full grid justify-center items-center my-4 py-5 px-7 bg-teal-600/80 rounded-lg shadow-md'>
                         <Link
@@ -84,7 +92,3 @@ const CartContainer = () => {
 };
 
 export default CartContainer;
-
-{/* <div className='w-full py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
-    <CartModalForm />
-</div> */}

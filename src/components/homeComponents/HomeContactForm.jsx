@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form';
 
 const HomeContactForm = () => {
     const {
-        register,
         handleSubmit,
         reset
     } = useForm()
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit(() => {
         reset()
     })
 
@@ -47,7 +46,6 @@ const HomeContactForm = () => {
                                 maxLength={30}
                                 required
                                 placeholder='Tu nombre aquí'
-                                {...register('fullName')}
                                 className='contact-input'
                             />
                         </div>
@@ -63,7 +61,6 @@ const HomeContactForm = () => {
                                 name='phone'
                                 required
                                 placeholder='0101-0101-01'
-                                {...register('phone')}
                                 className='contact-input'
                             />
                         </div>
@@ -77,8 +74,7 @@ const HomeContactForm = () => {
                             <input
                                 type='email'
                                 name='email'
-                                placeholder='tu email aquí'
-                                {...register('email')}
+                                placeholder='Tu email aquí'
                                 className='contact-input'
                             />
                         </div>
@@ -97,7 +93,6 @@ const HomeContactForm = () => {
                             required
                             minLength={10}
                             placeholder='Deja tu mensaje'
-                            {...register('message')}
                             className='contact-textarea'
                         />
                     </div>
