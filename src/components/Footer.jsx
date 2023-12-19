@@ -8,12 +8,9 @@ const Footer = () => {
     const [ showBtn, setshowBtn ] = useState(true)
     const location = useLocation()
     const detailLocation = shortenText(location.pathname, 9)
-    const cartLocation = shortenText(location.pathname, 9)  
 
     useEffect(() => {
-        location.pathname === '/nosotros' || detailLocation === '/detalle/...'|| cartLocation === '/carrito/...' ? 
-            setshowBtn(false)
-        : setshowBtn(true)
+        location.pathname === '/nosotros' || detailLocation === '/detalle/...' ? setshowBtn(false) : setshowBtn(true)
     }, [location])
 
     return (

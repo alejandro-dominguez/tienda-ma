@@ -5,7 +5,7 @@ const CartCounter = () => {
     return (
         <Link to='/carrito'>
             <PiShoppingCartSimpleFill
-                className='block text-[#2dd4bf] text-4xl drop-shadow-sm cursor-pointer'
+                className='block text-[#2dd4bf] text-4xl drop-shadow cursor-pointer'
             />
         </Link>
     )

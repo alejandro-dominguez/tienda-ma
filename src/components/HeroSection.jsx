@@ -20,8 +20,8 @@ const HeroSection = () => {
     ])
 
     return (
-        <main className='grid place-items-center'>
-            <div className='grid place-items-center h-screen overflow-y-hidden relative'>
+        <main className='w-full grid place-items-center'>
+            <div className='w-full grid place-items-center h-screen overflow-y-hidden relative'>
                 <video
                     src={video}
                     muted={true}

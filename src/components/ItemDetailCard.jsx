@@ -33,7 +33,7 @@ const ItemDetailCard = ({ product }) => {
             </div>
             {itemDetailQuantity ?
                 <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
-            : null }
+            : null}
         </div>
     )
 };
