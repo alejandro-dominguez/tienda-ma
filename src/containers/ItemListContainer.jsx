@@ -9,8 +9,8 @@ const ItemListContainer = () => {
     const [ data, error, loading ] = useGetFirebaseData(categoryId)
 
     return (
-        <main className='w-full grid place-items-center md:px-10 py-40 bg-rose-300/70 min-h-screen'>
-            <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow'>
+        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-screen'>
+            <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow'>
                 {
                     categoryId === 'bebe' ?
                         <span>

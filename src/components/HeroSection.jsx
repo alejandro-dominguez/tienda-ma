@@ -1,23 +1,9 @@
-import { useState } from 'react';
 import { HeroBtn } from './homeComponents';
 import { BsBagHeartFill } from 'react-icons/bs';
 import video from '../assets/video-hero.mp4'; 
 
-const HeroSection = () => {
-    const [ btnsData, ] = useState([
-        {
-            'name': 'Destacados',
-            'section': 'featured-section'
-        },
-        {
-            'name': 'Beneficios',
-            'section': 'benefits-section'
-        },
-        {
-            'name': 'Contacto',
-            'section': 'contact-section'
-        }
-    ])
+const HeroSection = ({ btnsData }) => {
+
 
     return (
         <main className='w-full grid place-items-center'>
@@ -30,21 +16,21 @@ const HeroSection = () => {
                     type={'video/mp4'}
                     className='block w-full grayscale-[.4] blur-[2px] brightness-[.85]'
                 />
-                <div className='absolute top-40 -translate-x-1/2 md:left-[35%]'>
-                    <h1 className='hero-h-shadow text-teal-50 font-Raleway font-bold md:text-7xl drop-shadow-md'>
+                <div className='absolute top-32 -translate-x-1/2 md:left-80 md:ml-2'>
+                    <h1 className='text-white font-Raleway font-bold md:text-5xl drop-shadow-sm'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
-                    <div className='flex md:flex-row items-center gap-3 md:mt-5 md:ml-1'>
-                        <BsBagHeartFill className='hero-icon-shadow block text-[#ff7c92] text-[2.05rem] mb-2' />
-                        <h2 className='hero-h-shadow text-teal-50 font-Raleway tracking-wider md:text-3xl drop-shadow-md'>
+                    <div className='flex md:flex-row items-center gap-2 md:mt-3 md:ml-1'>
+                        <BsBagHeartFill className='block text-white text-[1.7rem] mb-1' />
+                        <h2 className='text-white font-Raleway tracking-wider md:text-2xl drop-shadow-sm'>
                             Tu pañalera de confianza
                         </h2>
                     </div>
-                </div>
-                <div className='absolute flex justify-between items-center gap-16 md:mt-[29rem]'>
-                    {btnsData.map((data, i) => {
-                        return <HeroBtn btnData={data} key={i}/>
-                    })}
+                    <div className='flex flex-col items-start justify-center gap-4 mt-6 md:ml-1'>
+                        {btnsData.map((data, i) => {
+                            return <HeroBtn btnData={data} key={i}/>
+                        })}
+                    </div>
                 </div>
             </div>
         </main>

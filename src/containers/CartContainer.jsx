@@ -12,8 +12,8 @@ const CartContainer = () => {
     const [ showForm, setShowForm ] = useState(false)
     
     return (
-        <main className='w-full grid place-items-start md:px-10 py-40 bg-rose-300/70 min-h-screen section-scrollbar'>
-            <h1 className='items-section-h1-shadow font-bold font-Raleway text-teal-50 md:text-4xl drop-shadow justify-self-center'>
+        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-screen section-scrollbar'>
+            <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow justify-self-center'>
                 {
                     !showForm && products.length ?
                         'Carrito'
@@ -61,12 +61,12 @@ const CartContainer = () => {
                         <CartModalForm showForm={showForm} setShowForm={setShowForm} />
                     </div>
                 :
-                    <div className='w-full grid justify-center items-center my-4 py-5 px-7 bg-teal-600/80 rounded-lg shadow-md'>
+                    <div className='w-full grid justify-center items-center my-4 py-10 px-7 bg-teal-600/80 rounded-lg shadow-md'>
                         <Link
                             to='/'
                             className='flex flex-col items-center justify-center gap-6 md:px-10'
                         >
-                        <h1 className='text-teal-50 text-lg tracking-wide font-Raleway grid place-items-center leading-6'>
+                        <h1 className='text-white text-lg tracking-wide font-Raleway grid place-items-center leading-6'>
                             <span className='drop-shadow-md'>
                                 Aún no hay productos
                             </span>
@@ -77,11 +77,11 @@ const CartContainer = () => {
                                 <BiSolidShare className='block text-red-300 text-3xl drop-shadow' />
                             </div>
                         </h1>
-                        <div className='w-40'>
+                        <div className='w-32'>
                             <img
                                 src={logo}
                                 alt='logo tienda Ma'
-                                className='empty-cart-logo block w-full'
+                                className='block w-full'
                             />
                         </div>
                         </Link>

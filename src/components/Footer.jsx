@@ -14,7 +14,7 @@ const Footer = () => {
     }, [location])
 
     return (
-        <footer className='absolute bottom-0 w-full grid place-items-center bg-[#2c9bba] z-20'>
+        <footer className='absolute bottom-0 w-full grid place-items-center bg-[#2c9bba] z-10'>
             <div className='relative w-full flex md:flex-row md:items-center md:justify-between md:px-10 py-4'>
                 <Link
                     to={'https://portfolio-alejandro-dominguez.vercel.app/'}
@@ -37,7 +37,7 @@ const Footer = () => {
                 {showBtn ?
                     <BiSolidCaretUpCircle
                         className='absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 block mb-2 text-4xl cursor-pointer
-                        text-teal-50 drop-shadow transition-colors hover:text-[#70faff] focus:text-[#f1b4b4]'
+                        text-white drop-shadow transition-colors hover:text-[#70faff] focus:text-[#f1b4b4]'
                         onClick={() => scrollTop()}
                     />
                 : null}
