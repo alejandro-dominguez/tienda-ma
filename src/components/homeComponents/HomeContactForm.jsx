@@ -14,10 +14,10 @@ const HomeContactForm = () => {
     return (
         <section
             id='contact-section'
-            className='grid place-items-center py-10 w-full bg-teal-400 mb-24'
+            className='grid place-items-center py-10 w-full mb-24'
         >
             <form
-                className='md:w-[62.25%] rounded-lg py-8 bg-teal-100/90 md:px-8 shadow-md'
+                className='md:w-[62.25%] py-8 md:px-8 shadow-sm bg-white'
                 onSubmit={onSubmit}
                 autoComplete='off'
             >
@@ -27,7 +27,7 @@ const HomeContactForm = () => {
                     type='text'
                     className='hidden'
                 />
-                <h2 className='font-Raleway text-3xl font-black tracking-wide text-teal-500 drop-shadow-sm'>
+                <h2 className='font-Raleway text-3xl font-black tracking-wide drop-shadow-sm'>
                     ¡Queremos escucharte!
                 </h2>
                 <div className='flex flex-col md:flex-row items-start md:gap-12 mt-4'>
@@ -99,8 +99,8 @@ const HomeContactForm = () => {
                 </div>
                 <button
                     type='submit'
-                    className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6 bg-rose-500
-                    text-white rounded-md transition-colors ease-out duration-[180ms] hover:bg-teal-600 focus:bg-teal-600
+                    className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6 bg-zinc-900
+                    text-white rounded-md transition-colors ease-out duration-[180ms] hover:bg-zinc-700 focus:bg-zinc-700
                     shadow-sm'
                 >
                     <span className='drop-shadow'>

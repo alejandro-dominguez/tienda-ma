@@ -1,9 +1,28 @@
 import { HeroBtn } from './homeComponents';
 import { BsBagHeartFill } from 'react-icons/bs';
-import video from '../assets/video-hero.mp4'; 
+import { HomeSlider } from '../components/homeComponents';
+import { useState } from 'react';
+import video from '../assets/video-hero.mp4';
 
-const HeroSection = ({ btnsData }) => {
-
+const HeroSection = () => {
+    const [ btnsData, ] = useState([
+        {
+            'name': 'Promociones',
+            'section': 'promo-section'
+        },
+        {
+            'name': 'Destacado',
+            'section': 'featured-section'
+        },
+        {
+            'name': 'Medios de pago',
+            'section': 'payments-section'
+        },
+        {
+            'name': 'Contacto',
+            'section': 'contact-section'
+        }
+    ])
 
     return (
         <main className='w-full grid place-items-center'>
@@ -31,6 +50,11 @@ const HeroSection = ({ btnsData }) => {
                             return <HeroBtn btnData={data} key={i}/>
                         })}
                     </div>
+                </div>
+                <div className='absolute w-full bottom-0 py-[1.1rem] overflow-x-hidden whitespace-nowrap bg-white/5 backdrop-blur-sm'>
+                    <HomeSlider />
+                    <HomeSlider />
+                    <HomeSlider />
                 </div>
             </div>
         </main>

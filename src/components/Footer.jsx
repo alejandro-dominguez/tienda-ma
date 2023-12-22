@@ -14,15 +14,15 @@ const Footer = () => {
     }, [location])
 
     return (
-        <footer className='absolute bottom-0 w-full grid place-items-center bg-[#2c9bba] z-10'>
-            <div className='relative w-full flex md:flex-row md:items-center md:justify-between md:px-10 py-4'>
+        <footer className='absolute bottom-0 w-full grid place-items-center bg-white z-10'>
+            <div className='relative w-full flex md:flex-row md:items-center md:justify-between md:px-10 py-2'>
                 <Link
                     to={'https://portfolio-alejandro-dominguez.vercel.app/'}
                     referrerPolicy='no-referrer'
                     rel='noopener'
                     target='_blank'
                 >
-                    <small className='text-white tracking-wide text-sm drop-shadow-sm grid place-items-center'>
+                    <small className='leading-4 tracking-wide text-xs drop-shadow-sm grid place-items-center'>
                         <span>
                             &copy; 2023 
                         </span>
@@ -34,14 +34,16 @@ const Footer = () => {
                         </span>
                     </small>
                 </Link>
-                {showBtn ?
-                    <BiSolidCaretUpCircle
-                        className='absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 block mb-2 text-4xl cursor-pointer
-                        text-white drop-shadow transition-colors hover:text-[#70faff] focus:text-[#f1b4b4]'
-                        onClick={() => scrollTop()}
-                    />
-                : null}
-                <div className='w-16'>
+                {
+                    showBtn ?
+                        <BiSolidCaretUpCircle
+                            className='absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 block mb-1 text-[1.6rem] cursor-pointer
+                            text-zinc-600 drop-shadow'
+                            onClick={() => scrollTop()}
+                        />
+                    : null
+                }
+                <div className='w-10'>
                     <img
                         src={footerLogo}
                         alt='icono tienda ma'

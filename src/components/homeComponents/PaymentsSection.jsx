@@ -1,11 +1,11 @@
 import { BiSolidCreditCardAlt, BiCalendarHeart, BiSolidBabyCarriage } from 'react-icons/bi';
 import billeteraLogo from '../../assets/billetera-santafe.svg';
 
-const BenefitsSection = () => {
+const PaymentsSection = () => {
     return (
         <section
-            id='benefits-section'
-            className='flex flex-col md:flex-row justify-center md:items-start md:justify-between py-10 w-full md:px-64'
+            id='payments-section'
+            className='flex flex-col md:flex-row justify-center md:items-start md:justify-between py-10 w-full md:px-64 bg-white'
         >
             <div className='grid place-items-center'>
                 <BiSolidCreditCardAlt className='block text-[6rem] text-rose-400/90' />
@@ -55,4 +55,4 @@ const BenefitsSection = () => {
     )
 };
 
-export default BenefitsSection;
+export default PaymentsSection;

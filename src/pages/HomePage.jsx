@@ -1,30 +1,17 @@
-import { useState } from 'react';
 import { HeroSection } from '../components';
-import { BenefitsSection, HomeContactForm } from '../components/homeComponents';
+import { PromoSection, PaymentsSection, HomeContactForm } from '../components/homeComponents';
 import { FeaturedItemContainer } from '../containers';
+import { IoLogoWhatsapp } from 'react-icons/io';
 
 const HomePage = () => {
-    const [ btnsData, ] = useState([
-        {
-            'name': 'Destacados',
-            'section': 'featured-section'
-        },
-        {
-            'name': 'Beneficios',
-            'section': 'benefits-section'
-        },
-        {
-            'name': 'Contacto',
-            'section': 'contact-section'
-        }
-    ])
-
     return (
-        <div className='grid place-items-center'>
-            <HeroSection btnsData={btnsData} />
+        <div className='relative grid place-items-center w-full'>
+            <HeroSection />
+            <PromoSection />
             <FeaturedItemContainer />
-            <BenefitsSection />
+            <PaymentsSection />
             <HomeContactForm />
+            <IoLogoWhatsapp className='cursor-pointer text-green-600/80 text-4xl fixed bottom-1/4 right-6 drop-shadow-md' />
         </div>
     )
 };
