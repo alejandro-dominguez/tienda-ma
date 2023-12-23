@@ -5,10 +5,9 @@ import { ErrorPage } from '../pages';
 import { RotatingLines } from 'react-loader-spinner';
 import { BlogMock } from '../components/homeComponents';
 
-const FeaturedItemContainer = () => {
+const FeaturedItemsContainer = () => {
     const { categoryId } = useParams()
     const [ data, error, loading ] = useGetFirebaseData(categoryId)
-    const product = data[0]
 
     return (
         <section
@@ -21,7 +20,7 @@ const FeaturedItemContainer = () => {
                         <>
                         <BlogMock />
                         <ItemCard
-                            product={product}
+                            product={data}
                             itemList={false}
                         />
                         </>
@@ -42,16 +41,4 @@ const FeaturedItemContainer = () => {
     )
 };
 
-export default FeaturedItemContainer;
-
-/* (data.length && !loading && !error) ?
-data.map(product => {
-    return (
-        <ItemCard
-            product={product}
-            itemList={false}
-            key={product.id}
-        />
-    )
-}
-) */
+export default FeaturedItemsContainer;

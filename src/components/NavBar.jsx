@@ -43,7 +43,7 @@ const NavBar = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', controlNavBar)
+        window.addEventListener('scroll', controlNavBar())
     }, [])
 
     useEffect(() => {
