@@ -15,7 +15,7 @@ const HeroSection = () => {
             'section': 'featured-section'
         },
         {
-            'name': 'Medios de pago',
+            'name': 'Formas de pago',
             'section': 'payments-section'
         },
         {

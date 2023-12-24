@@ -21,14 +21,14 @@ const AboutUsPage = () => {
                         y compromiso genuino con la satisfacción de cada uno de nuestros clientes.
                     </p>
                     <Link
-                        to={'/categorias/bebe'}
-                        className='shadow-sm px-[1.125rem] py-[.35rem] bg-zinc-800/10 border-2
-                        border-white/80 rounded-lg transition-colors ease-in-out hover:border-white w-fit mt-3
-                        hover:bg-zinc-700/30 focus:border-white focus:bg-zinc-700/30'
+                        to='/categorias/bebe'
+                        className='grid place-items-center shadow-sm w-40 py-2 mt-2 bg-zinc-800/10 border-2 border-white/80
+                        rounded-lg transition-colors ease-in-out hover:border-white hover:bg-zinc-700/30 
+                        focus:border-white focus:bg-zinc-700/30'
                     >
-                    <span className='drop-shadow-md text-white uppercase tracking-widest text-[.79rem] pt-[.135rem]'>
-                        Ver productos
-                    </span>
+                        <span className='drop-shadow-sm text-white uppercase tracking-wider text-sm'>
+                            Ver productos
+                        </span>
                     </Link>
                 </div>
             </div>

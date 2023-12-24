@@ -9,7 +9,7 @@
 }
 
 html {
-    @apply scroll-smooth scroll-p-24;
+    @apply scroll-smooth;
 }
 
 body {
@@ -66,10 +66,10 @@ textarea::-webkit-scrollbar {
 	}
 
 	.about-h1-shadow {
-		text-shadow: 2.5px 2.5px 2.5px #f7412533;
+		text-shadow: 2.5px 2.5px 2.5px #ab220d25
 	}
 
 	.about-p-shadow {
-		text-shadow: 2px 2px 2px #380a0381;
+		text-shadow: 2px 2px 2px #3a0a0359;
 	}
 };

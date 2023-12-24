@@ -1,54 +1,43 @@
-import { BiSolidCreditCardAlt, BiCalendarHeart, BiSolidBabyCarriage } from 'react-icons/bi';
-import billeteraLogo from '../../assets/billetera-santafe.svg';
+import { BiSolidCreditCardAlt } from 'react-icons/bi';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMoneyBill1Wave } from 'react-icons/fa6';
 
 const PaymentsSection = () => {
     return (
         <section
             id='payments-section'
-            className='flex flex-col md:flex-row justify-center md:items-start md:justify-between py-10 w-full md:px-64 bg-white'
+            className='grid grid-cols-1 md:grid-cols-3 py-10 w-full md:px-64 bg-white justify-between items-center'
         >
-            <div className='grid place-items-center'>
-                <BiSolidCreditCardAlt className='block text-[6rem] text-rose-400/90' />
-                <span className='text-center font-bold leading-5 tracking-wide'>
-                    <span className='text-teal-500 drop-shadow-sm'>
-                        Hasta 3 cuotas
+            <div className='grid place-items-center font-Raleway'>
+                <BiSolidCreditCardAlt className='block text-8xl text-rose-400/60' />
+                <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow-sm'>
+                    <span className='font-black text-base drop-shadow-none mb-1 -mt-2'>
+                        Variedad de medios
+                        <br />
+                        de pago disponibles.
                     </span>
-                    sin interés
+                    Crédito, débito, transferencias,
                     <br />
-                    con tus tarjetas
+                    Mercado Pago, etc.
                 </span>
             </div>
-            <div className='grid place-items-center'>
-                <div className='flex justify-between items-center gap-8'>
-                    <div className='w-[4.45rem]'>
-                        <img
-                            src={billeteraLogo}
-                            alt='logo billetera santa fe'
-                            className='block w-full'
-                        />
-                    </div>
-                    <BiCalendarHeart className='block text-[5.5rem] text-rose-400/90' />
-                </div>
-                <div className="grid place-items-center">
-                    <span className='font-black text-teal-500 mt-2 tracking-wider drop-shadow-sm'>
-                        LUNES | MARTES | VIERNES
-                    </span>
-                    <span className='text-center font-bold mt-1 leading-5 tracking-wide'>
-                        Aprovecha tus compras
-                        <br />
-                        con Billetera Santa Fe
-                    </span>
-                </div>
+            <div className='grid place-items-center font-Raleway'>
+                <FaMoneyBill1Wave className='block text-[5.5rem] text-rose-400/60' />
+                <span className='text-center font-black tracking-wide'>
+                    Descuentos en efectivo.
+                </span>
             </div>
-            <div className='grid place-items-center'>
-                <BiSolidBabyCarriage className='block text-[6rem] text-rose-400/90' />
-                <span className='text-center font-bold leading-5 tracking-wide'>
-                    <span className='text-teal-500 drop-shadow-sm'>
-                        Envíos grátis
+            <div className='grid place-items-center font-Raleway'>
+                <FaMapMarkerAlt className='block text-7xl text-rose-400/60' />
+                <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow-sm'>
+                    <span className='font-black text-base drop-shadow-none mb-1 mt-2'>
+                        Envíos a Riosario
+                        <br />
+                        y Gran Rosario.
                     </span>
-                    con compras
+                    Consulta por nuestra
                     <br />
-                    mayores a $5000
+                    cobertura de envíos.
                 </span>
             </div>
         </section>

@@ -1,26 +1,31 @@
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
-import { NavBar, Footer } from '../../components';
-import { IoLogoWhatsapp } from 'react-icons/io';
-import { useEffect } from 'react';
+import { NavBar, WhatsAppBtn, Footer } from '../../components';
+import { useEffect, useState } from 'react';
+import { shortenText } from '../../utilities';
 
 const Root = () => {
     const location = useLocation()
+    const [showBtn, setShowBtn] = useState(true)
+    const detailLocation = shortenText(location.pathname, 9)
+    const blogLocation = shortenText(location.pathname, 6)
 
     useEffect(() => {
-        console.log(location)
+        location.pathname === '/nosotros' ||
+        detailLocation === '/detalle/...' ||
+        blogLocation === '/blog/...'
+        ? setShowBtn(false)
+        : setShowBtn(true)
     }, [location])
-    /* location.pathname === '/nosotros' || location.pathname === '/' || location.pathname === '/' ? setshowBtn(false) : setshowBtn(true) */
+
     return (
         <div className='relative min-h-screen w-full'>
             <NavBar />
             <Outlet />
-            {
-                <IoLogoWhatsapp className='cursor-pointer text-green-600/80 text-4xl fixed bottom-1/4 right-10 drop-shadow-md' />
-            }
+            {showBtn ? <WhatsAppBtn /> : null}
             <Footer />
             <ScrollRestoration />
         </div>
     )
-}
+};
 
 export default Root;
