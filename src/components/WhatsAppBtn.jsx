@@ -9,7 +9,9 @@ const WhatsAppBtn = () => {
             rel='noopener'
             target='_blank'
         >
-            <IoLogoWhatsapp className='cursor-pointer text-green-600/80 text-4xl fixed bottom-1/4 right-10 drop-shadow-md' />
+            <div className='fixed md:bottom-[16%] right-10 p-[.35rem] bg-white/60 rounded-full grid place-items-center'>
+                <IoLogoWhatsapp className='block cursor-pointer text-green-600/80 text-4xl drop-shadow-md' />
+            </div>
         </Link>
     )
 };
