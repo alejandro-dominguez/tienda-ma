@@ -109,8 +109,8 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                 <button
                     type='submit'
                     className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6
-                    bg-teal-700 text-white rounded-md shadow-sm shadow-black/50 transition ease-out duration-[180ms]
-                    hover:bg-teal-600 focus:bg-teal-600 hover:shadow-white/30 focus:shadow-white/30'
+                    bg-teal-700 text-white rounded-md shadow-sm shadow-black/50 transition-all ease-out
+                    duration-[180ms] hover:bg-teal-600 focus:bg-teal-600 hover:shadow-white/30 focus:shadow-white/30'
                 >
                     <span className='drop-shadow-md'>
                         Realizar orden

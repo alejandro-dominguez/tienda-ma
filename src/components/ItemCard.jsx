@@ -14,9 +14,7 @@ const ItemCard = ({ product, itemList }) => {
                 }
         >
             <h3 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-xl'>
-                <span>
-                    {product.brand || product[0].brand} {product.name || product[0].name}
-                </span>
+                {product.brand || product[0].brand} {product.name || product[0].name}
             </h3>
             {
                 !itemList ?
@@ -62,9 +60,9 @@ const ItemCard = ({ product, itemList }) => {
                 <span className=
                     {
                         !itemList ?
-                            'block drop-shadow tracking-wider text-[.85rem] font-Raleway'
+                            'drop-shadow tracking-wider text-[.85rem] font-Raleway'
                         :
-                            'block drop-shadow tracking-wide text-xs font-Raleway'
+                            'drop-shadow tracking-wide text-xs font-Raleway'
                     }
                 >
                     {

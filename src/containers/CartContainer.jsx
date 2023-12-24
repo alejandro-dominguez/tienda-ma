@@ -38,8 +38,8 @@ const CartContainer = () => {
                         </div>
                         <button
                             className='flex items-center justify-center justify-self-center px-6 py-3 gap-3 mt-6
-                            bg-[#004eb4] rounded-md shadow shadow-teal-950/80 transition ease-in-out duration-[225ms]
-                            hover:shadow-teal-400/40 hover:bg-[#01268b] hover:shadow
+                            bg-[#004eb4] rounded-md shadow shadow-teal-950/80 transition-all ease-in-out
+                            duration-[225ms] hover:shadow-teal-400/40 hover:bg-[#01268b] hover:shadow
                             focus:shadow-teal-400/40 focus:bg-[#01268b] focus:shadow'
                             type='button'
                             onClick={() => setShowForm(true)}

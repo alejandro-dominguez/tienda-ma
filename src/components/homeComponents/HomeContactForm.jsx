@@ -108,11 +108,10 @@ const HomeContactForm = () => {
                 </div>
                 <button
                     type='submit'
-                    className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6 bg-zinc-900
-                    text-white rounded-md transition-colors ease-out duration-[180ms] hover:bg-zinc-700 focus:bg-zinc-700
-                    shadow-sm'
+                    className='grid place-items-center py-[.625rem] px-6 w-full mt-6 bg-zinc-900 rounded-md transition-colors
+                    ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
                 >
-                    <span className='drop-shadow'>
+                    <span className='text-white drop-shadow-sm tracking-wider font-bold text-[1.05rem]'>
                         Enviar
                     </span>
                 </button>

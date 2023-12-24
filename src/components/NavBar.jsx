@@ -39,11 +39,14 @@ const NavBar = () => {
     const [ hideMenu, setHideMenu ] = useState(false)
 
     const controlNavBar = () => {
-        window.scrollY > '100px' ? setShowNav(false) : setShowNav(true)
+        window.scrollY > 120 ? setShowNav(false) : setShowNav(true)
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', controlNavBar())
+        window.addEventListener('scroll', controlNavBar)
+        return () => {
+            window.removeEventListener('scroll', controlNavBar)
+        }
     }, [])
 
     useEffect(() => {
@@ -51,14 +54,22 @@ const NavBar = () => {
     }, [location])
 
     return (
-        <nav className={showNav ? 'fixed shadow-sm z-40 w-full' : 'hidden'}>
+        <nav className=
+            {
+                showNav ?
+                    'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear top-0 opacity-100'
+                : 
+                    'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear -top-40 opacity-0'
+            }
+        >
             <div className='relative w-full py-3 px-4 md:px-10 bg-white h-fit flex flex-col lg:flex-row justify-between items-center'>
                 <div
                     className=
                         {
                             navigateHome ?
                                 'w-[4.75rem] lg:w-20 cursor-pointer z-10'
-                            : 'w-[4.75rem] lg:w-20 cursor-auto z-10'
+                            :
+                                'w-[4.75rem] lg:w-20 cursor-auto z-10'
                         }
                     onClick={() => {navigateHome ? navigate('/') : null}}
                 >

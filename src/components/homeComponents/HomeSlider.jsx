@@ -10,11 +10,8 @@ import logo9 from '../../assets/sliderLogos/paez.svg';
 import logo10 from '../../assets/sliderLogos/doncella.svg';
 import logo11 from '../../assets/sliderLogos/kimbies.svg';
 import logo12 from '../../assets/sliderLogos/qsoft.svg';
-import { useState } from 'react';
 
 const HomeSlider = () => {
-    const [slides,] = useState()
-
     return (
         <div className='inline-block animate-slide'>
             <div className='w-full flex justify-between items-center'>

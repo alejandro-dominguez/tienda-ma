@@ -40,7 +40,7 @@ const ItemCount = ({ onAdd, quantity, initial }) => {
             <button
                 type='button'
                 className='w-max flex items-center gap-2 justify-center text-white bg-teal-600/90 px-5 py-2 rounded-md
-                shadow-sm transition ease-in-out duration-200 hover:shadow hover:text-teal-600 hover:bg-red-50/90
+                shadow-sm transition-all ease-in-out duration-200 hover:shadow hover:text-teal-600 hover:bg-red-50/90
                 focus:shadow focus:text-teal-600 focus:bg-red-50/80'
                 onClick={() => handleAdd(count)}
             >
