@@ -33,7 +33,7 @@ const HeroSection = () => {
                     autoPlay={true}
                     loop={true}
                     type={'video/mp4'}
-                    className='block w-full grayscale-[.4] blur-[2px] brightness-[.85]'
+                    className='block w-full grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
                 <div className='absolute top-32 -translate-x-1/2 md:left-80 md:ml-2'>
                     <h1 className='text-white font-Raleway font-bold md:text-5xl drop-shadow-sm'>
@@ -52,7 +52,6 @@ const HeroSection = () => {
                     </div>
                 </div>
                 <div className='absolute w-full bottom-0 py-[1.1rem] overflow-x-hidden whitespace-nowrap bg-white/5 backdrop-blur-sm'>
-                    <HomeSlider />
                     <HomeSlider />
                     <HomeSlider />
                 </div>

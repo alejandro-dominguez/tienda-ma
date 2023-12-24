@@ -12,9 +12,9 @@ const FeaturedItemsContainer = () => {
     return (
         <section
             id='featured-section'
-            className='w-full grid place-items-center md:px-10 py-10'
+            className='w-full grid place-items-center md:px-10 py-2'
         >
-            <div className='w-full md:px-10 py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
+            <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {
                     (data.length && !loading && !error) ?
                         <>

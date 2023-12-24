@@ -48,14 +48,15 @@ const ItemCard = ({ product, itemList }) => {
             }
             <button
                 type='button'
-                className={
-                    !itemList ?
-                        `mt-2 px-4 py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
-                        duration-200 hover:bg-zinc-700 focus:bg-zinc-700`
-                    : 
-                        `mt-1 px-6 py-2 bg-teal-600/10 text-white rounded-lg shadow-sm transition-colors ease-in-out
-                        duration-200 hover:bg-zinc-700 focus:bg-zinc-700`
-                }
+                className=
+                    {
+                        !itemList ?
+                            `mt-2 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
+                            duration-200 hover:bg-zinc-700 focus:bg-zinc-700`
+                        : 
+                            `mt-1 px-6 py-2 bg-teal-600/10 text-white rounded-lg shadow-sm transition-colors ease-in-out
+                            duration-200 hover:bg-zinc-700 focus:bg-zinc-700`
+                    }
                 onClick={() => navigate((`/detalle/${product.id}`) || (`/detalle/${product[0].id}`))}
             >
                 <span className=
@@ -69,7 +70,8 @@ const ItemCard = ({ product, itemList }) => {
                     {
                         !itemList ?
                             'Ver más'
-                        : 'Detalle'
+                        :
+                            'Detalle'
                     }
                 </span>
             </button>

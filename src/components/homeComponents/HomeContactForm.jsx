@@ -17,7 +17,7 @@ const HomeContactForm = () => {
             className='grid place-items-center py-10 w-full mb-24'
         >
             <form
-                className='md:w-[62.25%] py-8 md:px-8 shadow-sm bg-white'
+                className='md:w-[62.25%] py-8 md:px-8 shadow-sm bg-white/70'
                 onSubmit={onSubmit}
                 autoComplete='off'
             >
@@ -27,17 +27,20 @@ const HomeContactForm = () => {
                     type='text'
                     className='hidden'
                 />
-                <h2 className='font-Raleway text-3xl font-black tracking-wide drop-shadow-sm'>
+                <h2 className='font-Raleway text-2xl font-black tracking-wide drop-shadow-sm -mt-2'>
                     ¡Queremos escucharte!
                 </h2>
-                <div className='flex flex-col md:flex-row items-start md:gap-12 mt-4'>
-                    <div className='grid md:items-center md:justify-start gap-4'>
+                <div className='flex flex-col md:flex-row items-start md:gap-12 mt-3'>
+                    <div className='grid md:items-center md:justify-start gap-3'>
                         <div className='flex flex-col'>
                             <label
                                 htmlFor='fullName'
-                                className='text-zinc-700'
+                                className='text-zinc-700 flex gap-[.3rem]'
                             >
-                                Nombre completo: *
+                                Nombre completo:
+                                <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                    *
+                                </span>
                             </label>
                             <input
                                 type='text'
@@ -52,9 +55,12 @@ const HomeContactForm = () => {
                         <div className='flex flex-col'>
                             <label
                                 htmlFor='phone'
-                                className='text-zinc-700'
+                                className='text-zinc-700 flex gap-[.3rem]'
                             >
-                                Teléfono: *
+                                Teléfono:
+                                <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                    *
+                                </span>
                             </label>
                             <input
                                 type='tel'
@@ -82,9 +88,12 @@ const HomeContactForm = () => {
                     <div className='flex flex-col'>
                         <label
                             htmlFor='message'
-                            className='text-zinc-700'
+                            className='text-zinc-700 flex gap-[.3rem]'
                         >
-                            Mensaje: *
+                            Mensaje:
+                            <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                *
+                            </span>
                         </label>
                         <textarea
                             name='message'

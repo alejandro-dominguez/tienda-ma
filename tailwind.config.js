@@ -11,7 +11,7 @@ export default {
                 Raleway: ['Raleway', 'sans-serif']
 			},
 			animation: {
-			    slide: '9s slide infinite linear'
+			    slide: '13s slide infinite linear'
 			},
 			keyframes: {
 				slide: {

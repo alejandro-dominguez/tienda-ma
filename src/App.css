@@ -38,11 +38,11 @@ textarea::-webkit-scrollbar {
 
 @layer components {
 	.contact-input {
-		@apply text-sm mt-2 bg-teal-600/10 shadow-sm py-2 px-3 rounded drop-shadow-sm text-black md:w-72;
+		@apply text-sm mt-2 bg-teal-600/[9%] shadow-sm py-2 px-3 rounded drop-shadow-sm text-black md:w-72;
 	}
 	
 	.contact-input::placeholder {
-		@apply text-sm ;
+		@apply text-sm;
 	}
 	
 	.contact-input::-webkit-scrollbar {
@@ -50,7 +50,7 @@ textarea::-webkit-scrollbar {
 	}
 
 	.contact-textarea {
-		@apply mt-2 bg-teal-600/10 shadow-sm py-2 px-3 rounded drop-shadow-sm text-black md:w-[22rem] max-h-36;
+		@apply mt-2 bg-teal-600/[9%] shadow-sm py-2 px-3 rounded drop-shadow-sm text-black md:w-[22rem] max-h-36;
 	}
 
 	.items-section-h1-shadow {
