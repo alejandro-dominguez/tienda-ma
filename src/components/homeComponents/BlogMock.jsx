@@ -2,7 +2,7 @@ import blogMockImg from '../../assets/blog-mock.jpeg';
 
 const BlogMock = () => {
     return (
-        <div className='bg-white/70 py-8 md:px-8'>
+        <div className='bg-white/70 py-8 px-4 md:px-8'>
             <div className='w-full drop-shadow-sm'>
                 <img
                     src={blogMockImg}   

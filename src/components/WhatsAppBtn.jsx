@@ -6,13 +6,13 @@ const WhatsAppBtn = () => {
         <Link
             to='https://wa.me/+5493413042903'
             referrerPolicy='no-referrer'
-            rel='noopener'
+            rel='noopener'  
             target='_blank'
         >
             <div className='fixed bottom-[16%] sm:bottom-[18%] right-2 p-[.35rem] sm:p-[.45rem] bg-zinc-300/80 rounded-full
             grid place-items-center drop-shadow'>
-                <IoLogoWhatsapp className='block cursor-pointer mb-[.02rem] ml-[.03rem] text-green-700/95 text-3xl
-                sm:text-[2rem] drop-shadow sm:mb-0' />
+                <IoLogoWhatsapp className='block cursor-pointer mb-[.02rem] mt-[.025rem] ml-[.03rem] mr-[.015rem]
+                text-green-700/95 text-3xl sm:text-[2rem] drop-shadow' />
             </div>
         </Link>
     )

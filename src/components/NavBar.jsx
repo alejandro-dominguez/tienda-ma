@@ -37,20 +37,24 @@ const NavBar = () => {
         }
     ])
     const [ hideMenu, setHideMenu ] = useState(false)
-
+    
     const controlNavBar = () => {
         window.scrollY > 120 ? setShowNav(false) : setShowNav(true)
     }
+    
+    const responsiveViewport = () => window.visualViewport.width < 1024 ? setHideMenu(true) : setHideMenu(false)
 
     useEffect(() => {
         window.addEventListener('scroll', controlNavBar)
-        return () => {
-            window.removeEventListener('scroll', controlNavBar)
-        }
+        return () => window.removeEventListener('scroll', controlNavBar)
     }, [])
 
     useEffect(() => {
         location.pathname !== '/' ? setNavigateHome(true) : setNavigateHome(false)
+    }, [location])
+
+    useEffect(() => {
+        responsiveViewport()
     }, [location])
 
     return (
@@ -58,7 +62,7 @@ const NavBar = () => {
             {
                 showNav ?
                     'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear top-0 opacity-100'
-                : 
+                :
                     'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear -top-40 opacity-0'
             }
         >

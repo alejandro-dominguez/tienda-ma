@@ -9,8 +9,8 @@ const ItemCard = ({ product, itemList }) => {
             className=
                 {
                     !itemList ?
-                        'flex flex-col items-start justify-start py-7 md:px-8 gap-3 shadow-sm bg-white/70'
-                    : 'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-white rounded gap-2 shadow'
+                        'flex flex-col items-start justify-start py-7 px-4 md:px-8 gap-3 shadow-sm bg-white/70'
+                    : 'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-white/70 rounded gap-2 shadow'
                 }
         >
             <h3 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-xl'>
@@ -18,8 +18,8 @@ const ItemCard = ({ product, itemList }) => {
             </h3>
             {
                 !itemList ?
-                    <div className='flex gap-4'>
-                        <div className='md:w-48 shadow-sm'>
+                    <div className='flex flex-col lg:flex-row gap-4'>
+                        <div className='w-28 sm:w-32 md:w-36 lg:w-48 shadow-sm'>
                             <img
                                 src={product[0].img}
                                 alt={product[0].name}

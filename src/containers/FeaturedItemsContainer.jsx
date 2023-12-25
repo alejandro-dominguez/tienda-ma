@@ -14,18 +14,18 @@ const FeaturedItemsContainer = () => {
             id='featured-section'
             className='w-full grid place-items-center md:px-10 py-2'
         >
-            <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
-                {
-                    (data.length && !loading && !error) ?
-                        <>
+            {
+                (data.length && !loading && !error) ?
+                    <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
                         <BlogMock />
                         <ItemCard
                             product={data}
                             itemList={false}
                         />
-                        </>
-                    : !error ?
-                        <div className='w-full grid place-items-center bg-white md:px-10 py-8 shadow-md min-h-[20.5rem]'>
+                    </div>
+                : !error ?
+                    <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>
+                        <div className='p-5 bg-teal-600/30 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
                                 strokeWidth='5'
@@ -34,9 +34,9 @@ const FeaturedItemsContainer = () => {
                                 visible={true}
                             />
                         </div>
-                    : <ErrorPage />
-                }
-            </div>
+                    </div>
+                : <ErrorPage />
+            }
         </section>
     )
 };
