@@ -26,26 +26,26 @@ const HeroSection = () => {
 
     return (
         <main className='w-full grid place-items-center'>
-            <div className='w-full grid place-items-center h-screen overflow-y-hidden relative'>
+            <div className='w-full flex flex-col md:flex-row relative'>
                 <video
                     src={video}
                     muted={true}
                     autoPlay={true}
                     loop={true}
                     type={'video/mp4'}
-                    className='block w-full grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
+                    className='block w-full h-screen object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
-                <div className='absolute top-32 -translate-x-1/2 md:left-80 md:ml-2'>
-                    <h1 className='text-white font-Raleway font-bold md:text-5xl drop-shadow-sm'>
+                <div className='absolute top-28 sm:top-32 flex flex-col items-center sm:items-start sm:ml-10'>
+                    <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm text-center px-10 sm:px-0'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
-                    <div className='flex md:flex-row items-center gap-2 md:mt-3 md:ml-1'>
-                        <BsBagHeartFill className='block text-white text-[1.7rem] mb-1' />
+                    <div className='flex items-center gap-2 mt-2 sm:mt-3'>
+                        <BsBagHeartFill className='block text-white text-xl md:text-[1.7rem] mb-1' />
                         <h2 className='text-white font-Raleway tracking-wider md:text-2xl drop-shadow-sm'>
                             Tu pañalera de confianza
                         </h2>
                     </div>
-                    <div className='flex flex-col items-start justify-center gap-4 mt-6 md:ml-1'>
+                    <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-3 sm:mt-6'>
                         {btnsData.map((data, i) => {
                             return <HeroBtn btnData={data} key={i}/>
                         })}

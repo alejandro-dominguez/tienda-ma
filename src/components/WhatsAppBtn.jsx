@@ -9,8 +9,10 @@ const WhatsAppBtn = () => {
             rel='noopener'
             target='_blank'
         >
-            <div className='fixed md:bottom-[16%] right-10 p-[.35rem] bg-white/60 rounded-full grid place-items-center'>
-                <IoLogoWhatsapp className='block cursor-pointer text-green-600/80 text-4xl drop-shadow-md' />
+            <div className='fixed bottom-[16%] sm:bottom-[18%] right-2 p-[.35rem] sm:p-[.45rem] bg-zinc-300/80 rounded-full
+            grid place-items-center drop-shadow'>
+                <IoLogoWhatsapp className='block cursor-pointer mb-[.02rem] ml-[.03rem] text-green-700/95 text-3xl
+                sm:text-[2rem] drop-shadow sm:mb-0' />
             </div>
         </Link>
     )

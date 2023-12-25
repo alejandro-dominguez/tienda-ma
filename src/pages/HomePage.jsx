@@ -4,7 +4,7 @@ import { FeaturedItemsContainer } from '../containers';
 
 const HomePage = () => {
     return (
-        <div className='relative grid place-items-center w-full'>
+        <div className='relative grid place-items-center w-full overflow-x-hidden'>
             <HeroSection />
             <PromoSection />
             <FeaturedItemsContainer />
