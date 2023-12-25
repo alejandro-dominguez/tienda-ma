@@ -17,7 +17,7 @@ const HomeContactForm = () => {
             className='grid place-items-center py-10 w-full mb-24'
         >
             <form
-                className='md:w-[62.25%] py-8 md:px-8 shadow-sm bg-white/70'
+                className='md:w-[62.25%] py-8 px-4 sm:px-10 md:px-8 shadow-sm bg-white/70'
                 onSubmit={onSubmit}
                 autoComplete='off'
             >
@@ -30,7 +30,7 @@ const HomeContactForm = () => {
                 <h2 className='font-Raleway text-2xl font-black tracking-wide drop-shadow-sm -mt-2'>
                     ¡Queremos escucharte!
                 </h2>
-                <div className='flex flex-col md:flex-row items-start md:gap-12 mt-3'>
+                <div className='flex flex-col xl:flex-row items-start md:gap-12 mt-3'>
                     <div className='grid md:items-center md:justify-start gap-3'>
                         <div className='flex flex-col'>
                             <label
@@ -85,7 +85,7 @@ const HomeContactForm = () => {
                             />
                         </div>
                     </div>
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col mt-3 md:-mt-8 lg:mt-0'>
                         <label
                             htmlFor='message'
                             className='text-zinc-700 flex gap-[.3rem]'

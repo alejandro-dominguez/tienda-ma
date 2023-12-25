@@ -40,7 +40,7 @@ const HeroSection = () => {
                     text-center px-16 sm:px-0 leading-8 sm:leading-normal'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
-                    <div className='flex items-center gap-2 mt-2 sm:mt-3'>
+                    <div className='flex items-center gap-2 mt-[.4rem] sm:mt-3'>
                         <BsBagHeartFill className='block text-white text-xl md:text-[1.7rem] mb-1 drop-shadow-sm' />
                         <h2 className='text-white font-Raleway tracking-wider md:text-2xl drop-shadow'>
                             Tu pañalera de confianza

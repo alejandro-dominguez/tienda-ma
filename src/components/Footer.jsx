@@ -1,5 +1,5 @@
 import { scrollTop } from '../utilities/';
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { BiSolidCaretUpCircle } from 'react-icons/bi';
 import { PiInstagramLogoFill } from 'react-icons/pi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
@@ -7,7 +7,7 @@ import { MdEmail } from 'react-icons/md';
 
 const Footer = () => {
     return (
-        <footer className='w-full grid grid-cols-1 md:grid-cols-3 py-6 md:px-10 bg-white z-10'>
+        <footer className='w-full grid grid-cols-1 md:grid-cols-3 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
             <div className='flex flex-col items-start justify-start'>
                 <h3 className='font-Raleway font-black text-xl text-zinc-800'>
                     Contáctanos
@@ -35,7 +35,7 @@ const Footer = () => {
                 className='block self-end justify-self-center text-[1.55rem] cursor-pointer text-zinc-600 drop-shadow'
                 onClick={() => scrollTop()}
             />
-            <div className='self-end justify-self-end'>
+            <div className='justify-self-center self-end md:justify-self-end'>
                 <Link
                     to='https://portfolio-alejandro-dominguez.vercel.app/'
                     referrerPolicy='no-referrer'
