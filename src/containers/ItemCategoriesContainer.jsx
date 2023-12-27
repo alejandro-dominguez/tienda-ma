@@ -4,7 +4,9 @@ import {
     useParams
 } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { FaBabyCarriage } from 'react-icons/fa6';
+import { FaBabyCarriage, FaGem } from 'react-icons/fa6';
+import { ImWoman } from 'react-icons/im';
+import { IoAccessibility } from 'react-icons/io5';
 import useGetSubcategories from '../customHooks/useGetSubcategories';
 import ErrorPage from '../pages/ErrorPage';
 
@@ -68,18 +70,18 @@ const ItemCategoriesContainer = () => {
                                 </div>
                             :
                                 categoryId === 'mama' ?
-                                    <div className='w-full grid place-items-center pt-24'>
-                                        <FaBabyCarriage className='block text-[3.5rem] text-red-500/50' />
+                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
+                                        <ImWoman className='block text-[3.5rem] text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'adultos' ?
-                                    <div className='w-full grid place-items-center pt-24'>
-                                        <FaBabyCarriage className='block text-[3.5rem] text-red-500/50' />
+                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
+                                        <IoAccessibility className='block text-[3.5rem] text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'accesorios' ?
-                                    <div className='w-full grid place-items-center pt-24'>
-                                        <FaBabyCarriage className='block text-[3.5rem] text-red-500/50' />
+                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
+                                        <FaGem className='block text-[3.5rem] text-red-500/50' />
                                     </div>
                             :
                                 null
