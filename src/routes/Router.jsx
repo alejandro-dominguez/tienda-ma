@@ -6,14 +6,14 @@ import {
     HomePage,
     AboutUsPage,
     ErrorPage,
-    BlogPage
 } from '../pages/';
 import {
     ItemDetailContainer,
     ItemCategoriesContainer,
-    CartContainer
+    CartContainer,
+    BlogContainer
 } from '../containers/';
-import ItemListContainer from '../containers/ItemListContainer';
+import ItemListContainer from '../containers/itemList/ItemListContainer';
 import Root from './root/Root';
 
 const router = createBrowserRouter([
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/blogs',
-                element: <BlogPage />,
+                element: <BlogContainer />,
             },
             {
                 path: '/carrito',

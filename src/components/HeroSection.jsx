@@ -33,7 +33,7 @@ const HeroSection = () => {
                     autoPlay={true}
                     loop={true}
                     type={'video/mp4'}
-                    className='block w-full h-screen h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
+                    className='block w-full h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
                 <div className='absolute top-28 sm:top-32 flex flex-col items-center sm:items-start sm:ml-10'>
                     <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm

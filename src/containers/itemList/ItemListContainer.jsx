@@ -1,7 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { useGetFirebaseData } from '../customHooks';
-import { ItemCard } from '../components';
-import { ErrorPage } from '../pages';
+import { useGetFirebaseData } from '../../customHooks';
+import { ItemCard } from '../../components';
+import { ErrorPage } from '../../pages';
 import { RotatingLines } from 'react-loader-spinner';
 
 const ItemListContainer = (
@@ -11,7 +10,7 @@ const ItemListContainer = (
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (
-        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-screen min-h-[100svh]'>
+        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
             <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow'>
                 {
                     categoryId === 'bebe' ?

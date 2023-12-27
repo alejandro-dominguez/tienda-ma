@@ -18,18 +18,16 @@ const Root = () => {
     const location = useLocation()
     const [showBtn, setShowBtn] = useState(true)
     const detailLocation = shortenText(location.pathname, 9)
-    const blogLocation = shortenText(location.pathname, 6)
 
     useEffect(() => {
         location.pathname === '/nosotros' ||
-        detailLocation === '/detalle/...' ||
-        blogLocation === '/blog/...'
+        detailLocation === '/detalle/...'
         ? setShowBtn(false)
         : setShowBtn(true)
     }, [location])
 
     return (
-        <div className='relative min-h-screen min-h-[100svh] w-full'>
+        <div className='relative min-h-[100svh] w-full'>
             <NavBar />
             <Outlet />
             {showBtn ? <WhatsAppBtn /> : null}

@@ -17,7 +17,7 @@ const PromoSectionContainer = () => {
                     </h3>
                 : !error ?
                     <div className='w-full grid place-items-center bg-white min-h-[7.5rem]'>
-                        <div className='p-5 bg-teal-600/30 rounded-lg'>
+                        <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
                                 strokeWidth='5'

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const AboutUsPage = () => {
     return (
-        <div className='grid place-items-center relative'>
+        <main className='grid place-items-center relative'>
             <div className='about-us-banner' />
             <div className='absolute h-full w-full top-0 text-left'>
                 <h1 className='about-h1-shadow pt-44 text-white font-Raleway font-bold md:text-[2.5rem] drop-shadow
@@ -32,7 +32,7 @@ const AboutUsPage = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </main>
     )
 };
 

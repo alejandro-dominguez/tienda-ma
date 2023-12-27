@@ -25,7 +25,7 @@ const FeaturedItemsContainer = () => {
                     </div>
                 : !error ?
                     <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>
-                        <div className='p-5 bg-teal-600/30 rounded-lg'>
+                        <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
                                 strokeWidth='5'
