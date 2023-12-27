@@ -1,5 +1,5 @@
-import { shortenText } from '../utilities';
 import { useNavigate } from 'react-router-dom';
+import shortenText from '../utilities/shortenText';
 
 const ItemCard = ({ product, itemList }) => {
     const navigate = useNavigate()

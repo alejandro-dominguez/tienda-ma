@@ -1,9 +1,8 @@
-import { HeroSection } from '../components';
-import {
-    PaymentsSection,
-    HomeContactForm
-} from '../components/homeComponents';
-import { FeaturedItemsContainer, PromoSectionContainer } from '../containers';
+import HeroSection from '../components/HeroSection';
+import HomeContactForm from '../components/homeComponents/HomeContactForm';
+import PaymentsSection from '../components/homeComponents/PaymentsSection';
+import FeaturedItemsContainer from '../containers/FeaturedItemsContainer';
+import PromoSectionContainer from '../containers/PromoSectionContainer';
 
 const HomePage = () => {
     return (

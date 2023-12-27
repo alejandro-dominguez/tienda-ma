@@ -1,4 +1,4 @@
-import { scrollToElement } from '../../utilities';
+import scrollToElement from '../../utilities/scrollToElement';
 
 const HeroBtn = ({ btnData }) => {
     return (

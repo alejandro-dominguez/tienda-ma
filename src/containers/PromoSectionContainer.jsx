@@ -1,6 +1,6 @@
-import { useGetPromo } from '../customHooks';
 import { RotatingLines } from 'react-loader-spinner';
-import { ErrorPage } from '../pages';
+import useGetPromo from '../customHooks/useGetPromo';
+import ErrorPage from '../pages/ErrorPage';
 
 const PromoSectionContainer = () => {
     const [ promo, error, loading ] = useGetPromo()

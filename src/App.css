@@ -53,10 +53,6 @@ textarea::-webkit-scrollbar {
 		@apply mt-2 bg-teal-600/[9%] shadow-sm py-2 px-3 rounded drop-shadow-sm text-black md:w-[22rem] max-h-32 md:max-h-36;
 	}
 
-	.items-section-h1-shadow {
-		text-shadow: 2.5px 2.5px 2.5px #0b606f1a;
-	}
-
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');
 		background-size: cover;

@@ -4,15 +4,13 @@ import {
     useLocation
 } from 'react-router-dom';
 import {
-    NavBar,
-    WhatsAppBtn,
-    Footer
-} from '../../components';
-import {
     useEffect,
     useState
 } from 'react';
-import { shortenText } from '../../utilities';
+import NavBar from '../../components/NavBar';
+import WhatsAppBtn from '../../components/WhatsAppBtn';
+import Footer from '../../components/Footer';
+import shortenText from '../../utilities/shortenText';
 
 const Root = () => {
     const location = useLocation()

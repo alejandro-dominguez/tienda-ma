@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { ShopContext } from '../../contexts/shopContext';
 import { useNavigate } from 'react-router-dom';
-import { generateOrderObject } from '../../services';
 import {
     doc,
     getDoc,
@@ -11,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { BiSolidShare } from 'react-icons/bi'
-import { useForm } from 'react-hook-form';
+import generateOrderObject from '../../services/generateOrderObject';
 
 
 const CartModalForm = ({ showForm, setShowForm }) => {

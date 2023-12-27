@@ -1,9 +1,9 @@
-import { ItemCard } from '../components';
-import { useGetFirebaseData } from '../customHooks';
 import { useParams } from 'react-router-dom';
-import { ErrorPage } from '../pages';
 import { RotatingLines } from 'react-loader-spinner';
-import { BlogMock } from '../components/homeComponents';
+import ItemCard from '../components/ItemCard';
+import BlogMock from '../components/homeComponents/BlogMock';
+import ErrorPage from '../pages/ErrorPage';
+import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
 const FeaturedItemsContainer = () => {
     const { categoryId } = useParams()

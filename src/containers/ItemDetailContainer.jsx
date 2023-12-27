@@ -1,8 +1,8 @@
-import { ErrorPage } from '../pages';
 import { RotatingLines } from 'react-loader-spinner';
-import { ItemDetailCard } from '../components';
 import { useParams } from 'react-router-dom';
-import { useGetItemDetail } from '../customHooks';
+import ItemDetailCard from '../components/ItemDetailCard';
+import useGetItemDetail from '../customHooks/useGetItemDetail';
+import ErrorPage from '../pages/ErrorPage';
 
 const ItemDetailContainer = () => {
     const { id } = useParams()

@@ -2,18 +2,14 @@ import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
-import {
-    HomePage,
-    AboutUsPage,
-    ErrorPage,
-} from '../pages/';
-import {
-    ItemDetailContainer,
-    ItemCategoriesContainer,
-    CartContainer
-} from '../containers/';
-import ItemListContainer from '../containers/itemList/ItemListContainer';
+import HomePage from '../pages/HomePage'
+import AboutUsPage from '../pages/AboutUsPage'
+import ErrorPage from '../pages/ErrorPage'
+import ItemCategoriesContainer from '../containers/ItemCategoriesContainer';
+import CartContainer from '../containers/CartContainer';
 import BlogsContainer from '../containers/blogsContainer/BlogsContainer';
+import ItemDetailContainer from '../containers/ItemDetailContainer';
+import ItemListContainer from '../containers/itemList/ItemListContainer';
 import Root from './root/Root';
 
 const router = createBrowserRouter([

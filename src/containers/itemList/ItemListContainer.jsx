@@ -1,7 +1,7 @@
-import { useGetFirebaseData } from '../../customHooks';
-import { ItemCard } from '../../components';
-import { ErrorPage } from '../../pages';
 import { RotatingLines } from 'react-loader-spinner';
+import ErrorPage from '../../pages/ErrorPage';
+import ItemCard from '../../components/ItemCard';
+import useGetFirebaseData from '../../customHooks/useGetFirebaseData';
 
 const ItemListContainer = (
     categoryId,
@@ -11,7 +11,7 @@ const ItemListContainer = (
 
     return (
         <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
-            <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow'>
+            <h1 className='font-bold font-Raleway text-white md:text-4xl drop-shadow'>
                 {
                     categoryId === 'bebe' ?
                         <span>

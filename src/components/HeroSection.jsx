@@ -1,8 +1,8 @@
-import { HeroBtn } from './homeComponents';
 import { BsBagHeartFill } from 'react-icons/bs';
-import { HomeSlider } from '../components/homeComponents';
 import { useState } from 'react';
 import video from '../assets/video-hero.mp4';
+import HeroBtn from './homeComponents/HeroBtn';
+import HomeSlider from '../components/homeComponents/HomeSlider';
 
 const HeroSection = () => {
     const [ btnsData, ] = useState([
