@@ -10,30 +10,22 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetFirebaseData = (
-    categoryId,
-    subcategoryId
-    ) => {
+const useGetSubcategories = (categoryId) => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
-    const [ data, setData ] = useState([])
+    const [ subcategories, setSubcategories ] = useState([])
 
     useEffect(() => {
         (async () => {
             try {
                 setLoading(true)
-                let q
-                if (categoryId === undefined) {
-                    q = query(collection(db, 'products'), where('featured', '==', true))
-                } else {
-                    q = query(collection(db, 'products'), where('category', '==', categoryId && 'subcategory', '==', subcategoryId))
-                }
+                let q = query(collection(db, 'subcategories'), where('category', '==', categoryId))
                 const querySnapshot = await getDocs(q)
-                const firebaseProducts = []
+                const firebaseSubcategories = []
                 querySnapshot.forEach((doc) => {
-                    firebaseProducts.push({...doc.data(), id: doc.id})
+                    firebaseSubcategories.push({...doc.data(), id: doc.id})
                 })
-                setData(firebaseProducts)
+                setSubcategories(firebaseSubcategories)
                 setLoading(false)
             } catch (error) {
                 setError(error.message)
@@ -42,9 +34,9 @@ const useGetFirebaseData = (
                 setLoading(false)
             }
         })()
-    }, [subcategoryId])
+    }, [categoryId])
 
-    return [ data, error, loading ]
+    return [ subcategories, error, loading ]
 };
 
-export default useGetFirebaseData;
+export default useGetSubcategories;

@@ -1,6 +1,17 @@
-import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
-import { NavBar, WhatsAppBtn, Footer } from '../../components';
-import { useEffect, useState } from 'react';
+import {
+    Outlet,
+    ScrollRestoration,
+    useLocation
+} from 'react-router-dom';
+import {
+    NavBar,
+    WhatsAppBtn,
+    Footer
+} from '../../components';
+import {
+    useEffect,
+    useState
+} from 'react';
 import { shortenText } from '../../utilities';
 
 const Root = () => {
@@ -18,7 +29,7 @@ const Root = () => {
     }, [location])
 
     return (
-        <div className='relative min-h-screen w-full'>
+        <div className='relative min-h-[100svh] w-full'>
             <NavBar />
             <Outlet />
             {showBtn ? <WhatsAppBtn /> : null}

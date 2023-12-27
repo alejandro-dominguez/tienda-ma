@@ -1,5 +1,8 @@
 import { BsCheckCircleFill } from 'react-icons/bs';
-import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
+import { 
+    FaPlusCircle,
+    FaMinusCircle
+} from 'react-icons/fa';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

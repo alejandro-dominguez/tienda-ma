@@ -1,5 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {
+    useEffect,
+    useState
+} from 'react';
+import {
+    useLocation,
+    useNavigate
+} from 'react-router-dom';
 import { BiMenu } from "react-icons/bi"
 import headerLogo from '../assets/logo-header.svg';
 import NavItemMenu from './navComponents/NavItemMenu';
@@ -29,7 +35,7 @@ const NavBar = () => {
         },
         {
             'name': 'blog',
-            'url': 'blog'
+            'url': 'blogs'
         },
         {
             'name': 'nosotros',

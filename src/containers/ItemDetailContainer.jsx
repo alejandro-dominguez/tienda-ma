@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
     const [ product, error, loading ] = useGetItemDetail(id)
 
     return (
-        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-screen'>
+        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
             {
                 (JSON.stringify(product) !== '{}' && !loading && !error) ?
                     <div className='w-full py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>

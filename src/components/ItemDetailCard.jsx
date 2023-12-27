@@ -1,5 +1,8 @@
 import { ShopContext } from '../contexts/shopContext';
-import { useContext, useState } from 'react';
+import {
+    useContext,
+    useState
+} from 'react';
 import ItemCount from './itemComponents/ItemCount';
 
 const ItemDetailCard = ({ product }) => {

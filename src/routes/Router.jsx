@@ -1,6 +1,19 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ItemDetailContainer, ItemListContainer, CartContainer } from '../containers/';
-import { HomePage, AboutUsPage, ErrorPage, BlogPage } from '../pages/';
+import {
+    createBrowserRouter,
+    RouterProvider
+} from 'react-router-dom';
+import {
+    HomePage,
+    AboutUsPage,
+    ErrorPage,
+    BlogPage
+} from '../pages/';
+import {
+    ItemDetailContainer,
+    ItemCategoriesContainer,
+    CartContainer
+} from '../containers/';
+import ItemListContainer from '../containers/ItemListContainer';
 import Root from './root/Root';
 
 const router = createBrowserRouter([
@@ -15,6 +28,10 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categorias/:categoryId',
+                element: <ItemCategoriesContainer />,
+            },
+            {
+                path: '/categorias/:categoryId/:subcategoryId',
                 element: <ItemListContainer />,
             },
             {
@@ -26,7 +43,7 @@ const router = createBrowserRouter([
                 element: <AboutUsPage />,
             },
             {
-                path: '/blog',
+                path: '/blogs',
                 element: <BlogPage />,
             },
             {

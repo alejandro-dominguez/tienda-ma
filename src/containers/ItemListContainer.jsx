@@ -4,45 +4,52 @@ import { ItemCard } from '../components';
 import { ErrorPage } from '../pages';
 import { RotatingLines } from 'react-loader-spinner';
 
-const ItemListContainer = () => {
-    const { categoryId } = useParams()
-    const [ data, error, loading ] = useGetFirebaseData(categoryId)
+const ItemListContainer = (
+    categoryId,
+    subcategoryId
+    ) => {
+    const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (
-        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-screen'>
+        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
             <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow'>
                 {
                     categoryId === 'bebe' ?
                         <span>
-                            Selección de productos para bebés
+                            Productos para bebés
                         </span>
-                    : categoryId === 'mama' ?
-                        <span>
-                            Selección de productos para mamá
-                        </span>
-                    : categoryId === 'adultos' ?
-                        <span>
-                            Selección de productos para adultos
-                        </span>
-                    : categoryId === 'accesorios' ?
-                        <span>
-                            Selección de productos accesorios
-                        </span>
-                    : null
+                    :
+                        categoryId === 'mama' ?
+                            <span>
+                                Productos para mamá
+                            </span>
+                    :
+                        categoryId === 'adultos' ?
+                            <span>
+                                Productos para adultos
+                            </span>
+                    :
+                        categoryId === 'accesorios' ?
+                            <span>
+                                Productos accesorios
+                            </span>
+                    :
+                        null
                 }
             </h1>
             {
                 (data.length && !loading && !error) ?
                     <div className='w-full grid grid-cols-4 my-4 md:px-5 py-4 bg-rose-500/95 rounded-lg shadow-md'>
-                        {data.map(product => {
-                            return (
-                                <ItemCard
-                                    product={product}
-                                    itemList={true}
-                                    key={product.id}
-                                />
-                            )
-                        })}
+                        {
+                            data.map(product => {
+                                return (
+                                    <ItemCard
+                                        product={product}
+                                        itemList={true}
+                                        key={product.id}
+                                    />
+                            )})
+                        }
                     </div>
                 : !error ?
                     <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg

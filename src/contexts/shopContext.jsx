@@ -1,4 +1,7 @@
-import { createContext, useState } from 'react';
+import {
+    createContext,
+    useState
+} from 'react';
 
 export const ShopContext = createContext({});
 
@@ -30,6 +33,13 @@ const ShopProvider = ({ children }) => {
         setProducts([])
     }
 
+    const calculateCartTotal = () => {
+        const cartTotal = products.reduce((acc, cartProducts) => (
+            acc += cartProducts.quantity * cartProducts.price, 0
+        ))
+        return cartTotal
+    }
+
     const calculateCartQuantity = () => {
         const cartQuantity = products.reduce((acc, cartProducts) => acc += cartProducts.quantity, 0)
         return cartQuantity
@@ -42,6 +52,7 @@ const ShopProvider = ({ children }) => {
                 addProduct,
                 removeProduct,
                 emptyCart,
+                calculateCartTotal,
                 calculateCartQuantity
             }}
         >

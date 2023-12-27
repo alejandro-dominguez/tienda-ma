@@ -1,4 +1,7 @@
-import { BiSolidCreditCardAlt, BiSolidBank } from 'react-icons/bi';
+import {
+    BiSolidCreditCardAlt,
+    BiSolidBank
+} from 'react-icons/bi';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaMoneyBill1Wave } from 'react-icons/fa6';
 
