@@ -29,7 +29,7 @@ const Root = () => {
     }, [location])
 
     return (
-        <div className='relative min-h-[100svh] w-full'>
+        <div className='relative min-h-screen min-h-[100svh] w-full'>
             <NavBar />
             <Outlet />
             {showBtn ? <WhatsAppBtn /> : null}

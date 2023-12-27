@@ -15,7 +15,7 @@ const CartContainer = () => {
     const [ showForm, setShowForm ] = useState(false)
     
     return (
-        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-[100svh] section-scrollbar'>
+        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-screen min-h-[100svh] section-scrollbar'>
             <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow justify-self-center'>
                 {
                     !showForm && products.length ?

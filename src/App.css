@@ -13,7 +13,7 @@ html {
 }
 
 body {
-	@apply bg-teal-600/10 text-zinc-800/90 antialiased overflow-x-hidden min-h-[100svh] font-Lato text-base overflow-y-scroll;
+	@apply bg-teal-600/10 text-zinc-800/90 antialiased overflow-x-hidden min-h-screen min-h-[100svh] font-Lato text-base overflow-y-scroll;
 }
 
 span {
@@ -62,7 +62,7 @@ textarea::-webkit-scrollbar {
 		background-size: cover;
 		background-position: left top;
 		background-repeat: no-repeat;
-		@apply flex flex-col w-full min-h-[100svh] brightness-[.75] grayscale-[.35] saturate-150;
+		@apply flex flex-col w-full min-h-screen min-h-[100svh] brightness-[.75] grayscale-[.35] saturate-150;
 	}
 
 	.about-h1-shadow {
