@@ -1,12 +1,12 @@
 import { RotatingLines } from 'react-loader-spinner';
-import ErrorPage from '../../pages/ErrorPage';
-import ItemCard from '../../components/ItemCard';
-import useGetFirebaseData from '../../customHooks/useGetFirebaseData';
+import { useParams } from 'react-router-dom';
+import ErrorPage from '../pages/ErrorPage';
+import ItemCard from '../components/ItemCard';
+import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
-const ItemListContainer = (
-    categoryId,
-    subcategoryId
-    ) => {
+const ItemListContainer = () => {
+    const urlParams = useParams()
+    const { categoryId, subcategoryId } = urlParams
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (

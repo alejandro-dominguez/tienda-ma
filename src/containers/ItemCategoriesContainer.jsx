@@ -1,6 +1,5 @@
 import {
     Link,
-    useNavigate,
     useParams
 } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
@@ -13,7 +12,6 @@ import ErrorPage from '../pages/ErrorPage';
 const ItemCategoriesContainer = () => {
     const { categoryId } = useParams()
     const [ subcategories, error, loading ] = useGetSubcategories(categoryId)
-    const navigate = useNavigate()
 
     return (
         <main className='w-full overflow-hidden min-h-[100svh] bg-white/70'>
@@ -51,12 +49,12 @@ const ItemCategoriesContainer = () => {
                                 subcategories.map((subcategoryId, i) => {
                                     return (
                                         <Link
-                                            to='/'
+                                            to={`/categorias/${categoryId}/${subcategoryId.subcategory}`}
                                             key={i}
                                             className='grid place-items-center'
                                         >
-                                            <span className='font-Raleway font-bold tracking-wide drop-shadow-sm
-                                            py-2 text-center border-2 w-36 rounded-lg border-red-500/50 bg-red-100/5'>
+                                            <span className='font-bold tracking-wide drop-shadow-sm px-3 py-2 text-center
+                                            border-2 w-36 rounded-lg border-red-500/50 bg-red-100/[7%]'>
                                                 {subcategoryId.subcategory}
                                             </span>
                                         </Link>
@@ -71,17 +69,17 @@ const ItemCategoriesContainer = () => {
                             :
                                 categoryId === 'mama' ?
                                     <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <ImWoman className='block text-[3.5rem] text-red-500/50' />
+                                        <ImWoman className='block text-7xl text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'adultos' ?
                                     <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <IoAccessibility className='block text-[3.5rem] text-red-500/50' />
+                                        <IoAccessibility className='block text-6xl text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'accesorios' ?
                                     <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <FaGem className='block text-[3.5rem] text-red-500/50' />
+                                        <FaGem className='block text-[3.25rem] text-red-500/50' />
                                     </div>
                             :
                                 null

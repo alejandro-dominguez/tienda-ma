@@ -23,7 +23,7 @@ const useGetFirebaseData = (
             try {
                 setLoading(true)
                 let q
-                if (categoryId === undefined) {
+                if ((categoryId && subcategoryId) === undefined) {
                     q = query(collection(db, 'products'), where('featured', '==', true))
                 } else {
                     q = query(collection(db, 'products'), where('category', '==', categoryId && 'subcategory', '==', subcategoryId))
@@ -39,6 +39,7 @@ const useGetFirebaseData = (
                 setError(error.message)
                 setLoading(false)
             } finally {
+                console.log(categoryId, subcategoryId);
                 setLoading(false)
             }
         })()

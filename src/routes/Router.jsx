@@ -7,9 +7,9 @@ import AboutUsPage from '../pages/AboutUsPage'
 import ErrorPage from '../pages/ErrorPage'
 import ItemCategoriesContainer from '../containers/ItemCategoriesContainer';
 import CartContainer from '../containers/CartContainer';
-import BlogsContainer from '../containers/blogsContainer/BlogsContainer';
+import BlogsContainer from '../containers/BlogsContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
-import ItemListContainer from '../containers/itemList/ItemListContainer';
+import ItemListContainer from '../containers/ItemListContainer';
 import Root from './root/Root';
 
 const router = createBrowserRouter([
