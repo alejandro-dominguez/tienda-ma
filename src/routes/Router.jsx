@@ -10,10 +10,10 @@ import {
 import {
     ItemDetailContainer,
     ItemCategoriesContainer,
-    CartContainer,
-    BlogContainer
+    CartContainer
 } from '../containers/';
 import ItemListContainer from '../containers/itemList/ItemListContainer';
+import BlogsContainer from '../containers/blogsContainer/BlogsContainer';
 import Root from './root/Root';
 
 const router = createBrowserRouter([
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/blogs',
-                element: <BlogContainer />,
+                element: <BlogsContainer />,
             },
             {
                 path: '/carrito',

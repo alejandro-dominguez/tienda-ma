@@ -42,7 +42,7 @@ const useGetFirebaseData = (
                 setLoading(false)
             }
         })()
-    }, [subcategoryId])
+    }, [ categoryId, subcategoryId ])
 
     return [ data, error, loading ]
 };
