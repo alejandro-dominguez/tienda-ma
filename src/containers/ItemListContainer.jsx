@@ -4,27 +4,23 @@ import ErrorPage from '../pages/ErrorPage';
 import ItemCard from '../components/ItemCard';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
-import { ImWoman } from 'react-icons/im';
-import { IoAccessibility } from 'react-icons/io5';
-/* FaBabyCarriage,  */
-
 const ItemListContainer = () => {
     const urlParams = useParams()
     const { categoryId, subcategoryId } = urlParams
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (
-        <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
-            <h1 className='font-bold font-Raleway text-white md:text-4xl drop-shadow'>
+        <main className='w-full overflow-hidden min-h-[100svh] shadow'>
+            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-10 mt-20 w-fit mx-auto'>
                 {
                         categoryId === 'bebe' ?
                             <span>
-                                Pañales para bebés
+                                Pañales para Bebés
                             </span>
                     :
                         categoryId === 'adulto' ?
                             <span>
-                                Pañales para adultos
+                                Pañales para Adultos
                             </span>
                     :
                         categoryId === 'higiene' ?
@@ -34,7 +30,7 @@ const ItemListContainer = () => {
                     :
                         categoryId === 'accesorios' ?
                             <span>
-                                Productos accesorios
+                                Productos Accesorios
                             </span>
                     :
                         null
@@ -42,7 +38,7 @@ const ItemListContainer = () => {
             </h1>
             {
                 (data.length && !loading && !error) ?
-                    <div className='w-full grid grid-cols-4 my-4 md:px-5 py-4 bg-rose-500/95 rounded-lg shadow-md'>
+                    <div className='w-full grid lg:grid-cols-4 mt-2 mb-20 md:px-5 py-4 bg-white/70 shadow-sm'>
                         {
                             data.map(product => {
                                 return (
@@ -55,17 +51,19 @@ const ItemListContainer = () => {
                         }
                     </div>
                 : !error ?
-                    <div className='w-full grid place-items-center my-4 md:px-10 py-8 bg-rose-500/95 rounded-lg
-                    shadow-md min-h-[17.5rem]'>
-                        <RotatingLines
-                            strokeColor='white'
-                            strokeWidth='5'
-                            animationDuration='0.75'
-                            width='96'
-                            visible={true}
-                        />
+                    <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>
+                        <div className='p-5 bg-teal-600/20 rounded-lg'>
+                            <RotatingLines
+                                strokeColor='white'
+                                strokeWidth='5'
+                                animationDuration='0.75'
+                                width='96'
+                                visible={true}
+                            />
+                        </div>
                     </div>
-                : <ErrorPage />
+                :
+                    <ErrorPage />
             }
         </main>
     )

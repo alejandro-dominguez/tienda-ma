@@ -16,9 +16,9 @@ const FeaturedItemsContainer = () => {
         >
             {
                 (data.length && !loading && !error) ?
-                    <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
+                    <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
                         <BlogMock />
-                        <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-7'>
                             {
                                 data.map((productData, i) => {
                                     return (
@@ -44,7 +44,8 @@ const FeaturedItemsContainer = () => {
                             />
                         </div>
                     </div>
-                : <ErrorPage />
+                :
+                    <ErrorPage />
             }
         </section>
     )

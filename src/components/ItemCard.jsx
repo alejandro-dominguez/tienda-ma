@@ -12,7 +12,7 @@ const ItemCard = ({ product, itemList }) => {
                     !itemList ?
                         'flex flex-col items-start justify-start py-7 px-4 md:px-8 gap-3 shadow-sm bg-white/70'
                     :
-                        'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-white/70 rounded gap-2 shadow'
+                        'flex flex-col items-start justify-start my-4 mx-4 py-4 px-5 bg-white/80 rounded gap-2 shadow'
                 }
         >
             <h3 className=

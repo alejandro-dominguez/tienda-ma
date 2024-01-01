@@ -16,9 +16,9 @@ const PaymentsSection = () => {
                 </span>
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
-                <FaMapMarkerAlt className='block text-[3.65rem] text-red-500/50 drop-shadow' />
+                <FaMapMarkerAlt className='block text-[3.3rem] text-red-500/50 drop-shadow' />
                 <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow'>
-                    <span className='font-black text-sm drop-shadow-none mb-1 mt-[.85rem]'>
+                    <span className='font-black text-sm drop-shadow-none mb-1 mt-2'>
                         Envíos a Riosario y Gran Rosario
                     </span>
                     Consulta por nuestra cobertura de envíos
@@ -26,7 +26,7 @@ const PaymentsSection = () => {
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
                 <FaMoneyBill1Wave className='block text-[4.15rem] text-red-500/50 drop-shadow' />
-                <span className='text-center text-sm font-black tracking-wide mt-[.45rem]'>
+                <span className='text-center text-sm font-black tracking-wide'>
                     Descuentos en efectivo
                 </span>
             </div>

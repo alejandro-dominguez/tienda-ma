@@ -52,7 +52,7 @@ const ItemCategoriesContainer = () => {
                         {
                                 categoryId === 'higiene' ?
                                     <div className='w-full grid place-items-center py-10'>
-                                        <RiHandSanitizerFill className='block text-[2.25rem] text-red-500/50' />
+                                        <RiHandSanitizerFill className='block text-[2.6rem] text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'accesorios' ?
