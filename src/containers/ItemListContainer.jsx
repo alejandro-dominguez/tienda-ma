@@ -4,6 +4,10 @@ import ErrorPage from '../pages/ErrorPage';
 import ItemCard from '../components/ItemCard';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
+import { ImWoman } from 'react-icons/im';
+import { IoAccessibility } from 'react-icons/io5';
+/* FaBabyCarriage,  */
+
 const ItemListContainer = () => {
     const urlParams = useParams()
     const { categoryId, subcategoryId } = urlParams
@@ -13,19 +17,19 @@ const ItemListContainer = () => {
         <main className='w-full grid place-items-center md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
             <h1 className='font-bold font-Raleway text-white md:text-4xl drop-shadow'>
                 {
-                    categoryId === 'bebe' ?
-                        <span>
-                            Productos para bebés
-                        </span>
-                    :
-                        categoryId === 'mama' ?
+                        categoryId === 'bebe' ?
                             <span>
-                                Productos para mamá
+                                Pañales para bebés
                             </span>
                     :
-                        categoryId === 'adultos' ?
+                        categoryId === 'adulto' ?
                             <span>
-                                Productos para adultos
+                                Pañales para adultos
+                            </span>
+                    :
+                        categoryId === 'higiene' ?
+                            <span>
+                                Productos de Higiene y Cuidado
                             </span>
                     :
                         categoryId === 'accesorios' ?

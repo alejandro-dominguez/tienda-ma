@@ -19,15 +19,15 @@ const NavBar = () => {
     const [ navData, ] = useState([
         {
             'name': 'bebé',
-            'url': 'categorias/bebe'
+            'url': 'categorias/bebe/pañales'
         },
         {
-            'name': 'mamá',
-            'url': 'categorias/mama'
+            'name': 'adulto',
+            'url': 'categorias/adulto/pañales'
         },
         {
-            'name': 'adultos',
-            'url': 'categorias/adultos'
+            'name': 'higiene',
+            'url': 'categorias/higiene'
         },
         {
             'name': 'accesorios',
@@ -37,10 +37,6 @@ const NavBar = () => {
             'name': 'blog',
             'url': 'blogs'
         },
-        {
-            'name': 'nosotros',
-            'url': 'nosotros'
-        }
     ])
     const [ hideMenu, setHideMenu ] = useState(false)
     
@@ -77,9 +73,9 @@ const NavBar = () => {
                     className=
                         {
                             navigateHome ?
-                                'w-[4.75rem] lg:w-20 cursor-pointer z-10'
+                                'w-[4.75rem] cursor-pointer z-10'
                             :
-                                'w-[4.75rem] lg:w-20 cursor-auto z-10'
+                                'w-[4.75rem] cursor-auto z-10'
                         }
                     onClick={() => {navigateHome ? navigate('/') : null}}
                 >

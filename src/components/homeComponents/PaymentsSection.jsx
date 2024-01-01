@@ -1,22 +1,13 @@
-import {
-    BiSolidCreditCardAlt,
-    BiSolidBank
-} from 'react-icons/bi';
+import { BiSolidCreditCardAlt } from 'react-icons/bi';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaMoneyBill1Wave } from 'react-icons/fa6';
 
 const PaymentsSection = () => {
     return (
-        <section
-            id='payments-section'
-            className='flex flex-col md:flex-row bg-white gap-5 md:gap-20 items-center justify-between w-full
-            py-10 px-10 overflow-x-hidden'
-        >
-            <div className='grid place-items-center font-Raleway'>
-                <div className='flex items-end gap-6'>
-                    <BiSolidBank className='block text-7xl text-red-500/50 drop-shadow' />
-                    <BiSolidCreditCardAlt className='block text-7xl text-red-500/50 -mb-1 drop-shadow' />
-                </div>
+        <section className='flex flex-col md:flex-row bg-white gap-7 md:gap-20 items-center md:items-start justify-between
+        w-full py-8 px-10 overflow-x-hidden'>
+            <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
+                <BiSolidCreditCardAlt className='block text-7xl text-red-500/50 drop-shadow' />
                 <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow'>
                     <span className='font-black text-sm drop-shadow-none mb-1'>
                         Variedad de medios de pago disponibles
@@ -24,18 +15,18 @@ const PaymentsSection = () => {
                     Crédito, débito, transferencias, Mercado Pago, etc.
                 </span>
             </div>
-            <div className='grid place-items-center font-Raleway'>
-                <FaMapMarkerAlt className='block text-[3.5rem] text-red-500/50 drop-shadow' />
+            <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
+                <FaMapMarkerAlt className='block text-[3.65rem] text-red-500/50 drop-shadow' />
                 <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow'>
-                    <span className='font-black text-sm drop-shadow-none mb-1 mt-2'>
+                    <span className='font-black text-sm drop-shadow-none mb-1 mt-[.85rem]'>
                         Envíos a Riosario y Gran Rosario
                     </span>
                     Consulta por nuestra cobertura de envíos
                 </span>
             </div>
-            <div className='grid place-items-center font-Raleway'>
+            <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
                 <FaMoneyBill1Wave className='block text-[4.15rem] text-red-500/50 drop-shadow' />
-                <span className='text-center text-sm font-black tracking-wide'>
+                <span className='text-center text-sm font-black tracking-wide mt-[.45rem]'>
                     Descuentos en efectivo
                 </span>
             </div>

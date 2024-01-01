@@ -23,10 +23,10 @@ const useGetFirebaseData = (
             try {
                 setLoading(true)
                 let q
-                if ((categoryId && subcategoryId) === undefined) {
+                if ((categoryId === undefined) && (subcategoryId === undefined)) {
                     q = query(collection(db, 'products'), where('featured', '==', true))
                 } else {
-                    q = query(collection(db, 'products'), where('category', '==', categoryId && 'subcategory', '==', subcategoryId))
+                    q = query(collection(db, 'products'), where('category', '==', categoryId), where ('subcategory', '==', subcategoryId))
                 }
                 const querySnapshot = await getDocs(q)
                 const firebaseProducts = []
@@ -39,7 +39,6 @@ const useGetFirebaseData = (
                 setError(error.message)
                 setLoading(false)
             } finally {
-                console.log(categoryId, subcategoryId);
                 setLoading(false)
             }
         })()

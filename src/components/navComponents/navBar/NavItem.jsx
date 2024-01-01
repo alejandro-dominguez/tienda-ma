@@ -9,8 +9,7 @@ const NavItem = ({ navItem }) => {
             after:transition-all after:ease-in-out after:duration-[250ms] after:origin-left after:blur-[.45px] after:bottom-[.15rem]
             after:hover:scale-x-100 after:hover:drop-shadow-sm after:focus:scale-x-100 after:focus:drop-shadow-sm"
         >
-            <span className='text-[.8rem] md:text-sm lg:text-[.95rem] lg:text-sm uppercase font-black tracking-[.07em]
-            text-zinc-600/[85%] drop-shadow-sm'>
+            <span className='text-[.8rem] md:text-[.85rem] uppercase font-black tracking-[.07em] text-zinc-600/[85%] drop-shadow-sm'>
                 {navItem.name}
             </span>
         </NavLink>

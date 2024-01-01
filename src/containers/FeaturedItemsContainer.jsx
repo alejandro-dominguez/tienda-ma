@@ -6,8 +6,8 @@ import ErrorPage from '../pages/ErrorPage';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
 const FeaturedItemsContainer = () => {
-    const { categoryId } = useParams()
-    const [ data, error, loading ] = useGetFirebaseData(categoryId)
+    const { categoryId, subcategoryId } = useParams()
+    const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (
         <section
@@ -18,10 +18,19 @@ const FeaturedItemsContainer = () => {
                 (data.length && !loading && !error) ?
                     <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 gap-10'>
                         <BlogMock />
-                        <ItemCard
-                            product={data}
-                            itemList={false}
-                        />
+                        <div className='flex flex-col gap-5'>
+                            {
+                                data.map((productData, i) => {
+                                    return (
+                                        <ItemCard
+                                            key={i}
+                                            product={productData}
+                                            itemList={false}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 : !error ?
                     <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>

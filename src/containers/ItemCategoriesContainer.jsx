@@ -3,9 +3,8 @@ import {
     useParams
 } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { FaBabyCarriage, FaGem } from 'react-icons/fa6';
-import { ImWoman } from 'react-icons/im';
-import { IoAccessibility } from 'react-icons/io5';
+import { FaGem } from 'react-icons/fa6';
+import { RiHandSanitizerFill } from "react-icons/ri";
 import useGetSubcategories from '../customHooks/useGetSubcategories';
 import ErrorPage from '../pages/ErrorPage';
 
@@ -14,22 +13,12 @@ const ItemCategoriesContainer = () => {
     const [ subcategories, error, loading ] = useGetSubcategories(categoryId)
 
     return (
-        <main className='w-full overflow-hidden min-h-[100svh] bg-white/70'>
-            <h1 className='font-bold font-Raleway text-2xl md:text-3xl drop-shadow-sm pb-5 md:pb-8 pt-10 mt-20 w-fit mx-auto'>
+        <main className='w-full overflow-hidden min-h-[100svh] bg-white/70 shadow'>
+            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-10 mt-20 w-fit mx-auto'>
                 {
-                    categoryId === 'bebe' ?
-                        <span>
-                            Categorías de Bebés
-                        </span>
-                    :
-                        categoryId === 'mama' ?
+                        categoryId === 'higiene' ?
                             <span>
-                                Categorías de Mamá
-                            </span>
-                    :
-                        categoryId === 'adultos' ?
-                            <span>
-                                Categorías de Adultos
+                                Categorías de Higiene y Cuidado
                             </span>
                     :
                         categoryId === 'accesorios' ?
@@ -43,8 +32,7 @@ const ItemCategoriesContainer = () => {
             {
                 (subcategories.length && !error && !loading) ?
                     <>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row
-                        items-start gap-3 sm:gap-5 md:gap-8 px-4 lg:px-40'>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 grid-flow-row w-fit mx-auto'>
                             {
                                 subcategories.map((subcategoryId, i) => {
                                     return (
@@ -53,8 +41,8 @@ const ItemCategoriesContainer = () => {
                                             key={i}
                                             className='grid place-items-center'
                                         >
-                                            <span className='font-bold tracking-wide drop-shadow-sm px-3 py-2 text-center
-                                            border-2 w-36 rounded-lg border-red-500/50 bg-red-100/[7%]'>
+                                            <span className='mx-3 my-[.57rem] font-bold text-sm tracking-wide drop-shadow-sm py-[.35rem]
+                                            px-2 text-center border-2 w-28 rounded-lg border-red-500/50 bg-red-100/[7%]'>
                                                 {subcategoryId.subcategory}
                                             </span>
                                         </Link>
@@ -62,24 +50,14 @@ const ItemCategoriesContainer = () => {
                             }
                         </div>
                         {
-                            categoryId === 'bebe' ?
-                                <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                    <FaBabyCarriage className='block text-[3.5rem] text-red-500/50' />
-                                </div>
-                            :
-                                categoryId === 'mama' ?
-                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <ImWoman className='block text-7xl text-red-500/50' />
-                                    </div>
-                            :
-                                categoryId === 'adultos' ?
-                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <IoAccessibility className='block text-6xl text-red-500/50' />
+                                categoryId === 'higiene' ?
+                                    <div className='w-full grid place-items-center py-10'>
+                                        <RiHandSanitizerFill className='block text-[2.25rem] text-red-500/50' />
                                     </div>
                             :
                                 categoryId === 'accesorios' ?
-                                    <div className='w-full grid place-items-center py-12 lg:py-24'>
-                                        <FaGem className='block text-[3.25rem] text-red-500/50' />
+                                    <div className='w-full grid place-items-center py-10'>
+                                        <FaGem className='block text-[2.25rem] text-red-500/50' />
                                     </div>
                             :
                                 null

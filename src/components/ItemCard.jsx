@@ -15,20 +15,20 @@ const ItemCard = ({ product, itemList }) => {
                 }
         >
             <h3 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-xl'>
-                {product.brand || product[0].brand} {product.name || product[0].name}
+                {product.brand} {product.name}
             </h3>
             {
                 !itemList ?
                     <div className='flex flex-col lg:flex-row gap-4'>
                         <div className='w-28 sm:w-32 md:w-36 lg:w-48 shadow-sm'>
                             <img
-                                src={product[0].img}
-                                alt={product[0].name}
+                                src={product.img}
+                                alt={product.name}
                                 className='block w-full rounded shadow aspect-square object-cover'
                             />
                         </div>
                         <p className='text-sm text-zinc-900 drop-shadow-sm w-fit'>
-                            {shortenText((product[0].desc), 300)}
+                            {shortenText((product.desc), 300)}
                         </p>
                     </div>
                 :
@@ -56,7 +56,7 @@ const ItemCard = ({ product, itemList }) => {
                             `mt-1 px-6 py-2 bg-teal-600/10 text-white rounded-lg shadow-sm transition-colors ease-in-out
                             duration-200 hover:bg-zinc-700 focus:bg-zinc-700`
                     }
-                onClick={() => navigate((`/detalle/${product.id}`) || (`/detalle/${product[0].id}`))}
+                onClick={() => navigate((`/detalle/${product.id}`))}
             >
                 <span className=
                     {
