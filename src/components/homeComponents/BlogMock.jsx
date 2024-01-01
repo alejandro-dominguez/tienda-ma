@@ -21,11 +21,11 @@ const BlogMock = () => {
             </p>
             <button
                 type='button'
-                className='mt-4 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
+                className='mt-3 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
                 onClick={() => (null)}
             >
-                <span className='drop-shadow tracking-wider text-[.85rem] font-Raleway'>
+                <span className='drop-shadow tracking-wider text-[.83rem] font-Raleway'>
                     Leer artículo
                 </span>
             </button>
