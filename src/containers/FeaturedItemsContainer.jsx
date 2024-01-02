@@ -16,9 +16,9 @@ const FeaturedItemsContainer = () => {
         >
             {
                 (data.length && !loading && !error) ?
-                    <div className='w-full py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
+                    <div className='w-full px-4 py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
                         <BlogMock />
-                        <div className='flex flex-col gap-7'>
+                        <div className='flex flex-col gap-7 mt-7 md:mt-0'>
                             {
                                 data.map((productData, i) => {
                                     return (
@@ -33,13 +33,13 @@ const FeaturedItemsContainer = () => {
                         </div>
                     </div>
                 : !error ?
-                    <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>
+                    <div className='w-full grid place-items-center bg-white/70 px-4 py-8 shadow-md min-h-[39.2rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
                                 strokeWidth='5'
                                 animationDuration='0.75'
-                                width='96'
+                                width='70'
                                 visible={true}
                             />
                         </div>

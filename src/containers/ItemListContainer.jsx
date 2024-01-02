@@ -38,7 +38,8 @@ const ItemListContainer = () => {
             </h1>
             {
                 (data.length && !loading && !error) ?
-                    <div className='w-full grid lg:grid-cols-4 mt-2 mb-20 md:px-5 py-4 bg-white/70 shadow-sm'>
+                    <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 mb-20
+                    p-4 bg-white/70 shadow-sm'>
                         {
                             data.map(product => {
                                 return (
@@ -51,13 +52,13 @@ const ItemListContainer = () => {
                         }
                     </div>
                 : !error ?
-                    <div className='w-full grid place-items-center bg-white/70 px-4 md:px-10 py-8 shadow-md min-h-[20.5rem]'>
+                    <div className='w-full grid place-items-center bg-white/70 mt-2 py-4 shadow-sm min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
                                 strokeWidth='5'
                                 animationDuration='0.75'
-                                width='96'
+                                width='70'
                                 visible={true}
                             />
                         </div>

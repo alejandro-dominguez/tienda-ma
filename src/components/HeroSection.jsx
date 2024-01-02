@@ -35,7 +35,7 @@ const HeroSection = () => {
                     <div className='flex items-center gap-2 mt-[.4rem] sm:mt-3'>
                         <BsBagHeartFill className='block text-white text-xl md:text-[1.7rem] mb-1 drop-shadow-sm' />
                         <h2 className='text-white font-Raleway tracking-wider md:text-2xl drop-shadow'>
-                            Tu pañalera de confianza
+                            Lo que buscas y mucho más
                         </h2>
                     </div>
                     <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-4 sm:mt-6'>

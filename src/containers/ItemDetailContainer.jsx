@@ -16,14 +16,16 @@ const ItemDetailContainer = () => {
                         <ItemDetailCard product={product} />
                     </div>
                 : !error ?
-                    <div className='w-full grid place-items-center p-10 bg-rose-500/95 rounded-lg shadow-md min-h-[17.5rem]'>
-                        <RotatingLines
-                            strokeColor='white'
-                            strokeWidth='5'
-                            animationDuration='0.75'
-                            width='96'
-                            visible={true}
-                        />
+                    <div className='w-full grid place-items-center bg-white/70 mt-2 py-4 shadow-sm min-h-[24rem]'>
+                        <div className='p-5 bg-teal-600/20 rounded-lg'>
+                            <RotatingLines
+                                strokeColor='white'
+                                strokeWidth='5'
+                                animationDuration='0.75'
+                                width='70'
+                                visible={true}
+                            />
+                        </div>
                     </div>
                 : <ErrorPage />
             }

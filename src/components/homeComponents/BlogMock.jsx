@@ -13,7 +13,7 @@ const BlogMock = () => {
             <h3 className='font-black font-Raleway tracking-wide text-2xl mt-4'>
                 Título del Artículo
             </h3>
-            <p className='leading-[1.4rem] mt-1'>
+            <p className='leading-[1.4rem] mt-1 text-[.9rem] md:text-base'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ad, autem velit maxime esse, 
                 quaerat nemo totam cupiditate eum, error minus explicabo dolorem atque ex aliquid eius sed 
                 amet facilis inventore reprehenderit. Saepe totam atque, alias voluptate ea odit necessitatibus 
