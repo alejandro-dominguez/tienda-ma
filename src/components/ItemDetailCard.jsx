@@ -4,6 +4,7 @@ import {
     useState
 } from 'react';
 import ItemCount from './itemComponents/ItemCount';
+import numberFormater from '../utilities/numberFormater'
 
 const ItemDetailCard = ({ product }) => {
     const { addProduct } = useContext(ShopContext)
@@ -29,10 +30,18 @@ const ItemDetailCard = ({ product }) => {
                             className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                         />
                     </div>
-                    <p className='mt-[.3rem] md:w-[45%] leading-5 font-bold text-zinc-800/[96] text-[.9rem]
+                    <p className='mt-[.3rem] w-full md:w-[57%] lg:w-[45%] leading-5 font-bold text-zinc-800/[96] text-[.9rem]
                     drop-shadow-sm tracking-tight'>
                         {product.desc}
                     </p>
+                </div>
+                <div className='flex flex-col mt-2'>
+                    <span className='text-[.95rem] font-bold'>
+                        precio:
+                    </span>
+                    <span className='font-black text-sm md:text-[.9rem]'>
+                        {numberFormater(product.price)}
+                    </span>
                 </div>
             </div>
             {itemDetailQuantity ?
