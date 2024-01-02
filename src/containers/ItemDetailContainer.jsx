@@ -9,12 +9,10 @@ const ItemDetailContainer = () => {
     const [ product, error, loading ] = useGetItemDetail(id)
 
     return (
-        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-[100svh]'>
+        <main className='w-full grid place-items-start px-4 md:px-10 mt-32 min-h-[100svh]'>
             {
                 (JSON.stringify(product) !== '{}' && !loading && !error) ?
-                    <div className='w-full py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
                         <ItemDetailCard product={product} />
-                    </div>
                 : !error ?
                     <div className='w-full grid place-items-center bg-white/70 mt-2 py-4 shadow-sm min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>

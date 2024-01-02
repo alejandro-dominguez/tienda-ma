@@ -5,8 +5,8 @@ const AboutUsPage = () => {
         <main className='grid place-items-center relative'>
             <div className='about-us-banner' />
             <div className='absolute h-full w-full top-0 text-left'>
-                <h1 className='about-h1-shadow pt-32 mt-2 text-white font-Raleway font-bold text-3xl px-4 md:px-10 md:text-[2.5rem]
-                drop-shadow justify-self-start self-start tracking-[0.02em]'>
+                <h1 className='about-h1-shadow mt-2 pt-32 px-4 md:px-10 text-white font-Raleway font-bold text-[1.7rem]
+                sm:text-3xl md:text-[2.5rem] drop-shadow justify-self-start self-start tracking-[0.02em]'>
                     Acerca de Tienda Ma
                 </h1>
                 <div className='about-p-shadow text-[1.025rem] flex flex-col gap-2 text-white max-w-[40rem]

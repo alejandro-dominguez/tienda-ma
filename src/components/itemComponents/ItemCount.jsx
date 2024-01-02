@@ -24,27 +24,30 @@ const ItemCount = ({ onAdd, quantity, initial }) => {
     }
 
     return (
-        <div className='flex flex-col self-end gap-5 drop-shadow-md'>
-            <div className='flex items-center justify-between px-8'>
-                <FaPlusCircle 
-                    className='block cursor-pointer text-[1.425rem] text-white transition-colors
-                    hover:text-[#2ccfac] focus:text-[#2ccfac]'
+        <div className='flex flex-col self-center md:self-end mt-5 gap-5 drop-shadow-md'>
+            <div className='flex items-center justify-between px-11'>
+                <button
+                    type='button'
                     onClick={() => onPlus()}
-                />
-                <span className='font-bold text-[1.7rem] text-red-50 drop-shadow-sm tracking-wider'>
+                    className='transition-colors text-zinc-800/95 hover:text-teal-600/90 focus:text-teal-600/90'
+                >
+                    <FaPlusCircle  className='block'/>
+                </button>
+                <span className='font-black text-xl drop-shadow-sm tracking-widest text-zinc-950/90'>
                     {count}
                 </span>
-                <FaMinusCircle 
-                    className='block cursor-pointer text-[1.425rem] text-white transition-colors
-                    hover:text-[#ec2334] focus:text-[#ec2334]'
+                <button
+                    type='button'
                     onClick={() => onDecrement()}
-                />
+                    className='transition-colors text-zinc-800/95 hover:text-red-600/90 focus:text-red-600/90'
+                >
+                    <FaMinusCircle className='block'/>
+                </button>
             </div>
             <button
                 type='button'
-                className='w-max flex items-center gap-2 justify-center text-white bg-teal-600/90 px-5 py-2 rounded-md
-                shadow-sm transition-all ease-in-out duration-200 hover:shadow hover:text-teal-600 hover:bg-red-50/90
-                focus:shadow focus:text-teal-600 focus:bg-red-50/80'
+                className='w-max flex items-center gap-2 justify-center px-5 py-2 rounded-lg shadow-sm bg-zinc-900 text-white
+                transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
                 onClick={() => handleAdd(count)}
             >
                 <BsCheckCircleFill className='block drop-shadow'/>

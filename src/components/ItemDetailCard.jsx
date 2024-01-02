@@ -15,13 +15,14 @@ const ItemDetailCard = ({ product }) => {
     }
 
     return (
-        <div className='flex flex-row items-start justify-between pt-6 pb-7 px-7 bg-rose-300/70 rounded shadow w-full'>
+        <div className='flex flex-col md:flex-row items-start justify-between mt-2 pt-6 pb-7 px-7
+        bg-white/80 rounded-lg shadow-sm w-full'>
             <div className='flex flex-col'>
-                <h1 className='text-white font-Raleway text-lg font-bold tracking-wider drop-shadow'>
+                <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-lg'>
                     {product.brand} {product.name}
                 </h1>
-                <div className='flex items-start gap-5 mt-1'>
-                    <div className='w-40 mt-2'>
+                <div className='flex flex-col md:flex-row items-start gap-2 md:gap-5 mt-1'>
+                    <div className='w-32 mt-2 drop-shadow'>
                         <img
                             src={product.img}
                             alt={product.name}

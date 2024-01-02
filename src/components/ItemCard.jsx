@@ -30,11 +30,11 @@ const ItemCard = ({ product, itemList }) => {
             {
                 !itemList ?
                     <div className='flex flex-col lg:flex-row gap-4'>
-                        <div className='w-28 sm:w-32 shadow-sm'>
+                        <div className='w-28 sm:w-32 drop-shadow-sm'>
                             <img
                                 src={product.img}
                                 alt={product.name}
-                                className='block w-full rounded shadow aspect-square object-cover'
+                                className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                             />
                         </div>
                         <div className='flex flex-col w-fit'>
@@ -64,11 +64,11 @@ const ItemCard = ({ product, itemList }) => {
                 :
                     <>
                         <div className='flex gap-4'>
-                            <div className='w-20'>
+                            <div className='w-16 md:w-20 drop-shadow-sm'>
                                 <img
                                     src={product.img}
                                     alt={product.name}
-                                    className='block w-full rounded shadow aspect-square object-cover'
+                                    className='block w-full rounded drop-shadow aspect-square object-cover'
                                 />
                             </div>
                             {
