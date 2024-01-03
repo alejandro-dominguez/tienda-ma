@@ -14,10 +14,10 @@ import numberFormater from '../utilities/numberFormater';
 const CartContainer = () => {
     const { products, calculateCartTotal } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
-    const total = calculateCartTotal()
+    console.log(products);
     
     return (
-        <main className='w-full grid place-items-start md:px-10 py-28 min-h-[100svh] section-scrollbar'>
+        <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
             <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm mt-2 justify-self-center'>
                 {
                     !showForm && products.length ?
@@ -29,8 +29,8 @@ const CartContainer = () => {
             </h1>
             {
                 !showForm && products.length ?
-                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-white/70 rounded-lg shadow-md'>
-                        <div className='w-full grid grid-cols-3 gap-[1.35rem]'>
+                    <div className='w-full grid place-items-center px-4 md:px-10 my-4 py-6 bg-white/70 shadow-sm'>
+                        <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map(product => {
                                     return (
@@ -42,10 +42,10 @@ const CartContainer = () => {
                             }
                         </div>
                         <span className='font-black text-[.89rem] mt-5'>
-                            Total: {numberFormater(total)}
+                            Total: {numberFormater(calculateCartTotal())}
                         </span>
                         <button
-                            className='flex items-center justify-center justify-self-center px-4 py-2 gap-2 mt-3
+                            className='flex items-center justify-center justify-self-center px-4 py-2 gap-2 mt-4
                             rounded-lg shadow-sm bg-zinc-900 text-white transition-colors ease-in-out
                             hover:bg-zinc-700 focus:bg-zinc-700'
                             type='button'
