@@ -64,7 +64,7 @@ const CartContainer = () => {
                         </button>
                     </div>
                 : showForm && products.length ?
-                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
+                    <div className='w-full grid place-items-center'>
                         <CartModalForm
                             showForm={showForm}
                             setShowForm={setShowForm}
