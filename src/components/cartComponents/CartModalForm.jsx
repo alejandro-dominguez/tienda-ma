@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { ShopContext } from '../../contexts/shopContext';
 import { useNavigate } from 'react-router-dom';
-import { BiSolidShare } from 'react-icons/bi'
 import { useForm } from 'react-hook-form';
 
 const CartModalForm = ({ showForm, setShowForm }) => {
@@ -21,23 +20,29 @@ const CartModalForm = ({ showForm, setShowForm }) => {
         {
             showForm && products.length ?
                 <form
-                    className='md:w-[62.25%] rounded-lg py-6 bg-rose-300/70 md:px-7 shadow-md'
+                    className='md:w-[62.25%] mt-4 pt-3 pb-6 px-6 sm:px-10 shadow-sm bg-white/70'
                     onSubmit={onSubmit}
                     autoComplete='off'
                 >
                     <input autoComplete='false' name='hidden' type='text' className='hidden'/>
-                    <div className='flex flex-col md:flex-row items-start md:gap-12'>
-                        <div className='grid md:items-center md:justify-start gap-4'>
+                    <div className='flex flex-col xl:flex-row items-start md:gap-4 xl:gap-12 mt-3'>
+                        <div className='grid md:items-center md:justify-start gap-3'>
                             <div className='flex flex-col'>
-                                <label htmlFor='fullName' className='text-zinc-700'>
-                                    Nombre completo: *
+                                <label htmlFor='fullName' className='text-zinc-700 flex gap-[.3rem]'>
+                                    Nombre completo:
+                                    <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                        *
+                                    </span>
                                 </label>
                                 <input type='text' name='fullName' minLength={10} maxLength={30} required
                                 placeholder='Tu nombre aquí' className='contact-input'/>
                             </div>
                             <div className='flex flex-col'>
-                                <label htmlFor='phone' className='text-zinc-700'>
-                                    Teléfono: *
+                                <label htmlFor='phone' className='text-zinc-700 flex gap-[.3rem]'>
+                                    Teléfono:
+                                    <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                        *
+                                    </span>
                                 </label>
                                 <input type='tel' name='phone' required placeholder='0101-0101-01' className='contact-input'/>
                             </div>
@@ -48,28 +53,36 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <input type='email' name='email' placeholder='Tu email aquí' className='contact-input'/>
                             </div>
                         </div>
-                        <div className='flex flex-col'>
-    {/*                         <button
-                                type='button'
-                                onClick={}
-                            >
-                                <BiSolidShare className='block text-red-900 text-3xl drop-shadow' />
-                            </button> */}
-                            <label htmlFor='message' className='text-zinc-700'>
-                                Notas para tu entrega:
-                            </label>
-                            <textarea name='message' cols='30' rows='10' minLength={10}
-                            placeholder='Deja notas sobre tu orden' className='contact-textarea'/>
+                        <div className='flex flex-col mt-3 md:mt-0'>
+                            <div className='flex flex-col'>
+                                <label htmlFor='address' className='text-zinc-700 flex gap-[.3rem]'>
+                                    Dirección de entrega:
+                                    <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                        *
+                                    </span>
+                                </label>
+                                <input type='text' name='address' minLength={10} maxLength={30} required
+                                placeholder='Dirección del envío' className='contact-input'/>
+                            </div>
+                            <div className='flex flex-col mt-3'>
+                                <label htmlFor='notes' className='text-zinc-700'>
+                                    Notas para la entrega:
+                                </label>
+                                <textarea name='notes' cols='30' rows='10' minLength={10}
+                                placeholder='Deja tus notas' className='cart-textarea'/>
+                            </div>
                         </div>
                     </div>
+                    <small className='block ml-1 mt-3 font-bold tracking-wider'>
+                        Costo de envío a convenir.
+                    </small>
                     <button
                         type='submit'
-                        className='grid place-items-center py-3 px-6 uppercase font-black tracking-[0.07em] w-full mt-6
-                        bg-teal-700 text-white rounded-md shadow-sm shadow-black/50 transition-all ease-out
-                        duration-[180ms] hover:bg-teal-600 focus:bg-teal-600 hover:shadow-white/30 focus:shadow-white/30'
+                        className='grid place-items-center py-[.625rem] px-6 w-full mt-3 bg-zinc-900 rounded-md transition-colors
+                        ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
                     >
-                        <span className='drop-shadow-md'>
-                            Realizar orden
+                        <span className='text-white tracking-wider font-bold text-[1.05rem]'>
+                            Enviar orden
                         </span>
                     </button>
                 </form>

@@ -17,7 +17,7 @@ const HomeContactForm = () => {
             className='grid place-items-center py-10 w-full mb-24'
         >
             <form
-                className='md:w-[62.25%] py-8 px-4 sm:px-10 md:px-8 shadow-sm bg-white/70'
+                className='md:w-[62.25%] py-8 px-4 sm:px-10 shadow-sm bg-white/70'
                 onSubmit={onSubmit}
                 autoComplete='off'
             >
@@ -25,7 +25,7 @@ const HomeContactForm = () => {
                 <h2 className='font-Raleway text-2xl font-black tracking-wide drop-shadow-sm -mt-2'>
                     ¡Queremos escucharte!
                 </h2>
-                <div className='flex flex-col xl:flex-row items-start md:gap-12 mt-3'>
+                <div className='flex flex-col xl:flex-row items-start xl:gap-12 mt-3'>
                     <div className='grid md:items-center md:justify-start gap-3'>
                         <div className='flex flex-col'>
                             <label htmlFor='fullName' className='text-zinc-700 flex gap-[.3rem]'>
@@ -53,7 +53,7 @@ const HomeContactForm = () => {
                             <input type='email' name='email' placeholder='Tu email aquí' className='contact-input'/>
                         </div>
                     </div>
-                    <div className='flex flex-col mt-3 md:-mt-8 lg:mt-0'>
+                    <div className='flex flex-col mt-3'>
                         <label htmlFor='message' className='text-zinc-700 flex gap-[.3rem]'>
                             Mensaje:
                             <span className='text-rose-500 text-xl h-fit -mt-1'>
@@ -69,7 +69,7 @@ const HomeContactForm = () => {
                     className='grid place-items-center py-[.625rem] px-6 w-full mt-6 bg-zinc-900 rounded-md transition-colors
                     ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
                 >
-                    <span className='text-white drop-shadow-sm tracking-wider font-bold text-[1.05rem]'>
+                    <span className='text-white tracking-wider font-bold text-[1.05rem]'>
                         Enviar
                     </span>
                 </button>
