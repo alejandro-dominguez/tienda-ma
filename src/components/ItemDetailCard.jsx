@@ -1,6 +1,7 @@
 import { ShopContext } from '../contexts/shopContext';
 import {
     useContext,
+    useEffect,
     useState
 } from 'react';
 import ItemCount from './itemComponents/ItemCount';
@@ -8,11 +9,18 @@ import numberFormater from '../utilities/numberFormater'
 
 const ItemDetailCard = ({ product }) => {
     const { addProduct } = useContext(ShopContext)
-    const [itemDetailQuantity, setItemDetailQuantity] = useState(1)
+    const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
+    const [ selectedSize, setSelectedSize ] = useState('')
 
-    const confirmPurchase = (quantity) => {
-        addProduct({ ...product, quantity })
-        setItemDetailQuantity(quantity)
+    const confirmPurchase = (
+        quantity,
+    ) => {
+        product.sizes ?
+            (addProduct({ ...product, quantity, selectedSize }),
+            setItemDetailQuantity(quantity))
+        :
+            addProduct({ ...product, quantity})
+            setItemDetailQuantity(quantity)
     }
 
     return (
@@ -23,14 +31,14 @@ const ItemDetailCard = ({ product }) => {
                     {product.brand} {product.name}
                 </h1>
                 <div className='flex flex-col md:flex-row items-start gap-2 md:gap-5 mt-1'>
-                    <div className='w-20 md:w-32 mt-[.1rem] md:mt-2 drop-shadow'>
+                    <div className='w-20 md:w-28 mt-[.1rem] md:mt-2 drop-shadow'>
                         <img
                             src={product.img}
                             alt={product.name}
                             className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                         />
                     </div>
-                    <p className='mt-[.1rem] md:mt-[.3rem] w-full sm:w-[57%] leading-[1.15rem] md:leading-5 font-bold
+                    <p className='mt-[.1rem] md:mt-[.3rem] w-full sm:w-[21rem] lg:w-[35rem] leading-[1.15rem] md:leading-5 font-bold
                     text-zinc-800/[96] text-sm md:text-[.9rem] drop-shadow-sm tracking-tight'>
                         {product.desc}
                     </p>
@@ -51,21 +59,33 @@ const ItemDetailCard = ({ product }) => {
                                     Talles:
                                 </span>
                                 <fieldset className='flex items-start gap-6 font-black text-sm md:text-[.9rem]'>
-                                    <label for='M' className='grid place-items-center'>
+                                    <label htmlFor='M' className='grid place-items-center cursor-pointer'>
                                         M
-                                        <input type='radio' id='M' name='talle' value='M' />
+                                        <input
+                                            type='radio' id='M' name='size' value='M'
+                                            onChange={e => setSelectedSize(e.target.value)}
+                                        />
                                     </label>
-                                    <label for='G' className='grid place-items-center'>
+                                    <label htmlFor='G' className='grid place-items-center cursor-pointer'>
                                         G
-                                        <input type='radio' id='G' name='talle' value='G' />
+                                        <input
+                                            type='radio' id='G' name='size' value='G'
+                                            onChange={e => setSelectedSize(e.target.value)}
+                                        />
                                     </label>
-                                    <label for='XG' className='grid place-items-center'>
+                                    <label htmlFor='XG' className='grid place-items-center cursor-pointer'>
                                         XG
-                                        <input type='radio' id='XG' name='talle' value='XG' />
+                                        <input
+                                            type='radio' id='XG' name='size' value='XG'
+                                            onChange={e => setSelectedSize(e.target.value)}
+                                        />
                                     </label>
-                                    <label for='XXG' className='grid place-items-center'>
+                                    <label htmlFor='XXG' className='grid place-items-center cursor-pointer'>
                                         XXG
-                                        <input type='radio' id='XXG' name='talle' value='XXG' />
+                                        <input
+                                            type='radio' id='XXG' name='size' value='XXG'
+                                            onChange={e => setSelectedSize(e.target.value)}
+                                        />
                                     </label>
                                 </fieldset>
                             </div>
@@ -74,9 +94,19 @@ const ItemDetailCard = ({ product }) => {
                         null
                 }
             </div>
-            {itemDetailQuantity ?
-                <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
-            : null}
+            {   
+                product.sizes && selectedSize === '' ?
+                    <span className='self-start md:self-end font-black text-sm text-center leading-5 drop-shadow-sm tracking-wide
+                    mt-5 md:mt-0'>
+                        Elige talle para añadir el producto 
+                    </span>
+                : itemDetailQuantity ?
+                    <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
+                : product.sizes === false && itemDetailQuantity ?
+                    <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
+                :
+                    null
+            }
         </div>
     )
 };

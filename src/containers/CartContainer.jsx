@@ -9,14 +9,16 @@ import CartItem from '../components/cartComponents/CartItem';
 import CartModalForm from '../components/cartComponents/CartModalForm';
 import logo from '../assets/logo-header.svg';
 import cartCheck from '../assets/cart-check.svg';
+import numberFormater from '../utilities/numberFormater';
 
 const CartContainer = () => {
-    const { products } = useContext(ShopContext)
+    const { products, calculateCartTotal } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
+    const total = calculateCartTotal()
     
     return (
-        <main className='w-full grid place-items-start md:px-10 py-32 bg-rose-300/70 min-h-[100svh] section-scrollbar'>
-            <h1 className='items-section-h1-shadow font-bold font-Raleway text-white md:text-4xl drop-shadow justify-self-center'>
+        <main className='w-full grid place-items-start md:px-10 py-28 min-h-[100svh] section-scrollbar'>
+            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm mt-2 justify-self-center'>
                 {
                     !showForm && products.length ?
                         'Carrito'
@@ -27,7 +29,7 @@ const CartContainer = () => {
             </h1>
             {
                 !showForm && products.length ?
-                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
+                    <div className='w-full grid place-items-center my-4 py-6 px-7 bg-white/70 rounded-lg shadow-md'>
                         <div className='w-full grid grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map(product => {
@@ -39,54 +41,59 @@ const CartContainer = () => {
                                 )})
                             }
                         </div>
+                        <span className='font-black text-[.89rem] mt-5'>
+                            Total: {numberFormater(total)}
+                        </span>
                         <button
-                            className='flex items-center justify-center justify-self-center px-6 py-3 gap-3 mt-6
-                            bg-[#004eb4] rounded-md shadow shadow-teal-950/80 transition-all ease-in-out
-                            duration-[225ms] hover:shadow-teal-400/40 hover:bg-[#01268b] hover:shadow
-                            focus:shadow-teal-400/40 focus:bg-[#01268b] focus:shadow'
+                            className='flex items-center justify-center justify-self-center px-4 py-2 gap-2 mt-3
+                            rounded-lg shadow-sm bg-zinc-900 text-white transition-colors ease-in-out
+                            hover:bg-zinc-700 focus:bg-zinc-700'
                             type='button'
                             onClick={() => setShowForm(true)}
                         >
-                            <div className='w-7 drop-shadow-md mb-1'>
+                            <div className='w-[1.2rem]'>
                                 <img 
                                     src={cartCheck}
                                     alt='carrito de compras tildado'
                                     className='block w-full'
                                 />
                             </div>
-                            <span className='text-white font-Raleway text-[1.1rem] tracking-wider drop-shadow-md'>
+                            <span className='font-Raleway text-[.9rem] tracking-wider font-bold'>
                                 Formulario de compra
                             </span>
                         </button>
                     </div>
                 : showForm && products.length ?
                     <div className='w-full grid place-items-center my-4 py-6 px-7 bg-rose-500/95 rounded-lg shadow-md'>
-                        <CartModalForm showForm={showForm} setShowForm={setShowForm} />
+                        <CartModalForm
+                            showForm={showForm}
+                            setShowForm={setShowForm}
+                        />
                     </div>
                 :
-                    <div className='w-full grid justify-center items-center my-4 py-10 px-7 bg-teal-600/80 rounded-lg shadow-md'>
+                    <div className='w-fit grid place-items-center justify-self-center bg-white/70 rounded-lg shadow-sm -mt-5'>
                         <Link
                             to='/'
-                            className='flex flex-col items-center justify-center gap-6 md:px-10'
+                            className='flex flex-col items-center justify-center gap-6 px-10 md:px-16 py-10'
                         >
-                        <h1 className='text-white text-lg tracking-wide font-Raleway grid place-items-center leading-6'>
-                            <span className='drop-shadow-md'>
-                                Aún no hay productos
-                            </span>
-                            <div className='flex items-center justify-center gap-2'>
-                                <span className='drop-shadow-md'>
-                                    en el carrito
+                            <h1 className='font-bold text-lg tracking-wide font-Raleway grid place-items-center leading-6 drop-shadow-sm'>
+                                <span>
+                                    Aún no hay productos
                                 </span>
-                                <BiSolidShare className='block text-red-300 text-3xl drop-shadow' />
+                                <div className='flex items-center justify-center gap-2'>
+                                    <span>
+                                        en el carrito
+                                    </span>
+                                    <BiSolidShare className='block text-red-300 text-[1.75rem]' />
+                                </div>
+                            </h1>
+                            <div className='w-[7.5rem]'>
+                                <img
+                                    src={logo}
+                                    alt='logo tienda Ma'
+                                    className='block w-full'
+                                />
                             </div>
-                        </h1>
-                        <div className='w-32'>
-                            <img
-                                src={logo}
-                                alt='logo tienda Ma'
-                                className='block w-full'
-                            />
-                        </div>
                         </Link>
                     </div>
             }

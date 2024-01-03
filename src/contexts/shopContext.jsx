@@ -34,9 +34,7 @@ const ShopProvider = ({ children }) => {
     }
 
     const calculateCartTotal = () => {
-        const cartTotal = products.reduce((acc, cartProducts) => (
-            acc += cartProducts.quantity * cartProducts.price, 0
-        ))
+        const cartTotal = products.reduce((acc, cartProducts) => acc += cartProducts.quantity * cartProducts.price, 0)
         return cartTotal
     }
 

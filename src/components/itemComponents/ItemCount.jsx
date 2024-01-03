@@ -6,7 +6,11 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ItemCount = ({ onAdd, quantity, initial }) => {
+const ItemCount = ({
+    onAdd,
+    quantity,
+    initial
+}) => {
     const [ count, setCount ] = useState(initial)
     const navigate = useNavigate()
 
@@ -24,7 +28,7 @@ const ItemCount = ({ onAdd, quantity, initial }) => {
     }
 
     return (
-        <div className='flex flex-col self-center md:self-end mt-3 md:mt-0 gap-2 drop-shadow-md'>
+        <div className='flex flex-col self-start md:self-end mt-4 md:mt-0 gap-2 drop-shadow-md'>
             <div className='flex items-center justify-between px-11'>
                 <button
                     type='button'
@@ -46,12 +50,12 @@ const ItemCount = ({ onAdd, quantity, initial }) => {
             </div>
             <button
                 type='button'
-                className='w-max flex items-center gap-2 justify-center px-5 py-2 rounded-lg shadow-sm bg-zinc-900 text-white
+                className='w-max flex items-center gap-2 justify-center px-3 py-2 rounded-lg shadow-sm bg-zinc-900 text-white
                 transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
                 onClick={() => handleAdd(count)}
             >
                 <BsCheckCircleFill className='block drop-shadow'/>
-                <span className='font-Raleway text-[.9rem] tracking-wider font-bold drop-shadow'>
+                <span className='font-Raleway text-[.85rem] tracking-wider font-bold drop-shadow'>
                     Añadir al carrito
                 </span>
             </button>

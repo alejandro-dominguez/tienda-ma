@@ -4,7 +4,6 @@ import numberFormater from '../utilities/numberFormater';
 
 const ItemCard = ({ product, itemList }) => {
     const navigate = useNavigate()
-    console.log(product);
 
     return (
         <div
@@ -72,7 +71,7 @@ const ItemCard = ({ product, itemList }) => {
                                 />
                             </div>
                             {
-                                product.sizes === true ?
+                                product.sizes ?
                                     <div className='flex flex-col text-[.85rem] font-bold'>
                                         <span>
                                             M - G - XG - XXG
@@ -81,12 +80,10 @@ const ItemCard = ({ product, itemList }) => {
                                             {numberFormater(product.price)}
                                         </span>
                                     </div>
-                                : product.sizes === false ?
+                                :
                                     <span className='text-[.85rem] font-bold'>
                                         {numberFormater(product.price)}
                                     </span>
-                                :
-                                    null
                             }
                         </div>
                         <p className='text-sm text-zinc-900 drop-shadow-sm my-1'>
