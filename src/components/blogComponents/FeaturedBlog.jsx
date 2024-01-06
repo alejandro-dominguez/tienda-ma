@@ -1,29 +1,28 @@
-import blogMockImg from '../../assets/blog-mock.jpeg';
+import { useNavigate } from "react-router-dom";
 
-const BlogMock = () => {
+const FeaturedBlog = ({ blogData }) => {
+    const navigate = useNavigate()
+
     return (
         <div className='bg-white/70 py-8 px-4 md:px-8'>
             <div className='w-full drop-shadow-sm'>
                 <img
-                    src={blogMockImg}   
-                    alt='madre junto a bebé'
+                    src={blogData.img1}
+                    alt='imagen de portada del blog'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-2xl mt-4'>
-                Título del Artículo
+                {blogData.title}
             </h3>
             <p className='leading-[1.4rem] mt-1 text-[.9rem] md:text-base'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ad, autem velit maxime esse, 
-                quaerat nemo totam cupiditate eum, error minus explicabo dolorem atque ex aliquid eius sed 
-                amet facilis inventore reprehenderit. Saepe totam atque, alias voluptate ea odit necessitatibus 
-                rerum aspernatur, culpa perferendis eius nesciunt iure inventore quas illum...
+                {blogData.drop}
             </p>
             <button
                 type='button'
                 className='mt-3 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                onClick={() => (null)}
+                onClick={() => navigate((`/blogs/${blogData.id}`))}
             >
                 <span className='drop-shadow tracking-wider text-[.83rem] font-Raleway'>
                     Leer artículo
@@ -33,4 +32,4 @@ const BlogMock = () => {
     )
 };
 
-export default BlogMock;
+export default FeaturedBlog;

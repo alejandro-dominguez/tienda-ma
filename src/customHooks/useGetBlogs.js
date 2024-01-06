@@ -10,14 +10,14 @@ import {
 import { db } from '../firebase/config';
 
 const useGetBlogs = () => {
-    const [ error, setError ] = useState('')
-    const [ loading, setLoading ] = useState(false)
+    const [ errorBlogs, setErrorBlogs ] = useState('')
+    const [ loadingBlogs, setLoadingBlogs ] = useState(false)
     const [ blogs, setBlogs ] = useState({})
     
     useEffect(() => {
         (async () => {
             try {
-                setLoading(true)
+                setLoadingBlogs(true)
                 let q = query(collection(db, 'blogs'))
                 const querySnapshot = await getDocs(q)
                 const firebaseBlogs = []
@@ -25,17 +25,17 @@ const useGetBlogs = () => {
                     firebaseBlogs.push({...doc.data(), id: doc.id})
                 })
                 setBlogs(firebaseBlogs)
-                setLoading(false)
+                setLoadingBlogs(false)
             } catch (error) {
-                setError(error.message)
-                setLoading(false)
+                setErrorBlogs(error.message)
+                setLoadingBlogs(false)
             } finally {
-                setLoading(false)
+                setLoadingBlogs(false)
             }
         })()
     }, [])
 
-    return [ blogs, error, loading ]
+    return [ blogs, errorBlogs, loadingBlogs ]
 };
 
 export default useGetBlogs;
