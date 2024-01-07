@@ -6,7 +6,7 @@ import PromoSectionContainer from '../containers/PromoSectionContainer';
 
 const HomePage = () => {
     return (
-        <div className='relative grid place-items-center w-full overflow-x-hidden'>
+        <div className='relative grid place-items-center w-full'>
             <HeroSection />
             <PromoSectionContainer />
             <FeaturedItemsContainer />

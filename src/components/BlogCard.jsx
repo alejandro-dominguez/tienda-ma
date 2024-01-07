@@ -5,7 +5,7 @@ const BlogCard = ({ blog }) => {
     const navigate = useNavigate()
     
     return (
-        <div className='bg-white/70 py-8 px-4 md:px-8'>
+        <div className='py-8 px-4 md:px-8'>
             <div className='w-full drop-shadow-sm'>
                 <img
                     src={blog.img1}
@@ -21,11 +21,11 @@ const BlogCard = ({ blog }) => {
             </p>
             <button
                 type='button'
-                className='mt-3 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
+                className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
                 onClick={() => navigate((`/blogs/${blog.id}`))}
             >
-                <span className='drop-shadow tracking-wider text-[.83rem] font-Raleway'>
+                <span className='tracking-wider text-[.8rem] font-Raleway'>
                     Leer artículo
                 </span>
             </button>

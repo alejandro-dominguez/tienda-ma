@@ -53,7 +53,7 @@ const HomeContactForm = () => {
                             <input type='email' name='email' placeholder='Tu email aquí' className='contact-input'/>
                         </div>
                     </div>
-                    <div className='flex flex-col mt-3'>
+                    <div className='flex flex-col mt-3 xl:mt-0'>
                         <label htmlFor='message' className='text-zinc-700 flex gap-[.3rem]'>
                             Mensaje:
                             <span className='text-rose-500 text-xl h-fit -mt-1'>

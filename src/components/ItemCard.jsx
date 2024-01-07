@@ -10,7 +10,7 @@ const ItemCard = ({ product, itemList }) => {
             className=
                 {
                     !itemList ?
-                        'flex flex-col items-start justify-start py-7 px-4 md:px-8 gap-3 shadow-sm bg-white/70'
+                        'flex flex-col items-start justify-start p-5 gap-3 shadow-sm bg-white/70'
                     :
                         'flex flex-col items-start justify-start m-4 py-4 px-5 bg-white/80 rounded gap-1 shadow'
                 }
@@ -38,7 +38,7 @@ const ItemCard = ({ product, itemList }) => {
                         </div>
                         <div className='flex flex-col w-fit'>
                             <p className='text-sm text-zinc-900 drop-shadow-sm w-fit'>
-                                {shortenText((product.desc), 220)}
+                                {shortenText((product.desc), 150)}
                             </p>
                             {
                                 product.sizes ?
@@ -107,9 +107,9 @@ const ItemCard = ({ product, itemList }) => {
                 <span className=
                     {
                         !itemList ?
-                            'drop-shadow tracking-wider text-[.83rem] font-Raleway'
+                            'tracking-wider text-[.83rem] font-Raleway'
                         :
-                            'drop-shadow tracking-wider text-[.8rem] font-Raleway'
+                            'tracking-wider text-[.8rem] font-Raleway'
                     }
                 >
                     {

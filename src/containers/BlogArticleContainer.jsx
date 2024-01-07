@@ -2,20 +2,19 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import useGetBlogArticle from '../customHooks/useGetBlogArticle.js';
 import ErrorPage from '../pages/ErrorPage';
+import BlogArticle from '../components/blogComponents/BlogArticle.jsx';
 
 const BlogArticleContainer = () => {
     const { id } = useParams()
     const [ blog, error, loading ] = useGetBlogArticle(id)
 
     return (
-        <main className='w-full grid place-items-start px-4 md:px-10 mt-32 min-h-[100svh]'>
+        <main className='w-full grid place-items-start bg-white/70 min-h-[100svh]'>
         {
             (JSON.stringify(blog) !== '{}' && !loading && !error) ?
-                    <div>
-                        {blog.title}
-                    </div>
+                    <BlogArticle blog={blog} />
             : !error ?
-                <div className='w-full grid place-items-center bg-white/70 mt-2 py-4 shadow-sm min-h-[24rem]'>
+                <div className='w-full grid place-items-center mt-36 py-4 shadow-sm min-h-[24rem]'>
                     <div className='p-5 bg-teal-600/20 rounded-lg'>
                         <RotatingLines
                             strokeColor='white'

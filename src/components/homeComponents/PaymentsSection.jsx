@@ -4,8 +4,8 @@ import { FaMoneyBill1Wave } from 'react-icons/fa6';
 
 const PaymentsSection = () => {
     return (
-        <section className='flex flex-col md:flex-row bg-white gap-7 md:gap-20 items-center md:items-start justify-between
-        w-full py-8 px-10 overflow-x-hidden'>
+        <section className='flex flex-col md:flex-row bg-white gap-7 md:gap-20 items-center
+        md:items-start justify-between w-full py-8 px-10'>
             <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
                 <BiSolidCreditCardAlt className='block text-7xl text-red-500/50 drop-shadow' />
                 <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow'>

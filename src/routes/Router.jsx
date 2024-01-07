@@ -12,6 +12,8 @@ import ItemDetailContainer from '../containers/ItemDetailContainer';
 import ItemListContainer from '../containers/ItemListContainer';
 import BlogArticleContainer from '../containers/BlogArticleContainer.jsx';
 import Root from './root/Root';
+import SizesGuide from '../pages/SizesGuide.jsx';
+import PaymentsPage from '../pages/PaymentsPage.jsx';
 
 const router = createBrowserRouter([
     {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
             {
                 path: '/blogs/:id',
                 element: <BlogArticleContainer />,
+            },
+            {
+                path: '/formasDePago',
+                element: <PaymentsPage />,
+            },
+            {
+                path: '/talles',
+                element: <SizesGuide />,
             },
             {
                 path: '/carrito',

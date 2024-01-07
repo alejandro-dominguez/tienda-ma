@@ -13,7 +13,7 @@ const ItemCategoriesContainer = () => {
     const [ subcategories, error, loading ] = useGetSubcategories(categoryId)
 
     return (
-        <main className='w-full overflow-hidden min-h-[100svh] bg-white/70 shadow'>
+        <main className='w-full min-h-[100svh] bg-white/70 shadow'>
             <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-10 mt-20 w-fit mx-auto'>
                 {
                         categoryId === 'higiene' ?
