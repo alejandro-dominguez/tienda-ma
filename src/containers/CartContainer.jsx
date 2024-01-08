@@ -14,7 +14,6 @@ import numberFormater from '../utilities/numberFormater';
 const CartContainer = () => {
     const { products, calculateCartTotal } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
-    const uid = Math.floor(Math.random() * 100)
     
     return (
         <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
@@ -32,10 +31,10 @@ const CartContainer = () => {
                     <div className='w-full grid place-items-center px-4 md:px-10 my-4 py-6 bg-white/70 shadow-sm'>
                         <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.35rem]'>
                             {
-                                products.map(product => {
+                                products.map((product, i) => {
                                     return (
                                         <CartItem
-                                            key={uid}
+                                            key={i}
                                             item={product}
                                         />
                                 )})

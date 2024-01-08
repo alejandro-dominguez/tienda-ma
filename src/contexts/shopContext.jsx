@@ -41,8 +41,8 @@ const ShopProvider = ({ children }) => {
         return products.some(product => product.selectedSize === selectedSize)
     }
 
-    const removeProduct = (id) => {
-        const cartProducts = products.filter(productsInCart => productsInCart.id !== id)
+    const removeProduct = (prodId) => {
+        const cartProducts = products.filter(productsInCart => productsInCart.prodId !== prodId)
         setProducts(cartProducts)
     }
 

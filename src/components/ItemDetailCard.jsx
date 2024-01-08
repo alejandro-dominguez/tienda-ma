@@ -14,10 +14,10 @@ const ItemDetailCard = ({ product }) => {
     const { addProduct } = useContext(ShopContext)
     const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
+    const prodId = Math.floor(Math.random() * 100) * Date.now()
 
-    const confirmPurchase = (
-        quantity,
-        ) => {
+
+    const confirmPurchase = (quantity) => {
         toast.success(
             'Producto agregado',
             {
@@ -26,19 +26,19 @@ const ItemDetailCard = ({ product }) => {
             }
         ),
         product.sizes ?
-            (addProduct({ ...product, quantity, selectedSize }),
+            (addProduct({ ...product, quantity, selectedSize, prodId }),
             setItemDetailQuantity(quantity),
             setTimeout(() => {
                 setSelectedSize('')
                 setItemDetailQuantity(1)
             }, 150))
         :
-            addProduct({ ...product, quantity})
+            addProduct({ ...product, quantity, prodId })
             setItemDetailQuantity(quantity)
             setTimeout(() => {
                 setSelectedSize('')
                 setItemDetailQuantity(1)
-            }, 150);
+            }, 150)
     }
 
     return (

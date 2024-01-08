@@ -5,8 +5,9 @@ import numberFormater from '../../utilities/numberFormater';
 
 const CartItem = ({ item }) => {
     const { removeProduct } = useContext(ShopContext)
+    
     const handleRemove = () => {
-        removeProduct(item.id)
+        removeProduct(item.prodId)
     }
     
     return (
@@ -32,12 +33,12 @@ const CartItem = ({ item }) => {
                     <span className='font-black text-[.85rem] tracking-wide leading-5 drop-shadow-sm mt-[.1rem]'>
                         {numberFormater(item.price)}
                     </span>
-                    <span className='mt-1 font-bold text-sm md:text-[.89rem] flex items-baseline gap-2'>
+                    <h3 className='mt-1 font-bold text-sm md:text-[.89rem] flex items-baseline gap-2'>
                         Cantidad:
                         <span className='font-black text-[.8rem] drop-shadow-sm'>
                             {item.quantity}
                         </span>
-                    </span>
+                    </h3>
                     {   
                         item.selectedSize ?    
                             <span className='mt-1 font-bold text-sm md:text-[.89rem] flex items-baseline gap-2'>
