@@ -4,7 +4,6 @@ import {
     FaMinusCircle
 } from 'react-icons/fa';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ItemCount = ({
     onAdd,
@@ -12,11 +11,9 @@ const ItemCount = ({
     initial
 }) => {
     const [ count, setCount ] = useState(initial)
-    const navigate = useNavigate()
 
     const handleAdd = (count) => {
         onAdd(count)
-        navigate('/carrito')
     }
 
     const onPlus = () => {

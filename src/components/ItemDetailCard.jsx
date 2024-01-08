@@ -1,9 +1,12 @@
 import { ShopContext } from '../contexts/shopContext';
 import {
     useContext,
-    useEffect,
     useState
 } from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 import ItemCount from './itemComponents/ItemCount';
 import numberFormater from '../utilities/numberFormater'
 
@@ -14,16 +17,32 @@ const ItemDetailCard = ({ product }) => {
 
     const confirmPurchase = (
         quantity,
-    ) => {
+        ) => {
+        toast.success(
+            'Producto agregado',
+            {
+                duration: 4000,
+                position: 'bottom-center',
+            }
+        ),
         product.sizes ?
             (addProduct({ ...product, quantity, selectedSize }),
-            setItemDetailQuantity(quantity))
+            setItemDetailQuantity(quantity),
+            setTimeout(() => {
+                setSelectedSize('')
+                setItemDetailQuantity(1)
+            }, 150))
         :
             addProduct({ ...product, quantity})
             setItemDetailQuantity(quantity)
+            setTimeout(() => {
+                setSelectedSize('')
+                setItemDetailQuantity(1)
+            }, 150);
     }
 
     return (
+        <>
         <div className='flex flex-col md:flex-row items-start justify-between mt-2 pt-6 pb-7 px-7
         bg-white/80 rounded-lg shadow-sm w-full'>
             <div className='flex flex-col'>
@@ -101,13 +120,28 @@ const ItemDetailCard = ({ product }) => {
                         Elige talle para añadir el producto 
                     </span>
                 : itemDetailQuantity ?
-                    <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
-                : product.sizes === false && itemDetailQuantity ?
-                    <ItemCount onAdd={confirmPurchase} initial={1} quantity={product.quantity} />
+                    <ItemCount
+                        onAdd={confirmPurchase}
+                        initial={1}
+                        quantity={product.quantity}
+                    />
+                : !product.sizes && itemDetailQuantity ?
+                    <ItemCount
+                        onAdd={confirmPurchase}
+                        initial={1}
+                        quantity={product.quantity}
+                    />
                 :
                     null
             }
         </div>
+        <Toaster
+                richColors
+                toastOptions={{
+                className: 'text-center',
+            }}
+        />
+        </>
     )
 };
 

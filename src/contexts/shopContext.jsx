@@ -8,7 +8,7 @@ export const ShopContext = createContext({});
 const ShopProvider = ({ children }) => {
     const [ products, setProducts ] = useState([])
 
-    const addProduct = ( productToAdd ) => {
+    const addProduct = (productToAdd) => {
         const productSize = Object.hasOwn(productToAdd, 'selectedSize')
         if (productSize) {
             const repeatedSize = repeatedProductSize(productToAdd.selectedSize)
