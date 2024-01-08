@@ -14,7 +14,6 @@ import numberFormater from '../utilities/numberFormater';
 const CartContainer = () => {
     const { products, calculateCartTotal } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
-    console.log(products);
     
     return (
         <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
