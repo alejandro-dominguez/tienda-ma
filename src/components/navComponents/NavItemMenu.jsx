@@ -1,4 +1,5 @@
 import NavItem from './navBar/NavItem';
+import SearchBar from './navBar/SearchBar';
 
 const NavItemMenu = ({ navData, hideMenu }) => {
     return (
@@ -24,6 +25,7 @@ const NavItemMenu = ({ navData, hideMenu }) => {
                         />
                 )})
             }
+            <SearchBar />
         </div>
     )
 };
