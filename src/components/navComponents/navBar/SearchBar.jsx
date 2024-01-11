@@ -19,7 +19,7 @@ const SearchBar = () => {
             htmlFor='searchBar'
             className='flex flex-col items-start'
         >
-            <div className='flex items-center justify-between gap-1'>
+            <div className='flex items-center justify-between gap-1 relative'>
                 <input
                     type='text' name='searchBar' placeholder='...'
                     value={inputValue}
@@ -36,6 +36,18 @@ const SearchBar = () => {
                         <FaSearch className='text-base md:text-[1.1rem] text-white' />
                     </div>
                 </button>
+                <div className=''>
+                    {
+                        (prods.length && !loading && !error) ?
+                            prods.map(prod => {
+                                <span key={prod.id}>
+                                    {prod.brand} {prod.name}
+                                </span>
+                            })
+                        :
+                            null
+                    }
+                </div>
             </div>
         </label>
     )
