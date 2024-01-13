@@ -36,6 +36,7 @@ const SearchBar = () => {
                     className='w-16 sm:w-32 text-sm bg-teal-500/[9%] py-[.28rem] md:py-[.35rem] px-2 rounded-sm
                     drop-shadow-sm shadow-sm placeholder:tracking-wider'
                     onChange={getValue}
+                    onClick={() => setShowSearch(true)}
                 />
                 <button
                     type='button'
