@@ -21,6 +21,7 @@ const SearchBar = () => {
         navigate((`/detalle/${prod.id}`))
         setTimeout(() => {
             setShowSearch(false)
+            setInputValue('')
         }, 100)
     }
     
@@ -43,7 +44,7 @@ const SearchBar = () => {
                     onClick={() => searchItems(inputValue)}
                 >
                     <div className='grid place-items-center bg-red-400/[37%] px-[.41rem] py-[.45rem] md:py-[.48rem]
-                    rounded-md drop-shadow-sm shadow-sm'>
+                    rounded-md drop-shadow-sm shadow-sm cursor-auto'>
                         <FaSearch className='text-base md:text-[1.1rem] text-white' />
                     </div>
                 </button>
