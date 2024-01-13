@@ -62,7 +62,7 @@ const SearchBar = () => {
                                 prods.filter(prod => {
                                     const searchTerm = inputValue.toLowerCase()
                                     const itemName = `${prod.brand} ${prod.name}`.toLowerCase()
-                                    return searchTerm && itemName !== searchTerm
+                                    return searchTerm && itemName.includes(searchTerm)
                                 })
                                 .map(prod => {
                                     return (
