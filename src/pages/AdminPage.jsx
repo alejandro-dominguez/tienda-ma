@@ -37,13 +37,6 @@ const AdminPage = () => {
             <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm mx-auto mt-2'>
                 Administrador
             </h1>
-            {   error ?
-                    <p>
-                        {error}
-                    </p>
-                :
-                    null
-            }
             <form
                 className='py-8 px-2 sm:px-10 shadow-sm bg-white/70 flex flex-col mx-auto'
                 autoComplete='off'

@@ -1,10 +1,13 @@
-import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/authContext';
+import AdminErrorPage from '../pages/AdminErrorPage';
+import AdminConsole from '../components/AdminConsole';
 
 const AdminLandingPage = () => {
+    const { authUser, signOut } = useContext(AuthContext)
+
     return (
-        <div>
-            AdminLandingPage
-        </div>
+        <AdminConsole/>
     )
 };
 

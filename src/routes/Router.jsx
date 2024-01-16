@@ -16,6 +16,9 @@ import BlogArticleContainer from '../containers/BlogArticleContainer';
 import Root from './root/Root';
 import SizesGuide from '../pages/SizesGuide';
 import PaymentsPage from '../pages/PaymentsPage';
+import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
+import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
+import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
 
 const router = createBrowserRouter([
     {
@@ -68,8 +71,20 @@ const router = createBrowserRouter([
                 element: <AdminPage />,
             },
             {
-                path: '/admin/inicio',
+                path: '/admin/consola',
                 element: <AdminLandingPage />,
+            },
+            {
+                path: '/admin/consola/promociones',
+                element: <AdminPromotionsPage />,
+            },
+            {
+                path: '/admin/consola/productos',
+                element: <AdminProductsPage />,
+            },
+            {
+                path: '/admin/consola/blogs',
+                element: <AdminBlogsPage />,
             },
         ],
     },

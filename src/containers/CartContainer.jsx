@@ -17,7 +17,8 @@ const CartContainer = () => {
     
     return (
         <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
-            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm mt-2 justify-self-center'>
+            <h1 className='font-bold font-Raleway text-center px-4 leading-8 text-[1.75rem] md:text-3xl
+            drop-shadow-sm mt-2 justify-self-center'>
                 {
                     !showForm && products.length ?
                         'Carrito'

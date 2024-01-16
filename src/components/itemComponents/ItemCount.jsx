@@ -25,7 +25,7 @@ const ItemCount = ({
     }
 
     return (
-        <div className='flex flex-col self-start md:self-end mt-4 md:mt-0 gap-2 drop-shadow-md'>
+        <div className='flex flex-col self-center md:self-end mt-4 md:mt-0 gap-2 drop-shadow-md'>
             <div className='flex items-center justify-between px-11'>
                 <button
                     type='button'
