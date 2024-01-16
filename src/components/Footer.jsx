@@ -47,7 +47,7 @@ const Footer = () => {
                 <div className='flex justify-start gap-2 mt-1'>
                     <MdEmail className='block text-[1.43rem] text-zinc-900' />
                     <span className='font-bold font-Lato drop-shadow-sm text-sm'>
-                        contacto.tiendama@gmai.com
+                        contacto.tiendama@gmail.com
                     </span>
                 </div>
                 <div className='flex justify-start gap-2 mt-1'>

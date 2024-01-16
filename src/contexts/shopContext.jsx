@@ -71,7 +71,7 @@ const ShopProvider = ({ children }) => {
                 calculateCartQuantity
             }}
         >
-            { children }
+            {children}
         </ShopContext.Provider>
     )
 };

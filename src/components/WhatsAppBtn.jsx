@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const WhatsAppBtn = () => {
     return (
         <Link
-            to='https://wa.me/+5493413042903'
+            to='https://wa.me/+5493416630000'
             referrerPolicy='no-referrer'
             rel='noopener'  
             target='_blank'

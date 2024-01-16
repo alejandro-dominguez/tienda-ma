@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAKDVV9bG5Rxu55JCFtkS-AzJg7oMiYnu0',
@@ -12,3 +13,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+/*
+
+contacto.tiendama@gmail.com 
+Juliano2021
+
+*/

@@ -2,18 +2,20 @@ import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
-import HomePage from '../pages/HomePage'
-import AboutUsPage from '../pages/AboutUsPage'
-import ErrorPage from '../pages/ErrorPage'
+import HomePage from '../pages/HomePage';
+import AboutUsPage from '../pages/AboutUsPage';
+import ErrorPage from '../pages/ErrorPage';
+import AdminPage from '../pages/AdminPage';
+import AdminLandingPage from '../pages/AdminLandingPage';
 import ItemCategoriesContainer from '../containers/ItemCategoriesContainer';
 import CartContainer from '../containers/CartContainer';
 import BlogsContainer from '../containers/BlogsContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
 import ItemListContainer from '../containers/ItemListContainer';
-import BlogArticleContainer from '../containers/BlogArticleContainer.jsx';
+import BlogArticleContainer from '../containers/BlogArticleContainer';
 import Root from './root/Root';
-import SizesGuide from '../pages/SizesGuide.jsx';
-import PaymentsPage from '../pages/PaymentsPage.jsx';
+import SizesGuide from '../pages/SizesGuide';
+import PaymentsPage from '../pages/PaymentsPage';
 
 const router = createBrowserRouter([
     {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
             {
                 path: '/carrito',
                 element: <CartContainer />,
+            },
+            {
+                path: '/admin',
+                element: <AdminPage />,
+            },
+            {
+                path: '/admin/inicio',
+                element: <AdminLandingPage />,
             },
         ],
     },
