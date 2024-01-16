@@ -21,7 +21,7 @@ const FeaturedItemsContainer = () => {
                 (data.length && blogs.length && !loading && !error && !loadingBlogs && !errorBlogs) ?
                     <div className='w-full px-4 py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
                         <FeaturedBlog blogData={blogData} />
-                        <div className='flex flex-col gap-7 mt-7 md:mt-0'>
+                        <div className='flex flex-col gap-8 mt-7 md:mt-0'>
                             {
                                 data.map((productData, i) => {
                                     return (

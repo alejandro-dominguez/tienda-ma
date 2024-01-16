@@ -38,7 +38,7 @@ const AdminPage = () => {
                 Administrador
             </h1>
             <form
-                className='py-8 px-2 sm:px-10 shadow-sm bg-white/70 flex flex-col mx-auto'
+                className='p-8 shadow-sm bg-white/70 flex flex-col mx-auto'
                 autoComplete='off'
                 onSubmit={handleSubmit}
             >

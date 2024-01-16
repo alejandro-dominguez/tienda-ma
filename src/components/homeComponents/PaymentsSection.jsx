@@ -12,7 +12,7 @@ const PaymentsSection = () => {
                     <span className='font-black text-sm drop-shadow-none mb-1'>
                         Variedad de medios de pago disponibles
                     </span>
-                    Crédito, débito, transferencias, Mercado Pago, etc.
+                    Aceptamos todas las formas de pago.
                 </span>
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>
@@ -21,7 +21,7 @@ const PaymentsSection = () => {
                     <span className='font-black text-sm drop-shadow-none mb-1 mt-2'>
                         Envíos a Riosario y Gran Rosario
                     </span>
-                    Consulta por nuestra cobertura de envíos
+                    Consulta por costos de envío.
                 </span>
             </div>
             <div className='flex flex-col items-center justify-center md:justify-start font-Raleway w-52'>

@@ -38,7 +38,7 @@ const HeroSection = () => {
                             Lo que buscas y mucho más
                         </h2>
                     </div>
-                    <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-4 sm:mt-6'>
+                    <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-16 sm:mt-20'>
                         {
                             btnsData.map((data, i) => {
                                 return <HeroBtn btnData={data} key={i}/>
