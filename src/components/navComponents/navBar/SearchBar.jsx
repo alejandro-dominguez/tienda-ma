@@ -18,7 +18,7 @@ const SearchBar = () => {
     }
 
     const navigateItemDetail = (prod) => {
-        navigate((`/detalle/${prod.id}`))
+        navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))
         setTimeout(() => {
             setShowSearch(false)
             setInputValue('')

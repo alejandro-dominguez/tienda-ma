@@ -9,30 +9,30 @@ import {
 import { db } from '../firebase/config';
 
 const useGetItemDetail = ( id ) => {
-    const [ error, setError ] = useState('')
-    const [ loading, setLoading ] = useState(false)
+    const [ errorProduct, setErrorProduct ] = useState('')
+    const [ loadingProduct, setLoadingProduct ] = useState(false)
     const [ product, setProduct ] = useState({})
     
     useEffect(() => {
         (async () => {
             try {
-                setLoading(true)
+                setLoadingProduct(true)
                 const docRef = doc(db, 'products', id)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setProduct({ ...docSnap.data(), id: docSnap.id })
-                    setLoading(false)
+                    setLoadingProduct(false)
                 }
             } catch (error) {
-                setError(error.message)
-                setLoading(false)
+                setErrorProduct(error.message)
+                setLoadingProduct(false)
             } finally {
-                setLoading(false)
+                setLoadingProduct(false)
             }
         })()
     }, [id])
 
-    return [ product, error, loading ]
+    return [ product, errorProduct, loadingProduct ]
 };
 
 export default useGetItemDetail;

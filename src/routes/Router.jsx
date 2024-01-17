@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 element: <ItemListContainer />,
             },
             {
-                path: '/detalle/:id',
+                path: '/categorias/:categoryId/:subcategoryId/detalle/:id',
                 element: <ItemDetailContainer />,
             },
             {

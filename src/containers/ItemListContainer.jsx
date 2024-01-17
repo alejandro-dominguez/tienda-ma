@@ -5,8 +5,7 @@ import ItemCard from '../components/ItemCard';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 
 const ItemListContainer = () => {
-    const urlParams = useParams()
-    const { categoryId, subcategoryId } = urlParams
+    const { categoryId, subcategoryId } = useParams()
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
 
     return (

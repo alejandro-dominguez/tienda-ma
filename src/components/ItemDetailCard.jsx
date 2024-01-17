@@ -8,14 +8,13 @@ import {
     toast
 } from 'sonner';
 import ItemCount from './itemComponents/ItemCount';
-import numberFormater from '../utilities/numberFormater'
+import numberFormater from '../utilities/numberFormater';
 
 const ItemDetailCard = ({ product }) => {
     const { addProduct } = useContext(ShopContext)
     const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
     const prodId = Math.floor(Math.random() * 100) * Date.now()
-
 
     const confirmPurchase = (quantity) => {
         toast.success(
@@ -43,7 +42,7 @@ const ItemDetailCard = ({ product }) => {
 
     return (
         <>
-        <div className='flex flex-col md:flex-row items-start justify-between mt-2 pt-6 pb-7 px-7
+        <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-5 px-7
         bg-white/80 rounded-lg shadow-sm w-full'>
             <div className='flex flex-col'>
                 <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-base md:text-lg'>
@@ -62,7 +61,7 @@ const ItemDetailCard = ({ product }) => {
                         {product.desc}
                     </p>
                 </div>
-                <div className='flex flex-col mt-[.2rem] md:mt-2'>
+                <div className='flex flex-col mt-[.2rem] md:mt-[.45rem]'>
                     <span className='text-sm md:text-[.95rem] font-bold'>
                         Precio:
                     </span>
@@ -72,38 +71,42 @@ const ItemDetailCard = ({ product }) => {
                 </div>
                 {
                     product.sizes ?
-                        <div className='flex flex-col mt-[.2rem] md:mt-2'>
+                        <div className='flex flex-col mt-[.2rem] md:mt-[.45rem]'>
                             <div>
                                 <span className='text-sm md:text-[.95rem] font-bold'>
                                     Talles:
                                 </span>
                                 <fieldset className='flex items-start gap-6 font-black text-sm md:text-[.9rem]'>
-                                    <label htmlFor='M' className='grid place-items-center cursor-pointer'>
+                                    <label htmlFor='M' className='grid place-items-center cursor-pointer drop-shadow'>
                                         M
                                         <input
                                             type='radio' id='M' name='size' value='M'
                                             onChange={e => setSelectedSize(e.target.value)}
+                                            className='cursor-pointer'
                                         />
                                     </label>
-                                    <label htmlFor='G' className='grid place-items-center cursor-pointer'>
+                                    <label htmlFor='G' className='grid place-items-center cursor-pointer drop-shadow'>
                                         G
                                         <input
                                             type='radio' id='G' name='size' value='G'
                                             onChange={e => setSelectedSize(e.target.value)}
+                                            className='cursor-pointer'
                                         />
                                     </label>
-                                    <label htmlFor='XG' className='grid place-items-center cursor-pointer'>
+                                    <label htmlFor='XG' className='grid place-items-center cursor-pointer drop-shadow'>
                                         XG
                                         <input
                                             type='radio' id='XG' name='size' value='XG'
                                             onChange={e => setSelectedSize(e.target.value)}
+                                            className='cursor-pointer'
                                         />
                                     </label>
-                                    <label htmlFor='XXG' className='grid place-items-center cursor-pointer'>
+                                    <label htmlFor='XXG' className='grid place-items-center cursor-pointer drop-shadow'>
                                         XXG
                                         <input
                                             type='radio' id='XXG' name='size' value='XXG'
                                             onChange={e => setSelectedSize(e.target.value)}
+                                            className='cursor-pointer'
                                         />
                                     </label>
                                 </fieldset>

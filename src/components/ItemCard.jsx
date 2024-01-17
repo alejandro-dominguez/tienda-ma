@@ -102,7 +102,7 @@ const ItemCard = ({ product, itemList }) => {
                             `mt-[.15rem] px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
                             hover:bg-zinc-700 focus:bg-zinc-700`
                     }
-                onClick={() => navigate((`/detalle/${product.id}`))}
+                onClick={() => navigate((`/categorias/${product.category}/${product.subcategory}/detalle/${product.id}`))}
             >
                 <span className=
                     {
