@@ -42,14 +42,14 @@ const ItemDetailCard = ({ product }) => {
 
     return (
         <>
-        <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-5 px-7
+        <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-4 px-7
         bg-white/80 rounded-lg shadow-sm w-full'>
             <div className='flex flex-col'>
-                <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-base md:text-lg'>
+                <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-base'>
                     {product.brand} {product.name}
                 </h1>
-                <div className='flex flex-col md:flex-row items-start gap-2 md:gap-5 mt-1'>
-                    <div className='w-20 md:w-28 mt-[.1rem] md:mt-2 drop-shadow'>
+                <div className='flex flex-col md:flex-row items-start gap-2 md:gap-4'>
+                    <div className='w-20 md:w-24 mt-[.1rem] md:mt-2 drop-shadow'>
                         <img
                             src={product.img}
                             alt={product.name}
@@ -62,21 +62,21 @@ const ItemDetailCard = ({ product }) => {
                     </p>
                 </div>
                 <div className='flex flex-col mt-[.2rem] md:mt-[.45rem]'>
-                    <span className='text-sm md:text-[.95rem] font-bold'>
+                    <span className='text-sm md:text-[.9rem] font-bold'>
                         Precio:
                     </span>
-                    <span className='font-black text-sm md:text-[.9rem]'>
+                    <span className='font-black text-[.825rem]'>
                         {numberFormater(product.price)}
                     </span>
                 </div>
                 {
                     product.sizes ?
-                        <div className='flex flex-col mt-[.2rem] md:mt-[.45rem]'>
+                        <div className='flex flex-col mt-[.2rem]'>
                             <div>
-                                <span className='text-sm md:text-[.95rem] font-bold'>
+                                <span className='text-sm md:text-[.9rem] font-bold'>
                                     Talles:
                                 </span>
-                                <fieldset className='flex items-start gap-6 font-black text-sm md:text-[.9rem]'>
+                                <fieldset className='flex items-start gap-6 font-black text-sm'>
                                     <label htmlFor='M' className='grid place-items-center cursor-pointer drop-shadow'>
                                         M
                                         <input
@@ -118,8 +118,8 @@ const ItemDetailCard = ({ product }) => {
             </div>
             {   
                 product.sizes && selectedSize === '' ?
-                    <span className='self-start md:self-end font-black text-sm text-center leading-5 drop-shadow-sm tracking-wide
-                    mt-5 md:mt-0'>
+                    <span className='self-start md:self-end font-black text-[.85rem] text-center drop-shadow-sm
+                    tracking-wide mt-5 md:mt-0'>
                         Elige talle para añadir el producto 
                     </span>
                 : itemDetailQuantity ?

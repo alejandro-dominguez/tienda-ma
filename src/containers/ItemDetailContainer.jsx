@@ -1,7 +1,7 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import ItemDetailCard from '../components/ItemDetailCard';
-import ItemSugestions from '../components/itemComponents/ItemSugestions';
+import ItemSuggestions from '../components/itemComponents/ItemSuggestions';
 import useGetItemDetail from '../customHooks/useGetItemDetail';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
 import ErrorPage from '../pages/ErrorPage';
@@ -17,8 +17,8 @@ const ItemDetailContainer = () => {
                 (data.length && JSON.stringify(product) !== '{}' && !loading && !loadingProduct && !error && !errorProduct) ?
                     <>
                         <ItemDetailCard product={product} />
-                        <ItemSugestions
-                            productBrand={product.brand}
+                        <ItemSuggestions
+                            productDetail={product}
                             products={data}
                         />
                     </>
