@@ -26,7 +26,7 @@ const AdminPage = () => {
         setError(null)
         try {
             await signIn(user.adminEmail, user.adminPassword)
-            navigate('/admin/inicio')
+            navigate('/admin/consola')
         } catch (error) {
             setError(error.message)
         }
