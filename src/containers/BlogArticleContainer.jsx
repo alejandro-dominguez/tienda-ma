@@ -9,7 +9,7 @@ const BlogArticleContainer = () => {
     const [ blog, error, loading ] = useGetBlogArticle(id)
 
     return (
-        <main className='w-full grid place-items-start bg-white/70 min-h-[100svh]'>
+        <main className='w-full grid place-items-start min-h-[100svh]'>
         {
             (JSON.stringify(blog) !== '{}' && !loading && !error) ?
                     <BlogArticle blog={blog} />

@@ -10,9 +10,9 @@ const ItemCard = ({ product, itemList }) => {
             className=
                 {
                     !itemList ?
-                        'flex flex-col items-start justify-start p-5 gap-4 shadow-sm bg-white/70'
+                        'flex flex-col items-start justify-start p-5 gap-4 shadow-sm drop-shadow-sm bg-white'
                     :
-                        'flex flex-col items-start justify-start m-4 py-4 px-5 bg-white/80 rounded gap-1 shadow'
+                        'flex flex-col items-start justify-start m-4 py-4 px-5 bg-white rounded gap-1 shadow-sm drop-shadow-sm'
                 }
         >
             <h3 className=

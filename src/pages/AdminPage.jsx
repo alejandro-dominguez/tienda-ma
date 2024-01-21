@@ -14,7 +14,7 @@ const AdminPage = () => {
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate()
     
-    const registerInputs = ({target: {name, value}}) => {
+    const registerInputs = ({ target: {name, value} }) => {
         setUser({
             ...user,
             [name]: value

@@ -6,12 +6,11 @@ const ItemSuggestions = ({
     products
 }) => {
     return (
-        <div className='flex flex-col items-center md:items-start py-3 px-7 bg-white/80 rounded-lg shadow-sm
-        w-full mt-7 sm:mt-5 md:-mt-16 mb-10'>
+        <div className='flex flex-col items-center md:items-start py-3 px-7 bg-white rounded-lg shadow-sm drop-shadow-sm w-full mt-5'>
             <h2 className='font-Raleway text-xs drop-shadow-sm font-black uppercase tracking-wide self-start'>
                 Productos similares:
             </h2>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-1'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-2'>
                 {
                     products.filter(prod => {
                         return productDetail.brand === prod.brand && productDetail.id !== prod.id 

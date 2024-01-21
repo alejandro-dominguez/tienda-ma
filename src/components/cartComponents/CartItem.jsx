@@ -11,7 +11,7 @@ const CartItem = ({ item }) => {
     }
     
     return (
-        <div className='flex items-end justify-between w-full py-4 px-5 bg-white/80 shadow rounded gap-4'>
+        <div className='flex items-end justify-between w-full py-4 px-5 bg-white shadow-sm drop-shadow-sm rounded gap-4'>
             <div className='flex gap-5'>
                 <div className='w-[4.5rem] sm:w-20 lg:w-[5.5rem] drop-shadow'>
                     <img

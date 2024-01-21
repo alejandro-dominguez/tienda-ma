@@ -4,7 +4,7 @@ const FeaturedBlog = ({ blogData }) => {
     const navigate = useNavigate()
 
     return (
-        <div className='bg-white/70 px-6 py-5'>
+        <div className='bg-white px-6 py-5 shadow-sm drop-shadow-sm'>
             <div className='w-full drop-shadow-sm'>
                 <img
                     src={blogData.img1}

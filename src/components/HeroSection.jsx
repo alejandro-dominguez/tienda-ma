@@ -27,15 +27,15 @@ const HeroSection = () => {
                     type={'video/mp4'}
                     className='block w-full h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
-                <div className='absolute top-28 sm:top-32 flex flex-col items-center sm:items-start sm:ml-10'>
+                <div className='absolute top-28 sm:top-32 flex flex-col items-start ml-4 sm:ml-10 px-4 sm:px-0'>
                     <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm
-                    text-center px-16 sm:px-0 leading-8 sm:leading-normal'>
+                    leading-8 sm:leading-normal'>
                         ¡Bienvenido a Tienda Má!
                     </h1>
-                    <div className='flex items-center gap-2 mt-[.4rem] sm:mt-3'>
+                    <div className='flex items-start gap-2 mt-[.4rem] sm:mt-3'>
                         <BsBagHeartFill className='block text-white text-xl md:text-[1.7rem] mb-1 drop-shadow-sm' />
                         <h2 className='text-white font-Raleway tracking-wider md:text-2xl drop-shadow'>
-                            Lo que buscas y mucho más
+                            Todo lo que buscas en un mismo lugar
                         </h2>
                     </div>
                     <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-16 sm:mt-20'>

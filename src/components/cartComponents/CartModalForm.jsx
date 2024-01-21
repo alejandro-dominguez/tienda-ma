@@ -35,7 +35,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
             showForm && products.length ?
                 <>
                 <form
-                    className='md:w-[62.25%] mt-4 pt-3 pb-6 px-6 sm:px-10 shadow-sm bg-white/70'
+                    className='md:w-[62.25%] mt-4 pt-3 pb-6 px-6 sm:px-10 shadow-sm drop-shadow-sm bg-white'
                     onSubmit={onSubmit}
                     autoComplete='off'
                 >

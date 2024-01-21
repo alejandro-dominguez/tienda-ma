@@ -14,7 +14,7 @@ const HomeContactForm = () => {
     return (
         <section
             id='contact-section'
-            className='grid place-items-center pt-10 w-full pb-24 bg-white/60'
+            className='grid place-items-center pt-10 w-full pb-24'
         >
             <form
                 className='md:w-[62.25%] py-8 px-6 sm:px-10 bg-white shadow-sm drop-shadow-sm'

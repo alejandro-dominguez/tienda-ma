@@ -13,10 +13,7 @@ const FeaturedItemsContainer = () => {
     const blogData = blogs[blogs.length -1]
 
     return (
-        <section
-            id='featured-section'
-            className='w-full grid place-items-center md:px-10 py-2'
-        >
+        <section className='w-full grid place-items-center md:px-10 py-2'>
             {
                 (data.length && blogs.length && !loading && !error && !loadingBlogs && !errorBlogs) ?
                     <div className='w-full px-4 py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
@@ -36,7 +33,7 @@ const FeaturedItemsContainer = () => {
                         </div>
                     </div>
                 : (!error && !errorBlogs) ?
-                    <div className='w-full grid place-items-center bg-white/70 px-4 py-8 shadow-md min-h-[39.2rem]'>
+                    <div className='w-full grid place-items-center px-4 py-8 min-h-[39.2rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'

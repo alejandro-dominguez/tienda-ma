@@ -29,20 +29,20 @@ const ItemCount = ({
             <div className='flex items-center justify-between px-11'>
                 <button
                     type='button'
-                    onClick={() => onPlus()}
-                    className='transition-colors text-zinc-800/95 hover:text-teal-600/90 focus:text-teal-600/90'
+                    onClick={() => onDecrement()}
+                    className='transition-colors text-zinc-800/95 hover:text-red-600/90 focus:text-red-600/90'
                 >
-                    <FaPlusCircle  className='block'/>
+                    <FaMinusCircle className='block'/>
                 </button>
                 <span className='font-black text-xl drop-shadow-sm tracking-widest text-zinc-950/90'>
                     {count}
                 </span>
                 <button
                     type='button'
-                    onClick={() => onDecrement()}
-                    className='transition-colors text-zinc-800/95 hover:text-red-600/90 focus:text-red-600/90'
+                    onClick={() => onPlus()}
+                    className='transition-colors text-zinc-800/95 hover:text-teal-600/90 focus:text-teal-600/90'
                 >
-                    <FaMinusCircle className='block'/>
+                    <FaPlusCircle  className='block'/>
                 </button>
             </div>
             <button

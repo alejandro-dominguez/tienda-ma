@@ -9,12 +9,11 @@ const PromoSectionContainer = () => {
         <section className='w-full grid place-items-center px-4 py-10 sm:p-10 bg-white'>
             {
                 (promo.length && !loading && !error) ?
-                    <h3 className='block leading-8 text-[1.75rem] md:leading-9 md:text-4xl text-center
-                    font-black font-Raleway tracking-wide'>
+                    <h3 className='block leading-8 text-[1.75rem] md:leading-9 md:text-4xl font-black font-Raleway tracking-wide'>
                         {promo[0].text}
                     </h3>
                 : !error ?
-                    <div className='w-full grid place-items-center bg-white min-h-[5rem]'>
+                    <div className='w-full grid place-items-center bg-white min-h-[4.5rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'

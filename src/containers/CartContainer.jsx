@@ -24,12 +24,13 @@ const CartContainer = () => {
                         'Carrito'
                     : showForm && products.length ?
                         'Formulario de Compra'
-                    : 'Carrito'
+                    :
+                        'Carrito'
                 }
             </h1>
             {
                 !showForm && products.length ?
-                    <div className='w-full grid place-items-center px-4 md:px-10 my-4 py-6 bg-white/70 shadow-sm'>
+                    <div className='w-full grid place-items-center px-4 md:px-10'>
                         <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map((product, i) => {
@@ -71,10 +72,10 @@ const CartContainer = () => {
                         />
                     </div>
                 :
-                    <div className='w-fit grid place-items-center justify-self-center bg-white/70 rounded-lg shadow-sm -mt-5'>
+                    <div className='w-fit grid place-items-center justify-self-center rounded-lg shadow-sm -mt-5'>
                         <Link
                             to='/'
-                            className='flex flex-col items-center justify-center gap-6 px-10 md:px-16 py-10'
+                            className='flex flex-col items-center justify-center gap-6 py-6 px-7 bg-white shadow-sm drop-shadow-sm'
                         >
                             <h1 className='font-bold text-lg tracking-wide font-Raleway grid place-items-center leading-6 drop-shadow-sm'>
                                 <span>

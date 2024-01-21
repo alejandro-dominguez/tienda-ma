@@ -38,24 +38,42 @@ const Footer = () => {
                 <h3 className='font-Raleway font-black text-xl text-zinc-800'>
                     Contáctanos
                 </h3>
-                <div className='flex justify-start gap-2 mt-2'>
+                <Link
+                    to='https://wa.me/+5493416630000'
+                    referrerPolicy='no-referrer'
+                    rel='noopener'  
+                    target='_blank'
+                    className='flex justify-start gap-2 mt-2'
+                >
                     <BsFillTelephoneFill className='block text-[1.3rem] text-zinc-900' />
                     <span className='font-bold font-Lato drop-shadow-sm text-sm'>
                         3416 630 000
                    </span>
-                </div>
-                <div className='flex justify-start gap-2 mt-1'>
+                </Link>
+                <Link
+                    to='mailto:contacto.tiendama@gmail.com'
+                    referrerPolicy='no-referrer'
+                    rel='noopener'  
+                    target='_blank'
+                    className='flex justify-start gap-2 mt-1'
+                >
                     <MdEmail className='block text-[1.43rem] text-zinc-900' />
                     <span className='font-bold font-Lato drop-shadow-sm text-sm'>
                         contacto.tiendama@gmail.com
                     </span>
-                </div>
-                <div className='flex justify-start gap-2 mt-1'>
+                </Link>
+                <Link
+                    to='https://www.instagram.com/tiendama_rosario/'
+                    referrerPolicy='no-referrer'
+                    rel='noopener'  
+                    target='_blank'
+                    className='flex justify-start gap-2 mt-1'
+                >
                     <PiInstagramLogoFill className='block text-2xl text-zinc-900' />
                     <span className='font-bold font-Lato drop-shadow-sm text-sm'>
                         @tiendama_rosario
                     </span>
-                </div>
+                </Link>
             </div>
             <div className='flex flex-col items-center gap-4'>
                 <BiSolidCaretUpCircle

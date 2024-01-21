@@ -65,7 +65,7 @@ const ItemCategoriesContainer = () => {
                         }
                     </>
                 : !error ?
-                    <div className='w-full grid place-items-center bg-white/70 mt-2 py-4 shadow-sm min-h-[24rem]'>
+                    <div className='w-full grid place-items-center mt-2 py-4 shadow-sm min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
                                 strokeColor='white'
