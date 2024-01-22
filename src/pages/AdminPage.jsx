@@ -2,6 +2,10 @@ import {
     useState,
     useContext
 } from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/authContext';
 
@@ -29,6 +33,13 @@ const AdminPage = () => {
             navigate('/admin/consola')
         } catch (error) {
             setError(error.message)
+            toast.error(
+                `${error}`,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -38,7 +49,7 @@ const AdminPage = () => {
                 Administrador
             </h1>
             <form
-                className='p-8 shadow-sm bg-white/70 flex flex-col mx-auto'
+                className='p-8 shadow-sm drop-shadow-sm bg-white flex flex-col mx-auto'
                 autoComplete='off'
                 onSubmit={handleSubmit}
             >
@@ -69,6 +80,12 @@ const AdminPage = () => {
                     </span>
                 </button>
             </form>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </main>
     )
 };

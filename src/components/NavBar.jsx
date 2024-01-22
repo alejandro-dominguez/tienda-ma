@@ -19,11 +19,11 @@ const NavBar = () => {
     const [ navData, ] = useState([
         {
             'name': 'bebé',
-            'url': 'categorias/bebe/pañales'
+            'url': 'categorias/bebe/pañales-bebe'
         },
         {
             'name': 'adulto',
-            'url': 'categorias/adulto/pañales'
+            'url': 'categorias/adulto/pañales-adulto'
         },
         {
             'name': 'higiene',

@@ -19,6 +19,7 @@ import PaymentsPage from '../pages/PaymentsPage';
 import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
 import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
+import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage.jsx';
 
 const router = createBrowserRouter([
     {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/consola/blogs',
                 element: <AdminBlogsPage />,
+            },
+            {
+                path: '/admin/consola/formasDePago',
+                element: <AdminPaymentsPage />,
             },
         ],
     },

@@ -149,8 +149,8 @@ const ItemDetailCard = ({
             />
         </div>
         <Toaster
-                richColors
-                toastOptions={{
+            richColors
+            toastOptions={{
                 className: 'text-center',
             }}
         />

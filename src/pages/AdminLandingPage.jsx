@@ -18,6 +18,10 @@ const AdminLandingPage = () => {
             'name': 'Blogs',
             'url': 'blogs'
         },
+        {
+            'name': 'Formas de pago',
+            'url': 'formasDePago'
+        },
     ])
 
     return (
