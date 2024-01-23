@@ -93,7 +93,7 @@ const AdminBlogCard = ({ blog }) => {
                 </div>
                 <div>
                     {
-                        blog.featured === true ?
+                        blog.featured !== true ?
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors

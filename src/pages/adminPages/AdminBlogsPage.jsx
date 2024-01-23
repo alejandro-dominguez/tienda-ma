@@ -12,7 +12,10 @@ const AdminBlogsPage = () => {
                 (blogs.length && !loadingBlogs && !errorBlogs) ?
                     <div className='mx-auto flex flex-col'>
                         <CreateBlogForm />
-                        <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10 gap-6'>
+                        <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
+                            Asegurar siempre al menos un blog destacado.
+                        </h3>
+                        <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3 gap-6'>
                             {
                                 blogs.map(blog => {
                                     return (
