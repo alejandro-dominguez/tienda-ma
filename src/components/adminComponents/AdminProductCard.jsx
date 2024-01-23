@@ -7,7 +7,7 @@ import {
     updateDoc
 } from 'firebase/firestore';
 
-const AdminBlogCard = ({ blog }) => {
+const AdminProductCard = ({ blog }) => {
     const navigate = useNavigate()
 
     const deleteBlog = async (id) => {
@@ -80,7 +80,7 @@ const AdminBlogCard = ({ blog }) => {
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                        onClick={() => navigate((`/admin/consola/blogs/editar/${blog.id}`))}
+                        onClick={() => navigate((`/admin/consola/blogs/${blog.id}`))}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar
@@ -122,4 +122,4 @@ const AdminBlogCard = ({ blog }) => {
     )
 };
 
-export default AdminBlogCard;
+export default AdminProductCard;

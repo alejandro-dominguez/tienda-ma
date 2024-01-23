@@ -10,7 +10,7 @@ import {
     collection,
 } from 'firebase/firestore';
 
-const CreateBlogForm = () => {
+const CreateProductForm = () => {
     const [ errorBlog, setErrorBlog ] = useState('')
     const [ newBlog, setNewBlog ] = useState({
         blogTitle: '',
@@ -231,4 +231,4 @@ const CreateBlogForm = () => {
     )
 }
 
-export default CreateBlogForm;
+export default CreateProductForm;

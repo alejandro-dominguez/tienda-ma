@@ -2,7 +2,7 @@ import {
     useContext,
     useState
 } from 'react';
-import { db } from '../../firebase/config';
+import { db } from '../../../firebase/config';
 import {
     useNavigate,
     useParams
@@ -16,8 +16,8 @@ import {
     updateDoc
 } from 'firebase/firestore';
 import { RotatingLines } from 'react-loader-spinner';
-import { AuthContext } from '../../contexts/authContext';
-import useGetBlogArticle from '../../customHooks/useGetBlogArticle';
+import { AuthContext } from '../../../contexts/authContext';
+import useGetBlogArticle from '../../../customHooks/useGetBlogArticle';
 
 const EditBlogPage = () => {
     const { id } = useParams()
@@ -106,7 +106,7 @@ const EditBlogPage = () => {
             {
                 (JSON.stringify(blog) !== '{}' && !loading && !error) ?
                     <form
-                        className='grid pt-3 pb-5 px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
+                        className='grid pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
                         autoComplete='off'
                         onSubmit={handleSubmit}
                     >

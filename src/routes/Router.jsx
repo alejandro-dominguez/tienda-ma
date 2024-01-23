@@ -19,9 +19,10 @@ import PaymentsPage from '../pages/PaymentsPage';
 import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
 import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
-import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage.jsx';
-import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage.jsx';
-import EditBlogPage from '../pages/adminPages/EditBlogPage.jsx';
+import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage';
+import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage';
+import EditBlogPage from '../pages/adminPages/adminEditPages/EditBlogPage';
+import EditProductPage from '../pages/adminPages/adminEditPages/EditProductPage';
 
 const router = createBrowserRouter([
     {
@@ -90,8 +91,12 @@ const router = createBrowserRouter([
                 element: <AdminBlogsPage />,
             },
             {
-                path: '/admin/consola/blogs/:id',
+                path: '/admin/consola/blogs/editar/:id',
                 element: <EditBlogPage />,
+            },
+            {
+                path: '/admin/consola/productos/editar/:id',
+                element: <EditProductPage />,
             },
             {
                 path: '/admin/consola/formasDePago',
