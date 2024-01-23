@@ -1,9 +1,11 @@
 import { RotatingLines } from 'react-loader-spinner';
+import { AuthContext } from '../../contexts/authContext';
 import useGetPromo from '../../customHooks/useGetPromo';
 import UpdatePromotionForm from '../../components/adminComponents/UpdatePromotionForm.jsx';
 
 const AdminPromotionsPage = () => {
     const [ promo, error, loading ] = useGetPromo()
+    const { authUser } = useContext(AuthContext)
 
     return (
         <main className='w-full flex flex-col gap-4 mt-28 min-h-[100svh]'>

@@ -12,8 +12,9 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
-import useGetBlogArticle from '../../customHooks/useGetBlogArticle';
 import { RotatingLines } from 'react-loader-spinner';
+import { AuthContext } from '../../contexts/authContext';
+import useGetBlogArticle from '../../customHooks/useGetBlogArticle';
 
 const EditBlogPage = () => {
     const { id } = useParams()
@@ -29,6 +30,7 @@ const EditBlogPage = () => {
         blogImg2: '',
     })
     const navigate = useNavigate()
+    const { authUser } = useContext(AuthContext)
     
     const registerInputs = ({ target: {name, value} }) => {
         setNewBlog({

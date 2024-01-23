@@ -1,10 +1,12 @@
 import { RotatingLines } from 'react-loader-spinner';
+import { AuthContext } from '../../contexts/authContext';
 import useGetBlogs from '../../customHooks/useGetBlogs';
 import AdminBlogCard from '../../components/adminComponents/AdminBlogCard';
 import CreateBlogForm from '../../components/adminComponents/CreateBlogForm';
 
 const AdminBlogsPage = () => {
     const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
+    const { authUser } = useContext(AuthContext)
 
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>

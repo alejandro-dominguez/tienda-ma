@@ -70,7 +70,7 @@ const UpdatePromotionForm = () => {
                 type='text' name='newPromotion' id='newPromotion' required
                 placeholder='Texto de promoción' min={8} value={newPromo}
                 className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
-                rounded-sm drop-shadow-sm text-black'
+                rounded-sm drop-shadow-sm text-black placeholder:tracking-normal'
                 onChange={(e) => setNewPromo(e.target.value)}
             />
             <button
