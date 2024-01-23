@@ -14,7 +14,6 @@ const AdminPage = () => {
         adminEmail: '',
         adminPassword: ''
     })
-    const [ error, setError ] = useState(null)
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate()
     
@@ -27,14 +26,13 @@ const AdminPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setError(null)
         try {
             await signIn(user.adminEmail, user.adminPassword)
             navigate('/admin/consola')
         } catch (error) {
             setError(error.message)
             toast.error(
-                `${error}`,
+                `cuenta o contraseña incorrectas`,
                 {
                     duration: 3000,
                     position: 'bottom-center',

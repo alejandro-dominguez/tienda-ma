@@ -14,7 +14,7 @@ const BlogArticleContainer = () => {
             (JSON.stringify(blog) !== '{}' && !loading && !error) ?
                     <BlogArticle blog={blog} />
             : !error ?
-                <div className='w-full grid place-items-center mt-36 py-4 shadow-sm min-h-[24rem]'>
+                <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
                     <div className='p-5 bg-teal-600/20 rounded-lg'>
                         <RotatingLines
                             strokeColor='white'

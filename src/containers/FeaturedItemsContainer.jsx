@@ -10,14 +10,25 @@ const FeaturedItemsContainer = () => {
     const { categoryId, subcategoryId } = useParams()
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
     const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
-    const blogData = blogs[blogs.length -1]
 
     return (
         <section className='w-full grid place-items-center md:px-10 py-2'>
             {
                 (data.length && blogs.length && !loading && !error && !loadingBlogs && !errorBlogs) ?
                     <div className='w-full px-4 py-8 justify-between items-start grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-10'>
-                        <FeaturedBlog blogData={blogData} />
+                        {
+                            blogs.filter(blog => {
+                                return blog.featured === true
+                            })
+                            .map(blog => {
+                                return (
+                                    <FeaturedBlog
+                                        blogData={blog}
+                                        key={blog.id}
+                                    />
+                                )
+                            })
+                        }
                         <div className='flex flex-col gap-8 mt-7 md:mt-0'>
                             {
                                 data.map((productData, i) => {

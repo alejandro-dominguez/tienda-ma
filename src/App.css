@@ -28,8 +28,12 @@ textarea {
 	@apply resize-none;
 }
 
+input::placeholder {
+	@apply tracking-widest;
+}
+
 textarea::placeholder {
-	@apply text-sm;
+	@apply text-sm tracking-widest;
 }
 
 textarea::-webkit-scrollbar {
@@ -47,7 +51,7 @@ footer {
 	}
 	
 	.contact-input::placeholder {
-		@apply text-sm;
+		@apply text-sm tracking-normal;
 	}
 	
 	.contact-input::-webkit-scrollbar {
@@ -57,10 +61,15 @@ footer {
 	.contact-textarea {
 		@apply mt-2 bg-teal-500/[8%] shadow-sm py-2 px-3 rounded-sm drop-shadow-sm text-black md:w-[22rem] max-h-32 md:max-h-36;
 	}
-	
+
 	.cart-textarea {
 		@apply mt-3 bg-teal-500/[8%] shadow-sm py-2 px-3 rounded-sm drop-shadow-sm text-black md:w-[22rem] max-h-28;
 	}
+
+	.contact-textarea::placeholder, .cart-textarea::placeholder {
+		@apply tracking-normal;
+	}
+	
 
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');

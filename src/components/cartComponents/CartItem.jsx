@@ -6,7 +6,7 @@ import numberFormater from '../../utilities/numberFormater';
 const CartItem = ({ item }) => {
     const { removeProduct } = useContext(ShopContext)
     
-    const handleRemove = () => {
+    const removeItem = () => {
         removeProduct(item.prodId)
     }
     
@@ -54,7 +54,7 @@ const CartItem = ({ item }) => {
             </div>
             <BsFillTrash3Fill
                 className='block cursor-pointer text-[1.3rem] drop-shadow-sm text-red-500/80'
-                onClick={() => handleRemove()}
+                onClick={() => removeItem()}
             />
         </div>
     )
