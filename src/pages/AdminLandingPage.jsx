@@ -1,4 +1,7 @@
-import { useContext, useState } from 'react';
+import {
+    useContext,
+    useState
+} from 'react';
 import { AuthContext } from '../contexts/authContext';
 import AdminErrorPage from '../pages/AdminErrorPage';
 import AdminMenu from '../components/adminComponents/AdminMenu';

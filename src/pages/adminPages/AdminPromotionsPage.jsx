@@ -1,5 +1,6 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../contexts/authContext';
+import { useContext } from 'react';
 import useGetPromo from '../../customHooks/useGetPromo';
 import UpdatePromotionForm from '../../components/adminComponents/UpdatePromotionForm.jsx';
 

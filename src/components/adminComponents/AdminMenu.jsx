@@ -12,15 +12,23 @@ const AdminMenu = ({ adminMenuData }) => {
                         />
                 )})
             }
+            {/* detener / habilitar sitio | ternario */}
             <button
-                className='grid place-items-center'
+                className='my-1 md:my-0 py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-40'
                 onClick={() => {}}
             >
-                <span className='my-1 md:my-0 font-bold text-sm tracking-wide drop-shadow-sm py-2 px-3 text-center
-                border-2 w-40 rounded-lg border-red-500/50 bg-red-100/[7%]'>
+                <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
                     Detener sitio
                 </span>
             </button>
+{/*             <button
+                className='my-1 md:my-0 py-2 px-3 grid place-items-center bg-green-600 rounded-lg w-40'
+                onClick={() => {}}
+            >
+                <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
+                    Habilitar sitio
+                </span>
+            </button> */}
         </div>
     )
 };
