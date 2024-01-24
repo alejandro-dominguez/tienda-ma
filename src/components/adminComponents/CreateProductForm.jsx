@@ -11,53 +11,80 @@ import {
 } from 'firebase/firestore';
 
 const CreateProductForm = () => {
-    const [ errorBlog, setErrorBlog ] = useState('')
-    const [ newBlog, setNewBlog ] = useState({
-        blogTitle: '',
-        blogSubtitle: '',
-        blogDrop: '',
-        blogText1: '',
-        blogText2: '',
-        blogImg1: '',
-        blogImg2: '',
+    const [ errorProduct, setErrorProduct ] = useState('')
+    const [ newProduct, setNewProduct ] = useState({
+        productBrand: '',
+        productName: '',
+        productCategory: '',
+        productSubcategory: '',
+        productDesc: '',
+        productImg: '',
     })
+    const [ productPrice, setProductPrice ] = useState(0)
+    const [ productBabySizes, setProductBabySizes ] = useState(false)
+    const [ productAdultSizes, setProductAdultSizes ] = useState(false)
     const navigate = useNavigate()
     
     const registerInputs = ({ target: {name, value} }) => {
-        setNewBlog({
-            ...newBlog,
+        setNewProduct({
+            ...newProduct,
             [name]: value
         })
     }
+
+    const registerPrice = (e) => {
+        setProductPrice(
+            Number(e.target.value)
+        )
+    }
+
+    const registerBabySizes = (e) => {
+        if (!e.target.value) {
+            setProductBabySizes(false)
+        }
+        setProductBabySizes(true)
+    }
     
+    const registerAdultSizes = (e) => {
+        if (!e.target.value) {
+            setProductAdultSizes(false)
+        }
+        setProductAdultSizes(true)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await addDoc(collection(db, 'blogs'),
+            await addDoc(collection(db, 'products'),
                 {
-                    title: `${newBlog.blogTitle}`,
-                    subtitle: `${newBlog.blogSubtitle}`,
-                    drop: `${newBlog.blogDrop}`,
-                    text1: `${newBlog.blogText1}`,
-                    text2: `${newBlog.blogText2}`,
-                    img1: `${newBlog.blogImg1}`,
-                    img2: `${newBlog.blogImg2}`,
+                    brand: `${newProduct.productBrand}`,
+                    name: `${newProduct.productName}`,
+                    category: `${newProduct.productCategory}`,
+                    subcategory: `${newProduct.productSubcategory}`,
+                    desc: `${newProduct.productDesc}`,
+                    img: `${newProduct.productImg}`,
+                    price: productPrice,
+                    sizes: productBabySizes,
+                    adultSizes: productAdultSizes,
+                    quantity: 1000000,
                     featured: false,
                 }
             )
-            setNewBlog(
+            setNewProduct(
                 {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
+                    productBrand: '',
+                    productName: '',
+                    productCategory: '',
+                    productSubcategory: '',
+                    productDesc: '',
+                    productImg: '',
                 }
             )
+            setProductPrice(0)
+            setProductBabySizes(false)
+            setProductAdultSizes(false)
             toast.success(
-                'Blog agregado',
+                'Producto agregado',
                 {
                     duration: 3000,
                     position: 'bottom-center',
@@ -67,20 +94,22 @@ const CreateProductForm = () => {
                 navigate('/admin/consola')
             }, 3500)
         } catch (error) {
-            setNewBlog(
+            setNewProduct(
                 {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
+                    productBrand: '',
+                    productName: '',
+                    productCategory: '',
+                    productSubcategory: '',
+                    productDesc: '',
+                    productImg: '',
                 }
             )
-            setErrorBlog(error.message)
+            setProductPrice(0)
+            setProductBabySizes(false)
+            setProductAdultSizes(false)
+            setErrorProduct(error.message)
             toast.error(
-                `${errorBlog}`,
+                `${errorProduct}`,
                 {
                     duration: 3000,
                     position: 'bottom-center',
@@ -96,21 +125,21 @@ const CreateProductForm = () => {
             onSubmit={handleSubmit}
         >
             <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto'>
-                Nuevo Blog:
+                Nuevo Producto:
             </h1>
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 <div className='flex flex-col gap-1'>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogTitle'
+                            htmlFor='productBrand'
                             className='mt-2'    
                         >
-                            Título:
+                            Marca:
                         </label>
                         <input
-                            type='text' name='blogTitle' id='blogTitle' required
-                            placeholder='...' min={8}
+                            type='text' name='productBrand' id='productBrand'
+                            placeholder='...' min={8} required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -118,14 +147,14 @@ const CreateProductForm = () => {
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogSubtitle'
+                            htmlFor='productName'
                             className='mt-3'    
                         >
-                            Subtítulo:
+                            Nombre:
                         </label>
                         <input
-                            type='text' name='blogSubtitle' id='blogSubtitle' required
-                            placeholder='...' min={8}
+                            type='text' name='productName' id='productName'
+                            placeholder='...' min={8} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -133,14 +162,14 @@ const CreateProductForm = () => {
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogDrop'
+                            htmlFor='productDesc'
                             className='mt-2'    
                         >
-                            Bajada:
+                            Descripción:
                         </label>
                         <textarea
-                            type='text' name='blogDrop' id='blogDrop' required cols='10' rows='10'
-                            placeholder='...' min={20}
+                            type='text' name='productDesc' id='productDesc' cols='10' rows='10'
+                            placeholder='...' min={20} required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -150,30 +179,63 @@ const CreateProductForm = () => {
                 <div className='flex flex-col gap-1'>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogText1'
+                            htmlFor='productCategory'
                             className='mt-2'    
                         >
-                            Primer texto:
+                            Categoría:
                         </label>
-                        <textarea
-                            type='text' name='blogText1' id='blogText1' required cols='10' rows='10'
-                            placeholder='...' min={20}
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                        <select
+                            name='productCategory' id='productCategory' required
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerInputs}
+                        >
+                            <option value='bebe'>Bebé</option>
+                            <option value='adulto'>Adulto</option>
+                            <option value='higiene'>Higiene</option>
+                            <option value='accesorios'>Accesorios</option>
+                        </select>
+                    </div>
+                    <div className='flex flex-col'>
+                        <label
+                            htmlFor='productSubcategory'
+                            className='mt-2'    
+                        >
+                            Subcategoría:
+                        </label>
+                        <input
+                            type='text' name='productSubcategory' id='productSubcategory'
+                            placeholder='...' min={8} required
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         />
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogText2'
+                            htmlFor='productPrice'
                             className='mt-2'    
                         >
-                            Segundo texto:
+                            Precio:
                         </label>
-                        <textarea
-                            type='text' name='blogText2' id='blogText2' required cols='10' rows='10'
-                            placeholder='...' min={20}
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                        <input
+                            type='number' name='productPrice' id='productPrice' placeholder='1010'
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerPrice} required
+                        />
+                    </div>
+                    <div className='flex flex-col'>
+                        <label
+                            htmlFor='productImg'
+                            className='mt-2'    
+                        >
+                            Link imagen:
+                        </label>
+                        <input
+                            type='text' name='productImg' id='productImg'
+                            placeholder='...' min={8} required
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         />
@@ -182,33 +244,37 @@ const CreateProductForm = () => {
                 <div className='flex flex-col gap-1'>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogImg1'
+                            htmlFor='productSizes'
                             className='mt-2'    
                         >
-                            Link imagen 1:
+                            Talles bebé:
                         </label>
-                        <input
-                            type='text' name='blogImg1' id='blogImg1' required
-                            placeholder='...' min={8}
+                        <select
+                            name='productSizes' id='productSizes' required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
-                            onChange={registerInputs}
-                        />
+                            onChange={registerBabySizes}
+                        >
+                            <option value={false}>Sin Talles</option>
+                            <option value={true}>Talles de bebé</option>
+                        </select>
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='blogImg2'
-                            className='mt-3'    
+                            htmlFor='productAdultSizes'
+                            className='mt-2'    
                         >
-                            Link imagen 2:
+                            Talles adulto:
                         </label>
-                        <input
-                            type='text' name='blogImg2' id='blogImg2' required
-                            placeholder='...' min={8}
-                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                        <select
+                            name='productAdultSizes' id='productAdultSizes' required
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
-                            onChange={registerInputs}
-                        />
+                            onChange={registerAdultSizes}
+                        >
+                            <option value={false}>Sin Talles</option>
+                            <option value={true}>Talles de adulto</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -218,7 +284,7 @@ const CreateProductForm = () => {
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Cargar nuevo blog
+                    Cargar producto
                 </span>
             </button>
             <Toaster

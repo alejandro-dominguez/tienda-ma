@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import useGetAllProducts from '../../../customHooks/useGetAllProducts';
 import { useNavigate } from 'react-router-dom';
+import useGetAllProducts from '../../../customHooks/useGetAllProducts';
 
 const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('')
