@@ -57,12 +57,12 @@ const CreateProductForm = () => {
         try {
             await addDoc(collection(db, 'products'),
                 {
-                    brand: `${newProduct.productBrand}`,
-                    name: `${newProduct.productName}`,
-                    category: `${newProduct.productCategory}`,
-                    subcategory: `${newProduct.productSubcategory}`,
-                    desc: `${newProduct.productDesc}`,
-                    img: `${newProduct.productImg}`,
+                    brand: newProduct.productBrand,
+                    name: newProduct.productName,
+                    category: newProduct.productCategory,
+                    subcategory: newProduct.productSubcategory,
+                    desc: newProduct.productDesc,
+                    img: newProduct.productImg,
                     price: productPrice,
                     sizes: productBabySizes,
                     adultSizes: productAdultSizes,
@@ -190,6 +190,7 @@ const CreateProductForm = () => {
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         >
+                            <option disabled value={null}>Elige una categoría</option>
                             <option value='bebe'>Bebé</option>
                             <option value='adulto'>Adulto</option>
                             <option value='higiene'>Higiene</option>
