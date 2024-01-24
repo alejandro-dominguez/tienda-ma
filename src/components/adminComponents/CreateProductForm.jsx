@@ -70,6 +70,12 @@ const CreateProductForm = () => {
                     featured: false,
                 }
             )
+            await addDoc(collection(db, 'subcategories'),
+                {
+                    category: newProduct.productCategory,
+                    subcategory: newProduct.productSubcategory,
+                }
+            )
             setNewProduct(
                 {
                     productBrand: '',
