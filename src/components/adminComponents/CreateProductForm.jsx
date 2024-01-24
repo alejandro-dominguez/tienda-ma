@@ -245,7 +245,7 @@ const CreateProductForm = () => {
                     <div className='flex flex-col'>
                         <label
                             htmlFor='productSizes'
-                            className='mt-2'    
+                            className='mt-2'
                         >
                             Talles bebé:
                         </label>
