@@ -133,6 +133,9 @@ const CreateProductForm = () => {
             <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto'>
                 Nuevo Producto:
             </h1>
+            <h3 className='font-bold font-Raleway my-2 text-red-500'>
+                Subcategorías de pañales: pañales-bebe/pañales-adulto.
+            </h3>
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 <div className='flex flex-col gap-1'>
@@ -291,7 +294,7 @@ const CreateProductForm = () => {
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Cargar producto
+                    Crear producto
                 </span>
             </button>
             <Toaster
