@@ -190,7 +190,7 @@ const CreateProductForm = () => {
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         >
-                            <option disabled value={null}>Elige una categoría</option>
+                            <option value={null}>Elige una categoría</option>
                             <option value='bebe'>Bebé</option>
                             <option value='adulto'>Adulto</option>
                             <option value='higiene'>Higiene</option>
