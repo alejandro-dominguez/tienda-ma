@@ -7,12 +7,12 @@ import {
     updateDoc
 } from 'firebase/firestore';
 
-const AdminProductCard = ({ blog }) => {
+const AdminProductCard = ({ prod }) => {
     const navigate = useNavigate()
 
-    const deleteBlog = async (id) => {
+    const deleteProduct = async (id) => {
         try {
-            const docRef = doc(db, 'blogs', id)
+            const docRef = doc(db, 'products', id)
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
@@ -22,9 +22,9 @@ const AdminProductCard = ({ blog }) => {
         }
     }
 
-    const updateInactiveBlog = async (id) => {
+    const updateInactiveProduct = async (id) => {
         try {
-            const docRef = doc(db, 'blogs', id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef,
                 {
                     featured: true
@@ -37,9 +37,9 @@ const AdminProductCard = ({ blog }) => {
         }
     }
 
-    const updateActiveBlog = async (id) => {
+    const updateActiveProduct = async (id) => {
         try {
-            const docRef = doc(db, 'blogs', id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef,
                 {
                     featured: false
@@ -56,13 +56,13 @@ const AdminProductCard = ({ blog }) => {
         <div className='p-6 bg-white drop-shadow-sm shadow-sm'>
             <div className='w-full drop-shadow-sm'>
                 <img
-                    src={blog.img1}
-                    alt='imagen de portada del blog'
+                    src={prod.img}
+                    alt='imagen de producto'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'
                     />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
-                {blog.title}
+                {prod.brand} {prod.name}
             </h3>
             <div className='flex flex-col gap-1'>
                 <div className='flex items-center justify-between'>
@@ -70,17 +70,17 @@ const AdminProductCard = ({ blog }) => {
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                        onClick={() => navigate((`/blogs/${blog.id}`))}
+                        onClick={() => navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
-                            Ver artículo
+                            Ver producto
                         </span>
                     </button>
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                        onClick={() => navigate((`/admin/consola/blogs/${blog.id}`))}
+                        onClick={() => navigate((`/admin/consola/productos/editar/${prod.id}`))}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar
@@ -88,20 +88,20 @@ const AdminProductCard = ({ blog }) => {
                     </button>
                     <BsFillTrash3Fill
                         className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                        onClick={() => deleteBlog(blog.id)}
+                        onClick={() => deleteProduct(prod.id)}
                         />
                 </div>
                 <div>
                     {
-                        blog.featured !== true ?
+                        prod.featured !== true ?
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
-                                onClick={() => updateInactiveBlog(blog.id)}
+                                onClick={() => updateInactiveProduct(prod.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
-                                    Destacar blog
+                                    Destacar producto
                                 </span>
                             </button>
                         :
@@ -109,10 +109,10 @@ const AdminProductCard = ({ blog }) => {
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
-                                onClick={() => updateActiveBlog(blog.id)}
+                                onClick={() => updateActiveProduct(prod.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
-                                    No Destacar blog
+                                    No Destacar producto
                                 </span>
                             </button>
                     }

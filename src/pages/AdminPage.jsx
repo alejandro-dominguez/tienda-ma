@@ -14,6 +14,7 @@ const AdminPage = () => {
         adminEmail: '',
         adminPassword: ''
     })
+    const [ errorAuth, setErrorAuth ] = useState('')
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate()
     
@@ -28,16 +29,25 @@ const AdminPage = () => {
         e.preventDefault()
         try {
             await signIn(user.adminEmail, user.adminPassword)
+            setUser({
+                adminEmail: '',
+                adminPassword: ''
+            })
+            setErrorAuth('')
             navigate('/admin/consola')
         } catch (error) {
-            setError(error.message)
+            setErrorAuth(errorAuth.message)
+            console.log(errorAuth)
             toast.error(
-                `cuenta o contraseña incorrectas`,
+                'cuenta o contraseña incorrectas',
                 {
                     duration: 3000,
                     position: 'bottom-center',
                 }
             )
+            setTimeout(() => {
+                setErrorAuth('')
+            }, 3000)
         }
     }
 

@@ -35,13 +35,13 @@ const CreateBlogForm = () => {
         try {
             await addDoc(collection(db, 'blogs'),
                 {
-                    title: `${newBlog.blogTitle}`,
-                    subtitle: `${newBlog.blogSubtitle}`,
-                    drop: `${newBlog.blogDrop}`,
-                    text1: `${newBlog.blogText1}`,
-                    text2: `${newBlog.blogText2}`,
-                    img1: `${newBlog.blogImg1}`,
-                    img2: `${newBlog.blogImg2}`,
+                    title: newBlog.blogTitle,
+                    subtitle: newBlog.blogSubtitle,
+                    drop: newBlog.blogDrop,
+                    text1: newBlog.blogText1,
+                    text2: newBlog.blogText2,
+                    img1: newBlog.blogImg1,
+                    img2: newBlog.blogImg2,
                     featured: false,
                 }
             )
@@ -95,7 +95,7 @@ const CreateBlogForm = () => {
             autoComplete='off'
             onSubmit={handleSubmit}
         >
-            <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto'>
+            <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto mt-1'>
                 Nuevo Blog:
             </h1>
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>

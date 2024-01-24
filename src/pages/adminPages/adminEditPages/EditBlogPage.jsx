@@ -45,16 +45,16 @@ const EditBlogPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', `${id}`)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef,
                 {
-                    title: `${newBlog.blogTitle}`,
-                    subtitle: `${newBlog.blogSubtitle}`,
-                    drop: `${newBlog.blogDrop}`,
-                    text1: `${newBlog.blogText1}`,
-                    text2: `${newBlog.blogText2}`,
-                    img1: `${newBlog.blogImg1}`,
-                    img2: `${newBlog.blogImg2}`,
+                    title: newBlog.blogTitle,
+                    subtitle: newBlog.blogSubtitle,
+                    drop: newBlog.blogDrop,
+                    text1: newBlog.blogText1,
+                    text2: newBlog.blogText2,
+                    img1: newBlog.blogImg1,
+                    img2: newBlog.blogImg2,
                 }
             )
             setNewBlog(

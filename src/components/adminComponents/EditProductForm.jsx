@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import {
     Toaster,
     toast
 } from 'sonner';
 import {
-    addDoc,
-    collection,
+    doc,
+    updateDoc
 } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-const CreateProductForm = () => {
+const EditProductForm = ({ product }) => {
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
@@ -20,7 +20,6 @@ const CreateProductForm = () => {
         productDesc: '',
         productImg: '',
     })
-    const [ productPrice, setProductPrice ] = useState(0)
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
     const navigate = useNavigate()
@@ -30,12 +29,6 @@ const CreateProductForm = () => {
             ...newProduct,
             [name]: value
         })
-    }
-
-    const registerPrice = (e) => {
-        setProductPrice(
-            Number(e.target.value)
-        )
     }
 
     const registerBabySizes = (e) => {
@@ -55,27 +48,17 @@ const CreateProductForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await addDoc(collection(db, 'products'),
-                {
-                    brand: newProduct.productBrand,
-                    name: newProduct.productName,
-                    category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
-                    desc: newProduct.productDesc,
-                    img: newProduct.productImg,
-                    price: productPrice,
-                    sizes: productBabySizes,
-                    adultSizes: productAdultSizes,
-                    quantity: 1000000,
-                    featured: false,
-                }
-            )
-            await addDoc(collection(db, 'subcategories'),
-                {
-                    category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
-                }
-            )
+            const docRef = doc(db, 'products', product.id)
+            await updateDoc(collection(docRef, {
+                brand: newProduct.productBrand,
+                name: newProduct.productName,
+                category: newProduct.productCategory,
+                subcategory: newProduct.productSubcategory,
+                desc: newProduct.productDesc,
+                img: newProduct.productImg,
+                sizes: productBabySizes,
+                adultSizes: productAdultSizes,
+            }))
             setNewProduct(
                 {
                     productBrand: '',
@@ -86,11 +69,10 @@ const CreateProductForm = () => {
                     productImg: '',
                 }
             )
-            setProductPrice(0)
             setProductBabySizes(false)
             setProductAdultSizes(false)
             toast.success(
-                'Producto agregado',
+                'Producto editado',
                 {
                     duration: 3000,
                     position: 'bottom-center',
@@ -110,7 +92,6 @@ const CreateProductForm = () => {
                     productImg: '',
                 }
             )
-            setProductPrice(0)
             setProductBabySizes(false)
             setProductAdultSizes(false)
             setErrorProduct(error.message)
@@ -126,12 +107,12 @@ const CreateProductForm = () => {
 
     return (
         <form
-            className='grid pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
+            className='grid pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-full'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
-            <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto'>
-                Nuevo Producto:
+            <h1 className='font-bold font-Raleway text-lg md:text-xl mt-1 drop-shadow-sm mx-auto'>
+                {product.brand} {product.name}
             </h1>
             <h3 className='font-bold font-Raleway my-2 text-red-500'>
                 Subcategorías de pañales: pañales-bebe/pañales-adulto.
@@ -223,20 +204,6 @@ const CreateProductForm = () => {
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='productPrice'
-                            className='mt-2'    
-                        >
-                            Precio:
-                        </label>
-                        <input
-                            type='number' name='productPrice' id='productPrice' placeholder='1010'
-                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black'
-                            onChange={registerPrice} required
-                        />
-                    </div>
-                    <div className='flex flex-col'>
-                        <label
                             htmlFor='productImg'
                             className='mt-2'    
                         >
@@ -294,7 +261,7 @@ const CreateProductForm = () => {
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Crear producto
+                    Editar producto
                 </span>
             </button>
             <Toaster
@@ -307,4 +274,4 @@ const CreateProductForm = () => {
     )
 };
 
-export default CreateProductForm;
+export default EditProductForm;
