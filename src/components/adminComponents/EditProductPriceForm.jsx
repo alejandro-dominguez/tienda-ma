@@ -60,9 +60,15 @@ const EditProductPriceForm = ({ product }) => {
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
+                <h3 className='text-sm font-bold'>
+                    Precio actual:
+                </h3>
+                <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
+                    {product.price}
+                </span>
                 <label
                     htmlFor='productPrice'
-                    className='mt-2'    
+                    className='mt-3'    
                 >
                     Nuevo precio:
                 </label>

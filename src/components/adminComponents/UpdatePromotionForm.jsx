@@ -16,7 +16,6 @@ const UpdatePromotionForm = ({ promo }) => {
     const [ newPromo, setNewPromo ] = useState('')
     const [ errorPromo, setErrorPromo ] = useState('')
     const navigate = useNavigate()
-    console.log(promo);
     
     const handleSubmit = async (e) => {
         e.preventDefault()
