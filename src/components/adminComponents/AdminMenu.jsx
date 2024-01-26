@@ -1,4 +1,4 @@
-import AdminMenuItem from './adminMenuItem/AdminMenuItem';
+import AdminMenuItem from './adminItems/AdminMenuItem';
 
 const AdminMenu = ({ adminMenuData }) => {
     return (

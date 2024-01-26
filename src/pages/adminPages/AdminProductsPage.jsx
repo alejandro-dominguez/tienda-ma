@@ -4,16 +4,20 @@ import { RotatingLines } from 'react-loader-spinner';
 import useGetAllProducts from '../../customHooks/useGetAllProducts';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
 import AdminProductCard from '../../components/adminComponents/AdminProductCard';
+import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
+import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 
 const AdminProductsPage = () => {
     const [ prods, error, loading ] = useGetAllProducts()
+    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const { authUser } = useContext(AuthContext)
 
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             { 
-                (prods.length && !loading && !error) ?
+                (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
                     <div className='mx-auto flex flex-col'>
+                        <AdminSubcategoriesContainer subcategories={subcategories} />
                         <CreateProductForm />
                         <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
                             Asegurar siempre al menos un producto destacado.
@@ -30,7 +34,7 @@ const AdminProductsPage = () => {
                             }
                         </div>
                     </div>
-                : !error ?
+                : (!error && !errorSubcategories) ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines

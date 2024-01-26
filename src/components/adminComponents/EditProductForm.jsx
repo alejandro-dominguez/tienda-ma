@@ -111,9 +111,9 @@ const EditProductForm = ({ product }) => {
             autoComplete='off'
             onSubmit={handleSubmit}
         >
-            <h1 className='font-bold font-Raleway text-lg md:text-xl mt-1 drop-shadow-sm mx-auto'>
+            <h3 className='font-bold font-Raleway text-lg md:text-xl mt-1 drop-shadow-sm mx-auto'>
                 {product.brand} {product.name}
-            </h1>
+            </h3>
             <h3 className='font-bold font-Raleway my-2 text-red-500'>
                 Subcategorías de pañales: pañales-bebe/pañales-adulto.
             </h3>
