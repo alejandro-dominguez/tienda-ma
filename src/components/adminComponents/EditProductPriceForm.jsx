@@ -5,7 +5,6 @@ import {
 import {
     doc,
     updateDoc,
-    collection
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +13,7 @@ import { useState } from 'react';
 const EditProductPriceForm = ({ product }) => {
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ productPrice, setProductPrice ] = useState(0)
+    console.log(product.id);
     const navigate = useNavigate()
 
     const registerPrice = (e) => {
@@ -26,9 +26,9 @@ const EditProductPriceForm = ({ product }) => {
         e.preventDefault()
         try {
             const docRef = doc(db, 'products', product.id)
-            await updateDoc(collection(docRef, {
+            await updateDoc(docRef, {
                 price: productPrice,
-            }))
+            })
             setProductPrice(0)
             toast.success(
                 'Precio actualizado',

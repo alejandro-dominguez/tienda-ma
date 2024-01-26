@@ -5,7 +5,6 @@ import {
 import {
     doc,
     updateDoc,
-    collection
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
@@ -50,7 +49,7 @@ const EditProductForm = ({ product }) => {
         e.preventDefault()
         try {
             const docRef = doc(db, 'products', product.id)
-            await updateDoc(collection(docRef, {
+            await updateDoc(docRef, {
                 brand: newProduct.productBrand,
                 name: newProduct.productName,
                 category: newProduct.productCategory,
@@ -59,7 +58,7 @@ const EditProductForm = ({ product }) => {
                 img: newProduct.productImg,
                 sizes: productBabySizes,
                 adultSizes: productAdultSizes,
-            }))
+            })
             setNewProduct(
                 {
                     productBrand: '',
