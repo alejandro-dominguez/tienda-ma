@@ -1,13 +1,5 @@
 {
-    "routes": [
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.*)",
-            "status": 200,
-            "dest": "/"
-        }
+    "redirects": [
+      { "source": "/*", "destination": "/", "permanent": false }
     ]
 }
-  
