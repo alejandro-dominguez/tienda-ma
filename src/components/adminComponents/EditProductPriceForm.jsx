@@ -40,16 +40,7 @@ const EditProductPriceForm = ({ product }) => {
                 navigate('/admin/consola')
             }, 3500)
         } catch (error) {
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
+            setProductPrice(0)
             setErrorProduct(error.message)
             toast.error(
                 `${errorProduct}`,
@@ -63,24 +54,24 @@ const EditProductPriceForm = ({ product }) => {
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-96 mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-80 mx-auto'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
-                <div className='flex flex-col'>
-                    <label
-                        htmlFor='productPrice'
-                        className='mt-2'    
-                    >
-                        Precio:
-                    </label>
-                    <input
-                        type='number' name='productPrice' id='productPrice' placeholder='1010'
-                        className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                        rounded-sm drop-shadow-sm text-black'
-                        onChange={registerPrice} required
-                    />
+            <div className='flex flex-col'>
+                <label
+                    htmlFor='productPrice'
+                    className='mt-2'    
+                >
+                    Nuevo precio:
+                </label>
+                <input
+                    type='number' name='productPrice' id='productPrice' placeholder='1010'
+                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                    rounded-sm drop-shadow-sm text-black'
+                    onChange={registerPrice} required
+                />
                 </div>
             <button
                 type='submit'

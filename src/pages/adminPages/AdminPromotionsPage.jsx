@@ -20,7 +20,7 @@ const AdminPromotionsPage = () => {
                         text-black cursor-default select-none'>
                             {promo[0].text}
                         </span>
-                        <UpdatePromotionForm />
+                        <UpdatePromotionForm promo={promo} />
                     </div>
                 : !error ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>

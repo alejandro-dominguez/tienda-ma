@@ -127,10 +127,13 @@ const EditProductForm = ({ product }) => {
                         >
                             Marca:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {product.brand}
+                        </span>
                         <input
                             type='text' name='productBrand' id='productBrand'
                             placeholder='...' min={8} required
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         />
@@ -142,6 +145,9 @@ const EditProductForm = ({ product }) => {
                         >
                             Nombre:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {product.name}
+                        </span>
                         <input
                             type='text' name='productName' id='productName'
                             placeholder='...' min={8} required
@@ -157,6 +163,9 @@ const EditProductForm = ({ product }) => {
                         >
                             Descripción:
                         </label>
+                        <span className='text-sm max-h-[4.5rem] overflow-y-scroll mt-2 shadow p-2'>
+                            {product.desc}
+                        </span>
                         <textarea
                             type='text' name='productDesc' id='productDesc' cols='10' rows='10'
                             placeholder='...' min={20} required
@@ -174,9 +183,12 @@ const EditProductForm = ({ product }) => {
                         >
                             Categoría:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {product.category}
+                        </span>
                         <select
                             name='productCategory' id='productCategory' required
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         >
@@ -194,6 +206,9 @@ const EditProductForm = ({ product }) => {
                         >
                             Subcategoría:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {product.subcategory}
+                        </span>
                         <input
                             type='text' name='productSubcategory' id='productSubcategory'
                             placeholder='...' min={8} required
@@ -209,10 +224,13 @@ const EditProductForm = ({ product }) => {
                         >
                             Link imagen:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {product.img}
+                        </span>
                         <input
                             type='text' name='productImg' id='productImg'
                             placeholder='...' min={8} required
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         />
@@ -226,9 +244,17 @@ const EditProductForm = ({ product }) => {
                         >
                             Talles bebé:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {
+                                product.sizes ?
+                                    'producto con talles de bebé'
+                                :
+                                    'producto sin talles de bebé'
+                            }
+                        </span>
                         <select
                             name='productSizes' id='productSizes' required
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerBabySizes}
                         >
@@ -243,6 +269,14 @@ const EditProductForm = ({ product }) => {
                         >
                             Talles adulto:
                         </label>
+                        <span className='text-sm mt-2 shadow p-2'>
+                            {
+                                product.adultSizes ?
+                                    'producto con talles de adulto'
+                                :
+                                    'producto sin talles de adulto'
+                            }
+                        </span>
                         <select
                             name='productAdultSizes' id='productAdultSizes' required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4

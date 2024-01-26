@@ -12,10 +12,11 @@ import {
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 
-const UpdatePromotionForm = () => {
+const UpdatePromotionForm = ({ promo }) => {
     const [ newPromo, setNewPromo ] = useState('')
     const [ errorPromo, setErrorPromo ] = useState('')
     const navigate = useNavigate()
+    console.log(promo);
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -56,7 +57,7 @@ const UpdatePromotionForm = () => {
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
