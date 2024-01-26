@@ -4,7 +4,8 @@ import {
 } from 'sonner';
 import {
     doc,
-    updateDoc
+    updateDoc,
+    collection
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
