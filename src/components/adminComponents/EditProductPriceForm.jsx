@@ -13,7 +13,6 @@ import { useState } from 'react';
 const EditProductPriceForm = ({ product }) => {
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ productPrice, setProductPrice ] = useState(0)
-    console.log(product.id);
     const navigate = useNavigate()
 
     const registerPrice = (e) => {
@@ -61,9 +60,12 @@ const EditProductPriceForm = ({ product }) => {
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
-                <h3 className='text-sm font-bold'>
-                    Precio actual:
+                <h3 className='font-bold font-Raleway text-lg mt-1 drop-shadow-sm mx-auto'>
+                    {product.brand} {product.name}
                 </h3>
+                <span className='text-sm font-bold mt-2'>
+                    Precio actual:
+                </span>
                 <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
                     {product.price}
                 </span>

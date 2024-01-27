@@ -1,9 +1,26 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const AboutUsPage = () => {
+    const [ swichImg, setSwichImg] = useState(false)
+    
+    const responsiveViewport = () => window.visualViewport.width < 768 ? setSwichImg(true) : setSwichImg(false)
+    
+    useEffect(() => {
+        responsiveViewport()
+    }, [])
+    
+
     return (
         <main className='grid place-items-center relative'>
-            <div className='about-us-banner' />
+            <div className=
+                {
+                    !swichImg ?
+                        'about-us-banner'
+                    :
+                        'about-us-banner-mobile'
+                }
+            />
             <div className='absolute h-full w-full top-0 text-left'>
                 <h1 className='about-h1-shadow mt-2 pt-32 px-4 md:px-10 text-white font-Raleway font-bold text-[1.7rem]
                 sm:text-3xl md:text-[2.5rem] drop-shadow justify-self-start self-start tracking-[0.02em]'>

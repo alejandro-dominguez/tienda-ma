@@ -57,7 +57,7 @@ const EditBlogForm = ({ blog }) => {
                 }
             )
             toast.success(
-                'Artículo editado',
+                'Blog editado',
                 {
                     duration: 3000,
                     position: 'bottom-center',
@@ -103,7 +103,7 @@ const EditBlogForm = ({ blog }) => {
             <div className='flex flex-col gap-1'>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogTitle'
+                        htmlFor='editBlogTitle'
                         className='mt-2'    
                     >
                         Título:
@@ -113,7 +113,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.title}
                         </span>
                         <input
-                            type='text' name='blogTitle' id='blogTitle'
+                            type='text' name='editBlogTitle' id='editBlogTitle'
                             placeholder='Nuevo título' min={8} required
                             className='w-full text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black placeholder:tracking-normal'
@@ -123,7 +123,7 @@ const EditBlogForm = ({ blog }) => {
                 </div>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogSubtitle'
+                        htmlFor='editBlogSubtitle'
                         className='mt-2'    
                     >
                         Subtítulo:
@@ -133,7 +133,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.subtitle}
                         </span>
                         <input
-                            type='text' name='blogSubtitle' id='blogSubtitle'
+                            type='text' name='editBlogSubtitle' id='editBlogSubtitle'
                             placeholder='Nuevo subtítulo' min={8} required
                             className='w-full text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black placeholder:tracking-normal'
@@ -143,7 +143,7 @@ const EditBlogForm = ({ blog }) => {
                 </div>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogDrop'
+                        htmlFor='editBlogDrop'
                         className='mt-2'    
                     >
                         Bajada:
@@ -153,7 +153,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.drop}
                         </span>
                         <textarea
-                            type='text' name='blogDrop' id='blogDrop' cols='10' rows='10'
+                            type='text' name='editBlogDrop' id='editBlogDrop' cols='10' rows='10'
                             placeholder='Nueva bajada' min={20} required
                             className='text-[.8rem] mt-3 w-full bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black placeholder:tracking-normal'
@@ -165,7 +165,7 @@ const EditBlogForm = ({ blog }) => {
             <div className='flex flex-col gap-1'>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogText1'
+                        htmlFor='editBlogText1'
                         className='mt-2'    
                     >
                         Primer texto:
@@ -175,7 +175,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.text1}
                         </span>
                         <textarea
-                            type='text' name='blogText1' id='blogText1' cols='10' rows='10'
+                            type='text' name='editBlogText1' id='editBlogText1' cols='10' rows='10'
                             placeholder='Nuevo primer texto' min={20} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
@@ -185,7 +185,7 @@ const EditBlogForm = ({ blog }) => {
                 </div>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogText2'
+                        htmlFor='editBlogText2'
                         className='mt-2'    
                     >
                         Segundo texto:
@@ -195,7 +195,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.text2}
                         </span>
                         <textarea
-                            type='text' name='blogText2' id='blogText2' cols='10' rows='10'
+                            type='text' name='editBlogText2' id='editBlogText2' cols='10' rows='10'
                             placeholder='Nuevo segundo texto' min={20} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
@@ -207,7 +207,7 @@ const EditBlogForm = ({ blog }) => {
             <div className='flex flex-col gap-1'>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogImg1'
+                        htmlFor='editBlogImg1'
                         className='mt-2'    
                     >
                         Link imagen 1:
@@ -217,7 +217,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.img1}
                         </span>
                         <input
-                            type='text' name='blogImg1' id='blogImg1'
+                            type='text' name='editBlogImg1' id='editBlogImg1'
                             placeholder='Nuevo link' min={8} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
@@ -227,7 +227,7 @@ const EditBlogForm = ({ blog }) => {
                 </div>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogImg2'
+                        htmlFor='editBlogImg2'
                         className='mt-2'    
                     >
                         Link imagen 2:
@@ -237,7 +237,7 @@ const EditBlogForm = ({ blog }) => {
                             {blog.img2}
                         </span>
                         <input
-                            type='text' name='blogImg2' id='blogImg2'
+                            type='text' name='editBlogImg2' id='editBlogImg2'
                             placeholder='Nuevo link' min={8} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
