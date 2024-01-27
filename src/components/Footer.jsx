@@ -3,7 +3,10 @@ import { BiSolidCaretUpCircle } from 'react-icons/bi';
 import { PiInstagramLogoFill } from 'react-icons/pi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
-import { FaTruck, FaUserCircle } from 'react-icons/fa';
+import {
+    FaTruck,
+    FaUserCircle
+} from 'react-icons/fa';
 import scrollTop from '../utilities/scrollTop';
 
 const Footer = () => {

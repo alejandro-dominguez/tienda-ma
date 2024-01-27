@@ -73,10 +73,7 @@ footer {
 
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');
-		background-size: cover;
-		background-position: left top;
-		background-repeat: no-repeat;
-		@apply flex flex-col w-full min-h-[100svh] brightness-[.75] grayscale-[.35] saturate-150;
+		@apply bg-cover bg-no-repeat flex flex-col w-full min-h-[100svh] brightness-[.75] grayscale-[.35] saturate-150;
 	}
 
 	.about-h1-shadow {

@@ -1,8 +1,8 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
-import useGetBlogArticle from '../customHooks/useGetBlogArticle.js';
+import useGetBlogArticle from '../customHooks/useGetBlogArticle';
 import ErrorPage from '../pages/ErrorPage';
-import BlogArticle from '../components/blogComponents/BlogArticle.jsx';
+import BlogArticle from '../components/blogComponents/BlogArticle';
 
 const BlogArticleContainer = () => {
     const { id } = useParams()

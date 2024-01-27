@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../contexts/shopContext';
-import { BiSolidShare } from "react-icons/bi";
+import { BiSolidShare } from 'react-icons/bi';
 import CartItem from '../components/cartComponents/CartItem';
 import CartModalForm from '../components/cartComponents/CartModalForm';
 import logo from '../assets/logo-header.svg';

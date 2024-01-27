@@ -47,8 +47,8 @@ const ItemDetailCard = ({
     return (
         <>
         <div className='w-full'>
-            <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-4 px-7 bg-white rounded-l
-            shadow-sm drop-shadow-sm w-full'>
+            <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-4 px-7 bg-white rounded-md
+            shadow-sm drop-shadow-sm w-full min-h-[29rem] sm:min-h-fit'>
                 <div className='flex flex-col'>
                     <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-base'>
                         {product.brand} {product.name}

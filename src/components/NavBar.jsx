@@ -6,7 +6,7 @@ import {
     useLocation,
     useNavigate
 } from 'react-router-dom';
-import { BiMenu } from "react-icons/bi"
+import { BiMenu } from 'react-icons/bi';
 import headerLogo from '../assets/logo-header.svg';
 import NavItemMenu from './navComponents/NavItemMenu';
 import CartCounter from './navComponents/navBar/CartCounter';

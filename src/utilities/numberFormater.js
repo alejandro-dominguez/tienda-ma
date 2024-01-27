@@ -1,9 +1,9 @@
 const numberFormater = (number) => {
     return new Intl.NumberFormat(
-        "ES-AR",
+        'ES-AR',
         {
-        style: "currency",
-        currency: "ARS"
+            style: 'currency',
+            currency: 'ARS'
         }).format(number)
 }
 
