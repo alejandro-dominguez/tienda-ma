@@ -59,7 +59,7 @@ const CreatePaymentsForm = () => {
             )
             setErrorPayment(error.message)
             toast.error(
-                `${errorPayment}`,
+                errorPayment,
                 {
                     duration: 3000,
                     position: 'bottom-center',

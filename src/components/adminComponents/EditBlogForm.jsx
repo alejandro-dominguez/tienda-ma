@@ -80,7 +80,7 @@ const EditBlogForm = ({ blog }) => {
             )
             setErrorBlog(error.message)
             toast.error(
-                `${errorBlog}`,
+                errorBlog,
                 {
                     duration: 3000,
                     position: 'bottom-center',

@@ -45,7 +45,7 @@ const UpdatePromotionForm = ({ promo }) => {
             setNewPromo('')
             setErrorPromo(error.message)
             toast.error(
-                `${errorPromo}`,
+                errorPromo,
                 {
                     duration: 3000,
                     position: 'bottom-center',

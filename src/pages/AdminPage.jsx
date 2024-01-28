@@ -37,7 +37,6 @@ const AdminPage = () => {
             navigate('/admin/consola')
         } catch (error) {
             setErrorAuth(errorAuth.message)
-            console.log(errorAuth)
             toast.error(
                 'cuenta o contraseña incorrectas',
                 {

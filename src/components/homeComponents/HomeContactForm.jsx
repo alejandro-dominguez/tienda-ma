@@ -1,15 +1,77 @@
+import {
+    Toaster,
+    toast
+} from 'sonner';
+import {
+    addDoc,
+    collection,
+} from 'firebase/firestore';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { db } from '../../firebase/config';
 
 const HomeContactForm = () => {
-    const {
-        handleSubmit,
-        reset
-    } = useForm()
-
-    const onSubmit = handleSubmit(() => {
-        reset()
+    const [ contactFormMessage, setContactFormMessage ]  = useState({
+        contactFullName: '',
+        contactPhone: '',
+        contactEmail: '',
+        contactMessage: '',
     })
+    const [ errorMessage, setErrorMessage ] = ('')
+
+    const registerInputs = ({ target: {name, value} }) => {
+        setContactFormMessage({
+            ...contactFormMessage,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await addDoc(collection(db, 'messages'),
+                {
+                    fullName: contactFormMessage.contactFullName,
+                    phone: contactFormMessage.contactPhone,
+                    email: contactFormMessage.contactEmail,
+                    message: contactFormMessage.contactMessage,
+                    messageDate: new Date().toLocaleString()
+                }
+            )
+            setContactFormMessage(
+                {
+                    contactFullName: '',
+                    contactPhone: '',
+                    contactEmail: '',
+                    contactMessage: '',
+                }
+            )
+            toast.success(
+                'Mensaje enviado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        } catch (error) {
+            setContactFormMessage(
+                {
+                    contactFullName: '',
+                    contactPhone: '',
+                    contactEmail: '',
+                    contactMessage: '',
+                }
+            )
+            setErrorMessage(error.message)
+            reset()
+            toast.error(
+                errorMessage,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
 
     return (
         <section
@@ -18,7 +80,7 @@ const HomeContactForm = () => {
         >
             <form
                 className='md:w-[62.25%] py-8 px-6 sm:px-10 bg-white shadow-sm drop-shadow-sm'
-                onSubmit={onSubmit}
+                onSubmit={handleSubmit}
                 autoComplete='off'
             >
                 <input autoComplete='false' name='hidden' type='text' className='hidden'/>
@@ -36,7 +98,8 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='text' name='contactFullName' id='contactFullName' minLength={10} maxLength={30} required
-                                placeholder='Tu nombre aquí' className='contact-input'
+                                placeholder='Tu nombre aquí' className='contact-input' defaultValue=''
+                                onChange={registerInputs}
                             />
                         </div>
                         <div className='flex flex-col'>
@@ -48,7 +111,8 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='tel' name='contactPhone' id='contactPhone' required placeholder='0101-0101-01'
-                                className='contact-input'
+                                className='contact-input' defaultValue=''
+                                onChange={registerInputs}
                             />
                         </div>
                         <div className='flex flex-col'>
@@ -57,7 +121,8 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='email' name='contactEmail' id='contactEmail' placeholder='Tu email aquí'
-                                className='contact-input'
+                                className='contact-input' defaultValue=''
+                                onChange={registerInputs}
                             />
                         </div>
                     </div>
@@ -69,8 +134,9 @@ const HomeContactForm = () => {
                             </span>
                         </label>
                         <textarea
-                            name='contactMessage' id='contactMessage' cols='30' rows='10' required minLength={10}
-                            placeholder='Deja tu mensaje' className='contact-textarea'
+                            name='contactMessage' id='contactMessage' cols='30' rows='10' required minLength={10} maxLength={5000}
+                            placeholder='Deja tu mensaje' className='contact-textarea' defaultValue=''
+                            onChange={registerInputs}
                         />
                     </div>
                 </div>
@@ -84,6 +150,12 @@ const HomeContactForm = () => {
                     </span>
                 </button>
             </form>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </section>
     )
 };

@@ -43,7 +43,7 @@ const EditProductPriceForm = ({ product }) => {
             setProductPrice(0)
             setErrorProduct(error.message)
             toast.error(
-                `${errorProduct}`,
+                errorProduct,
                 {
                     duration: 3000,
                     position: 'bottom-center',

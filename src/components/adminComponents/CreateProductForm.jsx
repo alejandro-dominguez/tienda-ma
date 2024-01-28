@@ -115,7 +115,7 @@ const CreateProductForm = () => {
             setProductAdultSizes(false)
             setErrorProduct(error.message)
             toast.error(
-                `${errorProduct}`,
+                errorProduct,
                 {
                     duration: 3000,
                     position: 'bottom-center',
