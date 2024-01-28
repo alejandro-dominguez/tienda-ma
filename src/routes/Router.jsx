@@ -23,6 +23,7 @@ import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage';
 import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage';
 import EditBlogPage from '../pages/adminPages/adminEditPages/EditBlogPage';
 import EditProductPage from '../pages/adminPages/adminEditPages/EditProductPage';
+import AdminMessagesPage from '../pages/adminPages/AdminMessagesPage';
 
 const router = createBrowserRouter([
     {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/consola/ordenes',
                 element: <AdminOrdersPage />,
+            },
+            {
+                path: '/admin/consola/mensajesContacto',
+                element: <AdminMessagesPage />,
             },
         ],
     },

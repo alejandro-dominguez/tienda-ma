@@ -2,12 +2,10 @@ import {
     useState,
     useContext
 } from 'react';
-import { Link } from 'react-router-dom';
 import { ShopContext } from '../contexts/shopContext';
-import { BiSolidShare } from 'react-icons/bi';
 import CartItem from '../components/cartComponents/CartItem';
 import CartModalForm from '../components/cartComponents/CartModalForm';
-import logo from '../assets/logo-header.svg';
+import NoCartItemsCard from '../components/cartComponents/NoCartItemsCard';
 import cartCheck from '../assets/cart-check.svg';
 import numberFormater from '../utilities/numberFormater';
 
@@ -72,31 +70,7 @@ const CartContainer = () => {
                         />
                     </div>
                 :
-                    <div className='w-fit grid place-items-center justify-self-center rounded-lg shadow-sm -mt-5'>
-                        <Link
-                            to='/'
-                            className='flex flex-col items-center justify-center gap-6 py-6 px-7 bg-white shadow-sm drop-shadow-sm'
-                        >
-                            <h1 className='font-bold text-lg tracking-wide font-Raleway grid place-items-center leading-6 drop-shadow-sm'>
-                                <span>
-                                    Aún no hay productos
-                                </span>
-                                <div className='flex items-center justify-center gap-2'>
-                                    <span>
-                                        en el carrito
-                                    </span>
-                                    <BiSolidShare className='block text-red-300 text-[1.75rem]' />
-                                </div>
-                            </h1>
-                            <div className='w-[7.5rem]'>
-                                <img
-                                    src={logo}
-                                    alt='logo tienda Ma'
-                                    className='block w-full'
-                                />
-                            </div>
-                        </Link>
-                    </div>
+                    <NoCartItemsCard />
             }
         </main>
     )

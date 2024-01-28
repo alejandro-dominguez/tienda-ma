@@ -29,6 +29,10 @@ const AdminLandingPage = () => {
             'name': 'Ordenes de compra',
             'url': 'ordenes'
         },
+        {
+            'name': 'Contacto',
+            'url': 'mensajesContacto'
+        },
     ])
 
     return (
