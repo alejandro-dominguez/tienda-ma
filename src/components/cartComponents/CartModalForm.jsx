@@ -1,17 +1,12 @@
 import { useContext } from 'react';
 import { ShopContext } from '../../contexts/shopContext';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { BiSolidShare } from 'react-icons/bi';  
 import { Toaster, toast } from 'sonner';
 
 const CartModalForm = ({ showForm, setShowForm }) => {
     const { products, emptyCart } = useContext(ShopContext)
     const navigate = useNavigate()
-    const {
-        handleSubmit,
-        reset
-    } = useForm()
 
     const onSubmit = handleSubmit(() => {
         toast.success(
