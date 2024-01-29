@@ -16,12 +16,12 @@ const NoRelatedProductsCard = () => {
                         Aún no hay productos relacionados.
                     </h3>
                     <div className='flex flex-col items-center justify-center mt-2'>
-                        <BiSolidShare className='block text-red-300 text-[1.5rem]' />
-                        <span className='font-bold -mt-1'>
-                            volver
+                        <BiSolidShare className='block text-red-300 text-[1.55rem]' />
+                        <span className='text-[.95rem] leading-5 font-bold text-center'>
+                            Volver
                         </span>
                     </div>
-                    <div className='w-7 mx-auto mt-5'>
+                    <div className='w-7 mx-auto mt-6'>
                         <img
                             src={icon}
                             alt='icono tienda ma'

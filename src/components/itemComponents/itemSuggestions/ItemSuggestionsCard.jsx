@@ -9,7 +9,7 @@ const ItemSuggestionsCard = ({
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-3 gap-2'>
             {
                 products.filter(prod => {
-                    return (productDetail.brand === prod.brand) ? productDetail.id !== prod.id : null
+                    return productDetail.brand === prod.brand && productDetail.id !== prod.id
                 })
                 .map(product => {
                     return (

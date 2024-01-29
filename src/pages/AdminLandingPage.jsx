@@ -30,7 +30,7 @@ const AdminLandingPage = () => {
             'url': 'ordenes'
         },
         {
-            'name': 'Contacto',
+            'name': 'Mensajes de contacto',
             'url': 'mensajesContacto'
         },
     ])

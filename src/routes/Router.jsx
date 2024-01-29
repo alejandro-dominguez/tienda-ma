@@ -21,9 +21,10 @@ import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
 import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage';
 import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage';
-import EditBlogPage from '../pages/adminPages/adminEditPages/EditBlogPage';
-import EditProductPage from '../pages/adminPages/adminEditPages/EditProductPage';
 import AdminMessagesPage from '../pages/adminPages/AdminMessagesPage';
+import EditBlogPage from '../pages/adminPages/adminDetailPages/EditBlogPage';
+import EditProductPage from '../pages/adminPages/adminDetailPages/EditProductPage';
+import AdminMessagesDetailPage from '../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
 
 const router = createBrowserRouter([
     {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/consola/mensajesContacto',
                 element: <AdminMessagesPage />,
+            },
+            {
+                path: '/admin/consola/mensajesContacto/:id',
+                element: <AdminMessagesDetailPage />,
             },
         ],
     },

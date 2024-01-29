@@ -9,17 +9,18 @@ const ItemSuggestions = ({
     productDetail,
     products
 }) => {
-    const [ noRelatedProducts, setNoRelatedProducts ] = useState(true)
+    const [ noRelatedProducts, setNoRelatedProducts ] = useState(false)
+    const filteredProducts = products.filter(prod => {
+        return productDetail.brand === prod.brand && productDetail.id !== prod.id
+    })
+    console.log(filteredProducts.length);
 
     useEffect(() => {
-        products.filter(prod => {
-            return (
-                (productDetail.brand === prod.brand) && productDetail.id !== prod.id ?
-                    setNoRelatedProducts(false)
-                :
-                    setNoRelatedProducts(true)
-            )
-        })
+        if (filteredProducts.length === 0) {
+            setNoRelatedProducts(true)
+        } else {
+            setNoRelatedProducts(false)
+        }
     }, [])
 
     return (
