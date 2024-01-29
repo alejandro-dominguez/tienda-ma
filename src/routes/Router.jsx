@@ -20,11 +20,12 @@ import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
 import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
 import AdminPaymentsPage from '../pages/adminPages/AdminPaymentsPage';
-import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage';
+import AdminOrdersPage from '../pages/adminPages/AdminOrdersPage';  
 import AdminMessagesPage from '../pages/adminPages/AdminMessagesPage';
 import EditBlogPage from '../pages/adminPages/adminDetailPages/EditBlogPage';
 import EditProductPage from '../pages/adminPages/adminDetailPages/EditProductPage';
 import AdminMessagesDetailPage from '../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
+import AdminOrdersDetailPage from '../pages/adminPages/adminDetailPages/AdminOrdersDetailPage';
 
 const router = createBrowserRouter([
     {
@@ -107,6 +108,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/consola/ordenes',
                 element: <AdminOrdersPage />,
+            },
+            {
+                path: '/admin/consola/ordenes/:id',
+                element: <AdminOrdersDetailPage />,
             },
             {
                 path: '/admin/consola/mensajesContacto',

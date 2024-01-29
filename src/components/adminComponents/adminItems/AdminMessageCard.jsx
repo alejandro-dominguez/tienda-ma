@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const AdminPaymentCard = ({ message }) => {
+const AdminMessageCard = ({ message }) => {
     return (
         <div className='flex flex-col items-start justify-start gap-2'>
             <div className='grid place-items-start p-4 m-3 bg-white shadow-sm drop-shadow-sm w-[16.25rem]'>
@@ -32,4 +32,4 @@ const AdminPaymentCard = ({ message }) => {
     )
 };
 
-export default AdminPaymentCard;
+export default AdminMessageCard;

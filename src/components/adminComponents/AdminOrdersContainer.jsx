@@ -1,6 +1,6 @@
-import AdminMessageCard from './adminItems/AdminMessageCard';
+import AdminOrderCard from './adminItems/AdminOrderCard';
 
-const AdminMessagesContainer = ({ messages }) => {
+const AdminOrdersContainer = ({ orders }) => {
     return (
         <div className='grid place-items-center'>
             <h1 className='font-bold font-Raleway text-lg md:text-xl mt-1 drop-shadow-sm mx-auto'>
@@ -8,11 +8,11 @@ const AdminMessagesContainer = ({ messages }) => {
             </h1>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 place-items-start'>
                 {
-                    messages.map((message, i) => {
+                    orders.map((order, i) => {
                         return ( 
-                            <AdminMessageCard
+                            <AdminOrderCard
                                 key={i}
-                                message={message}
+                                order={order}
                             />
                     )})
                 }
@@ -21,4 +21,4 @@ const AdminMessagesContainer = ({ messages }) => {
     )
 };
 
-export default AdminMessagesContainer;
+export default AdminOrdersContainer;

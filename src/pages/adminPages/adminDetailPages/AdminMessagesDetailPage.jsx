@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/authContext';
 import useGetContactMessage from '../../../customHooks/useGetContactMessage';
 import MessageDetailCard from '../../../components/adminComponents/MessageDetailCard';
 
-const EditBlogPage = () => {
+const AdminMessagesDetailPage = () => {
     const { id } = useParams()
     const [ message, error, loading ] = useGetContactMessage(id)
     const { authUser } = useContext(AuthContext)
@@ -34,4 +34,4 @@ const EditBlogPage = () => {
     )
 }
 
-export default EditBlogPage;
+export default AdminMessagesDetailPage;

@@ -8,19 +8,19 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetContactMessage = ( id ) => {
+const useGetOrder = ( id ) => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
-    const [ message, setMessage ] = useState({})
+    const [ order, setOrder ] = useState({})
     
     useEffect(() => {
         (async () => {
             try {
                 setLoading(true)
-                const docRef = doc(db, 'messages', id)
+                const docRef = doc(db, 'orders', id)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
-                    setMessage({ ...docSnap.data(), id: docSnap.id })
+                    setOrder({ ...docSnap.data(), id: docSnap.id })
                     setLoading(false)
                 }
             } catch (error) {
@@ -32,7 +32,7 @@ const useGetContactMessage = ( id ) => {
         })()
     }, [id])
 
-    return [ message, error, loading ]
+    return [ order, error, loading ]
 };
 
-export default useGetContactMessage;
+export default useGetOrder;

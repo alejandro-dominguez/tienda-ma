@@ -28,7 +28,7 @@ const PaymentsPage = () => {
                             }
                         </div>
                     </div>
-                    <div className='w-10 mx-auto mb-20 mt-10'>
+                    <div className='w-9 mx-auto mb-20 mt-10'>
                         <img
                             src={icon}
                             alt='icono tienda ma'
