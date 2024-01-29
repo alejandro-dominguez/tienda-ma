@@ -13,7 +13,6 @@ const ItemSuggestions = ({
     const filteredProducts = products.filter(prod => {
         return productDetail.brand === prod.brand && productDetail.id !== prod.id
     })
-    console.log(filteredProducts.length);
 
     useEffect(() => {
         if (filteredProducts.length === 0) {

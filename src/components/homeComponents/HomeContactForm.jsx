@@ -87,8 +87,8 @@ const HomeContactForm = () => {
                 <h2 className='font-Raleway text-2xl font-black tracking-wide drop-shadow-sm -mt-2'>
                     ¡Queremos escucharte!
                 </h2>
-                <div className='flex flex-col xl:flex-row items-start xl:gap-12 mt-3'>
-                    <div className='grid md:items-center md:justify-start gap-3'>
+                <div className='flex flex-col xl:flex-row items-start mt-3'>
+                    <div className='grid md:items-center md:justify-start gap-3 w-full'>
                         <div className='flex flex-col'>
                             <label htmlFor='contactFullName' className='text-zinc-700 flex gap-[.3rem]'>
                                 Nombre completo:
@@ -98,7 +98,7 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='text' name='contactFullName' id='contactFullName' minLength={10} maxLength={30} required
-                                placeholder='Tu nombre aquí' className='contact-input' defaultValue=''
+                                placeholder='Tu nombre aquí' className='contact-input'
                                 onChange={registerInputs}
                             />
                         </div>
@@ -111,7 +111,7 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='tel' name='contactPhone' id='contactPhone' required placeholder='0101-0101-01'
-                                className='contact-input' defaultValue=''
+                                className='contact-input'
                                 onChange={registerInputs}
                             />
                         </div>
@@ -121,12 +121,12 @@ const HomeContactForm = () => {
                             </label>
                             <input
                                 type='email' name='contactEmail' id='contactEmail' placeholder='Tu email aquí'
-                                className='contact-input' defaultValue=''
+                                className='contact-input'
                                 onChange={registerInputs}
                             />
                         </div>
                     </div>
-                    <div className='flex flex-col mt-3 xl:mt-0'>
+                    <div className='flex flex-col mt-3 xl:mt-0 w-full'>
                         <label htmlFor='contactMessage' className='text-zinc-700 flex gap-[.3rem]'>
                             Mensaje:
                             <span className='text-rose-500 text-xl h-fit -mt-1'>
@@ -135,7 +135,7 @@ const HomeContactForm = () => {
                         </label>
                         <textarea
                             name='contactMessage' id='contactMessage' cols='30' rows='10' required minLength={10} maxLength={5000}
-                            placeholder='Deja tu mensaje' className='contact-textarea' defaultValue=''
+                            placeholder='Deja tu mensaje' className='contact-textarea'
                             onChange={registerInputs}
                         />
                     </div>

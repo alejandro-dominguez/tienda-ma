@@ -14,6 +14,7 @@ import { ShopContext } from '../../contexts/shopContext';
 import { BiSolidShare } from 'react-icons/bi';  
 import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
+import numberFormater from '../../utilities/numberFormater';
 
 const CartModalForm = ({
     showForm,
@@ -21,13 +22,15 @@ const CartModalForm = ({
 }) => {
     const [ order, setOrder ] = useState({
         orderFullName: '',
+        orderAddress: '',
         orderPhone: '',
         orderEmail: '',
-        orderAddress: '',
         orderNotes: '',
     })
+    const [ errorOrder, setErrorOrder ] = useState('')
     const { products, emptyCart, calculateCartTotal } = useContext(ShopContext)
     const navigate = useNavigate()
+    const orderTotalAmount = numberFormater(calculateCartTotal())
 
     const registerInputs = ({ target: {name, value} }) => {
         setOrder({
@@ -36,93 +39,65 @@ const CartModalForm = ({
         })
     }
 
-    const handleSubmit = (() => {
-        toast.success(
-            'Orden enviada',
-            {
-                description: 'Tu orden ya fue enviada con éxito. Nos comunicamos en la brevedad una vez confirmado el stock.',
-                duration: 5000,
-                position: 'bottom-center',
-            }
-        )
-        setTimeout(() => {
-            reset()
-            emptyCart()
-            navigate('/')
-        }, 6000)
-    })
-
-/*     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await addDoc(collection(db, 'products'),
+            await addDoc(collection(db, 'orders'),
                 {
-                    brand: newProduct.productBrand,
-                    name: newProduct.productName,
-                    category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
-                    desc: newProduct.productDesc,
-                    img: newProduct.productImg,
-                    price: productPrice,
-                    sizes: productBabySizes,
-                    adultSizes: productAdultSizes,
-                    quantity: 1000000,
-                    featured: false,
+                    clientFullName: order.orderFullName,
+                    clientAdress: order.orderAddress,
+                    clientPhone: order.orderPhone,
+                    clientEmail: order.orderEmail,
+                    orderProducts: products,
+                    orderTotal: orderTotalAmount,
+                    orderDate: new Date().toLocaleString(),
                 }
             )
-            await addDoc(collection(db, 'subcategories'),
-                {
-                    category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
-                }
-            )
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductPrice(0)
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
             toast.success(
-                'Producto agregado',
+                'Orden enviada',
                 {
-                    duration: 3000,
+                    description: 'Tu orden ya fue enviada con éxito. Nos comunicamos en la brevedad una vez confirmado el stock.',
+                    duration: 5000,
                     position: 'bottom-center',
                 }
             )
             setTimeout(() => {
-                navigate('/admin/consola')
-            }, 3500)
+                emptyCart()
+                setOrder(
+                    {
+                        orderFullName: '',
+                        orderAddress: '',
+                        orderPhone: '',
+                        orderEmail: '',
+                        orderNotes: '',
+                    }
+                )
+                setShowForm(false)
+                navigate('/')
+            }, 6000)
         } catch (error) {
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductPrice(0)
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
-            setErrorProduct(error.message)
+            setErrorOrder(error.message)
             toast.error(
-                errorProduct,
+                errorOrder,
                 {
                     duration: 3000,
                     position: 'bottom-center',
                 }
             )
+            /* setTimeout(() => {
+                setOrder(
+                    {
+                        orderFullName: '',
+                        orderAddress: '',
+                        orderPhone: '',
+                        orderEmail: '',
+                        orderNotes: '',
+                    }
+                )
+                setShowForm(false)
+            }, 4000) */
         }
-    } */
+    }
 
     return (
         <>
@@ -136,39 +111,39 @@ const CartModalForm = ({
                 >
                     <input autoComplete='false' name='hidden' type='text' className='hidden'/>
                     <div className='flex flex-col xl:flex-row items-start md:gap-4 xl:gap-12 mt-3'>
-                        <div className='grid md:items-center md:justify-start gap-3'>
+                        <div className='grid md:items-center md:justify-start gap-3 w-full'>
                             <div className='flex flex-col'>
-                                <label htmlFor='customerFullName' className='text-zinc-700 flex gap-[.3rem]'>
+                                <label htmlFor='orderFullName' className='text-zinc-700 flex gap-[.3rem]'>
                                     Nombre completo:
                                     <span className='text-rose-500 text-xl h-fit -mt-1'>
                                         *
                                     </span>
                                 </label>
                                 <input
-                                    type='text' name='customerFullName' id='customerFullName' minLength={10} maxLength={30} required
+                                    type='text' name='orderFullName' id='orderFullName' minLength={10} maxLength={30} required
                                     placeholder='Tu nombre aquí' className='contact-input'
                                     onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col'>
-                                <label htmlFor='customerPhone' className='text-zinc-700 flex gap-[.3rem]'>
+                                <label htmlFor='orderPhone' className='text-zinc-700 flex gap-[.3rem]'>
                                     Teléfono:
                                     <span className='text-rose-500 text-xl h-fit -mt-1'>
                                         *
                                     </span>
                                 </label>
                                 <input
-                                    type='tel' name='customerPhone' id='customerPhone' required placeholder='0101-0101-01'
+                                    type='tel' name='orderPhone' id='orderPhone' required placeholder='0101-0101-01'
                                     className='contact-input'
                                     onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col'>
-                                <label htmlFor='customerEmail' className='text-zinc-700'>
+                                <label htmlFor='orderEmail' className='text-zinc-700'>
                                     Email:
                                 </label>
                                 <input
-                                    type='email' name='customerEmail' id='customerEmail' placeholder='Tu email aquí'
+                                    type='email' name='orderEmail' id='orderEmail' placeholder='Tu email aquí'
                                     className='contact-input'
                                     onChange={registerInputs}
                                 />
@@ -176,24 +151,24 @@ const CartModalForm = ({
                         </div>
                         <div className='flex flex-col mt-3 md:mt-0'>
                             <div className='flex flex-col'>
-                                <label htmlFor='customerAddress' className='text-zinc-700 flex gap-[.3rem]'>
+                                <label htmlFor='orderAddress' className='text-zinc-700 flex gap-[.3rem]'>
                                     Dirección de entrega:
                                     <span className='text-rose-500 text-xl h-fit -mt-1'>
                                         *
                                     </span>
                                 </label>
                                 <input
-                                    type='text' name='customerAddress' id='customerAddress' minLength={10} maxLength={30} required
+                                    type='text' name='orderAddress' id='orderAddress' minLength={10} maxLength={30} required
                                     placeholder='Dirección del envío' className='contact-input'
                                     onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col mt-3'>
-                                <label htmlFor='customerNotes' className='text-zinc-700'>
+                                <label htmlFor='orderNotes' className='text-zinc-700'>
                                     Notas para la entrega:
                                 </label>
                                 <textarea
-                                    name='customerNotes' id='customerNotes' cols='30' rows='10' minLength={10}
+                                    name='orderNotes' id='orderNotes' cols='30' rows='10'
                                     placeholder='Deja tus notas' className='cart-textarea'
                                     onChange={registerInputs}
                                 />
