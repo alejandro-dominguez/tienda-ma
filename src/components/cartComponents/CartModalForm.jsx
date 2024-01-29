@@ -1,18 +1,46 @@
-import { useContext } from 'react';
+import {
+    useContext,
+    useState
+} from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
+import {
+    addDoc,
+    collection,
+} from 'firebase/firestore';
 import { ShopContext } from '../../contexts/shopContext';
-import { useNavigate } from 'react-router-dom';
 import { BiSolidShare } from 'react-icons/bi';  
-import { Toaster, toast } from 'sonner';
+import { db } from '../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 
-const CartModalForm = ({ showForm, setShowForm }) => {
-    const { products, emptyCart } = useContext(ShopContext)
+const CartModalForm = ({
+    showForm,
+    setShowForm
+}) => {
+    const [ order, setOrder ] = useState({
+        orderFullName: '',
+        orderPhone: '',
+        orderEmail: '',
+        orderAddress: '',
+        orderNotes: '',
+    })
+    const { products, emptyCart, calculateCartTotal } = useContext(ShopContext)
     const navigate = useNavigate()
 
-    const onSubmit = handleSubmit(() => {
+    const registerInputs = ({ target: {name, value} }) => {
+        setOrder({
+            ...order,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = (() => {
         toast.success(
             'Orden enviada',
             {
-                description: 'Nos comunicamos en la brevedad una vez confirmado el stock.',
+                description: 'Tu orden ya fue enviada con éxito. Nos comunicamos en la brevedad una vez confirmado el stock.',
                 duration: 5000,
                 position: 'bottom-center',
             }
@@ -24,6 +52,78 @@ const CartModalForm = ({ showForm, setShowForm }) => {
         }, 6000)
     })
 
+/*     const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await addDoc(collection(db, 'products'),
+                {
+                    brand: newProduct.productBrand,
+                    name: newProduct.productName,
+                    category: newProduct.productCategory,
+                    subcategory: newProduct.productSubcategory,
+                    desc: newProduct.productDesc,
+                    img: newProduct.productImg,
+                    price: productPrice,
+                    sizes: productBabySizes,
+                    adultSizes: productAdultSizes,
+                    quantity: 1000000,
+                    featured: false,
+                }
+            )
+            await addDoc(collection(db, 'subcategories'),
+                {
+                    category: newProduct.productCategory,
+                    subcategory: newProduct.productSubcategory,
+                }
+            )
+            setNewProduct(
+                {
+                    productBrand: '',
+                    productName: '',
+                    productCategory: '',
+                    productSubcategory: '',
+                    productDesc: '',
+                    productImg: '',
+                }
+            )
+            setProductPrice(0)
+            setProductBabySizes(false)
+            setProductAdultSizes(false)
+            toast.success(
+                'Producto agregado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+            setTimeout(() => {
+                navigate('/admin/consola')
+            }, 3500)
+        } catch (error) {
+            setNewProduct(
+                {
+                    productBrand: '',
+                    productName: '',
+                    productCategory: '',
+                    productSubcategory: '',
+                    productDesc: '',
+                    productImg: '',
+                }
+            )
+            setProductPrice(0)
+            setProductBabySizes(false)
+            setProductAdultSizes(false)
+            setErrorProduct(error.message)
+            toast.error(
+                errorProduct,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    } */
+
     return (
         <>
         {
@@ -31,7 +131,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                 <>
                 <form
                     className='md:w-[62.25%] mt-4 pt-3 pb-6 px-6 sm:px-10 shadow-sm drop-shadow-sm bg-white'
-                    onSubmit={onSubmit}
+                    onSubmit={handleSubmit}
                     autoComplete='off'
                 >
                     <input autoComplete='false' name='hidden' type='text' className='hidden'/>
@@ -47,6 +147,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <input
                                     type='text' name='customerFullName' id='customerFullName' minLength={10} maxLength={30} required
                                     placeholder='Tu nombre aquí' className='contact-input'
+                                    onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col'>
@@ -59,6 +160,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <input
                                     type='tel' name='customerPhone' id='customerPhone' required placeholder='0101-0101-01'
                                     className='contact-input'
+                                    onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col'>
@@ -68,6 +170,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <input
                                     type='email' name='customerEmail' id='customerEmail' placeholder='Tu email aquí'
                                     className='contact-input'
+                                    onChange={registerInputs}
                                 />
                             </div>
                         </div>
@@ -82,6 +185,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <input
                                     type='text' name='customerAddress' id='customerAddress' minLength={10} maxLength={30} required
                                     placeholder='Dirección del envío' className='contact-input'
+                                    onChange={registerInputs}
                                 />
                             </div>
                             <div className='flex flex-col mt-3'>
@@ -91,6 +195,7 @@ const CartModalForm = ({ showForm, setShowForm }) => {
                                 <textarea
                                     name='customerNotes' id='customerNotes' cols='30' rows='10' minLength={10}
                                     placeholder='Deja tus notas' className='cart-textarea'
+                                    onChange={registerInputs}
                                 />
                             </div>
                         </div>

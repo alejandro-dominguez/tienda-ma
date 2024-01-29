@@ -1,18 +1,32 @@
 import { Link } from 'react-router-dom';
 
 const AdminPaymentCard = ({ message }) => {
-    console.log(message);
     return (
-        <div className='flex flex-col items-center justify-center gap-2'>
-            <div className='grid place-items-center p-5 m-3 bg-white h-40 shadow-sm drop-shadow-sm'>
-                <span className='mx-3 my-[.57rem] font-bold text-sm tracking-wide drop-shadow-sm py-[.35rem]
-                px-2 text-center border-2 w-44 rounded-lg border-red-500/50 bg-red-100/[7%]'>
-                    {JSON.stringify(message)}
-                </span>
-{/*                 <BsFillTrash3Fill
-                    className='block self-end cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                    onClick={() => deletePayment(payment.id)}
-                /> */}
+        <div className='flex flex-col items-start justify-start gap-2'>
+            <div className='grid place-items-start p-4 m-3 bg-white shadow-sm drop-shadow-sm w-[16.25rem]'>
+                <div className='rounded-lg flex flex-col items-start gap-2'>
+                    <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-5'>
+                        Fecha:
+                        <span className='font-normal text-sm mt-[.21rem]'>
+                            {message.messageDate}
+                        </span>
+                    </h3>
+                    <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-3'>
+                        Remitente:
+                        <span className='font-normal text-sm mt-[.21rem]'>
+                            {message.fullName}
+                        </span>
+                    </h3>
+                    <Link
+                        to={`/admin/consola/mensajesContacto/${message.id}`}
+                        className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
+                        ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
+                    >
+                        <span className='tracking-wider text-[.79rem] font-Raleway'>
+                            Ver mensaje
+                        </span>
+                    </Link>
+                </div>
             </div>
         </div>
     )

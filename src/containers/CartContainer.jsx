@@ -65,6 +65,8 @@ const CartContainer = () => {
                 : showForm && products.length ?
                     <div className='w-full grid place-items-center'>
                         <CartModalForm
+                            cartProducts={products}
+                            calculateCartTotal={calculateCartTotal}
                             showForm={showForm}
                             setShowForm={setShowForm}
                         />
