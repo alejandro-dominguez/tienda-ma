@@ -26,7 +26,7 @@ const AdminLandingPage = () => {
             'url': 'formasDePago'
         },
         {
-            'name': 'Ordenes de compra',
+            'name': 'Órdenes de compra',
             'url': 'ordenes'
         },
         {
