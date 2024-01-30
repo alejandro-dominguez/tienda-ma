@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import useGetAllOrders from '../../customHooks/useGetAllOrders';
 import AdminOrdersContainer from '../../components/adminComponents/AdminOrdersContainer';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminOrdersPage = () => {
     const [ orders, error, loading ] = useGetAllOrders()

@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import useGetAllMessages from '../../customHooks/useGetAllMessages';
 import AdminMessagesContainer from '../../components/adminComponents/AdminMessagesContainer';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminMessagesPage = () => {
     const [ messages, error, loading ] = useGetAllMessages()

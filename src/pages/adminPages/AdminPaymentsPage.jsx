@@ -4,6 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import useGetAllPayments from '../../customHooks/useGetAllPayments';
 import CreatePaymentsForm from '../../components/adminComponents/CreatePaymentsForm';
 import AdminPaymentsContainer from '../../components/adminComponents/AdminPaymentsContainer';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminPaymentsPage = () => {
     const [ payments, error, loading ] = useGetAllPayments()

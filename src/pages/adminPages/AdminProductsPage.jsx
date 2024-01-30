@@ -6,6 +6,7 @@ import CreateProductForm from '../../components/adminComponents/CreateProductFor
 import AdminProductCard from '../../components/adminComponents/AdminProductCard';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
 import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminProductsPage = () => {
     const [ prods, error, loading ] = useGetAllProducts()

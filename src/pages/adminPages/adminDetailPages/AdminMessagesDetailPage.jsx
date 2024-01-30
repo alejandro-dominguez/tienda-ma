@@ -4,6 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
 import useGetContactMessage from '../../../customHooks/useGetContactMessage';
 import MessageDetailCard from '../../../components/adminComponents/MessageDetailCard';
+import AdminErrorPage from '../../AdminErrorPage';
 
 const AdminMessagesDetailPage = () => {
     const { id } = useParams()

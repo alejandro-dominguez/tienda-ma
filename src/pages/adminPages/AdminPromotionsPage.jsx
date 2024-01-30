@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/authContext';
 import { useContext } from 'react';
 import useGetPromo from '../../customHooks/useGetPromo';
 import UpdatePromotionForm from '../../components/adminComponents/UpdatePromotionForm';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminPromotionsPage = () => {
     const [ promo, error, loading ] = useGetPromo()

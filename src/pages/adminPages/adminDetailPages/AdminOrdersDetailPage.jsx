@@ -4,6 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
 import useGetOrder from '../../../customHooks/useGetOrder';
 import OrderDetailCard from '../../../components/adminComponents/OrderDetailCard';
+import AdminErrorPage from '../../AdminErrorPage';
 
 const AdminOrdersDetailPage = () => {
     const { id } = useParams()

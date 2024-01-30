@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import useGetBlogs from '../../customHooks/useGetBlogs';
 import AdminBlogCard from '../../components/adminComponents/AdminBlogCard';
 import CreateBlogForm from '../../components/adminComponents/CreateBlogForm';
+import AdminErrorPage from '../AdminErrorPage';
 
 const AdminBlogsPage = () => {
     const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()

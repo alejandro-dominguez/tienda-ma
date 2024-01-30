@@ -5,6 +5,7 @@ import { AuthContext } from '../../../contexts/authContext';
 import useGetItemDetail from '../../../customHooks/useGetItemDetail';
 import EditProductForm from '../../../components/adminComponents/EditProductForm';
 import EditProductPriceForm from '../../../components/adminComponents/EditProductPriceForm';
+import AdminErrorPage from '../../AdminErrorPage';
 
 const EditProductPage = () => {
     const { id } = useParams()

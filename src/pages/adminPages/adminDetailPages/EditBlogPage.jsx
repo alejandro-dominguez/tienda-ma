@@ -4,6 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
 import useGetBlogArticle from '../../../customHooks/useGetBlogArticle';
 import EditBlogForm from '../../../components/adminComponents/EditBlogForm';
+import AdminErrorPage from '../../AdminErrorPage';
 
 const EditBlogPage = () => {
     const { id } = useParams()
