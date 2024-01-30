@@ -17,6 +17,9 @@ const AdminOrdersContainer = ({ orders }) => {
                     )})
                 }
             </div>
+            <h3 className='font-bold font-Raleway my-5 text-red-500'>
+                Siempre dejar al menos una oden en el administrador.
+            </h3>
         </div>
     )
 };

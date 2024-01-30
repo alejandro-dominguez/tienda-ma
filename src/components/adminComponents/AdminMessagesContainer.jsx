@@ -17,6 +17,9 @@ const AdminMessagesContainer = ({ messages }) => {
                     )})
                 }
             </div>
+            <h3 className='font-bold font-Raleway my-5 text-red-500'>
+                Siempre dejar al menos un mensaje en el administrador.
+            </h3>
         </div>
     )
 };

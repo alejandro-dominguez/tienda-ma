@@ -17,6 +17,9 @@ const AdminPaymentsContainer = ({ payments }) => {
                     )})
                 }
             </div>
+            <h3 className='font-bold font-Raleway mt-5 mb-3 text-red-500'>
+                Siempre dejar al menos una forma de pago en el administrador.
+            </h3>
         </div>
     )
 };
