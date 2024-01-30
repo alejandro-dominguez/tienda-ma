@@ -1,5 +1,3 @@
-import React from 'react';
-
 const MessageDetailCard = ({ message }) => {
     return (
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5

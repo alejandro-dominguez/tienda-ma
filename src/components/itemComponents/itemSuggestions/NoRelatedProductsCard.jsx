@@ -2,8 +2,8 @@ import {
     Link,
     useParams
 } from 'react-router-dom';
-import icon from '/favicon.svg';
 import { BiSolidShare } from 'react-icons/bi';
+import icon from '/favicon.svg';
 
 const NoRelatedProductsCard = () => {
     const { categoryId, subcategoryId } = useParams()

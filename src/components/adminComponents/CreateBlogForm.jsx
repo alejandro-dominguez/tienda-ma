@@ -229,6 +229,6 @@ const CreateBlogForm = () => {
             />
         </form>
     )
-}
+};
 
 export default CreateBlogForm;

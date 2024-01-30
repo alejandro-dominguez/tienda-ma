@@ -127,6 +127,6 @@ const CreatePaymentsForm = () => {
             />
         </form>
     )
-}
+};
 
 export default CreatePaymentsForm;

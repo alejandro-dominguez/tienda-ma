@@ -90,6 +90,6 @@ const UpdatePromotionForm = ({ promo }) => {
             />
         </form>
     )
-}
+};
 
 export default UpdatePromotionForm;

@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaGem } from 'react-icons/fa6';
-import { RiHandSanitizerFill } from "react-icons/ri";
+import { RiHandSanitizerFill } from 'react-icons/ri';
 import useGetSubcategories from '../customHooks/useGetSubcategories';
 import ErrorPage from '../pages/ErrorPage';
 

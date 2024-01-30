@@ -32,6 +32,6 @@ const EditBlogPage = () => {
             }
         </main>
     )
-}
+};
 
 export default EditBlogPage;

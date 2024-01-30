@@ -32,6 +32,6 @@ const AdminOrdersDetailPage = () => {
             }
         </main>
     )
-}
+};
 
 export default AdminOrdersDetailPage;

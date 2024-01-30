@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import useGetAllProducts from '../../../customHooks/useGetAllProducts';
+import useGetAllSubcategories from '../../../customHooks/useGetAllSubcategories';
 
 const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('')
     const [ showSearch, setShowSearch ] = useState(true)
     const [ prods, error, loading ] = useGetAllProducts()
+    const [ subcategories, errorSubcategories, loadingSubcategories ]  = useGetAllSubcategories()
     const navigate = useNavigate()
     
     const getValue = (e) => {
@@ -19,6 +21,14 @@ const SearchBar = () => {
 
     const navigateItemDetail = (prod) => {
         navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))
+        setTimeout(() => {
+            setShowSearch(false)
+            setInputValue('')
+        }, 100)
+    }
+
+    const navigateSubcategory = (subcategory) => {
+        navigate((`/categorias/${subcategory.category}/${subcategory.subcategory}`))
         setTimeout(() => {
             setShowSearch(false)
             setInputValue('')
@@ -49,7 +59,7 @@ const SearchBar = () => {
                     </div>
                 </button>
                 {
-                    (prods.length && !loading && !error) ?
+                    (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
                         <div className=
                             {
                                 showSearch ?
@@ -75,6 +85,25 @@ const SearchBar = () => {
                                             onClick={() => navigateItemDetail(prod)}
                                         >
                                             {prod.brand} {prod.name}
+                                        </span>
+                                    )
+                                })
+                            }
+                            {
+                                subcategories.filter(subcategory => {
+                                    const searchTerm = inputValue.toLowerCase()
+                                    const itemName = `${subcategory.subcategory}`.toLowerCase()
+                                    return searchTerm && itemName.includes(searchTerm)
+                                })
+                                .map(subcategory => {
+                                    return (
+                                        <span
+                                            key={subcategory.id}
+                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
+                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            onClick={() => navigateSubcategory(subcategory)}
+                                        >
+                                            {subcategory.subcategory}
                                         </span>
                                     )
                                 })

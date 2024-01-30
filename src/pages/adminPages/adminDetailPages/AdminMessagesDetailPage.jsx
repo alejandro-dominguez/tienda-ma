@@ -32,6 +32,6 @@ const AdminMessagesDetailPage = () => {
             }
         </main>
     )
-}
+};
 
 export default AdminMessagesDetailPage;

@@ -84,18 +84,9 @@ const CartModalForm = ({
                     position: 'bottom-center',
                 }
             )
-            /* setTimeout(() => {
-                setOrder(
-                    {
-                        orderFullName: '',
-                        orderAddress: '',
-                        orderPhone: '',
-                        orderEmail: '',
-                        orderNotes: '',
-                    }
-                )
+            setTimeout(() => {
                 setShowForm(false)
-            }, 4000) */
+            }, 4000)
         }
     }
 

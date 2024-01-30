@@ -36,6 +36,6 @@ const EditProductPage = () => {
             }
         </main>
     )
-}
+};
 
 export default EditProductPage;

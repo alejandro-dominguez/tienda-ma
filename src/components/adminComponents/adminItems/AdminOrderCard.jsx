@@ -50,7 +50,7 @@ const AdminOrderCard = ({ order }) => {
                         </Link>
                         <BsFillTrash3Fill
                             className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                            onClick={() => deleteMessage(message.id)}
+                            onClick={() => deleteOrder(order.id)}
                         />
                     </div>
                 </div>
