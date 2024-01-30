@@ -5,6 +5,7 @@ import {
 import HomePage from '../pages/HomePage';
 import AboutUsPage from '../pages/AboutUsPage';
 import ErrorPage from '../pages/ErrorPage';
+import AdminErrorPage from '../pages/AdminErrorPage';
 import AdminPage from '../pages/AdminPage';
 import AdminLandingPage from '../pages/AdminLandingPage';
 import ItemCategoriesContainer from '../containers/ItemCategoriesContainer';
@@ -36,90 +37,112 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/categorias/:categoryId',
                 element: <ItemCategoriesContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/categorias/:categoryId/:subcategoryId',
                 element: <ItemListContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/categorias/:categoryId/:subcategoryId/detalle/:id',
                 element: <ItemDetailContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/nosotros',
                 element: <AboutUsPage />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/blogs',
                 element: <BlogsContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/blogs/:id',
                 element: <BlogArticleContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/formasDePago',
                 element: <PaymentsPage />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/talles',
                 element: <SizesGuide />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/carrito',
                 element: <CartContainer />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/admin',
                 element: <AdminPage />,
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/admin/consola',
                 element: <AdminLandingPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/promociones',
                 element: <AdminPromotionsPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/productos',
                 element: <AdminProductsPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/blogs',
                 element: <AdminBlogsPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/blogs/editar/:id',
                 element: <EditBlogPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/productos/editar/:id',
                 element: <EditProductPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/formasDePago',
                 element: <AdminPaymentsPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/ordenes',
                 element: <AdminOrdersPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/ordenes/:id',
                 element: <AdminOrdersDetailPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/mensajesContacto',
                 element: <AdminMessagesPage />,
+                errorElement: <AdminErrorPage />,
             },
             {
                 path: '/admin/consola/mensajesContacto/:id',
                 element: <AdminMessagesDetailPage />,
+                errorElement: <AdminErrorPage />,
             },
         ],
     },

@@ -1,8 +1,21 @@
-import React from 'react';
+import { useContext } from 'react';
+import { SiteContext } from '../contexts/siteContext';
+import DisabledSite from '../components/DisabledSite';
 
 const SizesGuide = () => {
+    const { enableSite } = useContext(SiteContext)
+    
     return (
-        <div>SizesGuide</div>
+        <>
+        {
+            enableSite ?
+                <div>
+                    SizesGuide
+                </div>
+            :
+                <DisabledSite />
+        }
+        </>
     )
 };
 
