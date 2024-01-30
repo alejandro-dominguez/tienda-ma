@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyAKDVV9bG5Rxu55JCFtkS-AzJg7oMiYnu0',
-    authDomain: 'tienda-ma-db.firebaseapp.com',
-    projectId: 'tienda-ma-db',
-    storageBucket: 'tienda-ma-db.appspot.com',
-    messagingSenderId: '84251592979',
-    appId: '1:84251592979:web:d40c5ce04b1a9fd9dd72e6',
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
