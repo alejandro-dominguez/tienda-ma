@@ -12,25 +12,20 @@ import { db } from '../firebase/config';
 export const SiteContext = createContext();
 
 const SiteProvider = ({ children }) => {
-    const [ errorSite, setErrorSite ] = useState('')
-    const [ loadingSite, setLoadingSite ] = useState(false)
-    const [ enableSite, setEnableSite ] = useState(true)
+    const [ enableSite, setEnableSite ] = useState({
+        enabled: true
+    })
         
     useEffect(() => {
         (async () => {
             try {
-                setLoadingSite(true)
                 const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70')
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setEnableSite({ ...docSnap.data()})
-                    setLoadingSite(false)
                 }
             } catch (error) {
-                setErrorSite(error.message)
-                setLoadingSite(false)
-            } finally {
-                setLoadingSite(false)
+                console.log(error)
             }
         })()
     }, [])
@@ -38,9 +33,7 @@ const SiteProvider = ({ children }) => {
     return (
         <SiteContext.Provider
             value={{
-                enableSite,
-                loadingSite,
-                errorSite
+                enableSite
             }}
         >
             {children}
