@@ -1,9 +1,79 @@
 import { useContext } from 'react';
 import { SiteContext } from '../../contexts/siteContext';
+import { useState } from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
+import {
+    doc,
+    updateDoc
+} from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 import AdminMenuItem from './adminItems/AdminMenuItem';
 
+
 const AdminMenu = ({ adminMenuData }) => {
-    const { enableSite, setEnableSite } = useContext(SiteContext)
+    const { enableSite } = useContext(SiteContext)
+    const [ errorAdmin, setErrorAdmin ] = useState('')
+    const navigate = useNavigate()
+
+    const disableMainSite = async () => {
+        try {
+            const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70' )
+            await updateDoc(docRef, {
+                enabled: false
+              })
+            toast.success(
+                'Sitio principal detenido',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+            setTimeout(() => {
+                navigate('/admin')
+            }, 4000)
+        } catch (error) {
+            setErrorAdmin(error.message)
+            toast.error(
+                errorAdmin,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
+
+    const enableMainSite = async () => {
+        try {
+            const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70' )
+            await updateDoc(docRef, {
+                enabled: true
+              })
+            toast.success(
+                'Sitio principal habilitado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+            setTimeout(() => {
+                navigate('/admin')
+            }, 4000)
+        } catch (error) {
+            setErrorAdmin(error.message)
+            toast.error(
+                errorAdmin,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
 
     return (
         <>
@@ -19,10 +89,10 @@ const AdminMenu = ({ adminMenuData }) => {
             }
         </div>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <button
                     className='my-7 md:my-0 py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44 justify-self-center'
-                    onClick={() => setEnableSite(false)}
+                    onClick={() => disableMainSite()}
                 >
                     <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
                         Detener sitio
@@ -31,13 +101,19 @@ const AdminMenu = ({ adminMenuData }) => {
             :
                 <button
                 className='my-7 md:my-0 py-2 px-3 grid place-items-center bg-green-600 rounded-lg w-44 justify-self-center'
-                onClick={() => setEnableSite(true)}
+                onClick={() => enableMainSite()}
                 >
                     <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
                         Habilitar sitio
                     </span>
                 </button>
         }
+        <Toaster
+            richColors
+            toastOptions={{
+                className: 'text-center',
+            }}
+        />
         </>
     )
 };

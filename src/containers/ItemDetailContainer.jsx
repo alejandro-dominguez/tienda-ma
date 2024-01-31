@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
     return (
         <>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <main className='w-full grid place-items-start px-4 md:px-10 mt-28 min-h-[100svh]'>
                     {
                         (data.length && JSON.stringify(product) !== '{}' && !loading && !loadingProduct && !error && !errorProduct) ?

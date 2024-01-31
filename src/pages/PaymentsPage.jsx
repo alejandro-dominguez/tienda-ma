@@ -14,7 +14,7 @@ const PaymentsPage = () => {
     return (
         <>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <main className='w-full min-h-[100svh]'>
                     <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-10 mt-20 w-fit mx-auto'>
                         Formas de pago

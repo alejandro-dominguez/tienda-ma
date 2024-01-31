@@ -8,7 +8,7 @@ const SizesGuide = () => {
     return (
         <>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <div>
                     SizesGuide
                 </div>

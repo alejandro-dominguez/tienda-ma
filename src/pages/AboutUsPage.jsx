@@ -20,7 +20,7 @@ const AboutUsPage = () => {
     return (
         <>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <main className='grid place-items-center relative'>
                     <div className=
                         {

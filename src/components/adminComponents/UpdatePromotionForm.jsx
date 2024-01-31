@@ -23,7 +23,8 @@ const UpdatePromotionForm = ({ promo }) => {
             const docRef = doc(db, 'promos', `${promo[0].id}`)
             await updateDoc(docRef, {
                 active: false
-              })
+                }
+            )
             await addDoc(collection(db, 'promos'),
                 {
                     text: newPromo,

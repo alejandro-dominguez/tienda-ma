@@ -6,14 +6,15 @@ import PaymentsSection from '../components/homeComponents/PaymentsSection';
 import FeaturedItemsContainer from '../containers/FeaturedItemsContainer';
 import PromoSectionContainer from '../containers/PromoSectionContainer';
 import DisabledSite from '../components/DisabledSite';
+import ErrorPage from './ErrorPage';
 
 const HomePage = () => {
-    const { enableSite } = useContext(SiteContext)
+    const { enableSite, loadingSite, errorSite } = useContext(SiteContext)
 
     return (
         <>
         {
-            enableSite ?  
+            (enableSite.enabled && (loadingSite || !loadingSite) && !errorSite) ?  
                 <div className='relative grid place-items-center w-full'>
                     <HeroSection />
                     <PromoSectionContainer />
@@ -21,8 +22,16 @@ const HomePage = () => {
                     <PaymentsSection />
                     <HomeContactForm />
                 </div>
-            :
+            : enableSite.enabled === false ?
                 <DisabledSite />
+            :
+                <div className='relative grid place-items-center w-full'>
+                    <HeroSection />
+                    <PromoSectionContainer />
+                    <FeaturedItemsContainer />
+                    <PaymentsSection />
+                    <HomeContactForm />
+                </div>
         }
         </>
     )

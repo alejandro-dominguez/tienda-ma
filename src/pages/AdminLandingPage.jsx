@@ -7,7 +7,7 @@ import AdminErrorPage from '../pages/AdminErrorPage';
 import AdminMenu from '../components/adminComponents/AdminMenu';
 
 const AdminLandingPage = () => {
-    const { authUser, signOut } = useContext(AuthContext)
+    const { authUser } = useContext(AuthContext)
     const [ adminMenuData, ] = useState([
         {
             'name': 'Promociones',

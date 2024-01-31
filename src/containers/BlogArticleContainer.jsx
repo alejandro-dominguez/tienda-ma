@@ -15,7 +15,7 @@ const BlogArticleContainer = () => {
     return (
         <>
         {
-            enableSite ?
+            enableSite.enabled ?
                 <main className='w-full grid place-items-start min-h-[100svh]'>
                 {
                     (JSON.stringify(blog) !== '{}' && !loading && !error) ?
