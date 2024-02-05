@@ -21,7 +21,7 @@ const AdminMenu = ({ adminMenuData }) => {
 
     const disableMainSite = async () => {
         try {
-            const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70' )
+            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID )
             await updateDoc(docRef, {
                 enabled: false
               })
@@ -49,7 +49,7 @@ const AdminMenu = ({ adminMenuData }) => {
 
     const enableMainSite = async () => {
         try {
-            const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70' )
+            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID )
             await updateDoc(docRef, {
                 enabled: true
               })
@@ -76,8 +76,7 @@ const AdminMenu = ({ adminMenuData }) => {
     }
 
     return (
-        <>
-        <div className='w-fit mx-auto'>
+        <div className='w-fit mx-auto relative'>
             <div className='mx-auto grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 mt-2 md:mt-0'>
                 {
                     adminMenuData.map((data, i) => {
@@ -111,14 +110,14 @@ const AdminMenu = ({ adminMenuData }) => {
                         </span>
                     </button>
             }
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+                className='absolute'
+            />
         </div>
-        <Toaster
-            richColors
-            toastOptions={{
-                className: 'text-center',
-            }}
-        />
-        </>
     )
 };
 

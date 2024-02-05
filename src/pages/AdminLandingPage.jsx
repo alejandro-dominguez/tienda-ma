@@ -45,9 +45,6 @@ const AdminLandingPage = () => {
                         Consola de Administrador
                     </h1>
                     <AdminMenu adminMenuData={adminMenuData}/>
-                    <h2 className='font-bold font-Raleway md:ml-1 text-red-500 justify-self-center px-4 sm:px-10'>
-                        Todos los cambios correctos en el administrador te redirigirán a esta página.
-                    </h2>
                 </main>
             :
                 <AdminErrorPage />

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import {
     Toaster,
     toast
@@ -16,7 +15,6 @@ const CreatePaymentsForm = () => {
         paymentTitle: '',
         paymentDesc: '',
     })
-    const navigate = useNavigate()
     
     const registerInputs = ({ target: {name, value} }) => {
         setNewBlog({
@@ -48,7 +46,7 @@ const CreatePaymentsForm = () => {
                 }
             )
             setTimeout(() => {
-                navigate('/admin/consola')
+                e.target.reset()
             }, 3500)
         } catch (error) {
             setNewPayment(

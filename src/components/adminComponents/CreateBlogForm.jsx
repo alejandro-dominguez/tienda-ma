@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import {
     Toaster,
     toast
@@ -21,7 +20,6 @@ const CreateBlogForm = () => {
         blogImg1: '',
         blogImg2: '',
     })
-    const navigate = useNavigate()
     
     const registerInputs = ({ target: {name, value} }) => {
         setNewBlog({
@@ -64,7 +62,7 @@ const CreateBlogForm = () => {
                 }
             )
             setTimeout(() => {
-                navigate('/admin/consola')
+                e.target.reset()
             }, 3500)
         } catch (error) {
             setNewBlog(

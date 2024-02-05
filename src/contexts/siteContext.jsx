@@ -19,7 +19,7 @@ const SiteProvider = ({ children }) => {
     useEffect(() => {
         (async () => {
             try {
-                const docRef = doc(db, 'site', 'KM8JK6EfGRXtYQkN4T70')
+                const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setEnableSite({ ...docSnap.data()})

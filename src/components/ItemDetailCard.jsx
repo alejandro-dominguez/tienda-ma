@@ -18,6 +18,7 @@ const ItemDetailCard = ({
     const { addProduct } = useContext(ShopContext)
     const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
+    const [ selectedAdultSize, setSelectedAdultSize ] = useState('')
     const prodId = Math.floor(Math.random() * 100) * Date.now()
 
     const confirmPurchase = (quantity) => {
@@ -36,10 +37,17 @@ const ItemDetailCard = ({
                 setItemDetailQuantity(1)
             }, 150))
         :
+        product.sizes ?
+            (addProduct({ ...product, quantity, selectedAdultSize, prodId }),
+            setItemDetailQuantity(quantity),
+            setTimeout(() => {
+                setSelectedAdultSize('')
+                setItemDetailQuantity(1)
+            }, 150))
+        :
             addProduct({ ...product, quantity, prodId })
             setItemDetailQuantity(quantity)
             setTimeout(() => {
-                setSelectedSize('')
                 setItemDetailQuantity(1)
             }, 150)
     }
@@ -118,11 +126,38 @@ const ItemDetailCard = ({
                                 </div>
                             </div>
                         :
+                            product.adultSizes ?
+                            <div className='flex flex-col mt-[.2rem]'>
+                                <div>
+                                    <span className='text-sm md:text-[.9rem] font-bold'>
+                                        Talles:
+                                    </span>
+                                    <fieldset className='flex items-start gap-6 font-black text-sm'>
+                                        <label htmlFor='G' className='grid place-items-center cursor-pointer drop-shadow'>
+                                            G
+                                            <input
+                                                type='radio' id='G' name='adultSize' value='G'
+                                                onChange={e => setSelectedAdultSize(e.target.value)}
+                                                className='cursor-pointer'
+                                            />
+                                        </label>
+                                        <label htmlFor='XG' className='grid place-items-center cursor-pointer drop-shadow'>
+                                            XG
+                                            <input
+                                                type='radio' id='XG' name='adultSize' value='XG'
+                                                onChange={e => setSelectedAdultSize(e.target.value)}
+                                                className='cursor-pointer'
+                                            />
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        :
                             null
                     }
                 </div>
                 {   
-                    product.sizes && selectedSize === '' ?
+                    (product.sizes && selectedSize === '') || (product.adultSizes && selectedAdultSize === '') ?
                         <span className='self-start md:self-end font-black text-[.85rem] text-center drop-shadow-sm
                         tracking-wide mt-5 md:mt-0'>
                             Elige talle para añadir el producto 
@@ -133,7 +168,7 @@ const ItemDetailCard = ({
                             initial={1}
                             quantity={product.quantity}
                         />
-                    : !product.sizes && itemDetailQuantity ?
+                    : (!product.sizes || !product.adultSizes) && itemDetailQuantity ?
                         <ItemCount
                             onAdd={confirmPurchase}
                             initial={1}
@@ -151,7 +186,11 @@ const ItemDetailCard = ({
         <Toaster
             richColors
             toastOptions={{
-                className: 'text-center',
+                unstyled: false,
+                classNames: {
+                    toast: 'h-24',
+                    title: 'text-lg',
+                },
             }}
         />
         </>

@@ -13,7 +13,6 @@ import {
 import { ShopContext } from '../../contexts/shopContext';
 import { BiSolidShare } from 'react-icons/bi';  
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import numberFormater from '../../utilities/numberFormater';
 
 const CartModalForm = ({
@@ -29,7 +28,6 @@ const CartModalForm = ({
     })
     const [ errorOrder, setErrorOrder ] = useState('')
     const { products, emptyCart, calculateCartTotal } = useContext(ShopContext)
-    const navigate = useNavigate()
     const orderTotalAmount = numberFormater(calculateCartTotal())
 
     const registerInputs = ({ target: {name, value} }) => {
@@ -53,6 +51,7 @@ const CartModalForm = ({
                     orderDate: new Date().toLocaleString(),
                 }
             )
+            e.target.reset()
             toast.success(
                 'Orden enviada',
                 {
@@ -73,7 +72,6 @@ const CartModalForm = ({
                     }
                 )
                 setShowForm(false)
-                navigate('/')
             }, 6000)
         } catch (error) {
             setErrorOrder(error.message)
@@ -194,7 +192,11 @@ const CartModalForm = ({
                 <Toaster
                     richColors
                     toastOptions={{
-                        className: 'text-center',
+                        unstyled: false,
+                        classNames: {
+                            toast: 'h-24',
+                            title: 'text-lg',
+                        },
                     }}
                 />
                 </>

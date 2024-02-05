@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
     Toaster,
     toast
@@ -15,7 +14,6 @@ import { db } from '../../firebase/config';
 const UpdatePromotionForm = ({ promo }) => {
     const [ newPromo, setNewPromo ] = useState('')
     const [ errorPromo, setErrorPromo ] = useState('')
-    const navigate = useNavigate()
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -40,7 +38,7 @@ const UpdatePromotionForm = ({ promo }) => {
                 }
             )
             setTimeout(() => {
-                navigate('/admin/consola')
+                e.target.reset()
             }, 3500)
         } catch (error) {
             setNewPromo('')
