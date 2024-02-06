@@ -11,7 +11,7 @@ import scrollTop from '../utilities/scrollTop';
 
 const Footer = () => {
     return (
-        <footer className='w-full grid grid-cols-1 lg:grid-cols-3 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
+        <footer className='w-full grid grid-cols-1 lg:grid-cols-4 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
             <div className='flex flex-col items-start mt-0 md:mt-4 lg:mt-0 gap-2'>
                 <Link
                     to='/nosotros'
@@ -78,17 +78,35 @@ const Footer = () => {
                     </span>
                 </Link>
             </div>
-            <div className='flex flex-col items-center gap-4'>
+            <div className='flex flex-col items-start sm:mt-5 lg:ml-6 lg:mt-0 gap-1'>
                 <BiSolidCaretUpCircle
                     className='block text-2xl cursor-pointer text-red-500/60 drop-shadow'
                     onClick={() => scrollTop()}
                 />
                 <Link
+                    to='/terminos&condiciones'
+                    className='mt-auto'
+                >
+                    <span className='font-bold tracking-wide text-[.78rem] drop-shadow-sm'>
+                        Términos y condiciones
+                    </span>
+                </Link>
+                <Link
+                    to='/devoluciones'
+                    className='-mt-1'
+                >
+                    <span className='font-bold tracking-wide text-[.78rem] drop-shadow-sm'>
+                        Devoluciones
+                    </span>
+                </Link>
+            </div>
+            <div className='flex flex-col items-center gap-4'>
+                <Link
                     to='https://portfolio-alejandro-dominguez.vercel.app/'
                     referrerPolicy='no-referrer'
                     rel='noopener'
                     target='_blank'
-                    className='justify-self-end'
+                    className='mt-auto'
                 >
                     <small className='leading-[.9rem] tracking-wide text-center text-[.7rem] drop-shadow-sm grid place-items-centerr'>
                         <span>

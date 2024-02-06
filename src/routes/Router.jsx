@@ -2,11 +2,14 @@ import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
+import Root from './root/Root';
 import HomePage from '../pages/HomePage';
 import AboutUsPage from '../pages/AboutUsPage';
 import ErrorPage from '../pages/ErrorPage';
 import AdminErrorPage from '../pages/AdminErrorPage';
 import AdminPage from '../pages/AdminPage';
+import TermsAndConditionsPage from '../pages/TermsAndConditionsPage';
+import RefoundsPage from '../pages/RefundsPage';
 import AdminLandingPage from '../pages/AdminLandingPage';
 import ItemCategoriesContainer from '../containers/ItemCategoriesContainer';
 import CartContainer from '../containers/CartContainer';
@@ -14,7 +17,6 @@ import BlogsContainer from '../containers/BlogsContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
 import ItemListContainer from '../containers/ItemListContainer';
 import BlogArticleContainer from '../containers/BlogArticleContainer';
-import Root from './root/Root';
 import SizesGuide from '../pages/SizesGuide';
 import PaymentsPage from '../pages/PaymentsPage';
 import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
@@ -87,6 +89,16 @@ const router = createBrowserRouter([
             {
                 path: '/admin',
                 element: <AdminPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/terminos&condiciones',
+                element: <TermsAndConditionsPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/devoluciones',
+                element: <RefoundsPage />,
                 errorElement: <ErrorPage />,
             },
             {

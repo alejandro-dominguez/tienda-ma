@@ -35,7 +35,8 @@ const HomeContactForm = () => {
                     phone: contactFormMessage.contactPhone,
                     email: contactFormMessage.contactEmail,
                     message: contactFormMessage.contactMessage,
-                    messageDate: new Date().toLocaleString()
+                    messageDate: new Date().toLocaleString(),
+                    read: false
                 }
             )
             setContactFormMessage(

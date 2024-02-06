@@ -16,7 +16,7 @@ const AdminProductCard = ({ prod }) => {
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
-            }, 250)
+            }, 1000)
         } catch (error) {
             console.log(error.message)
         }
@@ -31,7 +31,7 @@ const AdminProductCard = ({ prod }) => {
                 })
             setTimeout(() => {
                 navigate('/admin/consola')
-            }, 250)
+            }, 1000)
         } catch (error) {
             console.log(error.message)
         }
@@ -46,7 +46,7 @@ const AdminProductCard = ({ prod }) => {
                 })
             setTimeout(() => {
                 navigate('/admin/consola')
-            }, 250)
+            }, 1000)
         } catch (error) {
             console.log(error.message)
         }

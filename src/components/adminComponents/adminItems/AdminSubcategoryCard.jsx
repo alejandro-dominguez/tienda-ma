@@ -15,7 +15,7 @@ const AdminSubcategoryCard = ({ subcategory }) => {
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
-            }, 250)
+            }, 1000)
         } catch (error) {
             console.log(error.message)
         }

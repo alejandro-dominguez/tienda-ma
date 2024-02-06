@@ -49,6 +49,8 @@ const CartModalForm = ({
                     orderProducts: products,
                     orderTotal: orderTotalAmount,
                     orderDate: new Date().toLocaleString(),
+                    delivered: false,
+                    process: false
                 }
             )
             e.target.reset()

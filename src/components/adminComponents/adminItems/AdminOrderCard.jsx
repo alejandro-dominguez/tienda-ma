@@ -1,14 +1,47 @@
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
+import { FaTruck } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa6';
 import { db } from '../../../firebase/config';
 import {
     deleteDoc,
     doc,
+    updateDoc
 } from 'firebase/firestore';
 
 const AdminOrderCard = ({ order }) => {
     const navigate = useNavigate()
+    
+    const deliveredOrder = async (id) => {
+        try {
+            const docRef = doc(db, 'orders', id)
+            await updateDoc(docRef,
+                {
+                    delivered: true,
+                })
+            setTimeout(() => {
+                navigate('/admin/consola')
+            }, 1000)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    const processingOrder = async (id) => {
+        try {
+            const docRef = doc(db, 'orders', id)
+            await updateDoc(docRef,
+                {
+                    process: true
+                })
+            setTimeout(() => {
+                navigate('/admin/consola')
+            }, 1000)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     const deleteOrder = async (id) => {
         try {
@@ -16,7 +49,7 @@ const AdminOrderCard = ({ order }) => {
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
-            }, 250)
+            }, 1000)
         } catch (error) {
             console.log(error.message)
         }
@@ -38,18 +71,39 @@ const AdminOrderCard = ({ order }) => {
                             {order.clientFullName}
                         </span>
                     </h3>
-                    <div className='flex items-end w-full justify-between'>
-                        <Link
-                            to={`/admin/consola/ordenes/${order.id}`}
-                            className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                            ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
-                        >
-                            <span className='tracking-wider text-[.79rem] font-Raleway'>
-                                Ver orden
-                            </span>
-                        </Link>
+                    <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-3'>
+                        Estado:
+                        <span className='font-normal text-sm mt-[.21rem]'>
+                            {
+                                order.delivered ?
+                                    'Órden entregada'
+                                : !order.delivered && order.process ?
+                                    'En proceso'
+                                :
+                                    'No procesada'
+                            }
+                        </span>
+                    </h3>
+                    <Link
+                        to={`/admin/consola/ordenes/${order.id}`}
+                        className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
+                        ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
+                    >
+                        <span className='tracking-wider text-[.79rem] font-Raleway'>
+                            Ver orden
+                        </span>
+                    </Link>
+                    <div className='flex items-center gap-10 self-center mt-2'>
+                        <FaTruck
+                            className='block cursor-pointer text-[1.7rem] mt-2 drop-shadow-sm text-green-500/90'
+                            onClick={() => deliveredOrder(order.id)}
+                        />
+                        <FaClock
+                            className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-zinc-900/80'
+                            onClick={() => processingOrder(order.id)}
+                        />
                         <BsFillTrash3Fill
-                            className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
+                            className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80'
                             onClick={() => deleteOrder(order.id)}
                         />
                     </div>
