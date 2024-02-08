@@ -25,7 +25,7 @@ const ItemDetailCard = ({
         toast.success(
             'Producto agregado',
             {
-                duration: 4000,
+                duration: 5000,
                 position: 'bottom-center',
             }
         ),
