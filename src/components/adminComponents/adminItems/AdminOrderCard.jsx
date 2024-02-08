@@ -19,6 +19,7 @@ const AdminOrderCard = ({ order }) => {
             await updateDoc(docRef,
                 {
                     delivered: true,
+                    process: true
                 })
             setTimeout(() => {
                 navigate('/admin/consola')

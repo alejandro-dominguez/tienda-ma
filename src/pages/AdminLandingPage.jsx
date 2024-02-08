@@ -4,6 +4,8 @@ import {
 } from 'react';
 import { AuthContext } from '../contexts/authContext';
 import AdminErrorPage from '../pages/AdminErrorPage';
+import AdminOrdersNotification from '../components/adminComponents/AdminOrdersNotifications';
+import AdminMessagesNotification from '../components/adminComponents/AdminMessagesNotifications';
 import AdminMenu from '../components/adminComponents/AdminMenu';
 
 const AdminLandingPage = () => {
@@ -44,6 +46,10 @@ const AdminLandingPage = () => {
                     drop-shadow-sm mt-2 justify-self-center'>
                         Consola de Administrador
                     </h1>
+                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-5'>
+                        <AdminOrdersNotification />
+                        <AdminMessagesNotification />
+                    </div>
                     <AdminMenu adminMenuData={adminMenuData}/>
                 </main>
             :

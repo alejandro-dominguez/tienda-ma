@@ -6,7 +6,7 @@ import AdminMessagesContainer from '../../components/adminComponents/AdminMessag
 import AdminErrorPage from '../AdminErrorPage';
 
 const AdminMessagesPage = () => {
-    const [ messages, error, loading ] = useGetAllMessages()
+    const [ messages, errorMessages, loadingMessages ] = useGetAllMessages()
     const { authUser } = useContext(AuthContext)
 
     return (
@@ -15,11 +15,11 @@ const AdminMessagesPage = () => {
             authUser ?
                 <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
                     { 
-                        (messages.length && !loading && !error) ?
+                        (messages.length && !loadingMessages && !errorMessages) ?
                             <div className='mx-auto flex flex-col'>
                                 <AdminMessagesContainer messages={messages} />
                             </div>
-                        : !error ?
+                        : !errorMessages ?
                             <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                                 <div className='p-5 bg-teal-600/20 rounded-lg'>
                                     <RotatingLines

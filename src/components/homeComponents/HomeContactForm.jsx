@@ -51,13 +51,13 @@ const HomeContactForm = () => {
             toast.success(
                 'Mensaje enviado',
                 {
-                    duration: 3000,
+                    duration: 5000,
                     position: 'bottom-center',
                 }
             )
             setTimeout(() => {
                 scrollTop()
-            }, 4000)
+            }, 6000)
         } catch (error) {
             setContactFormMessage(
                 {
@@ -159,7 +159,11 @@ const HomeContactForm = () => {
             <Toaster
                 richColors
                 toastOptions={{
-                    className: 'text-center',
+                    unstyled: false,
+                    classNames: {
+                        toast: 'h-24 mb-60',
+                        title: 'text-lg',
+                    },
                 }}
             />
         </section>

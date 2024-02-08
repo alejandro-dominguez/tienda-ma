@@ -55,10 +55,10 @@ const CartModalForm = ({
             )
             e.target.reset()
             toast.success(
-                'Orden enviada',
+                'Orden enviada.',
                 {
-                    description: 'Tu orden ya fue enviada con éxito. Nos comunicamos en la brevedad una vez confirmado el stock.',
-                    duration: 5000,
+                    description: 'Tu orden fue enviada con éxito. Nos comunicaremos en la brevedad una vez confirmado el stock.',
+                    duration: 10000,
                     position: 'bottom-center',
                 }
             )
@@ -74,7 +74,7 @@ const CartModalForm = ({
                     }
                 )
                 setShowForm(false)
-            }, 6000)
+            }, 11000)
         } catch (error) {
             setErrorOrder(error.message)
             toast.error(
@@ -191,16 +191,17 @@ const CartModalForm = ({
                         </span>
                     </button>
                 </form>
-                <Toaster
-                    richColors
-                    toastOptions={{
-                        unstyled: false,
-                        classNames: {
-                            toast: 'h-24',
-                            title: 'text-lg',
-                        },
-                    }}
-                />
+                    <Toaster
+                        richColors
+                        toastOptions={{
+                            unstyled: false,
+                            classNames: {
+                                toast: 'h-40 mb-52',
+                                title: 'text-xl',
+                                description: 'text-lg',
+                            },
+                        }}
+                    />
                 </>
             : 
                 null

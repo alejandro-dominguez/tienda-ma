@@ -188,7 +188,7 @@ const ItemDetailCard = ({
             toastOptions={{
                 unstyled: false,
                 classNames: {
-                    toast: 'h-24',
+                    toast: 'h-24 mb-60',
                     title: 'text-lg',
                 },
             }}

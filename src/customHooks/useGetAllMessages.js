@@ -10,14 +10,14 @@ import {
 import { db } from '../firebase/config';
 
 const useGetAllMessages = () => {
-    const [ error, setError ] = useState('')
-    const [ loading, setLoading ] = useState(false)
+    const [ errorMessages, setErrorMessages ] = useState('')
+    const [ loadingMessages, setLoadingMessages ] = useState(false)
     const [ messages, setMessages ] = useState([])
 
     useEffect(() => {
         (async () => {
             try {
-                setLoading(true)
+                setLoadingMessages(true)
                 let q = query(collection(db, 'messages'))
                 const querySnapshot = await getDocs(q)
                 const firebaseMessages = []
@@ -25,17 +25,17 @@ const useGetAllMessages = () => {
                     firebaseMessages.push({...doc.data(), id: doc.id})
                 })
                 setMessages(firebaseMessages)
-                setLoading(false)
+                setLoadingMessages(false)
             } catch (error) {
-                setError(error.message)
-                setLoading(false)
+                setErrorMessages(error.message)
+                setLoadingMessages(false)
             } finally {
-                setLoading(false)
+                setLoadingMessages(false)
             }
         })()
     }, [])
 
-    return [ messages, error, loading ]
+    return [ messages, errorMessages, loadingMessages ]
 };
 
 export default useGetAllMessages;
