@@ -41,7 +41,7 @@ const AdminMessagesNotifications = () => {
         :
             <div className='w-fit'>
                 <span>
-                    {JSON.stringify(errorMessages)}
+                    {errorMessages}
                 </span>
             </div>      
         }

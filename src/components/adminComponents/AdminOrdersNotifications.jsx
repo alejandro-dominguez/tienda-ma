@@ -59,7 +59,7 @@ const AdminOrdersNotifications = () => {
             :
                 <div className='w-fit'>
                     <span>
-                        {JSON.stringify(error)}
+                        {error}
                     </span>
                 </div>
         }   
