@@ -31,7 +31,7 @@ const AdminOrdersNotifications = () => {
                         <span className='font-bold'>
                             {pendingOrders}
                         </span>
-                        órdenes sin ver.
+                        orden/es sin ver.
                     </span>
                     <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
                 </div>
@@ -41,7 +41,7 @@ const AdminOrdersNotifications = () => {
                         <span className='font-bold'>
                             {pendingDeliveredOrders}
                         </span>
-                        órdenes en proceso.
+                        orden/es en proceso.
                     </span>
                     <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
                 </div>
@@ -57,10 +57,14 @@ const AdminOrdersNotifications = () => {
                     />
                 </div>
             :
-                <AdminErrorPage />
+                <div className='w-fit'>
+                    <span>
+                        {JSON.stringify(error)}
+                    </span>
+                </div>
         }   
         </>
-    )
+    )           
 };
 
 export default AdminOrdersNotifications;

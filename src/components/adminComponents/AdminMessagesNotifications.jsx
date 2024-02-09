@@ -24,7 +24,7 @@ const AdminMessagesNotifications = () => {
                     <span className='font-bold'>
                         {pendingMessages}
                     </span>
-                    mensajes sin leer.
+                    mensaje/es sin leer.
                 </span>
                 <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
             </div>
@@ -39,7 +39,11 @@ const AdminMessagesNotifications = () => {
                 />
             </div>
         :
-            <AdminErrorPage />
+            <div className='w-fit'>
+                <span>
+                    {JSON.stringify(errorMessages)}
+                </span>
+            </div>      
         }
         </>
     )
