@@ -61,9 +61,6 @@ const CreateBlogForm = () => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                e.target.reset()
-            }, 3500)
         } catch (error) {
             setNewBlog(
                 {
@@ -84,6 +81,8 @@ const CreateBlogForm = () => {
                     position: 'bottom-center',
                 }
             )
+        } finally {
+            e.target.reset()
         }
     }
 

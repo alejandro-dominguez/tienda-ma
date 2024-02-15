@@ -47,7 +47,6 @@ const HomeContactForm = () => {
                     contactMessage: '',
                 }
             )
-            e.target.reset()
             toast.success(
                 'Mensaje enviado',
                 {
@@ -68,7 +67,6 @@ const HomeContactForm = () => {
                 }
             )
             setErrorMessage(error.message)
-            e.target.reset()
             toast.error(
                 errorMessage,
                 {
@@ -76,6 +74,8 @@ const HomeContactForm = () => {
                     position: 'bottom-center',
                 }
             )
+        } finally {
+            e.target.reset()
         }
     }
 

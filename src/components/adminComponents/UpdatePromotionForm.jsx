@@ -37,9 +37,6 @@ const UpdatePromotionForm = ({ promo }) => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                e.target.reset()
-            }, 3500)
         } catch (error) {
             setNewPromo('')
             setErrorPromo(error.message)
@@ -50,6 +47,8 @@ const UpdatePromotionForm = ({ promo }) => {
                     position: 'bottom-center',
                 }
             )
+        } finally {
+            e.target.reset()
         }
     }
 

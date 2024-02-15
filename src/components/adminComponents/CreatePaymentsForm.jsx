@@ -17,7 +17,7 @@ const CreatePaymentsForm = () => {
     })
     
     const registerInputs = ({ target: {name, value} }) => {
-        setNewBlog({
+        setNewPayment({
             ...newPayment,
             [name]: value
         })
@@ -25,6 +25,7 @@ const CreatePaymentsForm = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(newPayment.paymentDesc, newPayment.paymentTitle);
         try {
             await addDoc(collection(db, 'payments'),
                 {
@@ -45,9 +46,6 @@ const CreatePaymentsForm = () => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                e.target.reset()
-            }, 3500)
         } catch (error) {
             setNewPayment(
                 {
@@ -63,6 +61,8 @@ const CreatePaymentsForm = () => {
                     position: 'bottom-center',
                 }
             )
+        } finally {
+            e.target.reset()
         }
     }
 

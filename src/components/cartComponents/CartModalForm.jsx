@@ -53,7 +53,6 @@ const CartModalForm = ({
                     process: false
                 }
             )
-            e.target.reset()
             toast.success(
                 'Orden enviada.',
                 {
@@ -87,6 +86,8 @@ const CartModalForm = ({
             setTimeout(() => {
                 setShowForm(false)
             }, 4000)
+        } finally {
+            e.target.reset()
         }
     }
 

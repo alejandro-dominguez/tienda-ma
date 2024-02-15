@@ -94,9 +94,6 @@ const CreateProductForm = () => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                e.target.reset()
-            }, 3500)
         } catch (error) {
             setNewProduct(
                 {
@@ -119,6 +116,8 @@ const CreateProductForm = () => {
                     position: 'bottom-center',
                 }
             )
+        } finally {
+            e.target.reset()
         }
     }
 

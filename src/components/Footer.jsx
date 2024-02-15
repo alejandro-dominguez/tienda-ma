@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/authContext';
 import { Link } from 'react-router-dom'
 import { BiSolidCaretUpCircle } from 'react-icons/bi';
 import { PiInstagramLogoFill } from 'react-icons/pi';
@@ -10,6 +12,8 @@ import {
 import scrollTop from '../utilities/scrollTop';
 
 const Footer = () => {
+    const { authUser } = useContext(AuthContext)
+    
     return (
         <footer className='w-full grid grid-cols-1 lg:grid-cols-4 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
             <div className='flex flex-col items-start mt-0 md:mt-4 lg:mt-0 gap-2'>
@@ -120,7 +124,14 @@ const Footer = () => {
                         </span>
                     </small>
                 </Link>
-                <Link to='/admin'>
+                <Link to=
+                    {
+                        authUser ?
+                            '/admin/consola'
+                        :
+                            '/admin'
+                    }
+                >
                     <div className='flex justify-start items-center gap-2'>
                         <FaUserCircle className='block text-lg text-zinc-900' />
                         <span className='font-bold font-Lato drop-shadow-sm text-sm'>
