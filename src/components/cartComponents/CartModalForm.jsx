@@ -21,7 +21,10 @@ const CartModalForm = ({
 }) => {
     const [ order, setOrder ] = useState({
         orderFullName: '',
-        orderAddress: '',
+        orderAddressStreet: '',
+        orderAddressNumber: '',
+        orderAddressFloor: '',
+        orderAddressDoor: '',
         orderPhone: '',
         orderEmail: '',
         orderNotes: '',
@@ -43,7 +46,10 @@ const CartModalForm = ({
             await addDoc(collection(db, 'orders'),
                 {
                     clientFullName: order.orderFullName,
-                    clientAdress: order.orderAddress,
+                    clientAdressStreet: order.orderAddressStreet,
+                    clientAdressNumber: order.orderAddressNumber,
+                    clientAdressFloor: order.orderAddressFloor,
+                    clientAdressDoor: order.orderAddressDoor,
                     clientPhone: order.orderPhone,
                     clientEmail: order.orderEmail,
                     orderProducts: products,
@@ -66,7 +72,10 @@ const CartModalForm = ({
                 setOrder(
                     {
                         orderFullName: '',
-                        orderAddress: '',
+                        orderAddressStreet: '',
+                        orderAddressNumber: '',
+                        orderAddressFloor: '',
+                        orderAddressDoor: '',
                         orderPhone: '',
                         orderEmail: '',
                         orderNotes: '',
@@ -142,18 +151,55 @@ const CartModalForm = ({
                             </div>
                         </div>
                         <div className='flex flex-col mt-3 md:mt-0'>
-                            <div className='flex flex-col'>
-                                <label htmlFor='orderAddress' className='text-zinc-700 flex gap-[.3rem]'>
-                                    Dirección de entrega:
-                                    <span className='text-rose-500 text-xl h-fit -mt-1'>
-                                        *
-                                    </span>
-                                </label>
-                                <input
-                                    type='text' name='orderAddress' id='orderAddress' minLength={10} maxLength={30} required
-                                    placeholder='Dirección del envío' className='contact-input'
-                                    onChange={registerInputs}
-                                />
+                            <div className='flex gap-6'>
+                                <div className='flex flex-col'>
+                                    <label htmlFor='orderAddressStreet' className='text-zinc-700 flex gap-[.3rem]'>
+                                        Dirección de entrega:
+                                        <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                            *
+                                        </span>
+                                    </label>
+                                    <input
+                                        type='text' name='orderAddressStreet' id='orderAddressStreet' minLength={10} maxLength={30}
+                                        required placeholder='Calle' className='contact-input w-52'
+                                        onChange={registerInputs}
+                                    />
+                                </div>
+                                <div className='flex flex-col'>
+                                        <label htmlFor='orderAddressStreet' className='text-zinc-700 flex gap-[.3rem]'>
+                                            Número:
+                                            <span className='text-rose-500 text-xl h-fit -mt-1'>
+                                                *
+                                            </span>
+                                        </label>
+                                    <input
+                                        type='number' name='orderAddressNumber' id='orderAddressNumber'
+                                        required placeholder='1010' className='contact-input w-20' min={1}
+                                        onChange={registerInputs}
+                                    />
+                                </div>
+                            </div>
+                            <div className='flex mt-3 gap-6' >
+                                <div className='flex flex-col'>
+                                    <label htmlFor='orderAddressFloor' className='text-zinc-700'>
+                                        Piso
+                                    </label>
+                                    <input
+                                        type='number' name='orderAddressFloor' id='orderAddressFloor' min={1}
+                                        placeholder='Piso' className='contact-input w-20'
+                                        onChange={registerInputs}
+                                    />
+                                </div>
+                                <div className='flex flex-col'>
+                                    <label htmlFor='orderAddressDoor' className='text-zinc-700'>
+                                        Dpto:
+                                    </label>
+                                    <input
+                                        type='text' name='orderAddressDoor' id='orderAddressDoor' minLength={1} maxLength={5}
+                                        placeholder='Dpto.' className='contact-input w-20'
+                                        onChange={registerInputs}
+                                    />
+                                </div>
                             </div>
                             <div className='flex flex-col mt-3'>
                                 <label htmlFor='orderNotes' className='text-zinc-700'>

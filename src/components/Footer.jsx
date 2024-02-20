@@ -19,30 +19,30 @@ const Footer = () => {
             <div className='flex flex-col items-start mt-0 md:mt-4 lg:mt-0 gap-2'>
                 <Link
                     to='/nosotros'
-                    className='font-Raleway font-black text-[1.1rem] text-zinc-800 border-b-[3px] border-red-500/50'
+                    className='font-Raleway font-black text-zinc-800 border-b-[3px] border-red-500/50'
                 >
                     Nosotros
                 </Link>
                 <Link
                     to='/talles'
-                    className='font-Raleway font-black text-[1.1rem] text-zinc-800 border-b-[3px] border-red-500/50'
+                    className='font-Raleway font-black text-zinc-800 border-b-[3px] border-red-500/50'
                 >
                     Guía de Talles
                 </Link>
                 <div className='flex flex-col justify-self-end mt-2'>
-                    <h3 className='font-Raleway font-black text-base text-zinc-800'>
+                    <h3 className='font-Raleway font-black text-zinc-800'>
                         Zona de Envíos:
                     </h3>
                     <div className='flex justify-start gap-2'>
                         <FaTruck className='block text-[1.4rem] text-zinc-900' />
-                        <span className='font-bold font-Lato drop-shadow-sm text-sm'>
+                        <span className='font-bold font-Lato drop-shadow-sm'>
                             Rosario y Gran Rosario
                         </span>
                     </div>
                 </div>
             </div>
             <div className='flex flex-col items-start sm:mt-4 lg:mt-0 gap-1'>
-                <h3 className='font-Raleway font-black text-xl text-zinc-800'>
+                <h3 className='font-Raleway font-black text-zinc-800'>
                     Contáctanos
                 </h3>
                 <Link
@@ -53,7 +53,7 @@ const Footer = () => {
                     className='flex justify-start gap-2 mt-2'
                 >
                     <BsFillTelephoneFill className='block text-[1.3rem] text-zinc-900' />
-                    <span className='font-bold font-Lato drop-shadow-sm text-sm'>
+                    <span className='font-bold font-Lato drop-shadow-sm'>
                         3416 630 000
                    </span>
                 </Link>
@@ -65,7 +65,7 @@ const Footer = () => {
                     className='flex justify-start gap-2 mt-1'
                 >
                     <MdEmail className='block text-[1.43rem] text-zinc-900' />
-                    <span className='font-bold font-Lato drop-shadow-sm text-sm'>
+                    <span className='font-bold font-Lato drop-shadow-sm'>
                         contacto.tiendama@gmail.com
                     </span>
                 </Link>
@@ -77,42 +77,30 @@ const Footer = () => {
                     className='flex justify-start gap-2 mt-1'
                 >
                     <PiInstagramLogoFill className='block text-2xl text-zinc-900' />
-                    <span className='font-bold font-Lato drop-shadow-sm text-sm'>
+                    <span className='font-bold font-Lato drop-shadow-sm'>
                         @tiendama_rosario
                     </span>
                 </Link>
             </div>
             <div className='flex flex-col items-start sm:mt-5 lg:ml-6 lg:mt-0 gap-1'>
-                <BiSolidCaretUpCircle
-                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow'
-                    onClick={() => scrollTop()}
-                />
-                <Link
-                    to='/terminos&condiciones'
-                    className='mt-auto'
-                >
-                    <span className='font-bold tracking-wide text-[.78rem] drop-shadow-sm'>
+                <Link to='/terminos&condiciones'>
+                    <span className='font-bold tracking-wide text-[.9rem] drop-shadow-sm'>
                         Términos y condiciones
                     </span>
                 </Link>
-                <Link
-                    to='/devoluciones'
-                    className='-mt-1'
-                >
-                    <span className='font-bold tracking-wide text-[.78rem] drop-shadow-sm'>
+                <Link to='/devoluciones' >
+                    <span className='font-bold tracking-wide text-[.9rem] drop-shadow-sm'>
                         Devoluciones
                     </span>
                 </Link>
-            </div>
-            <div className='flex flex-col items-center gap-4'>
                 <Link
                     to='https://portfolio-alejandro-dominguez.vercel.app/'
                     referrerPolicy='no-referrer'
                     rel='noopener'
                     target='_blank'
-                    className='mt-auto'
+                    className='mt-2'
                 >
-                    <small className='leading-[.9rem] tracking-wide text-center text-[.7rem] drop-shadow-sm grid place-items-centerr'>
+                    <small className='leading-[.9rem] tracking-wide text-[.7rem] drop-shadow-sm grid place-items-centerr'>
                         <span>
                             &copy; 2024
                         </span>
@@ -124,6 +112,12 @@ const Footer = () => {
                         </span>
                     </small>
                 </Link>
+            </div>
+            <div className='flex flex-col items-center gap-4'>
+                <BiSolidCaretUpCircle
+                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow'
+                    onClick={() => scrollTop()}
+                />
                 <Link to=
                     {
                         authUser ?

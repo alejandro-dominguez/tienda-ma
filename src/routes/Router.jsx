@@ -19,6 +19,7 @@ import ItemListContainer from '../containers/ItemListContainer';
 import BlogArticleContainer from '../containers/BlogArticleContainer';
 import SizesGuide from '../pages/SizesGuide';
 import PaymentsPage from '../pages/PaymentsPage';
+import WholesalersPage from '../pages/WholesalersPage';
 import AdminPromotionsPage from '../pages/adminPages/AdminPromotionsPage';
 import AdminProductsPage from '../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../pages/adminPages/AdminBlogsPage';
@@ -99,6 +100,11 @@ const router = createBrowserRouter([
             {
                 path: '/devoluciones',
                 element: <RefoundsPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/mayoristas',
+                element: <WholesalersPage />,
                 errorElement: <ErrorPage />,
             },
             {

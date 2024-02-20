@@ -57,7 +57,19 @@ const OrderDetailCard = ({ order }) => {
             <span className='font-bold flex gap-1 items-center'>
                 Dirección:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {order.clientAdress}
+                    {order.clientAdressStreet} {order.clientAdressNumber}
+                    {
+                        order.clientAdressFloor ?
+                            order.clientAdressFloor
+                        :
+                            null
+                    }
+                    {
+                        order.clientAdressDoor ?
+                            order.clientAdressDoor
+                        :
+                            null
+                    }
                 </span>
             </span>
             <span className='font-bold flex gap-1 items-center'>

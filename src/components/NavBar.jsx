@@ -37,6 +37,10 @@ const NavBar = () => {
             'name': 'blog',
             'url': 'blogs'
         },
+        {
+            'name': 'mayoristas',
+            'url': 'mayoristas'
+        },
     ])
     const [ hideMenu, setHideMenu ] = useState(false)
     

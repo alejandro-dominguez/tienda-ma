@@ -38,13 +38,13 @@ const SearchBar = () => {
     return (
         <label
             htmlFor='searchBar'
-            className='flex flex-col items-start'
+            className='flex flex-col items-start mt-2 lg:mt-0'
         >
             <div className='flex items-center justify-between gap-1 relative'>
                 <input
                     type='text' name='searchBar' id='searchBar' placeholder='...'
                     value={inputValue}
-                    className='w-16 sm:w-32 text-sm bg-teal-500/[9%] py-[.28rem] md:py-[.35rem] px-2 rounded-sm
+                    className='w-16 sm:w-20 text-sm bg-teal-500/[9%] py-[.28rem] md:py-[.35rem] px-2 rounded-sm
                     drop-shadow-sm shadow-sm placeholder:tracking-wider'
                     onChange={getValue}
                     onClick={() => setShowSearch(true)}
