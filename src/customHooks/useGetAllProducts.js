@@ -22,6 +22,7 @@ const useGetAllProducts = () => {
         })
         const filteredBrandsList = [...new Set(brandsList)]
         setBrands(filteredBrandsList)
+        setLoading(false)
     }
 
     useEffect(() => {

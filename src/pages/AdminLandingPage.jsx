@@ -51,7 +51,7 @@ const AdminLandingPage = () => {
                     drop-shadow-sm mt-2 justify-self-center'>
                         Consola de Administrador
                     </h1>
-                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-3'>
+                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-3 min-h-[11rem]'>
                         <AdminOrdersNotification />
                         <AdminWholesalersNotifications />
                         <AdminMessagesNotification />

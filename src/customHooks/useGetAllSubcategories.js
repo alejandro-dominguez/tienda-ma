@@ -21,6 +21,7 @@ const useGetAllSubcategories = () => {
         })
         const filteredSubcategoriesList = [...new Set(subcategoriesList)]
         setSubcategories(filteredSubcategoriesList)
+        setLoadingSubcategories(false)
     }
 
     useEffect(() => {

@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import useGetAllProducts from '../../customHooks/useGetAllProducts';
+import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
 import AdminProductCard from '../../components/adminComponents/AdminProductCard';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
-import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 import AdminErrorPage from '../AdminErrorPage';
 
 const AdminProductsPage = () => {
-    const [ prods, error, loading ] = useGetAllProducts()
+    const [ prods,, error, loading ] = useGetAllProducts()
     const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const { authUser } = useContext(AuthContext)
 

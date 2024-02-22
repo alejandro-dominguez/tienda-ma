@@ -62,7 +62,7 @@ const ItemCard = ({ product, itemList }) => {
                     </div>
                 :
                     <>
-                        <div className='flex gap-4'>
+                        <div className='flex gap-4 mt-auto'>
                             <div className='w-16 md:w-20 drop-shadow-sm'>
                                 <img
                                     src={product.img}

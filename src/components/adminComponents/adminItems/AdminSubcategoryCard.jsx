@@ -9,9 +9,9 @@ import {
 const AdminSubcategoryCard = ({ subcategory }) => {
     const navigate = useNavigate()
 
-    const deleteSubcategory = async (id) => {
+    const deleteSubcategory = async (subcat) => {
         try {
-            const docRef = doc(db, 'subcategories', id)
+            const docRef = doc(db, 'subcategories', subcat)
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
@@ -26,11 +26,11 @@ const AdminSubcategoryCard = ({ subcategory }) => {
             <div className='grid place-items-center p-5 m-3 bg-white h-40 shadow-sm drop-shadow-sm'>
                 <span className=' min-w-[8rem] mx-3 my-[.57rem] font-bold text-sm tracking-wide drop-shadow-sm py-[.35rem]
                 px-2 text-center border-2 w-28 rounded-lg border-red-500/50 bg-red-100/[7%]'>
-                    {subcategory.subcategory}
+                    {subcategory}
                 </span>
                 <BsFillTrash3Fill
                     className='block self-end cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                    onClick={() => deleteSubcategory(subcategory.id)}
+                    onClick={() => deleteSubcategory(subcategory)}
                 />
             </div>
         </div>
