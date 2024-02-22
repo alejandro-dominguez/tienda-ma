@@ -53,7 +53,7 @@ const SearchBar = () => {
                 <input
                     type='text' name='searchBar' id='searchBar' placeholder='...'
                     value={inputValue}
-                    className='w-16 sm:w-20 text-sm bg-teal-500/[9%] py-[.28rem] md:py-[.35rem] px-2 rounded-sm
+                    className=' w-[15.45rem] text-sm bg-teal-500/[9%] py-[.28rem] px-2 rounded-sm
                     drop-shadow-sm shadow-sm placeholder:tracking-wider'
                     onChange={getValue}
                     onClick={() => setShowSearch(true)}
@@ -62,9 +62,9 @@ const SearchBar = () => {
                     type='button'
                     onClick={() => searchItems(inputValue)}
                 >
-                    <div className='grid place-items-center bg-red-400/[37%] px-[.41rem] py-[.45rem] md:py-[.48rem]
+                    <div className='grid place-items-center bg-red-400/[37%] px-[.41rem] py-[.45rem]
                     rounded-md drop-shadow-sm shadow-sm cursor-auto'>
-                        <FaSearch className='text-base md:text-[1.1rem] text-white' />
+                        <FaSearch className='text-base text-white' />
                     </div>
                 </button>
                 {
@@ -73,11 +73,11 @@ const SearchBar = () => {
                         <div className=
                             {
                                 showSearch ?
-                                    `absolute w-full top-10 bg-white overflow-y-scroll flex flex-col
-                                    max-h-36 shadow-sm drop-shadow rounded-sm`
+                                    `absolute w-full top-[2.655rem] bg-white overflow-y-scroll flex flex-col
+                                    max-h-64 shadow-sm drop-shadow rounded-sm`
                                 :
-                                    `absolute w-full top-10 bg-white overflow-y-scroll hidden
-                                    max-h-36 shadow-sm drop-shadow rounded-sm`
+                                    `absolute w-full top-[2.655rem] bg-white overflow-y-scroll hidden
+                                    max-h-64 shadow-sm drop-shadow rounded-sm`
                             }
                         >
                             {
@@ -90,8 +90,8 @@ const SearchBar = () => {
                                     return (
                                         <span
                                             key={i}
-                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
-                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            className='p-4 font-bold text-black cursor-pointer shadow
+                                            shadow-black/[7%] transition-colors hover:bg-black/5'
                                             onClick={() => navigateItemBrand(brand)}
                                         >
                                             {brand}
@@ -109,8 +109,8 @@ const SearchBar = () => {
                                     return (
                                         <span
                                             key={i}
-                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
-                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            className='p-4 font-bold text-black cursor-pointer shadow
+                                            shadow-black/[7%] transition-colors hover:bg-black/5'
                                             onClick={() => navigateSubcategory(subcategory)}
                                         >
                                             {subcategory}
@@ -128,8 +128,8 @@ const SearchBar = () => {
                                     return (
                                         <span
                                             key={prod.id}
-                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
-                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            className='p-4 font-bold text-black cursor-pointer shadow
+                                            shadow-black/[7%] transition-colors hover:bg-black/5'
                                             onClick={() => navigateItemDetail(prod)}
                                         >
                                             {prod.brand} {prod.name}
