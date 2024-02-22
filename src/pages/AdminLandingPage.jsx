@@ -7,6 +7,7 @@ import AdminErrorPage from '../pages/AdminErrorPage';
 import AdminOrdersNotification from '../components/adminComponents/AdminOrdersNotifications';
 import AdminMessagesNotification from '../components/adminComponents/AdminMessagesNotifications';
 import AdminMenu from '../components/adminComponents/AdminMenu';
+import AdminWholesalersNotifications from '../components/adminComponents/AdminWholesalersNotifications';
 
 const AdminLandingPage = () => {
     const { authUser } = useContext(AuthContext)
@@ -32,7 +33,11 @@ const AdminLandingPage = () => {
             'url': 'ordenes'
         },
         {
-            'name': 'Mensajes de contacto',
+            'name': 'Mensajes mayoristas',
+            'url': 'mensajesMayoristas'
+        },
+        {
+            'name': 'Mensajes contacto',
             'url': 'mensajesContacto'
         },
     ])
@@ -46,8 +51,9 @@ const AdminLandingPage = () => {
                     drop-shadow-sm mt-2 justify-self-center'>
                         Consola de Administrador
                     </h1>
-                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-5'>
+                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-3'>
                         <AdminOrdersNotification />
+                        <AdminWholesalersNotifications />
                         <AdminMessagesNotification />
                     </div>
                     <AdminMenu adminMenuData={adminMenuData}/>

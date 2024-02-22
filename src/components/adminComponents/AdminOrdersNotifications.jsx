@@ -35,7 +35,7 @@ const AdminOrdersNotifications = () => {
                     </span>
                     <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
                 </div>
-                <div className='relative'>
+                <div className='w-fit relative'>
                     <span className='flex items-baseline gap-1'>
                         Tienes
                         <span className='font-bold'>
@@ -46,7 +46,7 @@ const AdminOrdersNotifications = () => {
                     <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
                 </div>
                 </>
-            : !error?
+            : !error ?
                 <div className='p-3 bg-teal-600/20 rounded-lg w-fit mx-auto'>
                     <RotatingLines
                         strokeColor='white'

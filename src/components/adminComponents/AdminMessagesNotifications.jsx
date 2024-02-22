@@ -3,7 +3,6 @@ import {
     useEffect,
     useState
 } from 'react';
-import AdminErrorPage from '../../pages/AdminErrorPage';
 import useGetAllMessages from '../../customHooks/useGetAllMessages';
 
 const AdminMessagesNotifications = () => {
@@ -28,7 +27,7 @@ const AdminMessagesNotifications = () => {
                 </span>
                 <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
             </div>
-        : !errorMessages?
+        : !errorMessages ?
             <div className='p-3 bg-teal-600/20 rounded-lg w-fit mx-auto'>
                 <RotatingLines
                     strokeColor='white'
