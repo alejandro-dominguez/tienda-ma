@@ -78,7 +78,7 @@ footer {
 
 	.about-us-banner-mobile {
 		background-image: url('./assets/about-us-banner-mobile.jpg');
-		@apply bg-cover bg-center bg-no-repeat flex flex-col w-full min-h-[100svh] brightness-[.75] grayscale-[.35] saturate-150;
+		@apply bg-cover bg-center bg-no-repeat flex flex-col w-full min-h-[160svh] brightness-[.75] grayscale-[.35] saturate-150;
 	}
 
 	.about-h1-shadow {
