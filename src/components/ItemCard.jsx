@@ -99,8 +99,8 @@ const ItemCard = ({ product, itemList }) => {
                             `mt-1 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
                             hover:bg-zinc-700 focus:bg-zinc-700`
                         : 
-                            `mt-[.15rem] px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
-                            hover:bg-zinc-700 focus:bg-zinc-700`
+                            `px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors ease-in-out
+                            hover:bg-zinc-700 focus:bg-zinc-700 mt-auto`
                     }
                 onClick={() => navigate((`/categorias/${product.category}/${product.subcategory}/detalle/${product.id}`))}
             >

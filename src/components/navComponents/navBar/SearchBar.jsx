@@ -7,8 +7,8 @@ import useGetAllSubcategories from '../../../customHooks/useGetAllSubcategories'
 const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('')
     const [ showSearch, setShowSearch ] = useState(true)
-    const [ prods, error, loading ] = useGetAllProducts()
-    const [ subcategories, errorSubcategories, loadingSubcategories ]  = useGetAllSubcategories()
+    const [ prods, brands, error, loading ] = useGetAllProducts()
+    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const navigate = useNavigate()
     
     const getValue = (e) => {
@@ -21,6 +21,14 @@ const SearchBar = () => {
 
     const navigateItemDetail = (prod) => {
         navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))
+        setTimeout(() => {
+            setShowSearch(false)
+            setInputValue('')
+        }, 100)
+    }
+
+    const navigateItemBrand = (brand) => {
+        navigate((`/categorias/marcas/${brand}`))
         setTimeout(() => {
             setShowSearch(false)
             setInputValue('')
@@ -59,7 +67,8 @@ const SearchBar = () => {
                     </div>
                 </button>
                 {
-                    (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
+                    (prods.length && brands.length && subcategories.length && !loading &&
+                    !loadingSubcategories && !error && !errorSubcategories) ?
                         <div className=
                             {
                                 showSearch ?
@@ -70,6 +79,25 @@ const SearchBar = () => {
                                     max-h-36 shadow-sm drop-shadow rounded-sm`
                             }
                         >
+                            {
+                                brands.filter(brand => {
+                                    const searchTerm = inputValue.toLowerCase()
+                                    const itemName = brand.toLowerCase()
+                                    return searchTerm && itemName.includes(searchTerm)
+                                })
+                                .map((brand, i) => {
+                                    return (
+                                        <span
+                                            key={i}
+                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
+                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            onClick={() => navigateItemBrand(brand)}
+                                        >
+                                            {brand}
+                                        </span>
+                                    )
+                                })
+                            }
                             {
                                 prods.filter(prod => {
                                     const searchTerm = inputValue.toLowerCase()

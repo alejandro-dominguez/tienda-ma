@@ -16,6 +16,7 @@ import CartContainer from '../containers/CartContainer';
 import BlogsContainer from '../containers/BlogsContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
 import ItemListContainer from '../containers/ItemListContainer';
+import BrandItemListContainer from '../containers/BrandItemListContainer';
 import BlogArticleContainer from '../containers/BlogArticleContainer';
 import SizesGuide from '../pages/SizesGuide';
 import PaymentsPage from '../pages/PaymentsPage';
@@ -30,7 +31,7 @@ import AdminMessagesPage from '../pages/adminPages/AdminMessagesPage';
 import EditBlogPage from '../pages/adminPages/adminDetailPages/EditBlogPage';
 import EditProductPage from '../pages/adminPages/adminDetailPages/EditProductPage';
 import AdminOrdersDetailPage from '../pages/adminPages/adminDetailPages/AdminOrdersDetailPage';
-import AdminWholesalersDetailPage from '../pages/adminPages/adminDetailPages/AdminWholesalersDetailPage.jsx';
+import AdminWholesalersDetailPage from '../pages/adminPages/adminDetailPages/AdminWholesalersDetailPage';
 import AdminMessagesDetailPage from '../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
 
 const router = createBrowserRouter([
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
             {
                 path: '/categorias/:categoryId/:subcategoryId/detalle/:id',
                 element: <ItemDetailContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/marcas/:brandId',
+                element: <BrandItemListContainer />,
                 errorElement: <ErrorPage />,
             },
             {
