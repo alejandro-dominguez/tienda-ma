@@ -21,12 +21,12 @@ const SubcategoriesItemListContainer = () => {
                         {
                             subcategoryId === 'pañales-bebe' ?
                                 <span>
-                                    Pañales de Bebés
+                                    Pañales para Bebés
                                 </span>
                             :
                                 subcategoryId === 'pañales-adulto' ?
                                     <span>
-                                        Pañales de Adultos
+                                        Pañales para Adultos
                                     </span>
                             :
                                 <span>

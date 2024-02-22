@@ -29,16 +29,6 @@ const ItemListContainer = () => {
                                         Pañales para Adultos
                                     </span>
                             :
-                                categoryId === 'higiene' ?
-                                    <span>
-                                        Productos de Higiene y Cuidado
-                                    </span>
-                            :
-                                categoryId === 'accesorios' ?
-                                    <span>
-                                        Productos Accesorios
-                                    </span>
-                            :
                                 null
                         }
                     </h1>

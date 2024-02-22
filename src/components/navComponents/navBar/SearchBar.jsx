@@ -100,25 +100,6 @@ const SearchBar = () => {
                                 })
                             }
                             {
-                                prods.filter(prod => {
-                                    const searchTerm = inputValue.toLowerCase()
-                                    const itemName = `${prod.brand} ${prod.name}`.toLowerCase()
-                                    return searchTerm && itemName.includes(searchTerm)
-                                })
-                                .map(prod => {
-                                    return (
-                                        <span
-                                            key={prod.id}
-                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
-                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
-                                            onClick={() => navigateItemDetail(prod)}
-                                        >
-                                            {prod.brand} {prod.name}
-                                        </span>
-                                    )
-                                })
-                            }
-                            {
                                 subcategories.filter(subcategory => {
                                     const searchTerm = inputValue.toLowerCase()
                                     const itemName = subcategory.toLowerCase()
@@ -133,6 +114,25 @@ const SearchBar = () => {
                                             onClick={() => navigateSubcategory(subcategory)}
                                         >
                                             {subcategory}
+                                        </span>
+                                    )
+                                })
+                            }
+                            {
+                                prods.filter(prod => {
+                                    const searchTerm = inputValue.toLowerCase()
+                                    const itemName = `${prod.brand} ${prod.name}`.toLowerCase()
+                                    return searchTerm && itemName.includes(searchTerm)
+                                })
+                                .map(prod => {
+                                    return (
+                                        <span
+                                            key={prod.id}
+                                            className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
+                                            shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
+                                            onClick={() => navigateItemDetail(prod)}
+                                        >
+                                            {prod.brand} {prod.name}
                                         </span>
                                     )
                                 })

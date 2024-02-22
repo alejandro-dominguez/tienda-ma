@@ -8,12 +8,15 @@ import { RotatingLines } from 'react-loader-spinner';
 import { FaGem } from 'react-icons/fa6';
 import { RiHandSanitizerFill } from 'react-icons/ri';
 import useGetSubcategories from '../customHooks/useGetSubcategories';
+import useGetFirebaseCategoriesData from '../customHooks/useGetFirebaseCategoriesData';
+import ItemCard from '../components/ItemCard';
 import ErrorPage from '../pages/ErrorPage';
 import DisabledSite from '../components/DisabledSite';
 
 const ItemCategoriesContainer = () => {
     const { categoryId } = useParams()
     const [ subcategories, error, loading ] = useGetSubcategories(categoryId)
+    const [ data, errorCategories, loadingCategories ] = useGetFirebaseCategoriesData(categoryId)
     const { enableSite } = useContext(SiteContext)
 
     return (
@@ -26,20 +29,32 @@ const ItemCategoriesContainer = () => {
                         {
                             categoryId === 'higiene' ?
                                 <span>
-                                    Categorías de Higiene y Cuidado
+                                    Higiene y Cuidado
                                 </span>
                             :
                                 categoryId === 'accesorios' ?
                                     <span>
-                                        Categorías de Accesorios
+                                        Accesorios
                                     </span>
                             :
                                 null
                         }
                     </h1>
                     {
-                        (subcategories.length && !error && !loading) ?
+                        (subcategories.length && data.length && !error && !errorCategories && !loading && !loadingCategories) ?
                             <>
+                                <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4'>
+                                    {
+                                        data.map(product => {
+                                            return (
+                                                <ItemCard
+                                                    product={product}
+                                                    itemList={true}
+                                                    key={product.id}
+                                                />
+                                        )})
+                                    }
+                                </div>
                                 <div className='grid grid-cols-1 sm:grid-cols-2 grid-flow-row w-fit mx-auto'>
                                     {
                                         subcategories.map((subcategoryId, i) => {
@@ -72,7 +87,7 @@ const ItemCategoriesContainer = () => {
                                         null
                                 }
                             </>
-                        : !error ?
+                        : (!error && !errorCategories) ?
                             <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                                 <div className='p-5 bg-teal-600/20 rounded-lg'>
                                     <RotatingLines
