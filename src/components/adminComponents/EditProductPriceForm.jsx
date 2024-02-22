@@ -28,7 +28,6 @@ const EditProductPriceForm = ({ product }) => {
             await updateDoc(docRef, {
                 price: productPrice,
             })
-            setProductPrice(0)
             toast.success(
                 'Precio actualizado',
                 {
@@ -40,7 +39,6 @@ const EditProductPriceForm = ({ product }) => {
                 navigate('/admin/consola')
             }, 3500)
         } catch (error) {
-            setProductPrice(0)
             setErrorProduct(error.message)
             toast.error(
                 errorProduct,

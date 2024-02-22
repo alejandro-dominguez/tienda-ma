@@ -29,7 +29,6 @@ const UpdatePromotionForm = ({ promo }) => {
                     active: true
                 }
             )
-            setNewPromo('')
             toast.success(
                 'Promoción agregada',
                 {
@@ -38,7 +37,6 @@ const UpdatePromotionForm = ({ promo }) => {
                 }
             )
         } catch (error) {
-            setNewPromo('')
             setErrorPromo(error.message)
             toast.error(
                 errorPromo,

@@ -8,20 +8,23 @@ import {
     addDoc,
     collection,
 } from 'firebase/firestore';
+import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 
 const CreateProductForm = () => {
+    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
         productName: '',
         productCategory: '',
-        productSubcategory: '',
         productDesc: '',
         productImg: '',
     })
     const [ productPrice, setProductPrice ] = useState(0)
+    const [ productSubcategory, setProductSubcategory ] = useState('')
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
+    const [ newProductSubcategory, setNewProductSubcategory ] = useState(true)
     
     const registerInputs = ({ target: {name, value} }) => {
         setNewProduct({
@@ -33,6 +36,12 @@ const CreateProductForm = () => {
     const registerPrice = (e) => {
         setProductPrice(
             Number(e.target.value)
+        )
+    }
+
+    const registerSubcategory = (e) => {
+        setProductSubcategory(
+            e.target.value
         )
     }
 
@@ -50,15 +59,25 @@ const CreateProductForm = () => {
         setProductAdultSizes(true)
     }
 
+    const checkProductSubcategory = (productSubcategory) => {
+        const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories.subcategory === productSubcategory)
+        if (repeatedSubcategory === undefined) {
+            setNewProductSubcategory(true)
+        } else {
+            setNewProductSubcategory(false)
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+        checkProductSubcategory(productSubcategory)
         try {
             await addDoc(collection(db, 'products'),
                 {
                     brand: newProduct.productBrand,
                     name: newProduct.productName,
                     category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
+                    subcategory: productSubcategory,
                     desc: newProduct.productDesc,
                     img: newProduct.productImg,
                     price: productPrice,
@@ -68,25 +87,14 @@ const CreateProductForm = () => {
                     featured: false,
                 }
             )
-            await addDoc(collection(db, 'subcategories'),
-                {
-                    category: newProduct.productCategory,
-                    subcategory: newProduct.productSubcategory,
-                }
-            )
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductPrice(0)
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
+            if (newProductSubcategory) {
+                await addDoc(collection(db, 'subcategories'),
+                    {
+                        category: newProduct.productCategory,
+                        subcategory: productSubcategory,
+                    }
+                )
+            }
             toast.success(
                 'Producto agregado',
                 {
@@ -95,19 +103,6 @@ const CreateProductForm = () => {
                 }
             )
         } catch (error) {
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductPrice(0)
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
             setErrorProduct(error.message)
             toast.error(
                 errorProduct,
@@ -193,7 +188,7 @@ const CreateProductForm = () => {
                         <select
                             name='productCategory' id='productCategory' required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black'
+                            rounded-sm drop-shadow-sm text-black' 
                             onChange={registerInputs}
                         >
                             <option value={null}>Elige una categoría</option>
@@ -204,19 +199,26 @@ const CreateProductForm = () => {
                         </select>
                     </div>
                     <div className='flex flex-col'>
-                        <label
-                            htmlFor='productSubcategory'
-                            className='mt-2'    
-                        >
-                            Subcategoría:
-                        </label>
-                        <input
-                            type='text' name='productSubcategory' id='productSubcategory'
-                            placeholder='...' min={8} required
-                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black'
-                            onChange={registerInputs}
-                        />
+                        {
+                            (subcategories.length && !errorSubcategories && !loadingSubcategories) ?
+                                <>
+                                <label
+                                    htmlFor='productSubcategory'
+                                    className='mt-2'    
+                                >
+                                    Subcategoría:
+                                </label>
+                                <input
+                                    type='text' name='productSubcategory' id='productSubcategory'
+                                    placeholder='...' min={8} required
+                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                                    rounded-sm drop-shadow-sm text-black'
+                                    onChange={registerSubcategory}
+                                />
+                                </>
+                            :
+                                null
+                        }
                     </div>
                     <div className='flex flex-col'>
                         <label
@@ -228,8 +230,8 @@ const CreateProductForm = () => {
                         <input
                             type='number' name='productPrice' id='productPrice' placeholder='1010'
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black'
-                            onChange={registerPrice} required
+                            rounded-sm drop-shadow-sm text-black' required
+                            onChange={registerPrice}
                         />
                     </div>
                     <div className='flex flex-col'>
@@ -274,7 +276,7 @@ const CreateProductForm = () => {
                             Talles adulto:
                         </label>
                         <select
-                            name='productAdultSizes' id='productAdultSizes' required
+                            name='productAdultSizes' id='productAdultSizes' required 
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerAdultSizes}

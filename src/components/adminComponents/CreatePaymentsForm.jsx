@@ -25,18 +25,11 @@ const CreatePaymentsForm = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(newPayment.paymentDesc, newPayment.paymentTitle);
         try {
             await addDoc(collection(db, 'payments'),
                 {
                     title: newPayment.paymentTitle,
                     desc: newPayment.paymentDesc,
-                }
-            )
-            setNewPayment(
-                {
-                    paymentTitle: '',
-                    paymentDesc: '',
                 }
             )
             toast.success(
@@ -47,12 +40,6 @@ const CreatePaymentsForm = () => {
                 }
             )
         } catch (error) {
-            setNewPayment(
-                {
-                    paymentTitle: '',
-                    paymentDesc: '',
-                }
-            )
             setErrorPayment(error.message)
             toast.error(
                 errorPayment,

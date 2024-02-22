@@ -43,17 +43,6 @@ const CreateBlogForm = () => {
                     featured: false,
                 }
             )
-            setNewBlog(
-                {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
-                }
-            )
             toast.success(
                 'Blog agregado',
                 {
@@ -62,17 +51,6 @@ const CreateBlogForm = () => {
                 }
             )
         } catch (error) {
-            setNewBlog(
-                {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
-                }
-            )
             setErrorBlog(error.message)
             toast.error(
                 errorBlog,

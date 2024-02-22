@@ -59,18 +59,6 @@ const EditProductForm = ({ product }) => {
                 sizes: productBabySizes,
                 adultSizes: productAdultSizes,
             })
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
             toast.success(
                 'Producto editado',
                 {
@@ -82,18 +70,6 @@ const EditProductForm = ({ product }) => {
                 navigate('/admin/consola')
             }, 3500)
         } catch (error) {
-            setNewProduct(
-                {
-                    productBrand: '',
-                    productName: '',
-                    productCategory: '',
-                    productSubcategory: '',
-                    productDesc: '',
-                    productImg: '',
-                }
-            )
-            setProductBabySizes(false)
-            setProductAdultSizes(false)
             setErrorProduct(error.message)
             toast.error(
                 errorProduct,

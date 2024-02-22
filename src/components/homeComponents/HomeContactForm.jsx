@@ -39,14 +39,6 @@ const HomeContactForm = () => {
                     read: false
                 }
             )
-            setContactFormMessage(
-                {
-                    contactFullName: '',
-                    contactPhone: '',
-                    contactEmail: '',
-                    contactMessage: '',
-                }
-            )
             toast.success(
                 'Mensaje enviado',
                 {
@@ -58,14 +50,6 @@ const HomeContactForm = () => {
                 scrollTop()
             }, 6000)
         } catch (error) {
-            setContactFormMessage(
-                {
-                    contactFullName: '',
-                    contactPhone: '',
-                    contactEmail: '',
-                    contactMessage: '',
-                }
-            )
             setErrorMessage(error.message)
             toast.error(
                 errorMessage,

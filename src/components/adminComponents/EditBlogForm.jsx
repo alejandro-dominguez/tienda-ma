@@ -45,17 +45,6 @@ const EditBlogForm = ({ blog }) => {
                     img2: newBlog.blogImg2,
                 }
             )
-            setNewBlog(
-                {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
-                }
-            )
             toast.success(
                 'Blog editado',
                 {
@@ -67,17 +56,6 @@ const EditBlogForm = ({ blog }) => {
                 navigate('/admin/consola')
             }, 3500)
         } catch (error) {
-            setNewBlog(
-                {
-                    blogTitle: '',
-                    blogSubtitle: '',
-                    blogDrop: '',
-                    blogText1: '',
-                    blogText2: '',
-                    blogImg1: '',
-                    blogImg2: '',
-                }
-            )
             setErrorBlog(error.message)
             toast.error(
                 errorBlog,

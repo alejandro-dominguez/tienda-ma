@@ -38,14 +38,6 @@ const WholesalersForm = () => {
                     read: false
                 }
             )
-            setWholesalersFormMessage(
-                {
-                    wholesalerFullName: '',
-                    wholesalerPhone: '',
-                    wholesalerEmail: '',
-                    wholesalerMessage: '',
-                }
-            )
             toast.success(
                 'Mensaje enviado. Nos comunicaremos a la brevedad.',
                 {
@@ -54,14 +46,6 @@ const WholesalersForm = () => {
                 }
             )
         } catch (error) {
-            setWholesalersFormMessage(
-                {
-                    wholesalerFullName: '',
-                    wholesalerPhone: '',
-                    wholesalerEmail: '',
-                    wholesalerMessage: '',
-                }
-            )
             setErrorMessage(error.message)
             toast.error(
                 errorMessage,
