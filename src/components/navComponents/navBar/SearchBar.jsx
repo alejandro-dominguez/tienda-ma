@@ -9,6 +9,7 @@ const SearchBar = () => {
     const [ showSearch, setShowSearch ] = useState(true)
     const [ prods, brands, error, loading ] = useGetAllProducts()
     const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
+
     const navigate = useNavigate()
     
     const getValue = (e) => {
@@ -36,7 +37,7 @@ const SearchBar = () => {
     }
 
     const navigateSubcategory = (subcategory) => {
-        navigate((`/categorias/${subcategory.category}/${subcategory.subcategory}`))
+        navigate((`/categorias/subcategorias/${subcategory}`))
         setTimeout(() => {
             setShowSearch(false)
             setInputValue('')
@@ -120,18 +121,18 @@ const SearchBar = () => {
                             {
                                 subcategories.filter(subcategory => {
                                     const searchTerm = inputValue.toLowerCase()
-                                    const itemName = `${subcategory.subcategory}`.toLowerCase()
+                                    const itemName = subcategory.toLowerCase()
                                     return searchTerm && itemName.includes(searchTerm)
                                 })
-                                .map(subcategory => {
+                                .map((subcategory, i) => {
                                     return (
                                         <span
-                                            key={subcategory.id}
+                                            key={i}
                                             className='p-2 leading-[1.1rem] text-sm font-normal text-black cursor-pointer
                                             shadow-sm shadow-black/[7%] transition-colors hover:bg-black/5'
                                             onClick={() => navigateSubcategory(subcategory)}
                                         >
-                                            {subcategory.subcategory}
+                                            {subcategory}
                                         </span>
                                     )
                                 })

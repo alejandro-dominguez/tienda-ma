@@ -17,6 +17,7 @@ import BlogsContainer from '../containers/BlogsContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
 import ItemListContainer from '../containers/ItemListContainer';
 import BrandItemListContainer from '../containers/BrandItemListContainer';
+import SubcategoriesItemListContainer from '../containers/SubcategoriesItemListContainer';
 import BlogArticleContainer from '../containers/BlogArticleContainer';
 import SizesGuide from '../pages/SizesGuide';
 import PaymentsPage from '../pages/PaymentsPage';
@@ -63,6 +64,11 @@ const router = createBrowserRouter([
             {
                 path: '/categorias/marcas/:brandId',
                 element: <BrandItemListContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/subcategorias/:subcategoryId',
+                element: <SubcategoriesItemListContainer />,
                 errorElement: <ErrorPage />,
             },
             {

@@ -8,10 +8,8 @@ import {
     addDoc,
     collection,
 } from 'firebase/firestore';
-import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 
-const CreateProductForm = () => {
-    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
+const CreateProductForm = (subcategories) => {
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
@@ -59,18 +57,18 @@ const CreateProductForm = () => {
         setProductAdultSizes(true)
     }
 
-    const checkProductSubcategory = (productSubcategory) => {
+/*     const checkProductSubcategory = (productSubcategory) => {
         const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories.subcategory === productSubcategory)
         if (repeatedSubcategory === undefined) {
             setNewProductSubcategory(true)
         } else {
             setNewProductSubcategory(false)
         }
-    }
+    } */
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        checkProductSubcategory(productSubcategory)
+/*         checkProductSubcategory(productSubcategory)
         try {
             await addDoc(collection(db, 'products'),
                 {
@@ -113,7 +111,7 @@ const CreateProductForm = () => {
             )
         } finally {
             e.target.reset()
-        }
+        } */
     }
 
     return (
@@ -199,7 +197,7 @@ const CreateProductForm = () => {
                         </select>
                     </div>
                     <div className='flex flex-col'>
-                        {
+{/*                         {
                             (subcategories.length && !errorSubcategories && !loadingSubcategories) ?
                                 <>
                                 <label
@@ -218,7 +216,7 @@ const CreateProductForm = () => {
                                 </>
                             :
                                 null
-                        }
+                        } */}
                     </div>
                     <div className='flex flex-col'>
                         <label

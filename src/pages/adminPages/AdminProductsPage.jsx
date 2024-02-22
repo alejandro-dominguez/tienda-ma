@@ -22,7 +22,7 @@ const AdminProductsPage = () => {
                         (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
                             <div className='mx-auto flex flex-col'>
                                 <AdminSubcategoriesContainer subcategories={subcategories} />
-                                <CreateProductForm />
+                                <CreateProductForm subcategories={subcategories} />
                                 <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
                                     Asegurar siempre al menos un producto destacado.
                                 </h3>
