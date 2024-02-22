@@ -2,16 +2,26 @@ import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { db } from '../../../firebase/config';
 import {
-    deleteDoc,
+    collection,
+    query,
+    where,
+    getDocs,
     doc,
+    deleteDoc
 } from 'firebase/firestore';
 
 const AdminSubcategoryCard = ({ subcategory }) => {
     const navigate = useNavigate()
 
-    const deleteSubcategory = async (subcat) => {
+    const deleteSubcategory = async (subcategory) => {
         try {
-            const docRef = doc(db, 'subcategories', subcat)
+            const q = query(collection(db, 'subcategories'), where('subcategory', '==', subcategory));
+            const querySnapshot = await getDocs(q);
+            const docId = []
+            querySnapshot.forEach((doc) => {
+                docId.push(doc.id)
+            })
+            const docRef = doc(db, 'subcategories', docId[0])
             await deleteDoc(docRef)
             setTimeout(() => {
                 navigate('/admin/consola')
