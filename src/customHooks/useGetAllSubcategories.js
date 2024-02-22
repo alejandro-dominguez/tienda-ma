@@ -14,6 +14,15 @@ const useGetAllSubcategories = () => {
     const [ loadingSubcategories, setLoadingSubcategories ] = useState(false)
     const [ subcategories, setSubcategories ] = useState([])
 
+    const filterSubcategories = (firebaseSubcategories) => {
+        const subcategoriesList = []
+        firebaseSubcategories.map(subcategory => {
+            return subcategoriesList.push(subcategory.subcategory)
+        })
+        const filteredSubcategoriesList = [...new Set(subcategoriesList)]
+        setSubcategories(filteredSubcategoriesList)
+    }
+
     useEffect(() => {
         (async () => {
             try {
@@ -24,7 +33,7 @@ const useGetAllSubcategories = () => {
                 querySnapshot.forEach((doc) => {
                     firebaseSubcategories.push({...doc.data(), id: doc.id})
                 })
-                setSubcategories(firebaseSubcategories)
+                filterSubcategories(firebaseSubcategories)
                 setLoadingSubcategories(false)
             } catch (error) {
                 setErrorSubcategories(error.message)

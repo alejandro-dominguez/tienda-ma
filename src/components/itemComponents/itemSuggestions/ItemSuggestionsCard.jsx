@@ -6,7 +6,7 @@ const ItemSuggestionsCard = ({
     productDetail
 }) => {
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-3 gap-2'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-3 gap-3'>
             {
                 products.filter(prod => {
                     return productDetail.brand === prod.brand && productDetail.id !== prod.id
@@ -21,7 +21,7 @@ const ItemSuggestionsCard = ({
                                 <h3 className='font-Raleway font-black drop-shadow-sm tracking-wide text-[.85rem]'>
                                     {product.brand} {product.name}
                                 </h3>
-                                <div className='w-[4.5rem] drop-shadow -mt-[.2rem]'>
+                                <div className='w-[4.5rem] drop-shadow mt-auto'>
                                     <img
                                         src={product.img}
                                         alt={product.name}
