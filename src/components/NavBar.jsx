@@ -93,7 +93,7 @@ const NavBar = () => {
                     navData={navData}
                     hideMenu={hideMenu}
                 />
-                <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-36 mt-2 lg:mt-0'>
+                <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-24 mt-2 lg:mt-0'>
                     <CartCounter />
                     <BiMenu
                         className='lg:hidden block text-5xl text-zinc-800/80 cursor-pointer'
