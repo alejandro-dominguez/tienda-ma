@@ -9,7 +9,7 @@ import {
     collection,
 } from 'firebase/firestore';
 
-const CreateProductForm = (subcategories) => {
+const CreateProductForm = ({ subcategories }) => {
     const [ errorProduct, setErrorProduct ] = useState('')
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
@@ -57,18 +57,19 @@ const CreateProductForm = (subcategories) => {
         setProductAdultSizes(true)
     }
 
-/*     const checkProductSubcategory = (productSubcategory) => {
-        const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories.subcategory === productSubcategory)
-        if (repeatedSubcategory === undefined) {
-            setNewProductSubcategory(true)
-        } else {
+    const checkProductSubcategory = (productSubcategory) => {
+        const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories === productSubcategory)
+        if (repeatedSubcategory) {
             setNewProductSubcategory(false)
+        } else {
+            setNewProductSubcategory(true)
         }
-    } */
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-/*         checkProductSubcategory(productSubcategory)
+        checkProductSubcategory(productSubcategory)
+        
         try {
             await addDoc(collection(db, 'products'),
                 {
@@ -111,7 +112,7 @@ const CreateProductForm = (subcategories) => {
             )
         } finally {
             e.target.reset()
-        } */
+        }
     }
 
     return (
@@ -138,7 +139,7 @@ const CreateProductForm = (subcategories) => {
                         </label>
                         <input
                             type='text' name='productBrand' id='productBrand'
-                            placeholder='...' min={8} required
+                            placeholder='...' min={8} /* required */
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -153,7 +154,7 @@ const CreateProductForm = (subcategories) => {
                         </label>
                         <input
                             type='text' name='productName' id='productName'
-                            placeholder='...' min={8} required
+                            placeholder='...' min={8} /* required */
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -168,7 +169,7 @@ const CreateProductForm = (subcategories) => {
                         </label>
                         <textarea
                             type='text' name='productDesc' id='productDesc' cols='10' rows='10'
-                            placeholder='...' min={20} required
+                            placeholder='...' min={20} /* required */
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -184,7 +185,7 @@ const CreateProductForm = (subcategories) => {
                             Categoría:
                         </label>
                         <select
-                            name='productCategory' id='productCategory' required
+                            name='productCategory' id='productCategory' /* required */
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black' 
                             onChange={registerInputs}
@@ -197,26 +198,19 @@ const CreateProductForm = (subcategories) => {
                         </select>
                     </div>
                     <div className='flex flex-col'>
-{/*                         {
-                            (subcategories.length && !errorSubcategories && !loadingSubcategories) ?
-                                <>
-                                <label
-                                    htmlFor='productSubcategory'
-                                    className='mt-2'    
-                                >
-                                    Subcategoría:
-                                </label>
-                                <input
-                                    type='text' name='productSubcategory' id='productSubcategory'
-                                    placeholder='...' min={8} required
-                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                                    rounded-sm drop-shadow-sm text-black'
-                                    onChange={registerSubcategory}
-                                />
-                                </>
-                            :
-                                null
-                        } */}
+                        <label
+                            htmlFor='productSubcategory'
+                            className='mt-2'    
+                        >
+                            Subcategoría:
+                        </label>
+                        <input
+                            type='text' name='productSubcategory' id='productSubcategory'
+                            placeholder='...' min={8} /* required */
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerSubcategory}
+                        />
                     </div>
                     <div className='flex flex-col'>
                         <label
@@ -228,7 +222,7 @@ const CreateProductForm = (subcategories) => {
                         <input
                             type='number' name='productPrice' id='productPrice' placeholder='1010'
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black' required
+                            rounded-sm drop-shadow-sm text-black' /* required */
                             onChange={registerPrice}
                         />
                     </div>
@@ -241,7 +235,7 @@ const CreateProductForm = (subcategories) => {
                         </label>
                         <input
                             type='text' name='productImg' id='productImg'
-                            placeholder='...' min={8} required
+                            placeholder='...' min={8} /* required */
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -257,7 +251,7 @@ const CreateProductForm = (subcategories) => {
                             Talles bebé:
                         </label>
                         <select
-                            name='productSizes' id='productSizes' required
+                            name='productSizes' id='productSizes' /* required */
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerBabySizes}
@@ -274,7 +268,7 @@ const CreateProductForm = (subcategories) => {
                             Talles adulto:
                         </label>
                         <select
-                            name='productAdultSizes' id='productAdultSizes' required 
+                            name='productAdultSizes' id='productAdultSizes' /* required */ 
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerAdultSizes}
