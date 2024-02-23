@@ -62,7 +62,7 @@ const SearchBar = () => {
                     type='button'
                     onClick={() => searchItems(inputValue)}
                 >
-                    <div className='grid place-items-center bg-red-400/[37%] px-[.41rem] py-[.45rem]
+                    <div className='grid place-items-center bg-red-400/[37%] p-[.41rem]
                     rounded-md drop-shadow-sm shadow-sm cursor-auto'>
                         <FaSearch className='text-base text-white' />
                     </div>

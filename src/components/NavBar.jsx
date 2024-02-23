@@ -73,27 +73,27 @@ const NavBar = () => {
             }
         >
             <div className='relative w-full py-3 px-4 md:px-10 bg-white h-fit flex flex-col lg:flex-row justify-between items-center'>
-                <div
-                    className=
-                        {
-                            navigateHome ?
-                                'w-[4.75rem] cursor-pointer z-10'
-                            :
-                                'w-[4.75rem] cursor-auto z-10'
-                        }
-                    onClick={() => {navigateHome ? navigate('/') : null}}
-                >
-                    <img
-                        src={headerLogo}
-                        alt='logo tienda Ma'
-                        className='w-full block'
-                    />
-                </div>
+                    <div
+                        className=
+                            {
+                                navigateHome ?
+                                    'w-[4.75rem] cursor-pointer z-10'
+                                :
+                                    'w-[4.75rem] cursor-auto z-10'
+                            }
+                        onClick={() => {navigateHome ? navigate('/') : null}}
+                    >
+                        <img
+                            src={headerLogo}
+                            alt='logo tienda Ma'
+                            className='w-full block'
+                        />
+                    </div>
                 <NavItemMenu
                     navData={navData}
                     hideMenu={hideMenu}
                 />
-                <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-24 mt-2 lg:mt-0'>
+                <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-40 mt-2 lg:mt-0'>
                     <CartCounter />
                     <BiMenu
                         className='lg:hidden block text-5xl text-zinc-800/80 cursor-pointer'
