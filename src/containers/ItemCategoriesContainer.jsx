@@ -7,11 +7,13 @@ import { SiteContext } from '../contexts/siteContext';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaGem } from 'react-icons/fa6';
 import { RiHandSanitizerFill } from 'react-icons/ri';
+import { GoSortDesc } from 'react-icons/go';
 import useGetSubcategories from '../customHooks/useGetSubcategories';
 import useGetFirebaseCategoriesData from '../customHooks/useGetFirebaseCategoriesData';
 import ItemCard from '../components/ItemCard';
 import ErrorPage from '../pages/ErrorPage';
 import DisabledSite from '../components/DisabledSite';
+import scrollToElement from '../utilities/scrollToElement';
 
 const ItemCategoriesContainer = () => {
     const { categoryId } = useParams()
@@ -43,6 +45,18 @@ const ItemCategoriesContainer = () => {
                     {
                         (subcategories.length && data.length && !error && !errorCategories && !loading && !loadingCategories) ?
                             <>
+                                <div className='w-full grid place-items-center'>
+                                    <button
+                                        type='button'
+                                        className='w-fit mx-auto pt-2 flex gap-1 items-center'
+                                        onClick={() => scrollToElement('subcategories-filter')}
+                                    >
+                                        <GoSortDesc className='text-2xl'/>
+                                        <span className='font-bold tracking-wide'>
+                                            Filtro
+                                        </span>
+                                    </button>
+                                </div>
                                 <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4'>
                                     {
                                         data.map(product => {
@@ -55,7 +69,10 @@ const ItemCategoriesContainer = () => {
                                         )})
                                     }
                                 </div>
-                                <div className='grid grid-cols-1 sm:grid-cols-2 grid-flow-row w-fit mx-auto'>
+                                <div
+                                    className='grid grid-cols-1 sm:grid-cols-2 grid-flow-row w-fit mx-auto pt-5'
+                                    id='subcategories-filter'
+                                >
                                     {
                                         subcategories.map((subcategory, i) => {
                                             return (
@@ -63,6 +80,7 @@ const ItemCategoriesContainer = () => {
                                                     to={`/categorias/${categoryId}/${subcategory}`}
                                                     key={i}
                                                     className='grid place-items-center'
+                                                    id={subcategory}
                                                 >
                                                     <span className='mx-3 my-[.57rem] font-bold text-sm tracking-wide
                                                     drop-shadow-sm py-[.35rem] px-2 text-center border-2 w-28 rounded-lg
