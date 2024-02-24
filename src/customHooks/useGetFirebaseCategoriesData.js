@@ -20,7 +20,7 @@ const useGetFirebaseCategoriesData = (categoryId) => {
             try {
                 setLoadingCategories(true)
                 let q
-                    q = query(collection(db, 'products'), where('category', '==', categoryId))
+                q = query(collection(db, 'products'), where('category', '==', categoryId))
                 const querySnapshot = await getDocs(q)
                 const firebaseProducts = []
                 querySnapshot.forEach((doc) => {

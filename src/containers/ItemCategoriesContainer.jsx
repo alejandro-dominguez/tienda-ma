@@ -57,17 +57,17 @@ const ItemCategoriesContainer = () => {
                                 </div>
                                 <div className='grid grid-cols-1 sm:grid-cols-2 grid-flow-row w-fit mx-auto'>
                                     {
-                                        subcategories.map((subcategoryId, i) => {
+                                        subcategories.map((subcategory, i) => {
                                             return (
                                                 <Link
-                                                    to={`/categorias/${categoryId}/${subcategoryId.subcategory}`}
+                                                    to={`/categorias/${categoryId}/${subcategory}`}
                                                     key={i}
                                                     className='grid place-items-center'
                                                 >
                                                     <span className='mx-3 my-[.57rem] font-bold text-sm tracking-wide
                                                     drop-shadow-sm py-[.35rem] px-2 text-center border-2 w-28 rounded-lg
                                                     border-red-500/50 bg-red-100/[7%]'>
-                                                        {subcategoryId.subcategory}
+                                                        {subcategory}
                                                     </span>
                                                 </Link>
                                         )})
