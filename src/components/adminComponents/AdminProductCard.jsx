@@ -53,19 +53,19 @@ const AdminProductCard = ({ prod }) => {
     }
 
     return (
-        <div className='p-6 bg-white drop-shadow-sm shadow-sm'>
-            <div className='w-full drop-shadow-sm'>
+        <div className='p-5 bg-white drop-shadow-sm shadow-sm flex flex-col'>
+            <div className='w-40 drop-shadow-sm'>
                 <img
                     src={prod.img}
                     alt='imagen de producto'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'
                     />
             </div>
-            <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
+            <h3 className='font-black font-Raleway tracking-wide mt-2'>
                 {prod.brand} {prod.name}
             </h3>
-            <div className='flex flex-col gap-1'>
-                <div className='flex items-center justify-between'>
+            <div className='flex flex-col gap-1 mt-auto'>
+                <div className='flex items-center gap-4'>
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors

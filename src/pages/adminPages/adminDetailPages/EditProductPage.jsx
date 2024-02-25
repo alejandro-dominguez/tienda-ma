@@ -3,8 +3,11 @@ import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
 import useGetItemDetail from '../../../customHooks/useGetItemDetail';
-import EditProductForm from '../../../components/adminComponents/EditProductForm';
 import EditProductPriceForm from '../../../components/adminComponents/EditProductPriceForm';
+import EditProductInfoForm from '../../../components/adminComponents/EditProductInfoForm';
+import EditProductCategoriesForm from '../../../components/adminComponents/EditProductCategoriesForm';
+import EditProductSizesForm from '../../../components/adminComponents/EditProductSizesForm';
+import EditProductImgsForm from '../../../components/adminComponents/EditProductImgsForm';
 import AdminErrorPage from '../../AdminErrorPage';
 
 const EditProductPage = () => {
@@ -21,7 +24,14 @@ const EditProductPage = () => {
                         (JSON.stringify(product) !== '{}' && !loadingProduct && !errorProduct) ?
                         <>
                             <EditProductPriceForm product={product} />
-                            <EditProductForm product={product} />
+                            <div className='grid grid-cols-1 lg:grid-cols-2 place-items-center w-fit gap-8 mx-auto'>
+                                <EditProductInfoForm product={product} />
+                                <div className='flex-col'>
+                                    <EditProductCategoriesForm product={product} />
+                                    <EditProductImgsForm product={product} />
+                                </div>
+                            </div>
+                            <EditProductSizesForm product={product} />
                         </>
                         : !errorProduct ?
                             <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>

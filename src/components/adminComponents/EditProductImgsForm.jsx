@@ -10,15 +10,18 @@ import { db } from '../../firebase/config';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const EditProductPriceForm = ({ product }) => {
+const EditProductImgsForm = ({ product }) => {
     const [ errorProduct, setErrorProduct ] = useState('')
-    const [ productPrice, setProductPrice ] = useState(0)
+    const [ newInfo, setNewInfo ] = useState({
+        productImg: '',
+    })
     const navigate = useNavigate()
 
-    const registerPrice = (e) => {
-        setProductPrice(
-            Number(e.target.value)
-        )
+    const registerInputs = ({ target: {name, value} }) => {
+        setNewInfo({
+            ...newInfo,
+            [name]: value
+        })
     }
 
     const handleSubmit = async (e) => {
@@ -26,10 +29,10 @@ const EditProductPriceForm = ({ product }) => {
         try {
             const docRef = doc(db, 'products', product.id)
             await updateDoc(docRef, {
-                price: productPrice,
+                img: newInfo.productImg,
             })
             toast.success(
-                'Precio actualizado',
+                'Producto editado',
                 {
                     duration: 3000,
                     position: 'bottom-center',
@@ -52,32 +55,27 @@ const EditProductPriceForm = ({ product }) => {
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white max-w-80 mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-fit mx-auto'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
-                <h3 className='font-bold font-Raleway text-lg mt-1 drop-shadow-sm mx-auto'>
-                    {product.brand} {product.name}
-                </h3>
-                <span className='text-sm font-bold mt-2'>
-                    Precio actual:
-                </span>
-                <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
-                    {product.price}
-                </span>
                 <label
-                    htmlFor='productPrice'
-                    className='mt-3'    
+                    htmlFor='productImg'
+                    className='mt-2'    
                 >
-                    Nuevo precio:
+                    Link imagen:
                 </label>
+                <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
+                    {product.img}
+                </span>
                 <input
-                    type='number' name='productPrice' id='productPrice' placeholder='1010'
+                    type='text' name='productImg' id='productImg'
+                    placeholder='...' min={8} required
                     className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                     rounded-sm drop-shadow-sm text-black'
-                    onChange={registerPrice} required
+                    onChange={registerInputs}
                 />
             </div>
             <button
@@ -86,7 +84,7 @@ const EditProductPriceForm = ({ product }) => {
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Actualizar precio
+                    Actualizar imágen
                 </span>
             </button>
             <Toaster
@@ -99,4 +97,4 @@ const EditProductPriceForm = ({ product }) => {
     )
 };
 
-export default EditProductPriceForm;
+export default EditProductImgsForm;

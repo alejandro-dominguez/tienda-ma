@@ -58,18 +58,6 @@ const Footer = () => {
                    </span>
                 </Link>
                 <Link
-                    to='mailto:contacto.tiendama@gmail.com'
-                    referrerPolicy='no-referrer'
-                    rel='noopener'  
-                    target='_blank'
-                    className='flex justify-start gap-2 mt-1'
-                >
-                    <MdEmail className='block text-[1.43rem] text-zinc-900' />
-                    <span className='font-bold font-Lato drop-shadow-sm'>
-                        contacto.tiendama@gmail.com
-                    </span>
-                </Link>
-                <Link
                     to='https://www.instagram.com/tiendama_rosario/'
                     referrerPolicy='no-referrer'
                     rel='noopener'  
@@ -81,8 +69,20 @@ const Footer = () => {
                         @tiendama_rosario
                     </span>
                 </Link>
+                <Link
+                    to='mailto:contacto.tiendama@gmail.com'
+                    referrerPolicy='no-referrer'
+                    rel='noopener'  
+                    target='_blank'
+                    className='flex justify-start gap-2 mt-1'
+                >
+                    <MdEmail className='block text-[1.43rem] text-zinc-900' />
+                    <span className='font-bold font-Lato drop-shadow-sm'>
+                        contacto.tiendama@gmail.com
+                    </span>
+                </Link>
             </div>
-            <div className='flex flex-col items-start sm:mt-5 lg:ml-6 lg:mt-0 gap-1'>
+            <div className='flex flex-col items-start sm:mt-5 lg:ml-12 lg:mt-0 gap-1'>
                 <Link to='/terminos&condiciones'>
                     <span className='font-bold tracking-wide text-[.9rem] drop-shadow-sm'>
                         Términos y condiciones
@@ -100,7 +100,7 @@ const Footer = () => {
                     target='_blank'
                     className='mt-2'
                 >
-                    <small className='leading-[.9rem] tracking-wide text-[.7rem] drop-shadow-sm grid place-items-centerr'>
+                    <small className='leading-[.9rem] tracking-wide text-[.7rem] drop-shadow-sm grid place-items-start gap-1 mt-1'>
                         <span>
                             &copy; 2024
                         </span>
@@ -115,7 +115,7 @@ const Footer = () => {
             </div>
             <div className='flex flex-col items-center gap-4'>
                 <BiSolidCaretUpCircle
-                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow'
+                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow mt-auto'
                     onClick={() => scrollTop()}
                 />
                 <Link to=
