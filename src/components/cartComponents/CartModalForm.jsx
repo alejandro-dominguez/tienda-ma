@@ -173,7 +173,7 @@ const CartModalForm = ({
                                         Piso
                                     </label>
                                     <input
-                                        type='number' name='orderAddressFloor' id='orderAddressFloor' min={1}
+                                        type='number' name='orderAddressFloor' id='orderAddressFloor' min={0}
                                         placeholder='Piso' className='contact-input w-20'
                                         onChange={registerInputs}
                                     />

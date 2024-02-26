@@ -18,26 +18,35 @@ const NavBar = () => {
     const [ showNav, setShowNav ] = useState(true)
     const [ navData, ] = useState([
         {
-            'name': 'bebé',
+            'twoLines': true,
+            'nameLine1': 'pañales',
+            'nameLine2': 'bebé',
             'url': 'categorias/bebe/pañales-bebe'
         },
         {
-            'name': 'adulto',
+            'twoLines': true,
+            'nameLine1': 'pañales',
+            'nameLine2': 'adulto',
             'url': 'categorias/adulto/pañales-adulto'
         },
         {
-            'name': 'higiene',
+            'twoLines': true,
+            'nameLine1': 'higiene y',
+            'nameLine2': 'cuidado',
             'url': 'categorias/higiene'
         },
         {
+            'twoLines': false,
             'name': 'accesorios',
             'url': 'categorias/accesorios'
         },
         {
+            'twoLines': false,
             'name': 'blog',
             'url': 'blogs'
         },
         {
+            'twoLines': false,
             'name': 'mayoristas',
             'url': 'mayoristas'
         },
@@ -77,9 +86,9 @@ const NavBar = () => {
                         className=
                             {
                                 navigateHome ?
-                                    'w-[4.75rem] cursor-pointer z-10'
+                                    'w-[4.5rem] cursor-pointer z-10'
                                 :
-                                    'w-[4.75rem] cursor-auto z-10'
+                                    'w-[4.5rem] cursor-auto z-10'
                             }
                         onClick={() => {navigateHome ? navigate('/') : null}}
                     >

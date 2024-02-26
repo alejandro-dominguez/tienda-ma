@@ -10,9 +10,23 @@ const NavItem = ({ navItem }) => {
             after:blur-[.45px] after:bottom-[.25rem] after:hover:scale-x-100 after:hover:drop-shadow-sm after:focus:scale-x-100
             after:focus:drop-shadow-sm"
         >
-            <span className='text-[.8rem] md:text-[.84rem] uppercase font-black tracking-[.05em] text-zinc-600/[85%] drop-shadow-sm'>
-                {navItem.name}
-            </span>
+            {
+                !navItem.twoLines ?
+                    <span className='text-[.8rem] md:text-[.84rem] uppercase font-black tracking-[.05em]
+                    text-zinc-600/[85%] drop-shadow-sm'>
+                        {navItem.name}
+                    </span>
+                :
+                    <span className='flex flex-col text-[.8rem] md:text-[.84rem] uppercase font-black tracking-[.05em]
+                    text-zinc-600/[85%] drop-shadow-sm leading-5'>
+                        <span>
+                            {navItem.nameLine1}
+                        </span>
+                        <span>
+                            {navItem.nameLine2}
+                        </span>
+                    </span>
+            }
         </NavLink>
     )
 };

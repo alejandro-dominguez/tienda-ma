@@ -29,7 +29,7 @@ const SearchBar = () => {
                 <input
                     type='text' name='searchBar' id='searchBar' placeholder='...'
                     value={inputValue}
-                    className='w-[15.5rem] lg:w-44 text-sm bg-teal-500/[9%] py-[.28rem] px-2 rounded-sm
+                    className='w-[15.5rem] lg:w-36 text-sm bg-teal-500/[9%] py-[.28rem] px-2 rounded-sm
                     drop-shadow-sm shadow-sm placeholder:tracking-wider'
                     onChange={getValue}
                     onClick={() => setShowSearch(true)}
