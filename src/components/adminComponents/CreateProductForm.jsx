@@ -42,13 +42,13 @@ const CreateProductForm = ({ subcategories }) => {
     }
 
     const registerProductLine = (e) => {
-        if (e.target.value === ('' || ' ')) {
-            setProductLine(
-                ''
-            )
-        } else {
+        if (e.target.value !== ' ' || '') {
             setProductLine(
                 e.target.value
+                )
+        } else {                
+            setProductLine(
+                ''
             )
         }
     }
