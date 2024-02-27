@@ -5,7 +5,13 @@ const PaymentsCard = ({ payment }) => {
                 {payment.title}
             </h3>
             <span className='text-start text-sm mt-2 font-bold'>
-                {payment.desc}
+                {payment.descLine1}
+            </span>
+            <span className='text-start text-sm mt-2 font-bold'>
+                {payment.descLine2}
+            </span>
+            <span className='text-start text-sm mt-2 font-bold'>
+                {payment.descLine3}
             </span>
         </div>
     )

@@ -5,11 +5,12 @@ import useGetAllSubcategories from '../../../customHooks/useGetAllSubcategories'
 import BrandsSearchItems from './searchBarItems/BrandsSearchItems';
 import SubcategoriesSearchItems from './searchBarItems/SubcategoriesSearchItems';
 import ProductsSearchItems from './searchBarItems/ProductsSearchItems';
+import ProductLinesSearchItems from './searchBarItems/ProductLinesSearchItems';
 
 const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('')
     const [ showSearch, setShowSearch ] = useState(true)
-    const [ prods, brands, error, loading ] = useGetAllProducts()
+    const [ prods, brands, productLines, error, loading ] = useGetAllProducts()
     const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     
     const getValue = (e) => {
@@ -64,6 +65,12 @@ const SearchBar = () => {
                             />
                             <SubcategoriesSearchItems
                                 subcategories={subcategories}
+                                inputValue={inputValue}    
+                                setInputValue={setInputValue}
+                                setShowSearch={setShowSearch}   
+                            />
+                            <ProductLinesSearchItems
+                                productLines={productLines}
                                 inputValue={inputValue}    
                                 setInputValue={setInputValue}
                                 setShowSearch={setShowSearch}   

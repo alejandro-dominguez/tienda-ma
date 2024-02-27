@@ -29,7 +29,7 @@ const ItemCard = ({ product, itemList }) => {
             {
                 !itemList ?
                     <div className='flex flex-col lg:flex-row gap-4'>
-                        <div className='w-28 drop-shadow-sm'>
+                        <div className='w-36 drop-shadow-sm'>
                             <img
                                 src={product.img}
                                 alt={product.name}
@@ -44,6 +44,10 @@ const ItemCard = ({ product, itemList }) => {
                                 product.sizes ?
                                     <span className='font-black text-sm mt-2'>
                                         Talles: M - G - XG - XXG
+                                    </span>
+                                : product.adultSizes ?
+                                    <span className='font-black text-sm mt-2'>
+                                        Talles: G - XG
                                     </span>
                                 :
                                     null
@@ -62,8 +66,8 @@ const ItemCard = ({ product, itemList }) => {
                     </div>
                 :
                     <>
-                        <div className='flex gap-4 mt-auto'>
-                            <div className='w-16 md:w-36 drop-shadow-sm'>
+                        <div className='flex flex-col gap-4 mt-auto'>
+                            <div className='w-36 drop-shadow-sm'>
                                 <img
                                     src={product.img}
                                     alt={product.name}
@@ -72,11 +76,20 @@ const ItemCard = ({ product, itemList }) => {
                             </div>
                             {
                                 product.sizes ?
-                                    <div className='flex flex-col text-[.85rem] font-bold'>
-                                        <span>
+                                    <div className='flex flex-col'>
+                                        <span className='text-sm'>
                                             M - G - XG - XXG
                                         </span>
-                                        <span>
+                                        <span className='text-[.85rem] font-bold'>
+                                            {numberFormater(product.price)}
+                                        </span>
+                                    </div>
+                                : product.adultSizes ?
+                                    <div className='flex flex-col'>
+                                        <span className='text-sm'>
+                                            Talles: G - XG
+                                        </span>
+                                        <span className='text-[.85rem] font-bold'>
                                             {numberFormater(product.price)}
                                         </span>
                                     </div>

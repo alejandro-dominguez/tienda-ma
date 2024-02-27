@@ -5,7 +5,8 @@ import {
 import {
     collection,
     query,
-    getDocs
+    getDocs,
+    orderBy
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
@@ -18,7 +19,8 @@ const useGetAllWholesalersMessages = () => {
         (async () => {
             try {
                 setLoadingWholesalersMessages(true)
-                let q = query(collection(db, 'wholesalers'))
+                const collectionRef = collection(db, 'wholesalers')
+                const q = query(collectionRef, orderBy('messageDate', 'desc'))
                 const querySnapshot = await getDocs(q)
                 const firebaseWholesalersMessages = []
                 querySnapshot.forEach((doc) => {

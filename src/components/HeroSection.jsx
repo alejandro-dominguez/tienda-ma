@@ -27,7 +27,7 @@ const HeroSection = () => {
                     type={'video/mp4'}
                     className='block w-full h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
-                <div className='absolute top-28 sm:top-32 flex flex-col items-start ml-4 sm:ml-10 px-4 sm:px-0'>
+                <div className='absolute top-32 flex flex-col items-start sm:ml-10 px-4 sm:px-0'>
                     <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm
                     leading-8 sm:leading-normal'>
                         ¡Bienvenido a Tienda Má!

@@ -4,12 +4,12 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import ErrorPage from '../pages/ErrorPage';
 import ItemCard from '../components/ItemCard';
-import useGetFirebaseBrandData from '../customHooks/useGetFirebaseBrandData';
+import useGetFirebaseProductLineData from '../customHooks/useGetFirebaseProductLineData';
 import DisabledSite from '../components/DisabledSite';
 
-const BrandItemListContainer = () => {
-    const { brandId } = useParams()
-    const [ data, error, loading ] = useGetFirebaseBrandData(brandId)
+const ProductLineItemListContainer = () => {
+    const { productLineId } = useParams()
+    const [ data, error, loading ] = useGetFirebaseProductLineData(productLineId)
     const { enableSite } = useContext(SiteContext)
 
     return (
@@ -18,7 +18,7 @@ const BrandItemListContainer = () => {
             enableSite.enabled ?
                 <main className='w-full min-h-[100svh]'>
                     <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-12 mt-20 w-fit mx-auto'>
-                        {brandId}
+                        {productLineId}
                     </h1>
                     {
                         (data.length && !loading && !error) ?
@@ -57,4 +57,4 @@ const BrandItemListContainer = () => {
     )
 };
 
-export default BrandItemListContainer;
+export default ProductLineItemListContainer;

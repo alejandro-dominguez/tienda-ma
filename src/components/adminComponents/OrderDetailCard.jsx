@@ -84,6 +84,12 @@ const OrderDetailCard = ({ order }) => {
                     {order.clientEmail}
                 </span>
             </span>
+            <span className='font-bold flex gap-1 items-center'>
+                Id de orden:
+                <span className='font-normal text-sm mt-[.1rem]'>
+                    {order.orderId}
+                </span>
+            </span>
             <button
                 type='button'
                 className='flex items-center gap-3 mt-5'

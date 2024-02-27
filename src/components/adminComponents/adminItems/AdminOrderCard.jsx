@@ -85,6 +85,12 @@ const AdminOrderCard = ({ order }) => {
                             }
                         </span>
                     </h3>
+                    <h3 className='text-[.925rem] font-bold flex flex-col mb-2'>
+                        Id de orden:
+                        <span className='font-black text-sm mt-2'>
+                            {order.orderId}
+                        </span>
+                    </h3>
                     <Link
                         to={`/admin/consola/ordenes/${order.id}`}
                         className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors

@@ -18,7 +18,7 @@ const useGetAllPayments = () => {
         (async () => {
             try {
                 setLoading(true)
-                let q = query(collection(db, 'payments'))
+                const q = query(collection(db, 'payments'))
                 const querySnapshot = await getDocs(q)
                 const firebasePayments = []
                 querySnapshot.forEach((doc) => {

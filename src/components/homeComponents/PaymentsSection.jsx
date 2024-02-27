@@ -19,7 +19,7 @@ const PaymentsSection = () => {
                 <FaMapMarkerAlt className='block text-[3.3rem] text-red-500/50 drop-shadow' />
                 <span className='text-center text-sm tracking-wide leading-[1.3rem] drop-shadow'>
                     <span className='font-black text-sm drop-shadow-none mb-1 mt-2'>
-                        Envíos a Riosario y Gran Rosario
+                        Envíos a Rosario y Gran Rosario
                     </span>
                     Consulta por costos de envío.
                 </span>

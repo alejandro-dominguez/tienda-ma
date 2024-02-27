@@ -46,12 +46,12 @@ const AdminLandingPage = () => {
         <>
         {
             authUser ?
-                <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
+                <main className='w-full grid place-items-start py-[7.5rem] min-h-[100svh]'>
                     <h1 className='font-bold text-center leading-8 px-4 font-Raleway text-2xl md:text-3xl
                     drop-shadow-sm mt-2 justify-self-center'>
                         Consola de Administrador
                     </h1>
-                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-3 min-h-[11rem]'>
+                    <div className='flex flex-col gap-4 mx-auto mt-3 mb-0 md:my-2 min-h-[11rem]'>
                         <AdminOrdersNotification />
                         <AdminWholesalersNotifications />
                         <AdminMessagesNotification />

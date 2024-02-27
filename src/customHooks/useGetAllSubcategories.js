@@ -28,7 +28,7 @@ const useGetAllSubcategories = () => {
         (async () => {
             try {
                 setLoadingSubcategories(true)
-                let q = query(collection(db, 'subcategories'))
+                const q = query(collection(db, 'subcategories'))
                 const querySnapshot = await getDocs(q)
                 const firebaseSubcategories = []
                 querySnapshot.forEach((doc) => {

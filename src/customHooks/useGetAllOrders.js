@@ -5,7 +5,8 @@ import {
 import {
     collection,
     query,
-    getDocs
+    getDocs,
+    orderBy
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
@@ -18,7 +19,8 @@ const useGetAllOrders = () => {
         (async () => {
             try {
                 setLoading(true)
-                let q = query(collection(db, 'orders'))
+                const collectionRef = collection(db, 'orders')
+                const q = query(collectionRef, orderBy('orderDate', 'desc'))
                 const querySnapshot = await getDocs(q)
                 const firebaseOrders = []
                 querySnapshot.forEach((doc) => {

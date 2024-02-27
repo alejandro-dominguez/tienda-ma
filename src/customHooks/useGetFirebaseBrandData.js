@@ -19,8 +19,7 @@ const useGetFirebaseBrandData = (brandId) => {
         (async () => {
             try {
                 setLoading(true)
-                let q
-                q = query(collection(db, 'products'), where('brand', '==', brandId))
+                const q = query(collection(db, 'products'), where('brand', '==', brandId))
                 const querySnapshot = await getDocs(q)
                 const firebaseProducts = []
                 querySnapshot.forEach((doc) => {

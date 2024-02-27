@@ -32,6 +32,7 @@ const CartModalForm = ({
     const [ errorOrder, setErrorOrder ] = useState('')
     const { products, emptyCart, calculateCartTotal } = useContext(ShopContext)
     const orderTotalAmount = numberFormater(calculateCartTotal())
+    const orderId = Math.floor(Math.random() * 10) * Date.now()
 
     const registerInputs = ({ target: {name, value} }) => {
         setOrder({
@@ -56,7 +57,8 @@ const CartModalForm = ({
                     orderTotal: orderTotalAmount,
                     orderDate: new Date().toLocaleString(),
                     delivered: false,
-                    process: false
+                    process: false,
+                    orderId: orderId
                 }
             )
             toast.success(

@@ -14,6 +14,7 @@ const useGetAllProducts = () => {
     const [ loading, setLoading ] = useState(false)
     const [ prods, setProds ] = useState({})
     const [ brands, setBrands ] = useState({})
+    const [ productLines, setProductLines ] = useState({})
     
     const filterBrands = (firebaseProds) => {
         const brandsList = []
@@ -25,11 +26,23 @@ const useGetAllProducts = () => {
         setLoading(false)
     }
 
+    const filterProductLines = (firebaseProds) => {
+        const productLinesList = []
+        firebaseProds.map(prod => {
+            if (prod.productLine !== '') {
+                return productLinesList.push(prod.productLine)
+            } 
+        })
+        const filteredProductLinesList = [...new Set(productLinesList)]
+        setProductLines(filteredProductLinesList)
+        setLoading(false)
+    }
+
     useEffect(() => {
         (async () => {
             try {
                 setLoading(true)
-                let q = query(collection(db, 'products'))
+                const q = query(collection(db, 'products'))
                 const querySnapshot = await getDocs(q)
                 const firebaseProds = []
                 querySnapshot.forEach((doc) => {
@@ -37,6 +50,7 @@ const useGetAllProducts = () => {
                 })
                 setProds(firebaseProds)
                 filterBrands(firebaseProds)
+                filterProductLines(firebaseProds)
                 setLoading(false)
             } catch (error) {
                 setError(error.message)
@@ -47,7 +61,7 @@ const useGetAllProducts = () => {
         })()
     }, [])
 
-    return [ prods, brands, error, loading ]
+    return [ prods, brands, productLines, error, loading ]
 };
 
 export default useGetAllProducts;

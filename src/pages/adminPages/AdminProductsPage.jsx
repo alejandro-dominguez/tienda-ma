@@ -9,7 +9,7 @@ import AdminSubcategoriesContainer from '../../components/adminComponents/AdminS
 import AdminErrorPage from '../AdminErrorPage';
 
 const AdminProductsPage = () => {
-    const [ prods,, error, loading ] = useGetAllProducts()
+    const [ prods,,, error, loading ] = useGetAllProducts()
     const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const { authUser } = useContext(AuthContext)
 

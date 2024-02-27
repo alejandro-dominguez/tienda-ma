@@ -20,9 +20,9 @@ const CreateProductForm = ({ subcategories }) => {
     })
     const [ productPrice, setProductPrice ] = useState(0)
     const [ productSubcategory, setProductSubcategory ] = useState('')
+    const [ productLine, setProductLine ] = useState('')
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
-    const [ newProductSubcategory, setNewProductSubcategory ] = useState(true)
     
     const registerInputs = ({ target: {name, value} }) => {
         setNewProduct({
@@ -38,9 +38,19 @@ const CreateProductForm = ({ subcategories }) => {
     }
 
     const registerSubcategory = (e) => {
-        setProductSubcategory(
-            e.target.value
-        )
+        setProductSubcategory(e.target.value)
+    }
+
+    const registerProductLine = (e) => {
+        if (e.target.value === ('' || ' ')) {
+            setProductLine(
+                ''
+            )
+        } else {
+            setProductLine(
+                e.target.value
+            )
+        }
     }
 
     const registerBabySizes = (e) => {
@@ -57,19 +67,8 @@ const CreateProductForm = ({ subcategories }) => {
         setProductAdultSizes(true)
     }
 
-    const checkProductSubcategory = (productSubcategory) => {
-        const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories === productSubcategory)
-        if (repeatedSubcategory) {
-            setNewProductSubcategory(false)
-        } else {
-            setNewProductSubcategory(true)
-        }
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-        checkProductSubcategory(productSubcategory)
-        
         try {
             await addDoc(collection(db, 'products'),
                 {
@@ -82,11 +81,13 @@ const CreateProductForm = ({ subcategories }) => {
                     price: productPrice,
                     sizes: productBabySizes,
                     adultSizes: productAdultSizes,
+                    productLine: productLine,
                     quantity: 1000000,
                     featured: false,
                 }
             )
-            if (newProductSubcategory) {
+            const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories === productSubcategory)
+            if (repeatedSubcategory === undefined) {
                 await addDoc(collection(db, 'subcategories'),
                     {
                         category: newProduct.productCategory,
@@ -276,6 +277,21 @@ const CreateProductForm = ({ subcategories }) => {
                             <option value={false}>Sin Talles</option>
                             <option value={true}>Talles de adulto</option>
                         </select>
+                    </div>
+                    <div className='flex flex-col mt-[.6rem]'>
+                        <label
+                            htmlFor='productLine'
+                            className='mt-2'    
+                        >
+                            Línea de producto:
+                        </label>
+                        <input
+                            type='text' name='productLine' id='productLine'
+                            placeholder='...'
+                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerProductLine}
+                        />
                     </div>
                 </div>
             </div>

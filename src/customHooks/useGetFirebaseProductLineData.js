@@ -10,22 +10,22 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetPromo = () => {
+const useGetFirebaseProductLineData = (productLineId) => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
-    const [ promo, setPromo ] = useState([])
+    const [ data, setData ] = useState([])
 
     useEffect(() => {
         (async () => {
             try {
                 setLoading(true)
-                const q = query(collection(db, 'promos'), where('active', '==', true))
+                const q = query(collection(db, 'products'), where('productLine', '==', productLineId))
                 const querySnapshot = await getDocs(q)
-                const firebasePromo = []
+                const firebaseProducts = []
                 querySnapshot.forEach((doc) => {
-                    firebasePromo.push({...doc.data(), id: doc.id})
+                    firebaseProducts.push({...doc.data(), id: doc.id})
                 })
-                setPromo(firebasePromo)
+                setData(firebaseProducts)
                 setLoading(false)
             } catch (error) {
                 setError(error.message)
@@ -34,9 +34,9 @@ const useGetPromo = () => {
                 setLoading(false)
             }
         })()
-    }, [])
+    }, [productLineId])
 
-    return [ promo, error, loading ]
+    return [ data, error, loading ]
 };
 
-export default useGetPromo;
+export default useGetFirebaseProductLineData;

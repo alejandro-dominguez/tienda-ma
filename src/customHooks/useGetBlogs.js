@@ -18,7 +18,7 @@ const useGetBlogs = () => {
         (async () => {
             try {
                 setLoadingBlogs(true)
-                let q = query(collection(db, 'blogs'))
+                const q = query(collection(db, 'blogs'))
                 const querySnapshot = await getDocs(q)
                 const firebaseBlogs = []
                 querySnapshot.forEach((doc) => {

@@ -13,7 +13,9 @@ const CreatePaymentsForm = () => {
     const [ errorPayment, setErrorPayment ] = useState('')
     const [ newPayment, setNewPayment ] = useState({
         paymentTitle: '',
-        paymentDesc: '',
+        paymentDescLine1: '',
+        paymentDescLine2: '',
+        paymentDescLine3: '',
     })
     
     const registerInputs = ({ target: {name, value} }) => {
@@ -29,7 +31,9 @@ const CreatePaymentsForm = () => {
             await addDoc(collection(db, 'payments'),
                 {
                     title: newPayment.paymentTitle,
-                    desc: newPayment.paymentDesc,
+                    descLine1: newPayment.paymentDescLine1,
+                    descLine2: newPayment.paymentDescLine2,
+                    descLine3: newPayment.paymentDescLine3,
                 }
             )
             toast.success(
@@ -81,15 +85,45 @@ const CreatePaymentsForm = () => {
                     </div>
                     <div className='flex flex-col'>
                         <label
-                            htmlFor='paymentDesc'
-                            className='mt-3'    
+                            htmlFor='paymentDescline1'
+                            className='mt-2'    
                         >
-                            Detalle:
+                            Detalle línea 1:
                         </label>
                         <textarea
-                            type='text' name='paymentDesc' id='paymentDesc' required cols='10' rows='10'
-                            placeholder='...' min={20}
-                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                            type='text' name='paymentDescLine1' id='paymentDescLine1' required cols='10' rows='10'
+                            placeholder='...' min={10}
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerInputs}
+                        />
+                    </div>
+                    <div className='flex flex-col'>
+                        <label
+                            htmlFor='paymentDescline2'
+                            className='mt-2'    
+                        >
+                            Detalle línea 2:
+                        </label>
+                        <textarea
+                            type='text' name='paymentDescLine2' id='paymentDescLine2' required cols='10' rows='10'
+                            placeholder='...' min={10}
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerInputs}
+                        />
+                    </div>
+                    <div className='flex flex-col'>
+                        <label
+                            htmlFor='paymentDescline3'
+                            className='mt-2'    
+                        >
+                            Detalle línea 3:
+                        </label>
+                        <textarea
+                            type='text' name='paymentDescLine3' id='paymentDescLine3' required cols='10' rows='10'
+                            placeholder='...' min={10}
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
                         />
@@ -97,7 +131,7 @@ const CreatePaymentsForm = () => {
                 </div>
             <button
                 type='submit'
-                className='grid place-items-center justify-self-center py-2 w-56 mt-5 bg-zinc-900 rounded-md transition-colors
+                className='grid place-items-center justify-self-center py-2 w-56 mt-7 bg-zinc-900 rounded-md transition-colors
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>

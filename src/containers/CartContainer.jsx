@@ -20,7 +20,7 @@ const CartContainer = () => {
         <>
         {
             enableSite.enabled ?
-                <main className='w-full grid place-items-start py-28 min-h-[100svh]'>
+                <main className='w-full grid place-items-start py-[7.5rem] min-h-[100svh]'>
                     <h1 className='font-bold font-Raleway text-center px-4 leading-8 text-[1.75rem] md:text-3xl
                     drop-shadow-sm mt-2 justify-self-center'>
                         {
