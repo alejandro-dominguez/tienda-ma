@@ -1,4 +1,11 @@
-import { useContext } from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
+import {
+    useContext,
+    useState
+} from 'react';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
@@ -15,6 +22,20 @@ const EditProductPage = () => {
     const { id } = useParams()
     const [ product, errorProduct, loadingProduct ] = useGetItemDetail(id)
     const { authUser } = useContext(AuthContext)
+    const [ activeToast, setActiveToast ] = useState(false)
+
+    if (activeToast) {
+        toast.success(
+            'Producto editado',
+            {
+                duration: 2000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+        }, 2500)
+    }
     
     return (
         <>
@@ -24,16 +45,41 @@ const EditProductPage = () => {
                     {
                         (JSON.stringify(product) !== '{}' && !loadingProduct && !errorProduct) ?
                         <>
-                            <EditProductPriceForm product={product} />
+                            <EditProductPriceForm
+                                product={product}
+                                setActiveToast={setActiveToast}    
+                            />
                             <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
-                                <EditProductInfoForm product={product} />
+                                <EditProductInfoForm
+                                    product={product}
+                                    setActiveToast={setActiveToast}    
+                                />
                                 <div className='flex-col mx-auto'>
-                                    <EditProductCategoriesForm product={product} />
-                                    <EditProductLineForm product={product} />
+                                    <EditProductCategoriesForm
+                                        product={product}
+                                        setActiveToast={setActiveToast}    
+                                    />
+                                    <EditProductLineForm
+                                        product={product}
+                                        setActiveToast={setActiveToast}    
+                                    />
                                 </div>
-                                <EditProductSizesForm product={product} />
-                                <EditProductImgsForm product={product} />
+                                <EditProductSizesForm
+                                    product={product}
+                                    setActiveToast={setActiveToast}    
+                                />
+                                <EditProductImgsForm
+                                    product={product}
+                                    setActiveToast={setActiveToast}
+                                />
                             </div>
+                            <Toaster
+                            visibleToasts={1}
+                                richColors
+                                toastOptions={{
+                                    className: 'text-center',
+                                }}
+                            />
                         </>
                         : !errorProduct ?
                             <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>

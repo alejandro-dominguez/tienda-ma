@@ -1,20 +1,16 @@
 import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
     doc,
     updateDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const EditProductSizesForm = ({ product }) => {
-    const [ errorProduct, setErrorProduct ] = useState('')
+const EditProductSizesForm = ({
+    product,
+    setActiveToast
+}) => {
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
-    const navigate = useNavigate()
 
     const registerBabySizes = (e) => {
         if (!e.target.value) {
@@ -38,25 +34,11 @@ const EditProductSizesForm = ({ product }) => {
                 sizes: productBabySizes,
                 adultSizes: productAdultSizes,
             })
-            toast.success(
-                'Producto editado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 3500)
+            setActiveToast(true)
         } catch (error) {
-            setErrorProduct(error.message)
-            toast.error(
-                errorProduct,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            console.log(error.message)
+        } finally {
+            e.target.reset()
         }
     }
 
@@ -128,12 +110,6 @@ const EditProductSizesForm = ({ product }) => {
                     Actualizar talles
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </form>
     )
 };

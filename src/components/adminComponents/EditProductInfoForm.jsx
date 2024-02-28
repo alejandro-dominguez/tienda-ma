@@ -1,23 +1,19 @@
-import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
+    import {
     doc,
     updateDoc,
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const EditProductInfoForm = ({ product }) => {
-    const [ errorProduct, setErrorProduct ] = useState('')
+const EditProductInfoForm = ({
+    product,
+    setActiveToast
+}) => {
     const [ newInfo, setNewInfo ] = useState({
         productBrand: '',
         productName: '',
         productDesc: '',
     })
-    const navigate = useNavigate()
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -35,25 +31,11 @@ const EditProductInfoForm = ({ product }) => {
                 name: newInfo.productName,
                 desc: newInfo.productDesc,
             })
-            toast.success(
-                'Producto editado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 3500)
+            setActiveToast(true)
         } catch (error) {
-            setErrorProduct(error.message)
-            toast.error(
-                errorProduct,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            console.log(error.message)
+        } finally {
+            e.target.reset()
         }
     }
 
@@ -133,12 +115,6 @@ const EditProductInfoForm = ({ product }) => {
                     Actualizar Info.
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </form>
     )
 };
