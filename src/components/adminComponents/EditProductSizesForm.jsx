@@ -7,7 +7,8 @@ import { useState } from 'react';
 
 const EditProductSizesForm = ({
     product,
-    setActiveToast
+    setActiveToast,
+    setErrorToast
 }) => {
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
@@ -36,7 +37,8 @@ const EditProductSizesForm = ({
             })
             setActiveToast(true)
         } catch (error) {
-            console.log(error.message)
+            setActiveToast(true)
+            setErrorToast(error.message)
         } finally {
             e.target.reset()
         }

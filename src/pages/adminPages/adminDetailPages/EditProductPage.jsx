@@ -23,8 +23,9 @@ const EditProductPage = () => {
     const [ product, errorProduct, loadingProduct ] = useGetItemDetail(id)
     const { authUser } = useContext(AuthContext)
     const [ activeToast, setActiveToast ] = useState(false)
+    const [ errorToast, setErrorToast ] = useState('')
 
-    if (activeToast) {
+    if (activeToast && errorToast === '') {
         toast.success(
             'Producto editado',
             {
@@ -35,6 +36,20 @@ const EditProductPage = () => {
         setTimeout(() => {
             setActiveToast(false)
         }, 2500)
+    }
+
+    if (activeToast && errorToast !== '') {
+        toast.error(
+            errorToast,
+            {
+                duration: 4000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+            setErrorToast('')
+        }, 4500)
     }
     
     return (
@@ -47,34 +62,40 @@ const EditProductPage = () => {
                         <>
                             <EditProductPriceForm
                                 product={product}
-                                setActiveToast={setActiveToast}    
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}    
                             />
                             <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                                 <EditProductInfoForm
                                     product={product}
-                                    setActiveToast={setActiveToast}    
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}    
                                 />
                                 <div className='flex-col mx-auto'>
                                     <EditProductCategoriesForm
                                         product={product}
-                                        setActiveToast={setActiveToast}    
+                                        setActiveToast={setActiveToast}
+                                        setErrorToast={setErrorToast}    
                                     />
                                     <EditProductLineForm
                                         product={product}
-                                        setActiveToast={setActiveToast}    
+                                        setActiveToast={setActiveToast}
+                                        setErrorToast={setErrorToast}    
                                     />
                                 </div>
                                 <EditProductSizesForm
                                     product={product}
-                                    setActiveToast={setActiveToast}    
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}    
                                 />
                                 <EditProductImgsForm
                                     product={product}
                                     setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}
                                 />
                             </div>
                             <Toaster
-                            visibleToasts={1}
+                                visibleToasts={1}
                                 richColors
                                 toastOptions={{
                                     className: 'text-center',

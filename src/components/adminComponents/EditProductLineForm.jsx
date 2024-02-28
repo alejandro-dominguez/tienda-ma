@@ -7,7 +7,8 @@ import { useState } from 'react';
 
 const EditProductLineForm = ({
     product,
-    setActiveToast
+    setActiveToast,
+    setErrorToast
 }) => {
     const [ newInfo, setNewInfo ] = useState({
         productLine: '',
@@ -29,7 +30,8 @@ const EditProductLineForm = ({
             })
             setActiveToast(true)
         } catch (error) {
-            console.log(error.message)
+            setActiveToast(true)
+            setErrorToast(error.message)
         } finally {
             e.target.reset()
         }
