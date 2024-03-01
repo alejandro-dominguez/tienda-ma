@@ -115,16 +115,18 @@ const Footer = () => {
             </div>
             <div className='flex flex-col items-center gap-4'>
                 <BiSolidCaretUpCircle
-                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow mt-auto'
+                    className='block text-2xl cursor-pointer text-red-500/60 drop-shadow'
                     onClick={() => scrollTop()}
                 />
-                <Link to=
-                    {
-                        authUser ?
-                            '/admin/consola'
-                        :
-                            '/admin'
-                    }
+                <Link
+                    to=
+                        {
+                            authUser ?
+                                '/admin/consola'
+                            :
+                                '/admin'
+                        }
+                    className='mt-auto'
                 >
                     <div className='flex justify-start items-center gap-2'>
                         <FaUserCircle className='block text-lg text-zinc-900' />
