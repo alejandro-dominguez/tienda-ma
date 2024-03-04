@@ -21,10 +21,11 @@ const AdminMenu = ({ adminMenuData }) => {
 
     const disableMainSite = async () => {
         try {
-            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID )
+            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID)
             await updateDoc(docRef, {
                 enabled: false
-              })
+              }
+            )
             toast.success(
                 'Sitio principal detenido',
                 {
@@ -49,10 +50,11 @@ const AdminMenu = ({ adminMenuData }) => {
 
     const enableMainSite = async () => {
         try {
-            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID )
+            const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID)
             await updateDoc(docRef, {
                 enabled: true
-              })
+              }
+            )
             toast.success(
                 'Sitio principal habilitado',
                 {

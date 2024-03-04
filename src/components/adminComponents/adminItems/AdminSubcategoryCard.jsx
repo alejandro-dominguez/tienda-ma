@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { db } from '../../../firebase/config';
 import {
@@ -9,13 +8,15 @@ import {
     doc,
     deleteDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const AdminSubcategoryCard = ({ subcategory }) => {
-    const navigate = useNavigate()
-
     const deleteSubcategory = async (subcategory) => {
         try {
-            const q = query(collection(db, 'subcategories'), where('subcategory', '==', subcategory));
+            const q = query(collection(db, 'subcategories'), where('subcategory', '==', subcategory))
             const querySnapshot = await getDocs(q);
             const docId = []
             querySnapshot.forEach((doc) => {
@@ -23,11 +24,21 @@ const AdminSubcategoryCard = ({ subcategory }) => {
             })
             const docRef = doc(db, 'subcategories', docId[0])
             await deleteDoc(docRef)
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+            toast.success(
+                'Subcategoría eliminada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
     
@@ -43,6 +54,12 @@ const AdminSubcategoryCard = ({ subcategory }) => {
                     onClick={() => deleteSubcategory(subcategory)}
                 />
             </div>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

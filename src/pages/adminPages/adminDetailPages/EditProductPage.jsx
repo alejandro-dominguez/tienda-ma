@@ -10,12 +10,12 @@ import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../../contexts/authContext';
 import useGetItemDetail from '../../../customHooks/useGetItemDetail';
-import EditProductPriceForm from '../../../components/adminComponents/EditProductPriceForm';
-import EditProductInfoForm from '../../../components/adminComponents/EditProductInfoForm';
-import EditProductCategoriesForm from '../../../components/adminComponents/EditProductCategoriesForm';
-import EditProductLineForm from '../../../components/adminComponents/EditProductLineForm';
-import EditProductSizesForm from '../../../components/adminComponents/EditProductSizesForm';
-import EditProductImgsForm from '../../../components/adminComponents/EditProductImgsForm';
+import EditProductPriceForm from '../../../components/adminComponents/adminEditForms/EditProductPriceForm';
+import EditProductInfoForm from '../../../components/adminComponents/adminEditForms/EditProductInfoForm';
+import EditProductCategoriesForm from '../../../components/adminComponents/adminEditForms/EditProductCategoriesForm';
+import EditProductLineForm from '../../../components/adminComponents/adminEditForms/EditProductLineForm';
+import EditProductSizesForm from '../../../components/adminComponents/adminEditForms/EditProductSizesForm';
+import EditProductImgsForm from '../../../components/adminComponents/adminEditForms/EditProductImgsForm';
 import AdminErrorPage from '../../AdminErrorPage';
 
 const EditProductPage = () => {

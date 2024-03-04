@@ -1,14 +1,15 @@
 import { IoEyeSharp } from 'react-icons/io5';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const MessageDetailCard = ({ message }) => {
-    const navigate = useNavigate()
-
     const readMessage = async (id) => {
         try {
             const docRef = doc(db, 'messages', id)
@@ -16,11 +17,21 @@ const MessageDetailCard = ({ message }) => {
                 {
                     read: true
                 })
-            setTimeout(() => {
-                navigate('/admin/consola/mensajesContacto')
-            }, 1000)
+            toast.success(
+                'Mensaje leído',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -55,6 +66,12 @@ const MessageDetailCard = ({ message }) => {
                     Marcar mensaje leído
                 </span>
             </button>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

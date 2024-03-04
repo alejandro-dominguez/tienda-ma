@@ -6,6 +6,10 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const AdminProductCard = ({ prod }) => {
     const navigate = useNavigate()
@@ -14,11 +18,21 @@ const AdminProductCard = ({ prod }) => {
         try {
             const docRef = doc(db, 'products', id)
             await deleteDoc(docRef)
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+            toast.success(
+                'Producto eliminado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -28,12 +42,23 @@ const AdminProductCard = ({ prod }) => {
             await updateDoc(docRef,
                 {
                     featured: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
-        } catch (error) {
-            console.log(error.message)
+                }
+            )
+            toast.success(
+                'Producto destacado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+            } catch (error) {
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -43,12 +68,23 @@ const AdminProductCard = ({ prod }) => {
             await updateDoc(docRef,
                 {
                     featured: false
-                })
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Producto no destacado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -118,6 +154,12 @@ const AdminProductCard = ({ prod }) => {
                     }
                 </div>
             </div>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

@@ -2,7 +2,7 @@ import {
     doc,
     updateDoc,
 } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { db } from '../../../firebase/config';
 import { useState } from 'react';
 
 const EditProductCategoriesForm = ({

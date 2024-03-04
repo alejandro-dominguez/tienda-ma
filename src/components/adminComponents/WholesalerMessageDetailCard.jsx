@@ -1,26 +1,38 @@
 import { IoEyeSharp } from 'react-icons/io5';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
-    const navigate = useNavigate()
-
     const readMessage = async (id) => {
         try {
             const docRef = doc(db, 'wholesalers', id)
             await updateDoc(docRef,
                 {
                     read: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola/mensajesMayoristas')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Mensaje leído',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -55,6 +67,12 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
                     Marcar mensaje leído
                 </span>
             </button>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

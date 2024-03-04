@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { IoEyeSharp } from 'react-icons/io5';
 import { db } from '../../../firebase/config';
@@ -8,22 +7,35 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const AdminMessageCard = ({ message }) => {
-    const navigate = useNavigate()
-
     const readMessage = async (id) => {
         try {
             const docRef = doc(db, 'messages', id)
             await updateDoc(docRef,
                 {
                     read: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Mensaje leído',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -31,11 +43,21 @@ const AdminMessageCard = ({ message }) => {
         try {
             const docRef = doc(db, 'messages', id)
             await deleteDoc(docRef)
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+            toast.success(
+                'Mensaje eliminado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -89,6 +111,12 @@ const AdminMessageCard = ({ message }) => {
                     </div>
                 </div>
             </div>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

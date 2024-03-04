@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { FaTruck } from 'react-icons/fa';
 import { FaClock } from 'react-icons/fa6';
@@ -9,10 +8,12 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 
 const AdminOrderCard = ({ order }) => {
-    const navigate = useNavigate()
-    
     const deliveredOrder = async (id) => {
         try {
             const docRef = doc(db, 'orders', id)
@@ -20,12 +21,23 @@ const AdminOrderCard = ({ order }) => {
                 {
                     delivered: true,
                     process: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Orden enviada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -35,12 +47,23 @@ const AdminOrderCard = ({ order }) => {
             await updateDoc(docRef,
                 {
                     process: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Orden procesada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -48,11 +71,21 @@ const AdminOrderCard = ({ order }) => {
         try {
             const docRef = doc(db, 'orders', id)
             await deleteDoc(docRef)
-            setTimeout(() => {
-                navigate('/admin/consola')
-            }, 1000)
+            toast.success(
+                'Orden eliminada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -116,6 +149,12 @@ const AdminOrderCard = ({ order }) => {
                     </div>
                 </div>
             </div>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };

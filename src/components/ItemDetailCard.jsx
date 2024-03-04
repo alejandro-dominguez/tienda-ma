@@ -30,7 +30,7 @@ const ItemDetailCard = ({
                 duration: 5000,
                 position: 'bottom-center',
             }
-        ),
+        )
         product.sizes ?
             (addProduct({ ...product, quantity, selectedSize, prodId }),
             setItemDetailQuantity(quantity),

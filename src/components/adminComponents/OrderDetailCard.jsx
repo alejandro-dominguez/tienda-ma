@@ -1,29 +1,41 @@
 import { FaTruck } from 'react-icons/fa';
 import { FaClock } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase/config';
 import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 import AdminOrderProduct from './adminItems/AdminOrderProduct';
 
 const OrderDetailCard = ({ order }) => {
-    const navigate = useNavigate()
-
     const deliveredOrder = async (id) => {
         try {
             const docRef = doc(db, 'orders', id)
             await updateDoc(docRef,
                 {
                     delivered: true,
-                })
-            setTimeout(() => {
-                navigate('/admin/consola/ordenes')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Orden enviada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
-        }
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }        
     }
 
     const processingOrder = async (id) => {
@@ -32,12 +44,23 @@ const OrderDetailCard = ({ order }) => {
             await updateDoc(docRef,
                 {
                     process: true
-                })
-            setTimeout(() => {
-                navigate('/admin/consola/ordenes')
-            }, 1000)
+                }
+            )
+            toast.success(
+                'Orden procesada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         } catch (error) {
-            console.log(error.message)
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
         }
     }
 
@@ -116,6 +139,12 @@ const OrderDetailCard = ({ order }) => {
                     Marcar orden entregada
                 </span>
             </button>
+            <Toaster
+                richColors
+                toastOptions={{
+                    className: 'text-center',
+                }}
+            />
         </div>
     )
 };
