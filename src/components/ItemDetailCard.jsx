@@ -18,7 +18,7 @@ const ItemDetailCard = ({
     product
 }) => {
     const { addProduct } = useContext(ShopContext)
-    const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
+    const [ , setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
     const [ selectedAdultSize, setSelectedAdultSize ] = useState('')
     const prodId = Math.floor(Math.random() * 100) * Date.now()
@@ -76,14 +76,12 @@ const ItemDetailCard = ({
                         tracking-wide mt-5 md:mt-0'>
                             Elige talle para añadir el producto 
                         </span>
-                    : itemDetailQuantity ?
+                    :
                         <ItemCount
                             confirmPurchase={confirmPurchase}
                             initial={1}
                             quantity={product.quantity}
                         />
-                    : 
-                        null
                 }
             </div>
             <ItemSuggestions
