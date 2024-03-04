@@ -37,7 +37,7 @@ const ItemDetailCard = ({
                 setItemDetailQuantity(1)
             }, 150))
         :
-        product.sizes ?
+        product.adultSizes ?
             (addProduct({ ...product, quantity, selectedAdultSize, prodId }),
             setItemDetailQuantity(quantity),
             setTimeout(() => {
