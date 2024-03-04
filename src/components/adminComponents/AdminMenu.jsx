@@ -10,14 +10,12 @@ import {
     updateDoc
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
 import AdminMenuItem from './adminItems/AdminMenuItem';
 
 
 const AdminMenu = ({ adminMenuData }) => {
     const { enableSite } = useContext(SiteContext)
     const [ errorAdmin, setErrorAdmin ] = useState('')
-    const navigate = useNavigate()
 
     const disableMainSite = async () => {
         try {
@@ -33,9 +31,6 @@ const AdminMenu = ({ adminMenuData }) => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                navigate('/admin')
-            }, 4000)
         } catch (error) {
             setErrorAdmin(error.message)
             toast.error(
@@ -62,9 +57,6 @@ const AdminMenu = ({ adminMenuData }) => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                navigate('/admin')
-            }, 4000)
         } catch (error) {
             setErrorAdmin(error.message)
             toast.error(
