@@ -1,19 +1,19 @@
-import { BsCheckCircleFill } from 'react-icons/bs';
 import { 
     FaPlusCircle,
     FaMinusCircle
 } from 'react-icons/fa';
 import { useState } from 'react';
+import { BsCheckCircleFill } from 'react-icons/bs';
 
 const ItemCount = ({
-    onAdd,
+    confirmPurchase,
     quantity,
     initial
 }) => {
     const [ count, setCount ] = useState(initial)
 
-    const handleAdd = (count) => {
-        onAdd(count)
+    const handlePurchase = (count) => {
+        confirmPurchase(count)
     }
 
     const onPlus = () => {
@@ -49,7 +49,7 @@ const ItemCount = ({
                 type='button'
                 className='w-max flex items-center gap-2 justify-center px-3 py-2 rounded-lg shadow-sm bg-zinc-900 text-white
                 transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                onClick={() => handleAdd(count)}
+                onClick={() => handlePurchase(count)}
             >
                 <BsCheckCircleFill className='block drop-shadow'/>
                 <span className='font-Raleway text-[.85rem] tracking-wider font-bold drop-shadow'>
