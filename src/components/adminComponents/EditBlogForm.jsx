@@ -69,10 +69,10 @@ const EditBlogForm = ({ blog }) => {
     
     return (
         <form
-        className='grid pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
-        autoComplete='off'
-        onSubmit={handleSubmit}
-    >
+            className='grid pt-3 pb-5 px-4 md:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
+            autoComplete='off'
+            onSubmit={handleSubmit}
+        >
         <h1 className='font-bold font-Raleway text-lg md:text-xl drop-shadow-sm mx-auto text-center leading-6'>
             Artículo: {blog.title}
         </h1>

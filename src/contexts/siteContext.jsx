@@ -22,7 +22,7 @@ const SiteProvider = ({ children }) => {
                 const docRef = doc(db, 'site', import.meta.env.VITE_FIREBASE_SITE_ID)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
-                    setEnableSite({ ...docSnap.data()})
+                    setEnableSite({ ...docSnap.data() })
                 }
             } catch (error) {
                 console.log(error)

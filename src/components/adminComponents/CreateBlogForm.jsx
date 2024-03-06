@@ -146,7 +146,7 @@ const CreateBlogForm = () => {
                             Segundo texto:
                         </label>
                         <textarea
-                            type='text' name='blogText2' id='blogText2' required cols='10' rows='10'
+                            type='text' name='blogText2' id='blogText2' cols='10' rows='10'
                             placeholder='...' min={20}
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
@@ -178,7 +178,7 @@ const CreateBlogForm = () => {
                             Link imagen 2:
                         </label>
                         <input
-                            type='text' name='blogImg2' id='blogImg2' required
+                            type='text' name='blogImg2' id='blogImg2'
                             placeholder='...' min={8}
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
