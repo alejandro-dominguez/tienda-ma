@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { db } from '../../firebase/config';
 import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
     addDoc,
     collection,
 } from 'firebase/firestore';
 
-const CreatePaymentsForm = () => {
-    const [ errorPayment, setErrorPayment ] = useState('')
+const CreatePaymentsForm = ({
+    setActiveToast,
+    setErrorToast
+}) => {
     const [ newPayment, setNewPayment ] = useState({
         paymentTitle: '',
         paymentDescLine1: '',
@@ -36,22 +34,10 @@ const CreatePaymentsForm = () => {
                     descLine3: newPayment.paymentDescLine3,
                 }
             )
-            toast.success(
-                'Forma de pago agregada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            setErrorPayment(error.message)
-            toast.error(
-                errorPayment,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         } finally {
             e.target.reset()
         }
@@ -91,8 +77,8 @@ const CreatePaymentsForm = () => {
                             Detalle línea 1:
                         </label>
                         <textarea
-                            type='text' name='paymentDescLine1' id='paymentDescLine1' required cols='10' rows='10'
-                            placeholder='...' min={10}
+                            type='text' name='paymentDescLine1' id='paymentDescLine1' cols='10' rows='10'
+                            placeholder='...'
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -107,7 +93,7 @@ const CreatePaymentsForm = () => {
                         </label>
                         <textarea
                             type='text' name='paymentDescLine2' id='paymentDescLine2' cols='10' rows='10'
-                            placeholder='...' min={10}
+                            placeholder='...'
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -122,7 +108,7 @@ const CreatePaymentsForm = () => {
                         </label>
                         <textarea
                             type='text' name='paymentDescLine3' id='paymentDescLine3' cols='10' rows='10'
-                            placeholder='...' min={10}
+                            placeholder='...'
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -138,12 +124,6 @@ const CreatePaymentsForm = () => {
                     Cargar nueva forma de pago
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </form>
     )
 };

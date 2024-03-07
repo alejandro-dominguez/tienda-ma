@@ -1,6 +1,13 @@
-import { useContext } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
+import {
+    useContext,
+    useState
+} from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 import useGetAllProducts from '../../customHooks/useGetAllProducts';
 import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
@@ -12,6 +19,35 @@ const AdminProductsPage = () => {
     const [ prods,,, error, loading ] = useGetAllProducts()
     const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
     const { authUser } = useContext(AuthContext)
+    const [ activeToast, setActiveToast ] = useState(false)
+    const [ errorToast, setErrorToast ] = useState('')
+
+    if (activeToast && errorToast === '') {
+        toast.success(
+            'Contenido editado',
+            {
+                duration: 2000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+        }, 2500)
+    }
+
+    if (activeToast && errorToast !== '') {
+        toast.error(
+            errorToast,
+            {
+                duration: 4000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+            setErrorToast('')
+        }, 4500)
+    }
 
     return (
         <>
@@ -21,8 +57,16 @@ const AdminProductsPage = () => {
                     { 
                         (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
                             <div className='mx-auto flex flex-col'>
-                                <AdminSubcategoriesContainer subcategories={subcategories} />
-                                <CreateProductForm subcategories={subcategories} />
+                                <AdminSubcategoriesContainer
+                                    subcategories={subcategories}
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}
+                                    />
+                                <CreateProductForm
+                                    subcategories={subcategories}
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}
+                                />
                                 <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
                                     Asegurar siempre al menos un producto destacado.
                                 </h3>
@@ -33,10 +77,19 @@ const AdminProductsPage = () => {
                                                 <AdminProductCard
                                                     prod={prod}
                                                     key={prod.id}
+                                                    setActiveToast={setActiveToast}
+                                                    setErrorToast={setErrorToast}
                                                 />
                                         )})
                                     }
                                 </div>
+                                <Toaster
+                                    visibleToasts={1}
+                                    richColors
+                                    toastOptions={{
+                                        className: 'text-center',
+                                    }}
+                                />
                             </div>
                         : (!error && !errorSubcategories) ?
                             <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>

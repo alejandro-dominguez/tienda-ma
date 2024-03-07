@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { db } from '../../firebase/config';
 import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
     addDoc,
     collection,
 } from 'firebase/firestore';
@@ -95,22 +91,10 @@ const CreateProductForm = ({ subcategories }) => {
                     }
                 )
             }
-            toast.success(
-                'Producto agregado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            setErrorProduct(error.message)
-            toast.error(
-                errorProduct,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         } finally {
             e.target.reset()
         }
@@ -304,12 +288,6 @@ const CreateProductForm = ({ subcategories }) => {
                     Crear producto
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </form>
     )
 };

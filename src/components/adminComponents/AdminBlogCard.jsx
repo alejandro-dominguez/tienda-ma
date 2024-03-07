@@ -6,33 +6,22 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
-import {
-    Toaster,
-    toast
-} from 'sonner';
 
-const AdminBlogCard = ({ blog }) => {
+const AdminBlogCard = ({
+    blog,
+    setActiveToast,
+    setErrorToast
+}) => {
     const navigate = useNavigate()
 
     const deleteBlog = async (id) => {
         try {
             const docRef = doc(db, 'blogs', id)
             await deleteDoc(docRef)
-            toast.success(
-                'Blog eliminado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -42,22 +31,12 @@ const AdminBlogCard = ({ blog }) => {
             await updateDoc(docRef,
                 {
                     featured: true
-                })
-            toast.success(
-                'Blog destacado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
                 }
             )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -69,21 +48,10 @@ const AdminBlogCard = ({ blog }) => {
                     featured: false
                 }
             )
-            toast.success(
-                'Blog no destacado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -153,12 +121,6 @@ const AdminBlogCard = ({ blog }) => {
                     }
                 </div>
             </div>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </div>
     )
 };

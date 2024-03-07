@@ -1,6 +1,10 @@
 import AdminPaymentCard from './adminItems/AdminPaymentCard';
 
-const AdminPaymentsContainer = ({ payments }) => {
+const AdminPaymentsContainer = ({
+    payments,
+    setActiveToast,
+    setErrorToast
+}) => {
     return (
         <div className='grid place-items-center'>
             <h3 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
@@ -13,6 +17,8 @@ const AdminPaymentsContainer = ({ payments }) => {
                             <AdminPaymentCard
                                 key={i}
                                 payment={payment}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
                             />
                     )})
                 }

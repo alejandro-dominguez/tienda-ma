@@ -1,6 +1,13 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { AuthContext } from '../../contexts/authContext';
-import { useContext } from 'react';
+import {
+    useContext,
+    useState
+} from 'react';
+import {
+    Toaster,
+    toast
+} from 'sonner';
 import useGetBlogs from '../../customHooks/useGetBlogs';
 import AdminBlogCard from '../../components/adminComponents/AdminBlogCard';
 import CreateBlogForm from '../../components/adminComponents/CreateBlogForm';
@@ -9,6 +16,35 @@ import AdminErrorPage from '../AdminErrorPage';
 const AdminBlogsPage = () => {
     const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
     const { authUser } = useContext(AuthContext)
+    const [ activeToast, setActiveToast ] = useState(false)
+    const [ errorToast, setErrorToast ] = useState('')
+
+    if (activeToast && errorToast === '') {
+        toast.success(
+            'Contenido editado',
+            {
+                duration: 2000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+        }, 2500)
+    }
+
+    if (activeToast && errorToast !== '') {
+        toast.error(
+            errorToast,
+            {
+                duration: 4000,
+                position: 'bottom-center',
+            }
+        )
+        setTimeout(() => {
+            setActiveToast(false)
+            setErrorToast('')
+        }, 4500)
+    }
 
     return (
         <>
@@ -18,7 +54,10 @@ const AdminBlogsPage = () => {
                     {
                         (blogs.length && !loadingBlogs && !errorBlogs) ?
                             <div className='mx-auto flex flex-col'>
-                                <CreateBlogForm />
+                                <CreateBlogForm
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}
+                                />
                                 <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
                                     Asegurar siempre al menos un blog destacado.
                                 </h3>
@@ -29,10 +68,19 @@ const AdminBlogsPage = () => {
                                                 <AdminBlogCard
                                                     blog={blog}
                                                     key={blog.id}
+                                                    setActiveToast={setActiveToast}
+                                                    setErrorToast={setErrorToast}
                                                 />
                                         )})
                                     }
                                 </div>
+                                <Toaster
+                                    visibleToasts={1}
+                                    richColors
+                                    toastOptions={{
+                                        className: 'text-center',
+                                    }}
+                                />
                             </div>
                         : !errorBlogs ?
                             <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>

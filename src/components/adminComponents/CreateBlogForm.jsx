@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { db } from '../../firebase/config';
 import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
     addDoc,
     collection,
 } from 'firebase/firestore';
 
-const CreateBlogForm = () => {
-    const [ errorBlog, setErrorBlog ] = useState('')
+const CreateBlogForm = ({
+    setActiveToast,
+    setErrorToast
+}) => {
     const [ newBlog, setNewBlog ] = useState({
         blogTitle: '',
         blogSubtitle: '',
@@ -43,22 +41,10 @@ const CreateBlogForm = () => {
                     featured: false,
                 }
             )
-            toast.success(
-                'Blog agregado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            setErrorBlog(error.message)
-            toast.error(
-                errorBlog,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         } finally {
             e.target.reset()
         }
@@ -196,12 +182,6 @@ const CreateBlogForm = () => {
                     Cargar nuevo blog
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </form>
     )
 };

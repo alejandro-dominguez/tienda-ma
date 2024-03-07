@@ -33,7 +33,7 @@ const EditBlogForm = ({ blog }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', id)
+            const docRef = doc(db, 'blogs', blog.id)
             await updateDoc(docRef,
                 {
                     title: newBlog.blogTitle,
@@ -166,20 +166,38 @@ const EditBlogForm = ({ blog }) => {
                         htmlFor='editBlogText2'
                         className='mt-2'    
                     >
-                        Segundo texto:
+                        {
+                            blog.text2 ? 
+                                'Segundo texto:'
+                            :
+                                'Añadir segundo texto:'
+                        }
                     </label>
-                    <div>
-                        <span className='text-sm mt-2 max-h-48 overflow-y-scroll shadow p-2'>
-                            {blog.text2}
-                        </span>
-                        <textarea
-                            type='text' name='editBlogText2' id='editBlogText2' cols='10' rows='10'
-                            placeholder='Nuevo segundo texto' min={20} required
-                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
-                            rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
-                            onChange={registerInputs}
-                        />
-                    </div>
+                    {
+                        blog.text2 ?
+                            <div>
+                                <span className='text-sm mt-2 max-h-48 overflow-y-scroll shadow p-2'>
+                                    {blog.text2}
+                                </span>
+                                <textarea
+                                    type='text' name='editBlogText2' id='editBlogText2' cols='10' rows='10'
+                                    placeholder='Nuevo segundo texto'
+                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                                    rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
+                                    onChange={registerInputs}
+                                />
+                            </div>
+                        :
+                            <div>
+                                <textarea
+                                    type='text' name='editBlogText2' id='editBlogText2' cols='10' rows='10'
+                                    placeholder='Nuevo segundo texto'
+                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                                    rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
+                                    onChange={registerInputs}
+                                />
+                            </div>
+                    }
                 </div>
             </div>
             <div className='flex flex-col gap-1'>
@@ -208,20 +226,38 @@ const EditBlogForm = ({ blog }) => {
                         htmlFor='editBlogImg2'
                         className='mt-2'    
                     >
-                        Link imagen 2:
+                        {
+                            blog.img2 ? 
+                                'Link imagen 2:'
+                            :
+                                'Añadir link imagen 2:'
+                        }
                     </label>
-                    <div>
-                        <span className='text-sm mt-2 shadow p-2'>
-                            {blog.img2}
-                        </span>
-                        <input
-                            type='text' name='editBlogImg2' id='editBlogImg2'
-                            placeholder='Nuevo link' min={8} required
-                            className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                            rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
-                            onChange={registerInputs}
-                        />
-                    </div>
+                    {
+                        blog.img2 ?
+                            <div>
+                                <span className='text-sm mt-2 shadow p-2'>
+                                    {blog.img2}
+                                </span>
+                                <input
+                                    type='text' name='editBlogImg2' id='editBlogImg2'
+                                    placeholder='Nuevo link'
+                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                                    rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
+                                    onChange={registerInputs}
+                                />
+                            </div>
+                        :
+                            <div>
+                                <input
+                                    type='text' name='editBlogImg2' id='editBlogImg2'
+                                    placeholder='Nuevo link'
+                                    className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                                    rounded-sm drop-shadow-sm text-black w-full placeholder:tracking-normal'
+                                    onChange={registerInputs}
+                                />
+                            </div>
+                    }
                 </div>
             </div>
         </div>

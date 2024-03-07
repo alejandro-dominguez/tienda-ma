@@ -8,12 +8,12 @@ import {
     doc,
     deleteDoc
 } from 'firebase/firestore';
-import {
-    Toaster,
-    toast
-} from 'sonner';
 
-const AdminSubcategoryCard = ({ subcategory }) => {
+const AdminSubcategoryCard = ({
+    subcategory,
+    setActiveToast,
+    setErrorToast
+}) => {
     const deleteSubcategory = async (subcategory) => {
         try {
             const q = query(collection(db, 'subcategories'), where('subcategory', '==', subcategory))
@@ -24,21 +24,10 @@ const AdminSubcategoryCard = ({ subcategory }) => {
             })
             const docRef = doc(db, 'subcategories', docId[0])
             await deleteDoc(docRef)
-            toast.success(
-                'Subcategoría eliminada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
     
@@ -54,12 +43,6 @@ const AdminSubcategoryCard = ({ subcategory }) => {
                     onClick={() => deleteSubcategory(subcategory)}
                 />
             </div>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </div>
     )
 };

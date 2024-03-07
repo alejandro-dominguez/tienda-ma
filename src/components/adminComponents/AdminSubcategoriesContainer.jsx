@@ -1,6 +1,10 @@
 import AdminSubcategoryCard from './adminItems/AdminSubcategoryCard';
 
-const AdminSubcategoriesContainer = ({ subcategories }) => {
+const AdminSubcategoriesContainer = ({
+    subcategories,
+    setActiveToast,
+    setErrorToast
+}) => {
     return (
         <div className='grid place-items-start'>
             <h3 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
@@ -13,6 +17,8 @@ const AdminSubcategoriesContainer = ({ subcategories }) => {
                             <AdminSubcategoryCard
                                 key={i}
                                 subcategory={subcategory}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
                             />
                     )})
                 }

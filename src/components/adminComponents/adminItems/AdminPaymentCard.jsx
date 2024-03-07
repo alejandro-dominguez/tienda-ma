@@ -4,31 +4,20 @@ import {
     deleteDoc,
     doc,
 } from 'firebase/firestore';
-import {
-    Toaster,
-    toast
-} from 'sonner';
 
-const AdminPaymentCard = ({ payment }) => {
+const AdminPaymentCard = ({
+    payment,
+    setActiveToast,
+    setErrorToast
+}) => {
     const deletePayment = async (id) => {
         try {
             const docRef = doc(db, 'payments', id)
             await deleteDoc(docRef)
-            toast.success(
-                'Forma de pago eliminada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
     
@@ -46,12 +35,6 @@ const AdminPaymentCard = ({ payment }) => {
                     />
                 </div>
             </div>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </>
     )
 };
