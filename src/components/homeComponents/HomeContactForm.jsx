@@ -8,7 +8,6 @@ import {
 } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../../firebase/config';
-import scrollTop from '../../utilities/scrollTop';
 
 const HomeContactForm = () => {
     const [ contactFormMessage, setContactFormMessage ]  = useState({
@@ -46,9 +45,6 @@ const HomeContactForm = () => {
                     position: 'bottom-center',
                 }
             )
-            setTimeout(() => {
-                scrollTop()
-            }, 6000)
         } catch (error) {
             setErrorMessage(error.message)
             toast.error(

@@ -36,7 +36,7 @@ const EditProductPriceForm = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white max-w-80 mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white max-w-sm mx-auto'
             autoComplete='off'
             onSubmit={handleSubmit}
         >

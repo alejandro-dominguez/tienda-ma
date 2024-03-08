@@ -1,9 +1,4 @@
-import {
-    useContext,
-    useState
-} from 'react';
-import { SiteContext } from '../contexts/siteContext';
-import DisabledSite from '../components/DisabledSite';
+import { useState } from 'react';
 import SizesBrandGuide from '../components/SizesBrandGuide';
 import SizesNoBrandGuide from '../components/SizesNoBrandGuide';
 import logo1 from '../assets/sliderLogos/huggies.svg'
@@ -13,7 +8,6 @@ import logo4 from '../assets/sliderLogos/babysec.svg'
 import logo5 from '../assets/sliderLogos/duffy.png'
 
 const SizesGuide = () => {
-    const { enableSite } = useContext(SiteContext)
     const [ huggies, ] = useState([
         {
             'size': 'RN',
@@ -170,48 +164,41 @@ const SizesGuide = () => {
     ])
     
     return (
-        <>
-        {
-            enableSite.enabled ?
-                <main className='w-full min-h-[100svh]'>
-                    <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-12 mt-20 w-fit mx-auto'>
-                        Guía de talles
-                    </h1>
-                    <div className='grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                        <SizesBrandGuide
-                            brand={huggies}
-                            logo={logo1}
-                        />
-                        <SizesNoBrandGuide
-                            brand={huggiesSwim}
-                            name={'Huggies Little Swimmers'}
-                        />
-                        <SizesBrandGuide
-                            brand={pampers}
-                            logo={logo2}
-                        />
-                        <SizesNoBrandGuide
-                            brand={pampersSwim}
-                            name={'Pampers Splasher'}
-                        />
-                        <SizesBrandGuide
-                            brand={estrella}
-                            logo={logo3}
-                        />
-                        <SizesBrandGuide
-                            brand={babysec}
-                            logo={logo4}
-                        />
-                        <SizesBrandGuide
-                            brand={duffy}
-                            logo={logo5}
-                        />
-                    </div>
-                </main>
-            :
-                <DisabledSite />
-        }
-        </>
+        <main className='w-full min-h-[100svh]'>
+            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-12 mt-20 w-fit mx-auto'>
+                Guía de talles
+            </h1>
+            <div className='grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                <SizesBrandGuide
+                    brand={huggies}
+                    logo={logo1}
+                />
+                <SizesNoBrandGuide
+                    brand={huggiesSwim}
+                    name={'Huggies Little Swimmers'}
+                />
+                <SizesBrandGuide
+                    brand={pampers}
+                    logo={logo2}
+                />
+                <SizesNoBrandGuide
+                    brand={pampersSwim}
+                    name={'Pampers Splasher'}
+                />
+                <SizesBrandGuide
+                    brand={estrella}
+                    logo={logo3}
+                />
+                <SizesBrandGuide
+                    brand={babysec}
+                    logo={logo4}
+                />
+                <SizesBrandGuide
+                    brand={duffy}
+                    logo={logo5}
+                />
+            </div>
+        </main>
     )
 };
 

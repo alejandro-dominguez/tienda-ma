@@ -66,12 +66,14 @@ const MessageDetailCard = ({ message }) => {
                     Marcar mensaje leído
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
+            <div className='absolute'>
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        className: 'text-center',
+                    }}
+                />
+            </div>
         </div>
     )
 };

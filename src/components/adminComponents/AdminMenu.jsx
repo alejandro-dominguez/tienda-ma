@@ -1,6 +1,3 @@
-import { useContext } from 'react';
-import { SiteContext } from '../../contexts/siteContext';
-import { useState } from 'react';
 import {
     Toaster,
     toast
@@ -9,9 +6,11 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { useContext } from 'react';
+import { SiteContext } from '../../contexts/siteContext';
+import { useState } from 'react';
 import { db } from '../../firebase/config';
 import AdminMenuItem from './adminItems/AdminMenuItem';
-
 
 const AdminMenu = ({ adminMenuData }) => {
     const { enableSite } = useContext(SiteContext)
@@ -104,13 +103,14 @@ const AdminMenu = ({ adminMenuData }) => {
                         </span>
                     </button>
             }
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-                className='absolute'
-            />
+            <div className='absolute'>
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        className: 'text-center',
+                    }}
+                />
+            </div>
         </div>
     )
 };

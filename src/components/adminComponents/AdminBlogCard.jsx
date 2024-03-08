@@ -56,7 +56,7 @@ const AdminBlogCard = ({
     }
 
     return (
-        <div className='p-6 bg-white drop-shadow-sm shadow-sm'>
+        <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
                 <img
                     src={blog.img1}
@@ -67,7 +67,7 @@ const AdminBlogCard = ({
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
                 {blog.title}
             </h3>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 mt-auto'>
                 <div className='flex items-center justify-between'>
                     <button
                         type='button'
