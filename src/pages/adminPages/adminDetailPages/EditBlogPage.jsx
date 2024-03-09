@@ -23,7 +23,7 @@ const EditBlogPage = () => {
 
     if (activeToast && errorToast === '') {
         toast.success(
-            'Producto editado',
+            'Blog editado',
             {
                 duration: 2000,
                 position: 'bottom-center',

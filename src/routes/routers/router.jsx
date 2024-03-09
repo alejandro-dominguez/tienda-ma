@@ -27,8 +27,9 @@ import AdminPaymentsPage from '../../pages/adminPages/AdminPaymentsPage';
 import AdminOrdersPage from '../../pages/adminPages/AdminOrdersPage';  
 import AdminWholesalersPage from '../../pages/adminPages/AdminWholesalersPage';  
 import AdminMessagesPage from '../../pages/adminPages/AdminMessagesPage';
-import EditBlogPage from '../../pages/adminPages/adminDetailPages/EditBlogPage';
 import EditProductPage from '../../pages/adminPages/adminDetailPages/EditProductPage';
+import EditBlogPage from '../../pages/adminPages/adminDetailPages/EditBlogPage';
+import EditPaymentPage from '../../pages/adminPages/adminDetailPages/EditPaymentPage';
 import AdminOrdersDetailPage from '../../pages/adminPages/adminDetailPages/AdminOrdersDetailPage';
 import AdminWholesalersDetailPage from '../../pages/adminPages/adminDetailPages/AdminWholesalersDetailPage';
 import AdminMessagesDetailPage from '../../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
@@ -140,6 +141,11 @@ const router = createBrowserRouter([
                 errorElement: <AdminErrorPage />,
             },
             {
+                path: '/admin/consola/productos/editar/:id',
+                element: <EditProductPage />,
+                errorElement: <AdminErrorPage />,
+            },
+            {
                 path: '/admin/consola/blogs',
                 element: <AdminBlogsPage />,
                 errorElement: <AdminErrorPage />,
@@ -150,13 +156,13 @@ const router = createBrowserRouter([
                 errorElement: <AdminErrorPage />,
             },
             {
-                path: '/admin/consola/productos/editar/:id',
-                element: <EditProductPage />,
+                path: '/admin/consola/formasDePago',
+                element: <AdminPaymentsPage />,
                 errorElement: <AdminErrorPage />,
             },
             {
-                path: '/admin/consola/formasDePago',
-                element: <AdminPaymentsPage />,
+                path: '/admin/consola/formasDePago/editar/:id',
+                element: <EditPaymentPage />,
                 errorElement: <AdminErrorPage />,
             },
             {

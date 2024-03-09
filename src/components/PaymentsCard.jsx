@@ -7,12 +7,22 @@ const PaymentsCard = ({ payment }) => {
             <span className='text-start text-sm mt-2 font-bold'>
                 {payment.descLine1}
             </span>
-            <span className='text-start text-sm mt-2 font-bold'>
-                {payment.descLine2}
-            </span>
-            <span className='text-start text-sm mt-2 font-bold'>
-                {payment.descLine3}
-            </span>
+            {
+                payment.descLine2 ?
+                    <span className='text-start text-sm mt-2 font-bold'>
+                        {payment.descLine2}
+                    </span>
+                :
+                    null
+            }
+            {
+                payment.descLine3 ?
+                    <span className='text-start text-sm mt-2 font-bold'>
+                        {payment.descLine3}
+                    </span>
+                :
+                    null
+            }
         </div>
     )
 };

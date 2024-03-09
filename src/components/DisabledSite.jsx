@@ -7,10 +7,10 @@ const DisabledSite = () => {
                 <h1 className='font-Raleway font-bold text-[1.75rem] md:text-3xl drop-shadow-sm leading-8'>
                     Por el momento el sitio se encuentra en mantenimiento.
                 </h1>
-                <p className='font-bold leading-[1.375rem]'>
-                    Nos encontramos administrando nuestros servidores.
+                <p className='font-bold leading-[1.375rem] text-center'>
+                    Nos encontramos administrando nuestros servidores,
                     <br />
-                    Lamentamos mucho el inconveniente.
+                    lamentamos mucho el inconveniente.
                     <br />
                     Por favor, intenta regresar más tarde.
                 </p>
