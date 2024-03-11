@@ -5,14 +5,14 @@ import {
 import { db } from '../../../firebase/config';
 import { useState } from 'react';
 
-const EditBlogMainInfoForm = ({
+const EditBlogImgsForm = ({
     blog,
     setActiveToast,
     setErrorToast
 }) => {
     const [ newInfo, setNewInfo ] = useState({
-        blogSubtitle: '',
-        blogDrop: '',
+        blogImg1: '',
+        blogImg2: '',
     })
 
     const registerInputs = ({ target: {name, value} }) => {
@@ -27,8 +27,8 @@ const EditBlogMainInfoForm = ({
         try {
             const docRef = doc(db, 'blogs', blog.id)
             await updateDoc(docRef, {
-                subtitle: newInfo.blogSubtitle,
-                drop: newInfo.blogDrop,
+                img1: newInfo.blogImg1,
+                img2: newInfo.blogImg2,
             })
             setActiveToast(true)
         } catch (error) {
@@ -41,7 +41,7 @@ const EditBlogMainInfoForm = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 shadow-sm drop-shadow-sm bg-white w-72 md:w-80 mt-5'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
@@ -49,16 +49,17 @@ const EditBlogMainInfoForm = ({
             <div className='flex flex-col gap-2'>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogSubtitle'
+                        htmlFor='blogImg1'
                         className='mt-2'    
                     >
-                        Subtítulo:
+                        Link imagen 1:
                     </label>
-                    <span className='text-sm mt-2 shadow p-2'>
-                        {blog.subtitle}
+                    <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
+                        {blog.img1}
                     </span>
                     <input
-                        type='text' name='blogSubtitle' id='blogSubtitle' placeholder='...'
+                        type='text' name='blogImg1' id='blogImg1'
+                        placeholder='...' min={8} required
                         className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                         rounded-sm drop-shadow-sm text-black'
                         onChange={registerInputs}
@@ -66,16 +67,17 @@ const EditBlogMainInfoForm = ({
                 </div>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='blogDrop'
+                        htmlFor='blogImg2'
                         className='mt-2'    
                     >
-                        Bajada:
+                        Link imagen 2:
                     </label>
-                    <span className='text-sm mt-2 shadow p-2'>
-                        {blog.drop}
+                    <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
+                        {blog.img2}
                     </span>
                     <input
-                        type='text' name='blogDrop' id='blogDrop' placeholder='...'
+                        type='text' name='blogImg2' id='blogImg2'
+                        placeholder='...' min={8} required
                         className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                         rounded-sm drop-shadow-sm text-black'
                         onChange={registerInputs}
@@ -88,11 +90,11 @@ const EditBlogMainInfoForm = ({
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Actualizar info.
+                    Actualizar imágenes
                 </span>
             </button>
         </form>
     )
 };
 
-export default EditBlogMainInfoForm;
+export default EditBlogImgsForm;

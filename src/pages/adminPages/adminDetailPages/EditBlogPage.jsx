@@ -1,23 +1,21 @@
-import { useParams } from 'react-router-dom';
-import { RotatingLines } from 'react-loader-spinner';
-import { AuthContext } from '../../../contexts/authContext';
 import {
     Toaster,
     toast
 } from 'sonner';
-import {
-    useContext,
-    useState
-} from 'react';
+import { useParams } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
+import { useState } from 'react';
 import useGetBlogArticle from '../../../customHooks/useGetBlogArticle';
 import EditBlogTitleForm from '../../../components/adminComponents/adminEditForms/EditBlogTitleForm';
-import EditBlogMainInfoForm from '../../../components/adminComponents/adminEditForms/EditBlogMainInfoForm';
-import AdminErrorPage from '../../AdminErrorPage';
+import EditBlogInfoForm from '../../../components/adminComponents/adminEditForms/EditBlogInfoForm';
+import EditBlogText1Form from '../../../components/adminComponents/adminEditForms/EditBlogText1Form';
+import EditBlogText2Form from '../../../components/adminComponents/adminEditForms/EditBlogText2Form';
+import EditBlogText3Form from '../../../components/adminComponents/adminEditForms/EditBlogText3Form';
+import EditBlogImgsForm from '../../../components/adminComponents/adminEditForms/EditBlogImgsForm';
 
 const EditBlogPage = () => {
     const { id } = useParams()
     const [ blog, error, loading ] = useGetBlogArticle(id)
-    const { authUser } = useContext(AuthContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
@@ -49,51 +47,78 @@ const EditBlogPage = () => {
     }
     
     return (
-        <>
-        {
-            authUser ?
-                <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
-                    {
-                        (JSON.stringify(blog) !== '{}' && !loading && !error) ?
-                            <>
-                                <EditBlogTitleForm
-                                    blog={blog}
-                                    setActiveToast={setActiveToast}
-                                    setErrorToast={setErrorToast}
-                                />
-                                <EditBlogMainInfoForm
-                                    blog={blog}
-                                    setActiveToast={setActiveToast}
-                                    setErrorToast={setErrorToast}
-                                />
-                                <Toaster
-                                    visibleToasts={1}
-                                    richColors
-                                    toastOptions={{
-                                        className: 'text-center',
-                                    }}
-                                />
-                            </>
-                        : !error ?
-                            <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
-                                <div className='p-5 bg-teal-600/20 rounded-lg'>
-                                    <RotatingLines
-                                        strokeColor='white'
-                                        strokeWidth='5'
-                                        animationDuration='0.75'
-                                        width='70'
-                                        visible={true}
-                                    />
-                                </div>
-                            </div>
-                        :
-                            null
-                    }
-                </main>
-            :
-                <AdminErrorPage />
-        }
-        </>
+        <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
+            {
+                (JSON.stringify(blog) !== '{}' && !loading && !error) ?
+                    <>
+                    <h1 className='flex flex-col font-bold font-Raleway text-lg text-center mt-3 drop-shadow-sm mx-auto'>
+                        <span className='text-[1.05rem]'>
+                            Artículo:
+                        </span>
+                        {blog.title}
+                    </h1>
+                    <div className='flex flex-col items-center'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 place-items-start md:gap-8'>
+                            <EditBlogTitleForm
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                            <EditBlogInfoForm
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                        </div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 place-items-start md:gap-8'>
+                            <EditBlogImgsForm
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                            <EditBlogText1Form
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                        </div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 place-items-start md:gap-8'>
+                            <EditBlogText2Form
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                            <EditBlogText3Form
+                                blog={blog}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
+                            />
+                        </div>
+                    </div>
+                    <Toaster
+                        visibleToasts={1}
+                        richColors
+                        toastOptions={{
+                            className: 'text-center',
+                        }}
+                    />
+                    </>
+                : !error ?
+                    <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
+                        <div className='p-5 bg-teal-600/20 rounded-lg'>
+                            <RotatingLines
+                                strokeColor='white'
+                                strokeWidth='5'
+                                animationDuration='0.75'
+                                width='70'
+                                visible={true}
+                            />
+                        </div>
+                    </div>
+                :
+                    null
+            }
+        </main>
     )
 };
 

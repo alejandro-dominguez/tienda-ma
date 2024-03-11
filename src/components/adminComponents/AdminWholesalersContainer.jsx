@@ -1,6 +1,10 @@
 import AdminWholesalersCard from './adminItems/AdminWholesalersCard';
 
-const AdminWholesalersContainer = ({ wholesalersMessages }) => {
+const AdminWholesalersContainer = ({
+    wholesalersMessages,
+    setActiveToast,
+    setErrorToast
+}) => {
     return (
         <div className='grid place-items-center'>
             <h1 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
@@ -13,6 +17,8 @@ const AdminWholesalersContainer = ({ wholesalersMessages }) => {
                             <AdminWholesalersCard
                                 key={i}
                                 message={message}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
                             />
                     )})
                 }

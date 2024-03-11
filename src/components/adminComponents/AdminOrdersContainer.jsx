@@ -1,6 +1,10 @@
 import AdminOrderCard from './adminItems/AdminOrderCard';
 
-const AdminOrdersContainer = ({ orders }) => {
+const AdminOrdersContainer = ({
+    orders,
+    setActiveToast,
+    setErrorToast
+}) => {
     return (
         <div className='grid place-items-center'>
             <h1 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
@@ -13,6 +17,8 @@ const AdminOrdersContainer = ({ orders }) => {
                             <AdminOrderCard
                                 key={i}
                                 order={order}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
                             />
                     )})
                 }

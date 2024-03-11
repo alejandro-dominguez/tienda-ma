@@ -102,7 +102,7 @@ const EditProductInfoForm = ({
                 </span>
                 <textarea
                     type='text' name='productDesc' id='productDesc' cols='10' rows='10'
-                    placeholder='...' min={20} required
+                    placeholder='...' minLength={20} required
                     className='text-[.8rem] mt-4 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                     rounded-sm drop-shadow-sm text-black'
                     onChange={registerInputs}

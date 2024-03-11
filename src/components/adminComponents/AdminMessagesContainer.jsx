@@ -1,6 +1,10 @@
 import AdminMessageCard from './adminItems/AdminMessageCard';
 
-const AdminMessagesContainer = ({ messages }) => {
+const AdminMessagesContainer = ({
+    messages,
+    setActiveToast,
+    setErrorToast
+}) => {
     return (
         <div className='grid place-items-center'>
             <h1 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
@@ -13,6 +17,8 @@ const AdminMessagesContainer = ({ messages }) => {
                             <AdminMessageCard
                                 key={i}
                                 message={message}
+                                setActiveToast={setActiveToast}
+                                setErrorToast={setErrorToast}
                             />
                     )})
                 }

@@ -70,7 +70,7 @@ const NavBar = () => {
 
     useEffect(() => {
         responsiveViewport()
-    }, [location])
+    }, [])
 
     return (
         <nav className=

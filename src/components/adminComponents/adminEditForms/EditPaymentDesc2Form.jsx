@@ -26,7 +26,7 @@ const EditPaymentDesc2Form = ({
         try {
             const docRef = doc(db, 'payments', payment.id)
             await updateDoc(docRef, {
-                paymentDescLine2: newInfo.paymentDesc2,
+                descLine2: newInfo.paymentDesc2,
             })
             setActiveToast(true)
         } catch (error) {
@@ -39,7 +39,7 @@ const EditPaymentDesc2Form = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-72 md:w-80'
             autoComplete='off'
             onSubmit={handleSubmit}
         >

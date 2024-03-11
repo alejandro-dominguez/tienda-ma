@@ -1,6 +1,3 @@
-import { FaTruck } from 'react-icons/fa';
-import { FaClock } from 'react-icons/fa6';
-import { db } from '../../firebase/config';
 import {
     doc,
     updateDoc
@@ -9,6 +6,10 @@ import {
     Toaster,
     toast
 } from 'sonner';
+import { FaTruck } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa6';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../firebase/config';
 import AdminOrderProduct from './adminItems/AdminOrderProduct';
 
 const OrderDetailCard = ({ order }) => {
@@ -64,9 +65,31 @@ const OrderDetailCard = ({ order }) => {
         }
     }
 
+    const deleteOrder = async (id) => {
+        try {
+            const docRef = doc(db, 'orders', id)
+            await deleteDoc(docRef)
+            toast.success(
+                'Orden eliminada',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        } catch (error) {
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
+
     return (
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5
-        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2'>
+        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2 relative'>
             <h1 className='font-bold font-Raleway text-[1.05rem] drop-shadow-sm'>
                 Orden de {order.clientFullName}:
             </h1>
@@ -122,6 +145,17 @@ const OrderDetailCard = ({ order }) => {
                     {order.clientEmail}
                 </span>
             </span>
+            {
+                order.orderNotes ?
+                    <span className='font-bold flex gap-1 items-center'>
+                        Notas:
+                        <span className='font-normal text-sm mt-[.1rem]'>
+                            {order.orderNotes}
+                        </span>
+                    </span>
+                :
+                    null
+            }
             <span className='font-bold flex gap-1 items-center'>
                 Id de orden:
                 <span className='font-normal text-sm mt-[.1rem]'>
@@ -148,12 +182,24 @@ const OrderDetailCard = ({ order }) => {
                     Marcar orden entregada
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
+            <button
+                type='button'
+                className='flex items-center gap-3 mt-5'
+                onClick={() => deleteOrder(order.id)}
+            >
+                <BsFillTrash3Fill className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
+                <span className='text-sm font-bold mt-2'>
+                    Eliminar orden
+                </span>
+            </button>
+            <div className='absolute'>
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        className: 'text-center',
+                    }}
+                />
+            </div>
         </div>
     )
 };

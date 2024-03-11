@@ -39,13 +39,10 @@ const EditBlogTitleForm = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white max-w-sm mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 shadow-sm drop-shadow-sm bg-white w-72 md:w-80'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
-            <h3 className='font-bold font-Raleway text-lg mt-1 drop-shadow-sm mx-auto leading-6'>
-                Artículo: {blog.title}
-            </h3>
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col gap-2'>
                 <div className='flex flex-col'>

@@ -36,15 +36,12 @@ const EditProductPriceForm = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white max-w-sm mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 shadow-sm drop-shadow-sm bg-white max-w-sm mx-auto'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
-                <h3 className='font-bold font-Raleway text-lg mt-1 drop-shadow-sm mx-auto'>
-                    {product.brand} {product.name}
-                </h3>
                 <span className='text-sm font-bold mt-2'>
                     Precio actual:
                 </span>

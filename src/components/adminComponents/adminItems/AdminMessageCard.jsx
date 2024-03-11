@@ -7,12 +7,12 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
-import {
-    Toaster,
-    toast
-} from 'sonner';
 
-const AdminMessageCard = ({ message }) => {
+const AdminMessageCard = ({
+    message,
+    setActiveToast,
+    setErrorToast
+}) => {
     const readMessage = async (id) => {
         try {
             const docRef = doc(db, 'messages', id)
@@ -21,21 +21,10 @@ const AdminMessageCard = ({ message }) => {
                     read: true
                 }
             )
-            toast.success(
-                'Mensaje leído',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -43,21 +32,10 @@ const AdminMessageCard = ({ message }) => {
         try {
             const docRef = doc(db, 'messages', id)
             await deleteDoc(docRef)
-            toast.success(
-                'Mensaje eliminado',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -111,12 +89,6 @@ const AdminMessageCard = ({ message }) => {
                     </div>
                 </div>
             </div>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </div>
     )
 };

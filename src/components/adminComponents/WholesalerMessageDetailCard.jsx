@@ -1,5 +1,3 @@
-import { IoEyeSharp } from 'react-icons/io5';
-import { db } from '../../firebase/config';
 import {
     doc,
     updateDoc
@@ -8,6 +6,9 @@ import {
     Toaster,
     toast
 } from 'sonner';
+import { IoEyeSharp } from 'react-icons/io5';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../firebase/config';
 
 const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
     const readMessage = async (id) => {
@@ -36,9 +37,31 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
         }
     }
 
+    const deleteMessage = async (id) => {
+        try {
+            const docRef = doc(db, 'messages', id)
+            await deleteDoc(docRef)
+            toast.success(
+                'Mensaje eliminado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        } catch (error) {
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
+
     return (
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5
-        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2'>
+        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2 relative'>
             <h1 className='font-bold font-Raleway text-[1.05rem] drop-shadow-sm'>
                 Mensaje de {wholesalerMessage.wholesalerFullName}:
             </h1>
@@ -67,12 +90,24 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
                     Marcar mensaje leído
                 </span>
             </button>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
+            <button
+                type='button'
+                className='flex items-center gap-3 mt-2'
+                onClick={() => deleteMessage(wholesalerMessage.id)}
+            >
+                <BsFillTrash3Fill className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
+                <span className='text-sm font-bold mt-2'>
+                    Eliminar mensaje
+                </span>
+            </button>
+            <div className='absolute'>
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        className: 'text-center',
+                    }}
+                />
+            </div>
         </div>
     )
 };

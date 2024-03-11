@@ -8,12 +8,12 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
-import {
-    Toaster,
-    toast
-} from 'sonner';
 
-const AdminOrderCard = ({ order }) => {
+const AdminOrderCard = ({
+    order,
+    setActiveToast,
+    setErrorToast
+}) => {
     const deliveredOrder = async (id) => {
         try {
             const docRef = doc(db, 'orders', id)
@@ -23,21 +23,10 @@ const AdminOrderCard = ({ order }) => {
                     process: true
                 }
             )
-            toast.success(
-                'Orden enviada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -49,21 +38,10 @@ const AdminOrderCard = ({ order }) => {
                     process: true
                 }
             )
-            toast.success(
-                'Orden procesada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -71,21 +49,10 @@ const AdminOrderCard = ({ order }) => {
         try {
             const docRef = doc(db, 'orders', id)
             await deleteDoc(docRef)
-            toast.success(
-                'Orden eliminada',
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
         } catch (error) {
-            toast.error(
-                error.message,
-                {
-                    duration: 3000,
-                    position: 'bottom-center',
-                }
-            )
+            setActiveToast(true)
+            setErrorToast(error.message)
         }
     }
 
@@ -149,12 +116,6 @@ const AdminOrderCard = ({ order }) => {
                     </div>
                 </div>
             </div>
-            <Toaster
-                richColors
-                toastOptions={{
-                    className: 'text-center',
-                }}
-            />
         </div>
     )
 };

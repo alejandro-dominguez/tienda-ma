@@ -15,6 +15,7 @@ const CreateBlogForm = ({
         blogDrop: '',
         blogText1: '',
         blogText2: '',
+        blogText3: '',
         blogImg1: '',
         blogImg2: '',
     })
@@ -36,6 +37,7 @@ const CreateBlogForm = ({
                     drop: newBlog.blogDrop,
                     text1: newBlog.blogText1,
                     text2: newBlog.blogText2,
+                    text3: newBlog.blogText3,
                     img1: newBlog.blogImg1,
                     img2: newBlog.blogImg2,
                     featured: false,
@@ -70,8 +72,8 @@ const CreateBlogForm = ({
                             Título:
                         </label>
                         <input
-                            type='text' name='blogTitle' id='blogTitle' required
-                            placeholder='...' min={8}
+                            type='text' name='blogTitle' id='blogTitle'
+                            placeholder='...' min={8} required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -85,8 +87,8 @@ const CreateBlogForm = ({
                             Subtítulo:
                         </label>
                         <input
-                            type='text' name='blogSubtitle' id='blogSubtitle' required
-                            placeholder='...' min={8}
+                            type='text' name='blogSubtitle' id='blogSubtitle'
+                            placeholder='...' min={8} required
                             className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -100,8 +102,8 @@ const CreateBlogForm = ({
                             Bajada:
                         </label>
                         <textarea
-                            type='text' name='blogDrop' id='blogDrop' required cols='10' rows='10'
-                            placeholder='...' min={20}
+                            type='text' name='blogDrop' id='blogDrop' cols='10' rows='10'
+                            placeholder='...'
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -117,8 +119,8 @@ const CreateBlogForm = ({
                             Primer texto:
                         </label>
                         <textarea
-                            type='text' name='blogText1' id='blogText1' required cols='10' rows='10'
-                            placeholder='...' min={20}
+                            type='text' name='blogText1' id='blogText1' cols='10' rows='10'
+                            placeholder='...' minLength={20} maxLength={300} required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -133,7 +135,7 @@ const CreateBlogForm = ({
                         </label>
                         <textarea
                             type='text' name='blogText2' id='blogText2' cols='10' rows='10'
-                            placeholder='...' min={20}
+                            placeholder='...' minLength={20} required
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}
@@ -141,6 +143,21 @@ const CreateBlogForm = ({
                     </div>
                 </div>
                 <div className='flex flex-col gap-1'>
+                    <div className='flex flex-col'>
+                        <label
+                            htmlFor='blogText3'
+                            className='mt-2'    
+                        >
+                            Tercer texto:
+                        </label>
+                        <textarea
+                            type='text' name='blogText3' id='blogText3' cols='10' rows='10'
+                            placeholder='...'
+                            className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-32
+                            rounded-sm drop-shadow-sm text-black'
+                            onChange={registerInputs}
+                        />
+                    </div>
                     <div className='flex flex-col'>
                         <label
                             htmlFor='blogImg1'

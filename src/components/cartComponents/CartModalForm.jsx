@@ -53,6 +53,7 @@ const CartModalForm = ({
                     clientAdressDoor: order.orderAddressDoor,
                     clientPhone: order.orderPhone,
                     clientEmail: order.orderEmail,
+                    orderNotes: order.orderNotes,
                     orderProducts: products,
                     orderTotal: orderTotalAmount,
                     orderDate: new Date().toLocaleString(),

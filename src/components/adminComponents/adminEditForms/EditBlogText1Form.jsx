@@ -5,13 +5,13 @@ import {
 import { db } from '../../../firebase/config';
 import { useState } from 'react';
 
-const EditPaymentTitleForm = ({
-    payment,
+const EditBlogText1Form = ({
+    blog,
     setActiveToast,
     setErrorToast
 }) => {
     const [ newInfo, setNewInfo ] = useState({
-        paymentTitle: '',
+        blogText1: '',
     })
 
     const registerInputs = ({ target: {name, value} }) => {
@@ -24,9 +24,9 @@ const EditPaymentTitleForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'payments', payment.id)
+            const docRef = doc(db, 'blogs', blog.id)
             await updateDoc(docRef, {
-                title: newInfo.paymentTitle,
+                text1: newInfo.blogText1,
             })
             setActiveToast(true)
         } catch (error) {
@@ -47,18 +47,18 @@ const EditPaymentTitleForm = ({
             <div className='flex flex-col gap-2'>
                 <div className='flex flex-col'>
                     <label
-                        htmlFor='paymentTitle'
+                        htmlFor='blogText1'
                         className='mt-2'    
                     >
-                        Título:
+                        Primer texto:
                     </label>
-                    <span className='text-sm mt-2 shadow p-2'>
-                        {payment.title}
+                    <span className='text-sm mt-2 shadow p-2 max-h-28 overflow-y-scroll'>
+                        {blog.text1}
                     </span>
-                    <input
-                        type='text' name='paymentTitle' id='paymentTitle'
-                        placeholder='...' min={8} required
-                        className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
+                    <textarea
+                        type='text' name='blogText1' id='blogText1' cols='10' rows='10'
+                        placeholder='...' required minLength={20} maxLength={300}
+                        className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-[8.5rem]
                         rounded-sm drop-shadow-sm text-black'
                         onChange={registerInputs}
                     />
@@ -70,11 +70,11 @@ const EditPaymentTitleForm = ({
                 ease-out hover:bg-zinc-950 focus:bg-zinc-950 shadow-sm'
             >
                 <span className='text-white px-8 tracking-wider font-bold text-[1.05rem]'>
-                    Actualizar título
+                    Actualizar texto 1
                 </span>
             </button>
         </form>
     )
 };
 
-export default EditPaymentTitleForm;
+export default EditBlogText1Form;

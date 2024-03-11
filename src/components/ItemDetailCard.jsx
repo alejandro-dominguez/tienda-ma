@@ -57,7 +57,7 @@ const ItemDetailCard = ({
     return (
         <>
             <div className='flex flex-col md:flex-row items-start justify-between mt-2 py-4 px-7 bg-white rounded-md
-            shadow-sm drop-shadow-sm w-full min-h-[29rem] sm:min-h-fit'>
+            shadow-sm drop-shadow-sm w-full min-h-[29rem] sm:min-h-fit relative'>
                 <div className='flex flex-col'>
                     <ItemDetailInfo product={product} />
                     {
@@ -88,16 +88,18 @@ const ItemDetailCard = ({
                 productDetail={product}
                 products={products}
             />
-            <Toaster
-                richColors
-                toastOptions={{
-                    unstyled: false,
-                    classNames: {
-                        toast: 'h-24 mb-60',
-                        title: 'text-lg',
-                    },
-                }}
-            />
+            <div className='absolute'>
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        unstyled: false,
+                        classNames: {
+                            toast: 'h-24 mb-60',
+                            title: 'text-lg',
+                        },
+                    }}
+                />
+            </div>
         </>
     )
 };

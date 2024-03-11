@@ -78,7 +78,7 @@ const CreatePaymentsForm = ({
                         </label>
                         <textarea
                             type='text' name='paymentDescLine1' id='paymentDescLine1' cols='10' rows='10'
-                            placeholder='...' required min={8}
+                            placeholder='...' required minLength={8}
                             className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4 max-h-10
                             rounded-sm drop-shadow-sm text-black'
                             onChange={registerInputs}

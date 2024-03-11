@@ -1,5 +1,3 @@
-import { IoEyeSharp } from 'react-icons/io5';
-import { db } from '../../firebase/config';
 import {
     doc,
     updateDoc
@@ -8,6 +6,9 @@ import {
     Toaster,
     toast
 } from 'sonner';
+import { IoEyeSharp } from 'react-icons/io5';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../firebase/config';
 
 const MessageDetailCard = ({ message }) => {
     const readMessage = async (id) => {
@@ -35,9 +36,31 @@ const MessageDetailCard = ({ message }) => {
         }
     }
 
+    const deleteMessage = async (id) => {
+        try {
+            const docRef = doc(db, 'messages', id)
+            await deleteDoc(docRef)
+            toast.success(
+                'Mensaje eliminado',
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        } catch (error) {
+            toast.error(
+                error.message,
+                {
+                    duration: 3000,
+                    position: 'bottom-center',
+                }
+            )
+        }
+    }
+
     return (
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5
-        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2'>
+        drop-shadow-sm shadow-sm mt-4 mb-20 gap-2 relative'>
             <h1 className='font-bold font-Raleway text-[1.05rem] drop-shadow-sm'>
                 Mensaje de {message.fullName}:
             </h1>
@@ -64,6 +87,16 @@ const MessageDetailCard = ({ message }) => {
                 <IoEyeSharp className='block cursor-pointer text-[1.7rem] mt-2 drop-shadow-sm text-zinc-900/80' />
                 <span className='text-sm font-bold mt-2'>
                     Marcar mensaje leído
+                </span>
+            </button>
+            <button
+                type='button'
+                className='flex items-center gap-3 mt-2'
+                onClick={() => deleteMessage(message.id)}
+            >
+                <BsFillTrash3Fill className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
+                <span className='text-sm font-bold mt-2'>
+                    Eliminar mensaje
                 </span>
             </button>
             <div className='absolute'>
