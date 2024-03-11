@@ -26,9 +26,14 @@ const BlogArticle = ({ blog }) => {
                     />
                 </div>
             </div>
-            <h3 className='text-lg font-Raleway font-bold mt-5 leading-6 tracking-wide mr-auto'>
-                {blog.drop}
-            </h3>
+            {
+                blog.drop !== '' ?
+                    <h3 className='text-lg font-Raleway font-bold mt-5 leading-6 tracking-wide mr-auto'>
+                        {blog.drop}
+                    </h3>
+                :
+                    null
+            }
             <p className='mt-2 md:hidden block text-[1.025rem]'>
                 {blog.text1}
             </p>
