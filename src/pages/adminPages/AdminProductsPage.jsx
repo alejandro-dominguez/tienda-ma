@@ -5,14 +5,12 @@ import {
 import { RotatingLines } from 'react-loader-spinner';
 import { useState } from 'react';
 import useGetAllProducts from '../../customHooks/useGetAllProducts';
-import useGetAllSubcategories from '../../customHooks/useGetAllSubcategories';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
 import AdminProductCard from '../../components/adminComponents/AdminProductCard';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
 
 const AdminProductsPage = () => {
-    const [ prods,,, error, loading ] = useGetAllProducts()
-    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
+    const [ prods, subcategories,,, error, loading ] = useGetAllProducts()
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
@@ -46,7 +44,7 @@ const AdminProductsPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             { 
-                (prods.length && subcategories.length && !loading && !loadingSubcategories && !error && !errorSubcategories) ?
+                (prods.length && subcategories.length && !loading && !error) ?
                     <div className='mx-auto flex flex-col'>
                         <AdminSubcategoriesContainer
                             subcategories={subcategories}
@@ -82,7 +80,7 @@ const AdminProductsPage = () => {
                             }}
                         />
                     </div>
-                : (!error && !errorSubcategories) ?
+                : !error ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines

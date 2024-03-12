@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import useGetAllProducts from '../../../customHooks/useGetAllProducts';
-import useGetAllSubcategories from '../../../customHooks/useGetAllSubcategories';
 import BrandsSearchItems from './searchBarItems/BrandsSearchItems';
 import SubcategoriesSearchItems from './searchBarItems/SubcategoriesSearchItems';
 import ProductsSearchItems from './searchBarItems/ProductsSearchItems';
@@ -10,8 +9,7 @@ import ProductLinesSearchItems from './searchBarItems/ProductLinesSearchItems';
 const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('')
     const [ showSearch, setShowSearch ] = useState(true)
-    const [ prods, brands, productLines, error, loading ] = useGetAllProducts()
-    const [ subcategories, errorSubcategories, loadingSubcategories ] = useGetAllSubcategories()
+    const [ prods, subcategories, brands, productLines, error, loading ] = useGetAllProducts()
     
     const getValue = (e) => {
         setInputValue(e.target.value)
@@ -45,8 +43,7 @@ const SearchBar = () => {
                     </div>
                 </button>
                 {
-                    (prods.length && brands.length && subcategories.length && !loading &&
-                    !loadingSubcategories && !error && !errorSubcategories) ?
+                    (prods.length && brands.length && subcategories.length && !loading && !error) ?
                         <div className=
                             {
                                 showSearch ?

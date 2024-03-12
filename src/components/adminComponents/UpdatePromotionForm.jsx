@@ -4,33 +4,25 @@ import {
     toast
 } from 'sonner';
 import {
-    addDoc,
-    collection,
     doc,
     updateDoc
 } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 
-const UpdatePromotionForm = ({ promo }) => {
+const UpdatePromotionForm = () => {
     const [ newPromo, setNewPromo ] = useState('')
     const [ errorPromo, setErrorPromo ] = useState('')
     
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'promos', `${promo[0].id}`)
+            const docRef = doc(db, 'promos', import.meta.env.VITE_FIREBASE_PROMO_ID)
             await updateDoc(docRef, {
-                active: false
-                }
-            )
-            await addDoc(collection(db, 'promos'),
-                {
-                    text: newPromo,
-                    active: true
+                text: newPromo
                 }
             )
             toast.success(
-                'Promoción agregada',
+                'Promoción editada',
                 {
                     duration: 3000,
                     position: 'bottom-center',

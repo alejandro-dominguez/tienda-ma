@@ -6,11 +6,11 @@ const PromoSectionContainer = () => {
     const [ promo, error, loading ] = useGetPromo()
 
     return (
-        <section className='w-full grid place-items-center px-4 py-10 sm:p-10 bg-white'>
+        <section className='w-full grid place-items-center px-4 md:px-10 py-5 sm:py-10 bg-white'>
             {
-                (promo.length && !loading && !error) ?
-                    <h3 className='block leading-8 text-[1.75rem] md:leading-9 md:text-4xl font-black font-Raleway tracking-wide'>
-                        {promo[0].text}
+                (JSON.stringify(promo) !== '{}' && !loading && !error) ?
+                    <h3 className='block md:leading-9 text-2xl md:text-[1.75rem] font-black font-Raleway tracking-wide'>
+                        {promo.text}
                     </h3>
                 : !error ?
                     <div className='w-full grid place-items-center min-h-[4.5rem]'>

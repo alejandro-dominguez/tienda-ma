@@ -3,30 +3,26 @@ import {
     useEffect
 } from 'react';
 import {
-    collection,
-    query,
-    where,
-    getDocs
+    doc,
+    getDoc
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 const useGetPromo = () => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
-    const [ promo, setPromo ] = useState([])
+    const [ promo, setPromo ] = useState({})
 
     useEffect(() => {
         (async () => {
             try {
                 setLoading(true)
-                const q = query(collection(db, 'promos'), where('active', '==', true))
-                const querySnapshot = await getDocs(q)
-                const firebasePromo = []
-                querySnapshot.forEach((doc) => {
-                    firebasePromo.push({...doc.data(), id: doc.id})
-                })
-                setPromo(firebasePromo)
-                setLoading(false)
+                const docRef = doc(db, 'promos', import.meta.env.VITE_FIREBASE_PROMO_ID)
+                const docSnap = await getDoc(docRef)
+                if (docSnap.exists()) {
+                    setPromo({ ...docSnap.data(), id: docSnap.id })
+                    setLoading(false)
+                }
             } catch (error) {
                 setError(error.message)
                 setLoading(false)

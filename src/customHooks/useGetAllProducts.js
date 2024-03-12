@@ -13,27 +13,26 @@ const useGetAllProducts = () => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
     const [ prods, setProds ] = useState({})
+    const [ subcategories, setSubcategories ] = useState({})
     const [ brands, setBrands ] = useState({})
     const [ productLines, setProductLines ] = useState({})
     
-    const filterBrands = (firebaseProds) => {
+    const filterProds = (firebaseProds) => {
+        const subcategoriesList = []
         const brandsList = []
-        firebaseProds.map(prod => {
-            return brandsList.push(prod.brand)
-        })
-        const filteredBrandsList = [...new Set(brandsList)]
-        setBrands(filteredBrandsList)
-        setLoading(false)
-    }
-
-    const filterProductLines = (firebaseProds) => {
         const productLinesList = []
         firebaseProds.map(prod => {
-            if (prod.productLine !== '') {
-                return productLinesList.push(prod.productLine)
-            } 
+            return (
+                subcategoriesList.push(prod.subcategory),
+                brandsList.push(prod.brand),
+                productLinesList.push(prod.productLine)
+            )
         })
+        const filteredSubcategoriesList = [...new Set(subcategoriesList)]
+        const filteredBrandsList = [...new Set(brandsList)]
         const filteredProductLinesList = [...new Set(productLinesList)]
+        setSubcategories(filteredSubcategoriesList)
+        setBrands(filteredBrandsList)
         setProductLines(filteredProductLinesList)
         setLoading(false)
     }
@@ -49,8 +48,7 @@ const useGetAllProducts = () => {
                     firebaseProds.push({...doc.data(), id: doc.id})
                 })
                 setProds(firebaseProds)
-                filterBrands(firebaseProds)
-                filterProductLines(firebaseProds)
+                filterProds(firebaseProds)
                 setLoading(false)
             } catch (error) {
                 setError(error.message)
@@ -61,7 +59,9 @@ const useGetAllProducts = () => {
         })()
     }, [])
 
-    return [ prods, brands, productLines, error, loading ]
+    return [ prods, subcategories, brands, productLines, error, loading ]
 };
 
 export default useGetAllProducts;
+
+/* const useGetAllProducts = (id || id || null) */
