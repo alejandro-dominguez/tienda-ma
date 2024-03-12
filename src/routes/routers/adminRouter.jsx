@@ -151,7 +151,7 @@ const adminRouter = createBrowserRouter([
                 errorElement: <AdminErrorPage />,
             },
             {
-                path: '/admin/consola/blogs/editar/:id}',
+                path: '/admin/consola/blogs/editar/:id',
                 element: <EditBlogPage />,
                 errorElement: <AdminErrorPage />,
             },
