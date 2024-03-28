@@ -16,6 +16,7 @@ const NavBar = () => {
     const navigate = useNavigate()
     const [ navigateHome, setNavigateHome ] = useState(false)
     const [ showNav, setShowNav ] = useState(true)
+    const [ hideMenu, setHideMenu ] = useState(false)
     const [ navData, ] = useState([
         {
             'twoLines': true,
@@ -51,7 +52,6 @@ const NavBar = () => {
             'url': 'mayoristas'
         },
     ])
-    const [ hideMenu, setHideMenu ] = useState(false)
     
     const controlNavBar = () => {
         window.scrollY > 120 ? setShowNav(false) : setShowNav(true)
@@ -101,6 +101,7 @@ const NavBar = () => {
                 <NavItemMenu
                     navData={navData}
                     hideMenu={hideMenu}
+                    showNav={showNav}
                 />
                 <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-40 mt-2 lg:mt-0'>
                     <CartCounter />

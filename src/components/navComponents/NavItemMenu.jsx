@@ -1,7 +1,28 @@
+import {
+    useEffect,
+    useState
+} from 'react';
 import NavItem from './navBar/NavItem';
 import SearchBar from './navBar/SearchBar';
 
-const NavItemMenu = ({ navData, hideMenu }) => {
+const NavItemMenu = ({
+    navData,
+    hideMenu,
+    showNav
+}) => {
+    const [ inputValue, setInputValue ] = useState('')
+    const [ showSearch, setShowSearch ] = useState(true)
+
+    useEffect(() => {
+        showNav ?
+            (
+                setShowSearch(false),
+                setInputValue('')
+            )
+        :
+            null
+    }, [showNav])
+
     return (
         <div className=
             {
@@ -17,7 +38,13 @@ const NavItemMenu = ({ navData, hideMenu }) => {
         >
             <div className='absolute grid place-items-center top-28 bg-white w-full py-5 lg:py-0 lg:w-fit
             lg:static shadow lg:shadow-none'>
-                <SearchBar />
+                <SearchBar
+                    showNav={showNav}
+                    inputValue={inputValue}
+                    showSearch={showSearch}
+                    setInputValue={setInputValue}
+                    setShowSearch={setShowSearch}
+                />
             </div>
             {
                 navData.map((data, i) => {
