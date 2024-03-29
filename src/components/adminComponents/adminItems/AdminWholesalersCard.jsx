@@ -32,11 +32,18 @@ const AdminWholesalersCard = ({
         try {
             const docRef = doc(db, 'wholesalers', id)
             await deleteDoc(docRef)
+            if (localStorage.wholesalerMessageData) {
+                localStorage.removeItem('wholesalerMessageData')
+            }
             setActiveToast(true)
         } catch (error) {
             setActiveToast(true)
             setErrorToast(error.message)
         }
+    }
+
+    const storeWholesalerMessage = () => {
+        localStorage.setItem('wholesalerMessageData', JSON.stringify(message))
     }
 
     return (
@@ -69,6 +76,7 @@ const AdminWholesalersCard = ({
                     <div className='flex items-end w-full justify-between'>
                         <Link
                             to={`/admin/consola/mensajesMayoristas/${message.id}`}
+                            onClick={() => storeWholesalerMessage()}
                             className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                             ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
                         >

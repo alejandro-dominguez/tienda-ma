@@ -32,11 +32,18 @@ const AdminMessageCard = ({
         try {
             const docRef = doc(db, 'messages', id)
             await deleteDoc(docRef)
+            if (localStorage.messageData) {
+                localStorage.removeItem('contactMessageData')
+            }
             setActiveToast(true)
         } catch (error) {
             setActiveToast(true)
             setErrorToast(error.message)
         }
+    }
+
+    const storeMessage = () => {
+        localStorage.setItem('contactMessageData', JSON.stringify(message))
     }
 
     return (
@@ -69,6 +76,7 @@ const AdminMessageCard = ({
                     <div className='flex items-end w-full justify-between'>
                         <Link
                             to={`/admin/consola/mensajesContacto/${message.id}`}
+                            onClick={() => storeMessage()}
                             className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                             ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
                         >

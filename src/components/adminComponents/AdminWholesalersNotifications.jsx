@@ -1,12 +1,13 @@
 import { RotatingLines } from 'react-loader-spinner';
 import {
-    useEffect,
-    useState
+    useState,
+    useContext,
+    useEffect
 } from 'react';
-import useGetAllWholesalersMessages from '../../customHooks/useGetAllWholesalersMessages';
+import { WholesalerMessageContext } from '../../contexts/wholesalerMessageContext';
 
 const AdminWholesalersNotifications = () => {
-    const [ wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages ] = useGetAllWholesalersMessages()
+    const { wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages } = useContext(WholesalerMessageContext)
     const [ pendingWholesalersMessages, setPendingWholesalersMessages ] = useState(0)
 
     useEffect(() => {

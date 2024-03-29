@@ -1,12 +1,13 @@
-import { RotatingLines } from 'react-loader-spinner';
 import {
     useEffect,
-    useState
+    useState,
+    useContext
 } from 'react';
-import useGetAllMessages from '../../customHooks/useGetAllMessages';
+import { ContactMessageContext } from '../../contexts/contactMessageContext';
+import { RotatingLines } from 'react-loader-spinner';
 
 const AdminMessagesNotifications = () => {
-    const [ messages, errorMessages, loadingMessages ] = useGetAllMessages()
+    const { messages, errorMessages, loadingMessages } = useContext(ContactMessageContext)
     const [ pendingMessages, setPendingMessages ] = useState(0)
 
     useEffect(() => {

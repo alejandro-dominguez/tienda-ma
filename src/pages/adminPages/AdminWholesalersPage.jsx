@@ -2,13 +2,16 @@ import {
     Toaster,
     toast
 } from 'sonner';
-import { useState } from 'react';
+import {
+    useState,
+    useContext
+} from 'react';
+import { WholesalerMessageContext } from '../../contexts/wholesalerMessageContext';
 import { RotatingLines } from 'react-loader-spinner';
 import AdminWholesalersContainer from '../../components/adminComponents/AdminWholesalersContainer';
-import useGetAllWholesalersMessages from '../../customHooks/useGetAllWholesalersMessages';
 
 const AdminWholesalersPage = () => {
-    const [ wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages ] = useGetAllWholesalersMessages()
+    const { wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages } = useContext(WholesalerMessageContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 

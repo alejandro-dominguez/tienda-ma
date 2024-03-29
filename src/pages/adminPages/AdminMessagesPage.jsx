@@ -2,13 +2,16 @@ import {
     Toaster,
     toast
 } from 'sonner';
-import { useState } from 'react';
+import {
+    useState,
+    useContext
+} from 'react';
+import { ContactMessageContext } from '../../contexts/contactMessageContext';
 import { RotatingLines } from 'react-loader-spinner';
-import useGetAllMessages from '../../customHooks/useGetAllMessages';
 import AdminMessagesContainer from '../../components/adminComponents/AdminMessagesContainer';
 
 const AdminMessagesPage = () => {
-    const [ messages, errorMessages, loadingMessages ] = useGetAllMessages()
+    const { messages, errorMessages, loadingMessages } = useContext(ContactMessageContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 

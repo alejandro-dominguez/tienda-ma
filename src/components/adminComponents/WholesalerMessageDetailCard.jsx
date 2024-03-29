@@ -41,6 +41,9 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
         try {
             const docRef = doc(db, 'messages', id)
             await deleteDoc(docRef)
+            if (localStorage.wholesalerMessageData) {
+                localStorage.removeItem('wholesalerMessageData')
+            }
             toast.success(
                 'Mensaje eliminado',
                 {

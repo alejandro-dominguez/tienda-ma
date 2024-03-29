@@ -40,6 +40,9 @@ const MessageDetailCard = ({ message }) => {
         try {
             const docRef = doc(db, 'messages', id)
             await deleteDoc(docRef)
+            if (localStorage.contactMessageData) {
+                localStorage.removeItem('contactMessageData')
+            }
             toast.success(
                 'Mensaje eliminado',
                 {

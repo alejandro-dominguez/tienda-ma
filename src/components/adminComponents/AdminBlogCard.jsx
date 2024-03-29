@@ -18,6 +18,9 @@ const AdminBlogCard = ({
         try {
             const docRef = doc(db, 'blogs', id)
             await deleteDoc(docRef)
+            if (localStorage.editBlogData) {
+                localStorage.removeItem('editBlogData')
+            }
             setActiveToast(true)
         } catch (error) {
             setActiveToast(true)
@@ -38,6 +41,11 @@ const AdminBlogCard = ({
             setActiveToast(true)
             setErrorToast(error.message)
         }
+    }
+
+    const storeAndNavigate = () => {
+        localStorage.setItem('editBlogData', JSON.stringify(blog))
+        navigate((`/admin/consola/blogs/editar/${blog.id}`))
     }
 
     const updateActiveBlog = async (id) => {
@@ -83,7 +91,7 @@ const AdminBlogCard = ({
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                        onClick={() => navigate((`/admin/consola/blogs/editar/${blog.id}`))}
+                        onClick={() => storeAndNavigate()}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar

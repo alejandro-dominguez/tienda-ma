@@ -1,15 +1,18 @@
 import {
+    useState,
+    useContext
+} from 'react';
+import {
     Toaster,
     toast
 } from 'sonner';
+import { BlogContext } from '../../contexts/blogContext';
 import { RotatingLines } from 'react-loader-spinner';
-import { useState } from 'react';
-import useGetBlogs from '../../customHooks/useGetBlogs';
 import AdminBlogCard from '../../components/adminComponents/AdminBlogCard';
 import CreateBlogForm from '../../components/adminComponents/CreateBlogForm';
 
 const AdminBlogsPage = () => {
-    const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
+    const { blogs, errorBlogs, loadingBlogs } = useContext(BlogContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 

@@ -5,13 +5,19 @@ import ShopContextProvider from './contexts/shopContext';
 import AuthContextProvider from './contexts/authContext';
 import SiteContextProvider from './contexts/siteContext';
 import BlogContextProvider from './contexts/blogContext';
+import ContactMessageProvider from './contexts/contactMessageContext';
+import WholesalerMessageProvider from './contexts/wholesalerMessageContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <SiteContextProvider>
         <AuthContextProvider>
             <ShopContextProvider>
                 <BlogContextProvider>
-                    <App />
+                    <ContactMessageProvider>
+                        <WholesalerMessageProvider>
+                            <App />
+                        </WholesalerMessageProvider>
+                    </ContactMessageProvider>
                 </BlogContextProvider>
             </ShopContextProvider>
         </AuthContextProvider>

@@ -1,15 +1,16 @@
+import { useContext } from 'react';
+import { BlogContext } from '../contexts/blogContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import ItemCard from '../components/ItemCard';
 import FeaturedBlog from '../components/blogComponents/FeaturedBlog';
 import ErrorPage from '../pages/ErrorPage';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
-import useGetBlogs from '../customHooks/useGetBlogs';
 
 const FeaturedItemsContainer = () => {
+    const { blogs, errorBlogs, loadingBlogs } = useContext(BlogContext)
     const { categoryId, subcategoryId } = useParams()
     const [ data, error, loading ] = useGetFirebaseData(categoryId, subcategoryId)
-    const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
 
     return (
         <section className='w-full grid place-items-center md:px-10 py-2'>

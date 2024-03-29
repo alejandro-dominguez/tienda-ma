@@ -1,6 +1,7 @@
 import {
     useState,
-    useEffect
+    useEffect,
+    createContext
 } from 'react';
 import {
     collection,
@@ -10,7 +11,9 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetAllMessages = () => {
+export const ContactMessageContext = createContext();
+
+const ContactMessageProvider = ({ children }) => {
     const [ errorMessages, setErrorMessages ] = useState('')
     const [ loadingMessages, setLoadingMessages ] = useState(false)
     const [ messages, setMessages ] = useState([])
@@ -37,7 +40,17 @@ const useGetAllMessages = () => {
         })()
     }, [])
 
-    return [ messages, errorMessages, loadingMessages ]
+    return (
+        <ContactMessageContext.Provider
+            value={{
+                messages,
+                errorMessages,
+                loadingMessages
+            }}
+        >
+            {children}
+        </ContactMessageContext.Provider>
+    )
 };
 
-export default useGetAllMessages;
+export default ContactMessageProvider;

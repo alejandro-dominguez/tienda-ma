@@ -33,6 +33,7 @@ const AdminPage = () => {
                 adminEmail: '',
                 adminPassword: ''
             })
+            localStorage.setItem('authUser', true)
             setErrorAuth('')
             navigate('/admin/consola')
         } catch (error) {
@@ -74,7 +75,7 @@ const AdminPage = () => {
                         </label>
                         <input
                             type='password' name='adminPassword' id='adminPassword' required placeholder='**********'
-                            className='contact-input'
+                            className='contact-input' autoComplete='adminPassword'
                             onChange={registerInputs}
                         />
                 <button

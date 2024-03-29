@@ -1,6 +1,7 @@
 import {
     useState,
-    useEffect
+    useEffect,
+    createContext
 } from 'react';
 import {
     collection,
@@ -10,7 +11,9 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetAllWholesalersMessages = () => {
+export const WholesalerMessageContext = createContext();
+
+const WholesalerMessageProvider = ({ children }) => {
     const [ errorWholesalersMessages, setErrorWholesalersMessages ] = useState('')
     const [ loadingWholesalersMessages, setLoadingWholesalersMessages ] = useState(false)
     const [ wholesalersMessages, setWholesalersMessages ] = useState([])
@@ -37,7 +40,17 @@ const useGetAllWholesalersMessages = () => {
         })()
     }, [])
 
-    return [ wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages ]
+    return (
+        <WholesalerMessageContext.Provider
+            value={{
+                wholesalersMessages,
+                errorWholesalersMessages,
+                loadingWholesalersMessages
+            }}
+        >
+            {children}
+        </WholesalerMessageContext.Provider>
+    )
 };
 
-export default useGetAllWholesalersMessages;
+export default WholesalerMessageProvider;

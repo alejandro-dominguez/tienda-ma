@@ -1,18 +1,34 @@
+import {
+    useContext,
+    useEffect,
+    useState
+} from 'react';
+import { WholesalerMessageContext } from '../../../contexts/wholesalerMessageContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import useGetWholesalerMessage from '../../../customHooks/useGetWholesalerMessage';
 import WholesalerMessageDetailCard from '../../../components/adminComponents/WholesalerMessageDetailCard';
 
 const AdminWholesalersDetailPage = () => {
     const { id } = useParams()
-    const [ wholesalerMessage, error, loading ] = useGetWholesalerMessage(id)
+    const { wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages } = useContext(WholesalerMessageContext)
+    const [ wholesalerMessage, setWholesalerMessage ] = useState({})
+
+    useEffect(() => {
+        if (localStorage.wholesalerMessageData) {
+            setWholesalerMessage(JSON.parse(localStorage.wholesalerMessageData))
+        }
+        else if (wholesalersMessages.length && !loadingWholesalersMessages && !errorWholesalersMessages) {
+            const getWholesalerMessageId = wholesalersMessages.find(message => message.id === id)
+            setWholesalerMessage(getWholesalerMessageId)
+        }
+    }, [])
     
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (JSON.stringify(wholesalerMessage) !== '{}' && !loading && !error) ?
+                (wholesalersMessages.length && !loadingWholesalersMessages && !errorWholesalersMessages) ?
                     <WholesalerMessageDetailCard wholesalerMessage={wholesalerMessage} />
-                : !error ?
+                : !errorWholesalersMessages ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
