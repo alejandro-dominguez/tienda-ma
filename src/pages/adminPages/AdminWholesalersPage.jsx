@@ -9,6 +9,7 @@ import {
 import { WholesalerMessageContext } from '../../contexts/wholesalerMessageContext';
 import { RotatingLines } from 'react-loader-spinner';
 import AdminWholesalersContainer from '../../components/adminComponents/AdminWholesalersContainer';
+import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminWholesalersPage = () => {
     const { wholesalersMessages, errorWholesalersMessages, loadingWholesalersMessages } = useContext(WholesalerMessageContext)
@@ -73,7 +74,7 @@ const AdminWholesalersPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage/>
             }
         </main>
     )

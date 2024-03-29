@@ -9,6 +9,7 @@ import {
 import { ContactMessageContext } from '../../contexts/contactMessageContext';
 import { RotatingLines } from 'react-loader-spinner';
 import AdminMessagesContainer from '../../components/adminComponents/AdminMessagesContainer';
+import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminMessagesPage = () => {
     const { messages, errorMessages, loadingMessages } = useContext(ContactMessageContext)
@@ -73,7 +74,7 @@ const AdminMessagesPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

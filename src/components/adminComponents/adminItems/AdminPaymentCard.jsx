@@ -17,12 +17,19 @@ const AdminPaymentCard = ({
         try {
             const docRef = doc(db, 'payments', id)
             await deleteDoc(docRef)
+            localStorage.removeItem('paymentData')
             setActiveToast(true)
         } catch (error) {
             setActiveToast(true)
             setErrorToast(error.message)
         }
     }
+    
+    const storeAndNavigate = () => {
+        localStorage.setItem('paymentData', JSON.stringify(payment))
+        navigate((`/admin/consola/formasDePago/editar/${payment.id}`))
+    }
+    
     
     return (
         <>
@@ -37,7 +44,7 @@ const AdminPaymentCard = ({
                             type='button'
                             className='px-[.8rem] py-[.15rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                             ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                            onClick={() => navigate((`/admin/consola/formasDePago/editar/${payment.id}`))}
+                            onClick={() => storeAndNavigate()}
                             >
                             <span className='tracking-wider text-[.8rem] font-Raleway'>
                                 Editar

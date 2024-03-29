@@ -12,6 +12,7 @@ import EditProductCategoriesForm from '../../../components/adminComponents/admin
 import EditProductLineForm from '../../../components/adminComponents/adminEditForms/EditProductLineForm';
 import EditProductSizesForm from '../../../components/adminComponents/adminEditForms/EditProductSizesForm';
 import EditProductImgsForm from '../../../components/adminComponents/adminEditForms/EditProductImgsForm';
+import AdminErrorPage from '../../../pages/AdminErrorPage';
 
 const EditProductPage = () => {
     const { id } = useParams()
@@ -112,7 +113,7 @@ const EditProductPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

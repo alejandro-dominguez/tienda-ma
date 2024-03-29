@@ -7,6 +7,7 @@ import { WholesalerMessageContext } from '../../../contexts/wholesalerMessageCon
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import WholesalerMessageDetailCard from '../../../components/adminComponents/WholesalerMessageDetailCard';
+import AdminErrorPage from '../../../pages/AdminErrorPage';
 
 const AdminWholesalersDetailPage = () => {
     const { id } = useParams()
@@ -26,7 +27,12 @@ const AdminWholesalersDetailPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (wholesalersMessages.length && !loadingWholesalersMessages && !errorWholesalersMessages) ?
+                (
+                    JSON.stringify(wholesalerMessage) &&
+                    wholesalersMessages.length &&
+                    !loadingWholesalersMessages &&
+                    !errorWholesalersMessages
+                ) ?
                     <WholesalerMessageDetailCard wholesalerMessage={wholesalerMessage} />
                 : !errorWholesalersMessages ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
@@ -41,7 +47,7 @@ const AdminWholesalersDetailPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

@@ -49,12 +49,20 @@ const AdminOrderCard = ({
         try {
             const docRef = doc(db, 'orders', id)
             await deleteDoc(docRef)
+            if (localStorage.orderData) {
+                localStorage.removeItem('orderData')
+            }
             setActiveToast(true)
         } catch (error) {
             setActiveToast(true)
             setErrorToast(error.message)
         }
     }
+
+    const storeOrder = () => {
+        localStorage.setItem('orderData', JSON.stringify(order))
+    }
+
 
     return (
         <div className='flex flex-col items-start justify-start gap-2'>
@@ -93,6 +101,7 @@ const AdminOrderCard = ({
                     </h3>
                     <Link
                         to={`/admin/consola/ordenes/${order.id}`}
+                        onClick={() => storeOrder()}
                         className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
                     >

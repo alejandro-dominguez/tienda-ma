@@ -16,6 +16,7 @@ import EditBlogText1Form from '../../../components/adminComponents/adminEditForm
 import EditBlogText2Form from '../../../components/adminComponents/adminEditForms/EditBlogText2Form';
 import EditBlogText3Form from '../../../components/adminComponents/adminEditForms/EditBlogText3Form';
 import EditBlogImgsForm from '../../../components/adminComponents/adminEditForms/EditBlogImgsForm';
+import AdminErrorPage from '../../../pages/AdminErrorPage';
 
 const EditBlogPage = () => {
     const { id } = useParams()
@@ -65,7 +66,7 @@ const EditBlogPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (blogs.length && !loadingBlogs && !errorBlogs) ?
+                (JSON.stringify(blog) !== '{}' && blogs.length && !loadingBlogs && !errorBlogs) ?
                     <>
                     <h1 className='flex flex-col font-bold font-Raleway text-lg text-center mt-3 drop-shadow-sm mx-auto'>
                         <span className='text-[1.05rem]'>
@@ -132,7 +133,7 @@ const EditBlogPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

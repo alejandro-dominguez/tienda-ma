@@ -69,6 +69,9 @@ const OrderDetailCard = ({ order }) => {
         try {
             const docRef = doc(db, 'orders', id)
             await deleteDoc(docRef)
+            if (localStorage.orderData) {
+                localStorage.removeItem('orderData')
+            }
             toast.success(
                 'Orden eliminada',
                 {

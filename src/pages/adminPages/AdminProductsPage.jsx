@@ -8,6 +8,7 @@ import useGetAllProducts from '../../customHooks/useGetAllProducts';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
 import AdminProductCard from '../../components/adminComponents/AdminProductCard';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
+import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminProductsPage = () => {
     const [ prods, subcategories,,, error, loading ] = useGetAllProducts()
@@ -93,7 +94,7 @@ const AdminProductsPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

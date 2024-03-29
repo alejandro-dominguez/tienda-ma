@@ -1,6 +1,7 @@
 import {
     useState,
-    useEffect
+    useEffect,
+    createContext
 } from 'react';
 import {
     collection,
@@ -10,15 +11,17 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetAllOrders = () => {
-    const [ error, setError ] = useState('')
-    const [ loading, setLoading ] = useState(false)
+export const OrderContext = createContext();
+
+const OrderProvider = ({ children }) => {
+    const [ errorOrders, setErrorOrders ] = useState('')
+    const [ loadingOrders, setLoadingOrders ] = useState(false)
     const [ orders, setOrders ] = useState([])
 
     useEffect(() => {
         (async () => {
             try {
-                setLoading(true)
+                setLoadingOrders(true)
                 const collectionRef = collection(db, 'orders')
                 const q = query(collectionRef, orderBy('orderDate', 'desc'))
                 const querySnapshot = await getDocs(q)
@@ -27,17 +30,27 @@ const useGetAllOrders = () => {
                     firebaseOrders.push({...doc.data(), id: doc.id})
                 })
                 setOrders(firebaseOrders)
-                setLoading(false)
+                setLoadingOrders(false)
             } catch (error) {
-                setError(error.message)
-                setLoading(false)
+                setErrorOrders(error.message)
+                setLoadingOrders(false)
             } finally {
-                setLoading(false)
+                setLoadingOrders(false)
             }
         })()
     }, [])
 
-    return [ orders, error, loading ]
+    return (
+        <OrderContext.Provider
+            value={{
+                orders,
+                errorOrders,
+                loadingOrders
+            }}
+        >
+            {children}
+        </OrderContext.Provider>
+    )
 };
 
-export default useGetAllOrders;
+export default OrderProvider;

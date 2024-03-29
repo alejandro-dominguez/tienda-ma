@@ -10,6 +10,7 @@ import { BlogContext } from '../../contexts/blogContext';
 import { RotatingLines } from 'react-loader-spinner';
 import AdminBlogCard from '../../components/adminComponents/AdminBlogCard';
 import CreateBlogForm from '../../components/adminComponents/CreateBlogForm';
+import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminBlogsPage = () => {
     const { blogs, errorBlogs, loadingBlogs } = useContext(BlogContext)
@@ -89,7 +90,7 @@ const AdminBlogsPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

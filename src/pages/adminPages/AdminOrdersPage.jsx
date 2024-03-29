@@ -2,13 +2,17 @@ import {
     Toaster,
     toast
 } from 'sonner';
-import { useState } from 'react';
+import {
+    useState,
+    useContext
+} from 'react';
+import { OrderContext } from '../../contexts/orderContext';
 import { RotatingLines } from 'react-loader-spinner';
-import useGetAllOrders from '../../customHooks/useGetAllOrders';
 import AdminOrdersContainer from '../../components/adminComponents/AdminOrdersContainer';
+import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminOrdersPage = () => {
-    const [ orders, error, loading ] = useGetAllOrders()
+    const { orders, errorOrders, loadingOrders } = useContext(OrderContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
@@ -42,7 +46,7 @@ const AdminOrdersPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             { 
-                (orders.length && !loading && !error) ?
+                (orders.length && !loadingOrders && !errorOrders) ?
                     <div className='mx-auto flex flex-col'>
                         <AdminOrdersContainer
                             orders={orders}
@@ -57,7 +61,7 @@ const AdminOrdersPage = () => {
                             }}
                         />
                     </div>
-                : !error ?
+                : !errorOrders ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
@@ -70,7 +74,7 @@ const AdminOrdersPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

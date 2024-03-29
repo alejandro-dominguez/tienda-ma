@@ -2,20 +2,36 @@ import {
     Toaster,
     toast
 } from 'sonner';
+import {
+    useState,
+    useEffect,
+    useContext
+} from 'react';
+import { PaymentContext } from '../../../contexts/paymentContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { useState } from 'react';
-import useGetPayment from '../../../customHooks/useGetPayment';
 import EditPaymentTitleForm from '../../../components/adminComponents/adminEditForms/EditPaymentTitleForm';
 import EditPaymentDesc1Form from '../../../components/adminComponents/adminEditForms/EditPaymentDesc1Form';
 import EditPaymentDesc2Form from '../../../components/adminComponents/adminEditForms/EditPaymentDesc2Form';
 import EditPaymentDesc3Form from '../../../components/adminComponents/adminEditForms/EditPaymentDesc3Form';
+import AdminErrorPage from '../../../pages/AdminErrorPage';
 
 const EditPaymentPage = () => {
     const { id } = useParams()
-    const [ payment, error, loading ] = useGetPayment(id)
+    const { payments, errorPayments, loadingPayments } = useContext(PaymentContext)
+    const [ payment, setPayment ] = useState({})
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
+
+    useEffect(() => {
+        if (localStorage.paymentData) {
+            setPayment(JSON.parse(localStorage.paymentData))
+        }
+        else if (payments.length && !loadingPayments && !errorPayments) {
+            const getPaymentId = payments.find(payment => payment.id === id)
+            setPayment(getPaymentId)
+        }
+    }, [])
 
     if (activeToast && errorToast === '') {
         toast.success(
@@ -47,7 +63,7 @@ const EditPaymentPage = () => {
     return (
         <main className='w-full flex flex-col items-start mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (JSON.stringify(payment) !== '{}' && !loading && !error) ?
+                (JSON.stringify(payment) !== '{}' && payments.length && !loadingPayments && !errorPayments) ?
                     <>
                     <h1 className='flex flex-col font-bold font-Raleway text-lg text-center mt-3 drop-shadow-sm mx-auto'>
                         <span className='text-[1.05rem]'>
@@ -89,7 +105,7 @@ const EditPaymentPage = () => {
                             }}
                         />
                     </>
-                : !error ?
+                : !errorPayments ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
@@ -102,7 +118,7 @@ const EditPaymentPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage />
             }
         </main>
     )

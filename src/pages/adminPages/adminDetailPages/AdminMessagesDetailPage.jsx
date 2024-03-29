@@ -7,6 +7,7 @@ import { ContactMessageContext } from '../../../contexts/contactMessageContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import MessageDetailCard from '../../../components/adminComponents/MessageDetailCard';
+import AdminErrorPage from '../../../pages/AdminErrorPage';
 
 const AdminMessagesDetailPage = () => {
     const { id } = useParams()
@@ -26,7 +27,7 @@ const AdminMessagesDetailPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (messages.length && !loadingMessages && !errorMessages) ?
+                (JSON.stringify(message) !== '{}' && messages.length && !loadingMessages && !errorMessages) ?
                     <MessageDetailCard message={message} />
                 : !errorMessages ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
@@ -41,7 +42,7 @@ const AdminMessagesDetailPage = () => {
                         </div>
                     </div>
                 :
-                    null
+                    <AdminErrorPage/>
             }
         </main>
     )

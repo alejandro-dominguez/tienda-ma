@@ -1,13 +1,13 @@
 import {
     useEffect,
-    useState
+    useState,
+    useContext
 } from 'react';
+import { OrderContext } from '../../contexts/orderContext';
 import { RotatingLines } from 'react-loader-spinner';
-import AdminErrorPage from '../../pages/AdminErrorPage';
-import useGetAllOrders from '../../customHooks/useGetAllOrders';
 
 const AdminOrdersNotifications = () => {
-    const [ orders, error, loading ] = useGetAllOrders()
+    const { orders, errorOrders, loadingOrders } = useContext(OrderContext)
     const [ pendingOrders, setPendingOrders ] = useState(0)
     const [ pendingDeliveredOrders, setPendingDeliveredOrders ] = useState(0)
 
@@ -23,7 +23,7 @@ const AdminOrdersNotifications = () => {
     return (
         <>
         {
-            (orders.length && !error && !loading) ?
+            (orders.length && !errorOrders && !loadingOrders) ?
                 <>
                 <div className='w-fit relative'>
                     <span className='flex items-baseline gap-1'>
@@ -46,7 +46,7 @@ const AdminOrdersNotifications = () => {
                     <div className='absolute w-full h-[.2rem] bg-red-500/50 rounded-full mt-1' />
                 </div>
                 </>
-            : !error ?
+            : !errorOrders ?
                 <div className='p-3 bg-teal-600/20 rounded-lg w-fit mx-auto'>
                     <RotatingLines
                         strokeColor='white'
@@ -59,7 +59,7 @@ const AdminOrdersNotifications = () => {
             :
                 <div className='w-fit'>
                     <span>
-                        {error}
+                        {errorOrders}
                     </span>
                 </div>
         }   

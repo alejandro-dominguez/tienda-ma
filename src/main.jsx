@@ -7,6 +7,9 @@ import SiteContextProvider from './contexts/siteContext';
 import BlogContextProvider from './contexts/blogContext';
 import ContactMessageProvider from './contexts/contactMessageContext';
 import WholesalerMessageProvider from './contexts/wholesalerMessageContext';
+import OrderProvider from './contexts/orderContext';
+import PromoProvider from './contexts/promoContext';
+import PaymentProvider from './contexts/paymentContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <SiteContextProvider>
@@ -15,7 +18,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <BlogContextProvider>
                     <ContactMessageProvider>
                         <WholesalerMessageProvider>
-                            <App />
+                            <OrderProvider>
+                                <PromoProvider>
+                                    <PaymentProvider>
+                                        <App />
+                                    </PaymentProvider>
+                                </PromoProvider>
+                            </OrderProvider>
                         </WholesalerMessageProvider>
                     </ContactMessageProvider>
                 </BlogContextProvider>
