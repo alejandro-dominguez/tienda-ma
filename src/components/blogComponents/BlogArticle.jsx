@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import shortenText from '../../utilities/shortenText';
 
 const BlogArticle = ({ blog }) => {
     const navigate = useNavigate()
 
     return (
-        <div className='w-full px-4 md:px-20 lg:px-32 grid place-items-center pt-32 pb-14'>
+        <div className='w-full px-4 md:px-20 lg:px-32 grid place-items-center pt-32 md:pt-36 pb-14'>
             <div className='md:flex md:flex-row-reverse'>
                 <div className='md:w-2/3 md:mr-auto'>
                     <h1 className='font-Raleway font-black text-zinc-700/95 text-xl tracking-wider leading-7'>

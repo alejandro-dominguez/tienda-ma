@@ -4,6 +4,11 @@ import shortenText from '../utilities/shortenText';
 const BlogCard = ({ blog }) => {
     const navigate = useNavigate()
     
+    const storeAndNavigate = () => {
+        localStorage.setItem('blogData', JSON.stringify(blog))
+        navigate((`/blogs/${blog.id}`))
+    }
+
     return (
         <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
@@ -23,7 +28,7 @@ const BlogCard = ({ blog }) => {
                 type='button'
                 className='mt-auto w-fit px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                onClick={() => navigate((`/blogs/${blog.id}`))}
+                onClick={() => storeAndNavigate()}
             >
                 <span className='tracking-wider text-[.8rem] font-Raleway'>
                     Leer artículo

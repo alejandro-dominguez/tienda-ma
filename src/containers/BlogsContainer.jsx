@@ -1,10 +1,23 @@
+import {
+    useContext,
+    useEffect,
+    useState
+} from 'react';
+import { BlogContext } from '../contexts/blogContext';
 import { RotatingLines } from 'react-loader-spinner';
 import ErrorPage from '../pages/ErrorPage';
 import BlogCard from '../components/BlogCard';
-import useGetBlogs from '../customHooks/useGetBlogs';
 
 const BlogsContainer = () => {
-    const [ blogs, errorBlogs, loadingBlogs ] = useGetBlogs()
+    const { blogs, errorBlogs, loadingBlogs } = useContext(BlogContext)
+    const [ blogArticles, setBlogArticles ] = useState({})
+
+    useEffect(() => {
+        if (localStorage.blogsData) {
+            setBlogArticles(JSON.parse(localStorage.blogsData))
+        }
+    }, [])
+    
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -12,7 +25,19 @@ const BlogsContainer = () => {
                 Blog
             </h1>
             {
-                (blogs.length && !loadingBlogs && !errorBlogs) ?
+                blogArticles.length ?
+                    <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4 gap-6'>
+                        {
+                            blogArticles.map(blog => {
+                                return (
+                                    <BlogCard
+                                        blog={blog}
+                                        key={blog.id}
+                                    />
+                            )})
+                        }
+                    </div>
+                : (blogs.length && !loadingBlogs && !errorBlogs) ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4 gap-6'>
                         {
                             blogs.map(blog => {
