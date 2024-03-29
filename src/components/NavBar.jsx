@@ -86,9 +86,9 @@ const NavBar = () => {
                         className=
                             {
                                 navigateHome ?
-                                    'w-[5.5rem] cursor-pointer z-10'
+                                    'w-20 cursor-pointer z-10'
                                 :
-                                    'w-[5.5rem] cursor-auto z-10'
+                                    'w-20 cursor-auto z-10'
                             }
                         onClick={() => {navigateHome ? navigate('/') : null}}
                     >

@@ -11,6 +11,7 @@ import AdminLandingPage from '../../pages/AdminLandingPage';
 import ItemCategoriesContainer from '../../containers/ItemCategoriesContainer';
 import CartContainer from '../../containers/CartContainer';
 import BlogsContainer from '../../containers/BlogsContainer';
+import FeaturedBlogArticleContainer from '../../containers/FeaturedBlogArticleContainer';
 import ItemDetailContainer from '../../containers/ItemDetailContainer';
 import ItemListContainer from '../../containers/ItemListContainer';
 import BrandItemListContainer from '../../containers/BrandItemListContainer';
@@ -88,6 +89,11 @@ const adminRouter = createBrowserRouter([
             {
                 path: '/blogs/:id',
                 element: <BlogArticleContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/blogs/destacado/:id',
+                element: <FeaturedBlogArticleContainer />,
                 errorElement: <ErrorPage />,
             },
             {

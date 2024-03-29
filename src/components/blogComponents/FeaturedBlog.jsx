@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 const FeaturedBlog = ({ blogData }) => {
     const navigate = useNavigate()
 
+    const storeAndNavigate = () => {
+        localStorage.setItem('featuredBlogData', JSON.stringify(blogData))
+        navigate((`/blogs/destacado/${blogData.id}`))
+    }
+
     return (
         <div className='bg-white px-6 py-5 shadow-sm drop-shadow-sm'>
             <div className='w-full drop-shadow-sm'>
@@ -22,7 +27,7 @@ const FeaturedBlog = ({ blogData }) => {
                 type='button'
                 className='mt-3 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
-                onClick={() => navigate((`/blogs/${blogData.id}`))}
+                onClick={() => storeAndNavigate()}
             >
                 <span className='tracking-wider text-[.83rem] font-Raleway'>
                     Leer artículo
