@@ -63,5 +63,3 @@ const useGetAllProducts = () => {
 };
 
 export default useGetAllProducts;
-
-/* const useGetAllProducts = (id || id || null) */

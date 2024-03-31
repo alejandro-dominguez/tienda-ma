@@ -6,7 +6,6 @@ import {
 } from 'firebase/firestore';
 
 const CreateProductForm = ({ subcategories }) => {
-    const [ errorProduct, setErrorProduct ] = useState('')
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
         productName: '',
@@ -80,6 +79,7 @@ const CreateProductForm = ({ subcategories }) => {
                     productLine: productLine,
                     quantity: 1000000,
                     featured: false,
+                    stock: true
                 }
             )
             const repeatedSubcategory = subcategories.find(productSubcategories => productSubcategories === productSubcategory)

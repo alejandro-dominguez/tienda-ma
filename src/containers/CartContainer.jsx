@@ -1,6 +1,7 @@
 import {
     useState,
-    useContext
+    useContext,
+    useEffect,
 } from 'react';
 import { ShopContext } from '../contexts/shopContext';
 import CartItem from '../components/cartComponents/CartItem';
@@ -10,8 +11,14 @@ import cartCheck from '../assets/cart-check.svg';
 import numberFormater from '../utilities/numberFormater';
 
 const CartContainer = () => {
-    const { products, calculateCartTotal } = useContext(ShopContext)
+    const { products, calculateCartTotal, calculateCartQuantity } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
+/*     const [ cartProducts, setCartProducts ] = useState([])
+    const [ cartData, setCartData ] = useState([])
+
+    useEffect(() => {
+        localStorage.setItem('cartData', JSON.stringify([]))
+    }, []) */
 
     return (
         <main className='w-full grid place-items-start py-[7.5rem] min-h-[100svh]'>
@@ -40,9 +47,16 @@ const CartContainer = () => {
                                 )})
                             }
                         </div>
-                        <span className='font-black text-[.89rem] mt-5'>
-                            Total: {numberFormater(calculateCartTotal())}
-                        </span>
+                        <div className='flex flex-col justify-start'>
+                            <span className='text-left font-black text-[.89rem] mt-5 leading-5'>
+                                Cantidad total
+                                <br />
+                                de productos: {calculateCartQuantity()}
+                            </span>
+                            <span className='text-left font-black text-[.89rem] mt-2'>
+                                Total: {numberFormater(calculateCartTotal())}
+                            </span>
+                        </div>
                         <button
                             className='flex items-center justify-center justify-self-center px-4 py-2 gap-2 mt-4
                             rounded-lg shadow-sm bg-zinc-900 text-white transition-colors ease-in-out

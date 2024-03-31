@@ -7,6 +7,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useState } from 'react';
 import useGetItemDetail from '../../../customHooks/useGetItemDetail';
 import EditProductPriceForm from '../../../components/adminComponents/adminEditForms/EditProductPriceForm';
+import EditProductStockForm from '../../../components/adminComponents/adminEditForms/EditProductStockForm';
 import EditProductInfoForm from '../../../components/adminComponents/adminEditForms/EditProductInfoForm';
 import EditProductCategoriesForm from '../../../components/adminComponents/adminEditForms/EditProductCategoriesForm';
 import EditProductLineForm from '../../../components/adminComponents/adminEditForms/EditProductLineForm';
@@ -58,11 +59,18 @@ const EditProductPage = () => {
                         </span>
                         {product.name}
                     </h1>
-                    <EditProductPriceForm
-                        product={product}
-                        setActiveToast={setActiveToast}
-                        setErrorToast={setErrorToast}    
-                    />
+                    <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
+                        <EditProductPriceForm
+                            product={product}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}    
+                        />
+                        <EditProductStockForm
+                            product={product}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}    
+                        />
+                    </div>
                     <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                         <EditProductInfoForm
                             product={product}
