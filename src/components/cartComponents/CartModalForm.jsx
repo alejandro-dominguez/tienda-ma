@@ -16,6 +16,7 @@ import { db } from '../../firebase/config';
 import numberFormater from '../../utilities/numberFormater';
 
 const CartModalForm = ({
+    cartProducts,
     showForm,
     setShowForm
 }) => {
@@ -30,7 +31,7 @@ const CartModalForm = ({
         orderNotes: '',
     })
     const [ errorOrder, setErrorOrder ] = useState('')
-    const { products, emptyCart, calculateCartTotal } = useContext(ShopContext)
+    const { emptyCart, calculateCartTotal } = useContext(ShopContext)
     const orderTotalAmount = numberFormater(calculateCartTotal())
     const orderId = Math.floor(Math.random() * 10) * Date.now()
 
@@ -54,7 +55,7 @@ const CartModalForm = ({
                     clientPhone: order.orderPhone,
                     clientEmail: order.orderEmail,
                     orderNotes: order.orderNotes,
-                    orderProducts: products,
+                    orderProducts: cartProducts,
                     orderTotal: orderTotalAmount,
                     orderDate: new Date().toLocaleString(),
                     delivered: false,
@@ -94,7 +95,7 @@ const CartModalForm = ({
     return (
         <>
         {
-            showForm && products.length ?
+            showForm && cartProducts.length ?
                 <>
                 <form
                     className='md:w-[62.25%] mt-4 pt-3 pb-6 px-6 sm:px-10 shadow-sm drop-shadow-sm bg-white'

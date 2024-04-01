@@ -1,24 +1,18 @@
 import {
     useState,
     useContext,
-    useEffect,
 } from 'react';
 import { ShopContext } from '../contexts/shopContext';
 import CartItem from '../components/cartComponents/CartItem';
+import ShowCartFormBtn from '../components/cartComponents/ShowCartFormBtn';
+import DeleteCartOrderBtn from '../components/cartComponents/DeleteCartOrderBtn';
 import CartModalForm from '../components/cartComponents/CartModalForm';
 import NoCartItemsCard from '../components/cartComponents/NoCartItemsCard';
-import cartCheck from '../assets/cart-check.svg';
 import numberFormater from '../utilities/numberFormater';
 
 const CartContainer = () => {
     const { products, calculateCartTotal, calculateCartQuantity } = useContext(ShopContext)
     const [ showForm, setShowForm ] = useState(false)
-/*     const [ cartProducts, setCartProducts ] = useState([])
-    const [ cartData, setCartData ] = useState([])
-
-    useEffect(() => {
-        localStorage.setItem('cartData', JSON.stringify([]))
-    }, []) */
 
     return (
         <main className='w-full grid place-items-start py-[7.5rem] min-h-[100svh]'>
@@ -35,7 +29,7 @@ const CartContainer = () => {
             </h1>
             {
                 !showForm && products.length ?
-                    <div className='w-full grid place-items-center px-4 md:px-10'>
+                    <div className='w-full grid place-items-center px-4 md:px-10 mt-4'>
                         <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.35rem]'>
                             {
                                 products.map((product, i) => {
@@ -57,24 +51,10 @@ const CartContainer = () => {
                                 Total: {numberFormater(calculateCartTotal())}
                             </span>
                         </div>
-                        <button
-                            className='flex items-center justify-center justify-self-center px-4 py-2 gap-2 mt-4
-                            rounded-lg shadow-sm bg-zinc-900 text-white transition-colors ease-in-out
-                            hover:bg-zinc-700 focus:bg-zinc-700'
-                            type='button'
-                            onClick={() => setShowForm(true)}
-                        >
-                            <div className='w-[1.2rem]'>
-                                <img 
-                                    src={cartCheck}
-                                    alt='carrito de compras tildado'
-                                    className='block w-full'
-                                />
-                            </div>
-                            <span className='font-Raleway text-[.9rem] tracking-wider font-bold'>
-                                Formulario de compra
-                            </span>
-                        </button>
+                        <div className='flex flex-col gap-3 mt-2'>
+                            <ShowCartFormBtn setShowForm={setShowForm} />
+                            <DeleteCartOrderBtn />
+                        </div>
                     </div>
                 : showForm && products.length ?
                     <div className='w-full grid place-items-center'>
