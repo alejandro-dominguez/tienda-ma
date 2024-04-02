@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
-import { db } from '../../firebase/config';
+import { db } from '../../../firebase/config';
 import {
     deleteDoc,
     doc,

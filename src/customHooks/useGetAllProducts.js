@@ -16,11 +16,17 @@ const useGetAllProducts = () => {
     const [ subcategories, setSubcategories ] = useState({})
     const [ brands, setBrands ] = useState({})
     const [ productLines, setProductLines ] = useState({})
+    const [ featuredProducts, setFeaturedProducts ] = useState({})
+    const [ stockedProducts, setStockedProducts ] = useState({})
+    const [ notStockedProducts, setNotStockedProducts ] = useState({})
     
     const filterProds = (firebaseProds) => {
         const subcategoriesList = []
         const brandsList = []
         const productLinesList = []
+        const featuredProductsList = []
+        const stockedProductsList = []
+        const notStockedProductsList = []
         firebaseProds.map(prod => {
             return (
                 subcategoriesList.push(prod.subcategory),
@@ -59,7 +65,7 @@ const useGetAllProducts = () => {
         })()
     }, [])
 
-    return [ prods, subcategories, brands, productLines, error, loading ]
+    return [ prods, subcategories, brands, productLines, featuredProducts, stockedProducts, notStockedProducts, error, loading ]
 };
 
 export default useGetAllProducts;

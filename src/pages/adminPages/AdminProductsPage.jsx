@@ -6,12 +6,12 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useState } from 'react';
 import useGetAllProducts from '../../customHooks/useGetAllProducts';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
-import AdminProductCard from '../../components/adminComponents/AdminProductCard';
+import AdminProductsContainer from '../../components/adminComponents/AdminProductsContainer';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
 import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminProductsPage = () => {
-    const [ prods, subcategories,,, error, loading ] = useGetAllProducts()
+    const [ prods, subcategories, brands, productLines, featuredProducts, stockedProducts, notStockedProducts, error, loading ] = useGetAllProducts()
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
@@ -60,19 +60,11 @@ const AdminProductsPage = () => {
                         <h3 className='font-bold font-Raleway text-lg mt-8 md:ml-1 text-red-500'>
                             Asegurar siempre al menos un producto destacado.
                         </h3>
-                        <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3 gap-6'>
-                            {
-                                prods.map(prod => {
-                                    return (
-                                        <AdminProductCard
-                                            prod={prod}
-                                            key={prod.id}
-                                            setActiveToast={setActiveToast}
-                                            setErrorToast={setErrorToast}
-                                        />
-                                )})
-                            }
-                        </div>
+                        <AdminProductsContainer
+                            prods={prods}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}
+                        />
                         <Toaster
                             visibleToasts={1}
                             richColors
