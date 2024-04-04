@@ -11,7 +11,16 @@ import AdminSubcategoriesContainer from '../../components/adminComponents/AdminS
 import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminProductsPage = () => {
-    const [ prods, subcategories, brands, productLines, featuredProducts, stockedProducts, notStockedProducts, error, loading ] = useGetAllProducts()
+    const [
+        prods,
+        subcategories,
+        brands,,
+        featuredProducts,
+        stockedProducts,
+        notStockedProducts,
+        error,
+        loading
+    ] = useGetAllProducts()
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
@@ -62,6 +71,10 @@ const AdminProductsPage = () => {
                         </h3>
                         <AdminProductsContainer
                             prods={prods}
+                            brands={brands}
+                            featuredProducts={featuredProducts}
+                            stockedProducts={stockedProducts}
+                            notStockedProducts={notStockedProducts}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />

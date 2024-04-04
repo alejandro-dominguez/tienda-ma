@@ -24,9 +24,6 @@ const useGetAllProducts = () => {
         const subcategoriesList = []
         const brandsList = []
         const productLinesList = []
-        const featuredProductsList = []
-        const stockedProductsList = []
-        const notStockedProductsList = []
         firebaseProds.map(prod => {
             return (
                 subcategoriesList.push(prod.subcategory),
@@ -34,12 +31,25 @@ const useGetAllProducts = () => {
                 productLinesList.push(prod.productLine)
             )
         })
+        const featuredProductsList = firebaseProds.filter(prod => {
+            return prod.featured === true
+        })
+
+        const stockedProductsList = firebaseProds.filter(prod => {
+            return prod.stock === true
+        })
+        const notStockedProductsList = firebaseProds.filter(prod => {
+            return prod.stock === false
+        })
         const filteredSubcategoriesList = [...new Set(subcategoriesList)]
         const filteredBrandsList = [...new Set(brandsList)]
         const filteredProductLinesList = [...new Set(productLinesList)]
         setSubcategories(filteredSubcategoriesList)
         setBrands(filteredBrandsList)
         setProductLines(filteredProductLinesList)
+        setFeaturedProducts(featuredProductsList)
+        setStockedProducts(stockedProductsList)
+        setNotStockedProducts(notStockedProductsList)
         setLoading(false)
     }
 

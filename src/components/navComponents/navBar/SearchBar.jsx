@@ -12,7 +12,7 @@ const SearchBar = ({
     setInputValue,
     setShowSearch
 }) => {
-    const [ prods, subcategories, brands, productLines, error, loading ] = useGetAllProducts()
+    const [ prods, subcategories, brands, productLines,,,, error, loading ] = useGetAllProducts()
     
     const getValue = (e) => {
         setInputValue(e.target.value)
