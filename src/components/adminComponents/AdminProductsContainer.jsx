@@ -1,8 +1,6 @@
-import {
-    useEffect,
-    useState
-} from 'react';
+import { useState } from 'react';
 import AdminProductCard from './adminItems/AdminProductCard';
+import AdminProductFilters from './adminItems/AdminProductFilters';
 
 const AdminProductsContainer = ({
     prods,
@@ -13,28 +11,41 @@ const AdminProductsContainer = ({
     setActiveToast,
     setErrorToast
 }) => {
-    const [ products, setProducts ] = useState([])
-
-    useEffect(() => {
-      setProducts(prods)
-    }, [])
+    const [products, setProducts] = useState(prods)
 
     return (
-        <div>
-            <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3 gap-6'>
-                {
-                    products.map(product => {
-                        return (
-                            <AdminProductCard
-                                prod={product}
-                                key={product.id}
-                                setActiveToast={setActiveToast}
-                                setErrorToast={setErrorToast}
-                            />
-                    )})
-                }
-            </div>
-        </div>
+        <>
+            <AdminProductFilters
+                prods={prods}
+                brands={brands}
+                featuredProducts={featuredProducts}
+                stockedProducts={stockedProducts}
+                notStockedProducts={notStockedProducts}
+                setProducts={setProducts}
+            />
+            {
+                products.length > 0 ?
+                    <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3 gap-6'>
+                    {
+                        products.map(prod => {
+                            return (
+                                <AdminProductCard
+                                    prod={prod}
+                                    key={prod.id}
+                                    setActiveToast={setActiveToast}
+                                    setErrorToast={setErrorToast}
+                                />
+                        )})
+                    }
+                  </div>
+                :
+                    <div className='w-full mt-3'>
+                        <h3 className='text-lg'>
+                            Actualmente todos los productos se encuentran en stock.
+                        </h3>
+                    </div>
+            }
+        </>
     )
 };
 

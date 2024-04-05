@@ -72,9 +72,9 @@ const AdminProductCard = ({
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))}
-                        >
+                    >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Ver producto
                         </span>
@@ -82,9 +82,9 @@ const AdminProductCard = ({
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => navigate((`/admin/consola/productos/editar/${prod.id}`))}
-                        >
+                    >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar
                         </span>
@@ -100,7 +100,7 @@ const AdminProductCard = ({
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
+                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
                                 onClick={() => updateInactiveProduct(prod.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
@@ -111,7 +111,7 @@ const AdminProductCard = ({
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
+                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
                                 onClick={() => updateActiveProduct(prod.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>

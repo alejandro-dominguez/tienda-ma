@@ -80,7 +80,7 @@ const AdminBlogCard = ({
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => navigate((`/blogs/${blog.id}`))}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
@@ -90,7 +90,7 @@ const AdminBlogCard = ({
                     <button
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                        ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => storeAndNavigate()}
                         >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
@@ -108,7 +108,7 @@ const AdminBlogCard = ({
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
+                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
                                 onClick={() => updateInactiveBlog(blog.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
@@ -119,7 +119,7 @@ const AdminBlogCard = ({
                             <button
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer leading-[1.1rem] text-start'
+                                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
                                 onClick={() => updateActiveBlog(blog.id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>

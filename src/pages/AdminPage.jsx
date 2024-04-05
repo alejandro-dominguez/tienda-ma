@@ -75,7 +75,7 @@ const AdminPage = () => {
                         </label>
                         <input
                             type='password' name='adminPassword' id='adminPassword' required placeholder='**********'
-                            className='contact-input' autoComplete='adminPassword'
+                            className='contact-input'
                             onChange={registerInputs}
                         />
                 <button

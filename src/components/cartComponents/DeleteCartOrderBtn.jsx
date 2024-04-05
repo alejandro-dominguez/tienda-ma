@@ -14,7 +14,7 @@ const DeleteCartOrderBtn = () => {
         onClick={() => emptyCart()}
         >
             <BsFillTrash3Fill
-                className='block cursor-pointer text-[1.3rem] drop-shadow-sm text-white'
+                className='block text-[1.3rem] drop-shadow-sm text-white'
             />
             <span className='font-Raleway text-[.9rem] tracking-wider font-bold'>
                 Eliminar orden

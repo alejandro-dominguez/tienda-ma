@@ -43,7 +43,7 @@ const AdminPaymentCard = ({
                         <button
                             type='button'
                             className='px-[.8rem] py-[.15rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                            ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                            ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                             onClick={() => storeAndNavigate()}
                             >
                             <span className='tracking-wider text-[.8rem] font-Raleway'>

@@ -57,7 +57,7 @@ const FeaturedBlogArticle = ({ blog }) => {
             <button
                 type='button'
                 className='w-fit mr-auto mt-10 px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
-                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 cursor-pointer'
+                ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 onClick={() => navigate('/blogs')}
             >
                 <span className='tracking-wider text-[.8rem] font-Raleway'>

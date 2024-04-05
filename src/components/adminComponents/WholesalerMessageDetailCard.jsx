@@ -88,7 +88,7 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
                 className='flex items-center gap-3 mt-5'
                 onClick={() => readMessage(wholesalerMessage.id)}
             >
-                <IoEyeSharp className='block cursor-pointer text-[1.7rem] mt-2 drop-shadow-sm text-zinc-900/80' />
+                <IoEyeSharp className='block text-[1.7rem] mt-2 drop-shadow-sm text-zinc-900/80' />
                 <span className='text-sm font-bold mt-2'>
                     Marcar mensaje leído
                 </span>
@@ -98,7 +98,7 @@ const WholesalerMessageDetailCard = ({ wholesalerMessage }) => {
                 className='flex items-center gap-3 mt-2'
                 onClick={() => deleteMessage(wholesalerMessage.id)}
             >
-                <BsFillTrash3Fill className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
+                <BsFillTrash3Fill className='block text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
                 <span className='text-sm font-bold mt-2'>
                     Eliminar mensaje
                 </span>
