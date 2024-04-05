@@ -25,7 +25,7 @@ const PaymentsPage = () => {
                 Formas de pago
             </h1>
             {
-                JSON.stringify(paymentItems) !== '{}' ?
+                (JSON.stringify(paymentItems) !== '{}' && !loadingPayments) ?
                     <div className='mb-20'>
                         <div className='mx-4 md:mx-10 mt-3 grid place-items-center'>
                             <div className='flex flex-col items-center justify-center sm:grid sm:grid-cols-2

@@ -10,15 +10,17 @@ const EditProductStockForm = ({
     setActiveToast,
     setErrorToast
 }) => {
-    const [ productStock, setProductStock ] = useState({
-        stock: Boolean,
-    })
-    
-    const registerInputs = ({ target: {name, value} }) => {
-        setProductStock({
-            ...productStock,
-            [name]: value
-        })
+    const [ productStock, setProductStock ] = useState(true)
+
+    const registerInputs = (e) => {
+        switch (e.target.value) {
+            case 'true':
+                setProductStock(true)
+            break;
+            case 'false':
+                setProductStock(false)
+            break;
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -46,17 +48,17 @@ const EditProductStockForm = ({
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
                 {
-                    product.stock ?
+                    !product.stock ?
                         <label
                             htmlFor='productStock'
                             className='text-sm font-bold mt-2'>
-                            Actualmente hay stock.
+                            Actualmente no hay stock.
                         </label>
                     :
                         <label
                             htmlFor='productStock'
                             className='text-sm font-bold mt-2'>
-                            Actualmente no hay stock.
+                            Actualmente hay stock.
                         </label>
                 }
                 <select
