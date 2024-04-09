@@ -4,7 +4,7 @@ import logo3 from '../../assets/sliderLogos/nonisec.svg';
 import logo4 from '../../assets/sliderLogos/comodin.svg'; 
 import logo5 from '../../assets/sliderLogos/estrella.svg';
 import logo6 from '../../assets/sliderLogos/plenitud.svg';
-import logo7 from '../../assets/sliderLogos/petit.svg';
+import logo7 from '../../assets/sliderLogos/duffy.png';
 import logo8 from '../../assets/sliderLogos/trifarma.svg';
 import logo9 from '../../assets/sliderLogos/paez.svg';
 import logo10 from '../../assets/sliderLogos/doncella.svg';
@@ -57,10 +57,10 @@ const HomeSlider = () => {
                         className='block w-full drop-shadow-sm'
                     />
                 </div>
-                <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
+                <div className='w-16 sm:w-20 mx-[.95rem] sm:mx-8'>
                     <img
                         src={logo7}
-                        alt='logo Petit'
+                        alt='logo Duffy'
                         className='block w-full drop-shadow-sm'
                     />
                 </div>
