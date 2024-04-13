@@ -33,7 +33,7 @@ const CartModalForm = ({
     const [ errorOrder, setErrorOrder ] = useState('')
     const { emptyCart, calculateCartTotal } = useContext(ShopContext)
     const orderTotalAmount = numberFormater(calculateCartTotal())
-    const orderId = Math.floor(Math.random() * 10) * Date.now()
+    const orderId = (Math.floor(Math.random() * 10) + 1) * Date.now()
 
     const registerInputs = ({ target: {name, value} }) => {
         setOrder({
