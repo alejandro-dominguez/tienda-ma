@@ -23,7 +23,7 @@ const OrderProvider = ({ children }) => {
             try {
                 setLoadingOrders(true)
                 const collectionRef = collection(db, 'orders')
-                const q = query(collectionRef, orderBy('orderDate', 'desc'))
+                const q = query(collectionRef, orderBy('dateFilter', 'desc'))
                 const querySnapshot = await getDocs(q)
                 const firebaseOrders = []
                 querySnapshot.forEach((doc) => {

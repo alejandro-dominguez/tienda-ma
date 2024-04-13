@@ -45,6 +45,7 @@ const CartModalForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            const localDate = Date.now()
             await addDoc(collection(db, 'orders'),
                 {
                     clientFullName: order.orderFullName,
@@ -58,6 +59,7 @@ const CartModalForm = ({
                     orderProducts: cartProducts,
                     orderTotal: orderTotalAmount,
                     orderDate: new Date().toLocaleString(),
+                    dateFilter: localDate,
                     delivered: false,
                     process: false,
                     orderId: orderId
