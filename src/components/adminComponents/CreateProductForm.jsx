@@ -5,7 +5,11 @@ import {
     collection,
 } from 'firebase/firestore';
 
-const CreateProductForm = ({ subcategories }) => {
+const CreateProductForm = ({
+    subcategories,
+    setActiveToast,
+    setErrorToast
+}) => {
     const [ newProduct, setNewProduct ] = useState({
         productBrand: '',
         productName: '',
