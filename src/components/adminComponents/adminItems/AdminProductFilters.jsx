@@ -14,7 +14,7 @@ const AdminProductFilters = ({
         }
     }
 
-    const flterProducts = (filter) => {
+    const filterProducts = (filter) => {
         switch (filter) {
             case 'featured':
                 setProducts(featuredProducts)
@@ -57,7 +57,7 @@ const AdminProductFilters = ({
                 className='px-3 py-1 bg-zinc-900 text-white rounded-md shadow-sm w-36 md:w-fit
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
-                onClick={() => flterProducts('featured')}
+                onClick={() => filterProducts('featured')}
             >
                 Destacados
             </button>
@@ -65,7 +65,7 @@ const AdminProductFilters = ({
                 className='px-3 py-1 bg-zinc-900 text-white rounded-md shadow-sm w-36 md:w-fit
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
-                onClick={() => flterProducts('stocked')}
+                onClick={() => filterProducts('stocked')}
 
             >
                 En stock
@@ -74,7 +74,7 @@ const AdminProductFilters = ({
                 className='px-3 py-1 bg-zinc-900 text-white rounded-md shadow-sm w-36 md:w-fit
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
-                onClick={() => flterProducts('notStocked')}
+                onClick={() => filterProducts('notStocked')}
 
             >
                 Sin stock
@@ -83,7 +83,7 @@ const AdminProductFilters = ({
                 className='px-3 py-1 bg-zinc-900 text-white rounded-md shadow-sm w-36 md:w-fit
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
-                onClick={() => flterProducts('all')}
+                onClick={() => filterProducts('all')}
 
             >
                 Mostrar todos

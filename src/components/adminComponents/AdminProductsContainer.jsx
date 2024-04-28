@@ -39,7 +39,7 @@ const AdminProductsContainer = ({
                     }
                   </div>
                 :
-                    <div className='w-full mt-3'>
+                    <div className='min-w-[92.9vw] min-h-[20rem] mt-3'>
                         <h3 className='text-lg'>
                             Actualmente todos los productos se encuentran en stock.
                         </h3>
