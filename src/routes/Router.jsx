@@ -13,23 +13,22 @@ import disabledSiteRouter from './routers/disabledSiteRouter';
 const Router = () => {
     const { enableSite } = useContext(SiteContext)
     const { authUser } = useContext(AuthContext)
-    const [ authorizedUser, setAuthorizedUser ] = useState({})
-    
+    const [ authorizedUser, setAuthorizedUser ] = useState(null)
+
     useEffect(() => {
         if (localStorage.authUser) {
             setAuthorizedUser(JSON.parse(localStorage.authUser))
-        } else {
+        } else if (authUser !== null) {
             setAuthorizedUser(authUser)
         }
     }, [])
-    
 
     return ( 
         <RouterProvider
             router={
                 !enableSite.enabled ?
                     disabledSiteRouter
-                : authorizedUser !== JSON.stringify('{}') ?
+                : authorizedUser !== null && authUser ?
                     adminRouter
                 :
                     clientRouter

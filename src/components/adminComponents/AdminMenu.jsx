@@ -10,11 +10,15 @@ import { useContext } from 'react';
 import { SiteContext } from '../../contexts/siteContext';
 import { useState } from 'react';
 import { db } from '../../firebase/config';
+import { AuthContext } from '../../contexts/authContext';
+import { useNavigate } from 'react-router-dom';
 import AdminMenuItem from './adminItems/AdminMenuItem';
 
 const AdminMenu = ({ adminMenuData }) => {
     const { enableSite } = useContext(SiteContext)
     const [ errorAdmin, setErrorAdmin ] = useState('')
+    const { signUserOut } = useContext(AuthContext)
+    const  navigate = useNavigate()
 
     const disableMainSite = async () => {
         try {
@@ -68,6 +72,12 @@ const AdminMenu = ({ adminMenuData }) => {
         }
     }
 
+    const signOut = () => {
+        signUserOut()
+        localStorage.removeItem('authUser')
+        navigate('/')    
+    }
+
     return (
         <div className='w-fit mx-auto relative'>
             <div className='mx-auto grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4 mt-2 md:mt-0'>
@@ -81,11 +91,11 @@ const AdminMenu = ({ adminMenuData }) => {
                     )})
                 }
             </div>
-            <div className='flex flex-col md:flex-row'>
+            <div className='flex flex-col w-fit mx-auto gap-6 my-[1.1rem] md:my-7'>
                 {
                     enableSite.enabled ?
                         <button
-                            className='mx-auto my-[1.1rem] md:my-7 py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
+                            className='py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
                             onClick={() => disableMainSite()}
                         >
                             <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
@@ -94,7 +104,7 @@ const AdminMenu = ({ adminMenuData }) => {
                         </button>
                     :
                         <button
-                            className='mx-auto my-[1.1rem] md:my-7 py-2 px-3 grid place-items-center bg-green-600 rounded-lg w-44'
+                            className='py-2 px-3 grid place-items-center bg-green-600 rounded-lg w-44'
                             onClick={() => enableMainSite()}
                         >
                             <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
@@ -102,6 +112,14 @@ const AdminMenu = ({ adminMenuData }) => {
                             </span>
                         </button>
                 }
+                <button
+                    className='py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
+                    onClick={() => signOut()}
+                >
+                    <span className='text-white font-bold text-sm tracking-wider drop-shadow text-center'>
+                        Admin. logout
+                    </span>
+                </button>
             </div>
             <div className='absolute'>
                 <Toaster

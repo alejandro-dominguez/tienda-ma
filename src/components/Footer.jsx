@@ -22,11 +22,11 @@ const Footer = () => {
     useEffect(() => {
         if (localStorage.authUser) {
             setAuthorizedUser(JSON.parse(localStorage.authUser))
-        } else {
+        } else if (authUser !== null) {
             setAuthorizedUser(authUser)
         }
     }, [])
-    
+
     return (
         <footer className='w-full grid grid-cols-1 lg:grid-cols-4 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
             <div className='flex flex-col items-start mt-0 md:mt-4 lg:mt-0 gap-2'>
@@ -134,7 +134,7 @@ const Footer = () => {
                 <Link
                     to=
                         {
-                            authorizedUser !== JSON.stringify('{}') ?
+                            authorizedUser !== JSON.stringify('{}') && authUser !== null ?
                                 '/admin/consola'
                             :
                                 '/admin'

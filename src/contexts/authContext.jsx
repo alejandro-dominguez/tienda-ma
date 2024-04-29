@@ -5,7 +5,8 @@ import {
 } from 'react';
 import {
     onAuthStateChanged,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut
 } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
@@ -16,17 +17,21 @@ const AuthProvider = ({ children }) => {
 
     const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
+    const signUserOut = () => signOut(auth)
+
     useEffect(() => {
         onAuthStateChanged(auth, user => {
-            setAuthUser(user)
+            if (user) {
+                setAuthUser(user)
+            }
         })
     }, [])
-    
 
     return (
         <AuthContext.Provider
             value={{
                 signIn,
+                signUserOut,
                 authUser
             }}
         >
