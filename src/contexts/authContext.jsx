@@ -17,7 +17,10 @@ const AuthProvider = ({ children }) => {
 
     const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
 
-    const signUserOut = () => signOut(auth)
+    const signUserOut = () => {
+        signOut(auth)
+        setAuthUser(null)
+    }
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
