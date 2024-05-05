@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
             value={{
                 signIn,
                 signUserOut,
-                authUser
+                authUser,
             }}
         >
             {children}
