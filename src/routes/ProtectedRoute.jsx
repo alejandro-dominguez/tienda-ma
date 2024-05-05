@@ -8,8 +8,6 @@ import { AuthContext } from '../contexts/authContext';
 const ProtectedRoute = () => {
     const { authUser } = useContext(AuthContext)
 
-    console.log(authUser);
-
     return (
         <>
         {

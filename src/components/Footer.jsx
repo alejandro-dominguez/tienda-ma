@@ -1,12 +1,8 @@
 import {
-    useContext,
-    useEffect,
-    useState
-} from 'react';
-import {
     FaTruck,
     FaUserCircle
 } from 'react-icons/fa';
+import { useContext } from 'react';
 import { AuthContext } from '../contexts/authContext';
 import { Link } from 'react-router-dom'
 import { BiSolidCaretUpCircle } from 'react-icons/bi';
@@ -17,15 +13,6 @@ import scrollTop from '../utilities/scrollTop';
 
 const Footer = () => {
     const { authUser } = useContext(AuthContext)
-    const [ authorizedUser, setAuthorizedUser ] = useState({})
-
-    useEffect(() => {
-        if (localStorage.authUser) {
-            setAuthorizedUser(JSON.parse(localStorage.authUser))
-        } else if (authUser !== null) {
-            setAuthorizedUser(authUser)
-        }
-    }, [])
 
     return (
         <footer className='w-full grid grid-cols-1 lg:grid-cols-4 py-6 px-4 gap-5 md:gap-0 md:px-10 bg-white z-10'>
@@ -134,7 +121,7 @@ const Footer = () => {
                 <Link
                     to=
                         {
-                            authorizedUser !== JSON.stringify('{}') && authUser !== null ?
+                            localStorage.getItem('authUser') || authUser ?
                                 '/admin/consola'
                             :
                                 '/admin'
