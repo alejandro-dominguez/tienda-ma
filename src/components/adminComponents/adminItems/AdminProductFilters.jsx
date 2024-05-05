@@ -6,11 +6,12 @@ const AdminProductFilters = ({
     notStockedProducts,
     setProducts
 }) => {
-    const registerInputs = (e) => {
+    const registerInput = (e) => {
         if (e.target.value !== 'Marcas') {
             setProducts(
                 prods.filter(prod => prod.brand === e.target.value)
             )
+            localStorage.setItem('adminBrandFilter', e.target.value)
         }
     }
 
@@ -18,15 +19,19 @@ const AdminProductFilters = ({
         switch (filter) {
             case 'featured':
                 setProducts(featuredProducts)
-            break; 
+                localStorage.getItem('adminBrandFilter') ? localStorage.removeItem('adminBrandFilter') : null
+                break; 
             case 'stocked':
                 setProducts(stockedProducts)        
-            break;
+                localStorage.getItem('adminBrandFilter') ? localStorage.removeItem('adminBrandFilter') : null
+                break;
             case 'notStocked':
                 setProducts(notStockedProducts)        
+                localStorage.getItem('adminBrandFilter') ? localStorage.removeItem('adminBrandFilter') : null
                 break;    
             case 'all':
                 setProducts(prods)        
+                localStorage.getItem('adminBrandFilter') ? localStorage.removeItem('adminBrandFilter') : null
             break;
         }
     }
@@ -37,7 +42,7 @@ const AdminProductFilters = ({
                 name='brandFilter' id='brandFilter' required
                 className='px-3 py-1 bg-zinc-900 text-white rounded-md shadow-sm text-center w-36 md:w-fit
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
-                onChange={registerInputs}
+                onChange={registerInput}
             >
                 <option value={null}>Marcas</option>
                 {
@@ -66,7 +71,6 @@ const AdminProductFilters = ({
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
                 onClick={() => filterProducts('stocked')}
-
             >
                 En stock
             </button>
@@ -75,7 +79,6 @@ const AdminProductFilters = ({
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
                 onClick={() => filterProducts('notStocked')}
-
             >
                 Sin stock
             </button>
@@ -84,7 +87,6 @@ const AdminProductFilters = ({
                 transition-colors ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                 type='button'
                 onClick={() => filterProducts('all')}
-
             >
                 Mostrar todos
             </button>
