@@ -1,6 +1,7 @@
 import {
     doc,
-    updateDoc
+    updateDoc,
+    deleteDoc
 } from 'firebase/firestore';
 import {
     Toaster,

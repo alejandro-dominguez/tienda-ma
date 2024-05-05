@@ -1,6 +1,7 @@
 import {
     doc,
-    updateDoc
+    updateDoc,
+    deleteDoc
 } from 'firebase/firestore';
 import {
     Toaster,
@@ -116,7 +117,7 @@ const OrderDetailCard = ({ order }) => {
                         {order.clientAdressStreet}
                     </span>
                     <span>
-                        {order.clientAdressNumber}.
+                        {order.clientAdressNumber},
                     </span>
                     {
                         order.clientAdressFloor ?
@@ -129,7 +130,7 @@ const OrderDetailCard = ({ order }) => {
                     {
                         order.clientAdressDoor ?
                             <span>
-                                {order.clientAdressDoor}.
+                                {order.clientAdressDoor}
                             </span>
                         :
                             null
