@@ -1,6 +1,4 @@
-import {
-    useContext,
-} from 'react';
+import { useContext } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { SiteContext } from '../contexts/siteContext';
 import clientRouter from './routers/clientRouter';
