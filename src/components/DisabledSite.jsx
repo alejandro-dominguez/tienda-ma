@@ -1,5 +1,3 @@
-import logo from '../assets/logo-header.svg';
-
 const DisabledSite = () => {
     return (
         <main className='w-full grid place-items-start pt-32 min-h-[100svh] px-4 md:px-10'>
