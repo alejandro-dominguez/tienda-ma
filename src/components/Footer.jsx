@@ -58,7 +58,7 @@ const Footer = () => {
                    </span>
                 </Link>
                 <Link
-                    to='https://www.instagram.com/tiendama_rosario/'
+                    to='https://www.instagram.com/panalera_tiendama_rosario/'
                     referrerPolicy='no-referrer'
                     rel='noopener'  
                     target='_blank'
@@ -66,7 +66,7 @@ const Footer = () => {
                 >
                     <PiInstagramLogoFill className='block text-2xl text-zinc-900' />
                     <span className='font-bold font-Lato drop-shadow-sm'>
-                        @tiendama_rosario
+                        @panalera_tiendama_rosario
                     </span>
                 </Link>
                 <Link
