@@ -8,37 +8,25 @@ export const ShopContext = createContext({});
 const ShopProvider = ({ children }) => {
     const [ products, setProducts ] = useState([])
 
-    const addProduct = (productToAdd) => {
-        const productSize = Object.hasOwn(productToAdd, 'selectedSize')
-        if (productSize) {
-            const repeatedSize = repeatedProductSize(productToAdd.selectedSize)
-            if (repeatedSize) {
-                const productRepeated = products.find(productsInCart => productsInCart.selectedSize === productToAdd.selectedSize)
-                productRepeated.quantity += productToAdd.quantity
-                const productsNotRepeated = products.filter(productsInCart => productsInCart.selectedSize !== productToAdd.selectedSize)
-                setProducts([ ...productsNotRepeated, productRepeated ])
-            } else {
-                setProducts([ ...products, productToAdd ])
-            }
-        } else if (!productSize) {
-            const repeated = repeatedProduct(productToAdd.id)
-            if (repeated) {
-                const productRepeated = products.find(productsInCart => productsInCart.id === productToAdd.id)
-                productRepeated.quantity += productToAdd.quantity
-                const productsNotRepeated = products.filter(productsInCart => productsInCart.id !== productToAdd.id)
-                setProducts([ ...productsNotRepeated, productRepeated ])
-            } else {
-                setProducts([ ...products, productToAdd ])
-            }
+    const addProduct = ( productToAdd ) => {
+        const newProduct =  { ...productToAdd }
+        const existingProduct = repeatedProduct( products, newProduct )
+        if (existingProduct) {
+            existingProduct.quantity += newProduct.quantity
+            setProducts([ ...products ])
+        } else {
+            setProducts([ ...products, newProduct ])
         }
     }
 
-    const repeatedProduct = (id) => {
-        return products.some(product => product.id === id)
-    }
-
-    const repeatedProductSize = (selectedSize) => {
-        return products.some(product => product.selectedSize === selectedSize)
+    const repeatedProduct = ( products, newProduct ) => {
+        for (const e of products) {
+            const e1 = { ...e }
+            const e2 = { ...newProduct }
+            if ((!e2.selectedSize && (e1.id === e2.id)) ||
+                ((e1.id === e2.id) && (e1.selectedSize === e2.selectedSize))
+            ) return e
+        }
     }
 
     const removeProduct = (prodId) => {
