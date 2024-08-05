@@ -1,19 +1,38 @@
 import {
     Outlet,
-    ScrollRestoration
+    ScrollRestoration,
+    useLocation
 } from 'react-router-dom';
+import {
+    useEffect,
+    useState
+} from 'react';
 import NavBar from '../../components/NavBar';
 import WhatsAppBtn from '../../components/WhatsAppBtn';
 import Footer from '../../components/Footer';
 
 const Root = () => {
+    const [ restoreScroll, setRestoreScroll ] = useState(false)
+    const location = useLocation()
+    
+    useEffect(() => {
+        (location.pathname === ('/') || location.pathname.includes('/blogs') || location.pathname.includes('/detalle')) ?
+            setRestoreScroll(true) 
+        :
+            setRestoreScroll(false)
+    }, [location])
+    
     return (
         <div className='relative min-h-[100svh] w-full'>
             <NavBar />
             <Outlet />
             <WhatsAppBtn />
             <Footer />
-            <ScrollRestoration />
+            {
+                restoreScroll ?
+                    <ScrollRestoration />
+                : null
+            }
         </div>
     )
 };

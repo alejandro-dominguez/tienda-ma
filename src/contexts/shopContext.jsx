@@ -9,22 +9,22 @@ const ShopProvider = ({ children }) => {
     const [ products, setProducts ] = useState([])
 
     const addProduct = ( productToAdd ) => {
-        const newProduct =  { ...productToAdd }
-        const existingProduct = repeatedProduct( products, newProduct )
+        const newProduct =  {...productToAdd}
+        const existingProduct = repeatedProduct(products, newProduct)
         if (existingProduct) {
             existingProduct.quantity += newProduct.quantity
-            setProducts([ ...products ])
+            setProducts([...products])
         } else {
-            setProducts([ ...products, newProduct ])
+            setProducts([...products, newProduct])
         }
     }
 
-    const repeatedProduct = ( products, newProduct ) => {
+    const repeatedProduct = (products, newProduct) => {
         for (const e of products) {
-            const e1 = { ...e }
-            const e2 = { ...newProduct }
+            const e1 = {...e}
+            const e2 = {...newProduct}
             if ((!e2.selectedSize && (e1.id === e2.id)) ||
-                ((e1.id === e2.id) && (e1.selectedSize === e2.selectedSize))
+            ((e1.id === e2.id) && (e1.selectedSize === e2.selectedSize))
             ) return e
         }
     }
