@@ -13,7 +13,11 @@ import ItemBabySizes from './ItemBabySizes';
 import ItemAdultSizes from './ItemAdultSizes';
 import ItemCount from './ItemCount';
 
-const BuyItemModal = ({ product, setShowModal, cardRef }) => {
+const BuyItemModal = ({
+    product,
+    setShowBuyItemModal,
+    cardRef
+}) => {
     const { addProduct } = useContext(ShopContext)
     const [ isMobile, setIsMobile ] = useState(false)
     const [ marginTop, setMarginTop ] = useState(false)
@@ -54,7 +58,7 @@ const BuyItemModal = ({ product, setShowModal, cardRef }) => {
     }
 
     const closeModal = () => {
-        setShowModal(false)
+        setShowBuyItemModal(false)
         cardRef.scrollIntoView({behavior: 'smooth'})
     }
 

@@ -3,22 +3,34 @@ import {
     useRef,
     useState
 } from 'react';
-import { useNavigate } from 'react-router-dom';
-import BuyItemModal from './itemComponents/BuyItemModal.jsx';
+import {
+    Link,
+    useNavigate
+} from 'react-router-dom';
+import { MdEdit } from 'react-icons/md';
+import BuyItemModal from './itemComponents/BuyItemModal';
+import EditProductModal from '../components/adminComponents/adminEditForms/EditProductModal';
 import shortenText from '../utilities/shortenText';
 import numberFormater from '../utilities/numberFormater';
 import scrollTop from '../utilities/scrollTop';
 
 const ListItemCard = ({ product }) => {
     const navigate = useNavigate()
-    const [ showModal, setShowModal ] = useState(false)
+    const [ showBuyItemModal, setShowBuyItemModal ] = useState(false)
+    const [ showEditItemModal, setShowEditItemModal ] = useState(false)
     const [ isMobile, setIsMobile ] = useState(false)
+    const [ isAdmin, setIsAdmin ] = useState(false)
     const cardRef = useRef()
 
     const responsiveViewport = () => window.visualViewport.width < 1024 ? setIsMobile(true) : setIsMobile(false)
 
     useEffect(() => {
         responsiveViewport()
+    }, [])
+
+    useEffect(() => {
+        const admin = JSON.parse(localStorage.getItem('authUser'))
+        admin === true ? setIsAdmin(true) : setIsAdmin(false)
     }, [])
     
     useEffect(() => {
@@ -27,13 +39,13 @@ const ListItemCard = ({ product }) => {
         const cartEl = document.getElementById('cartLink')
         const wspBtnEl = document.getElementById('wspBtn')
 
-        isMobile && showModal ?
+        isMobile && (showBuyItemModal || showEditItemModal) ?
             (
                 scrollTop(),
                 bodyEl.style.overflowY = 'hidden'
             )
         :
-            showModal ?
+            showBuyItemModal || showEditItemModal ?
                 (   
                     scrollTop(),
                     bodyEl.style.overflowY = 'hidden',
@@ -48,8 +60,8 @@ const ListItemCard = ({ product }) => {
                 cartEl.style.paddingRight = '0',
                 wspBtnEl.style.paddingRight = '0'
             )
-    }, [showModal])
-    
+    }, [ showBuyItemModal, showEditItemModal ])
+
     return (
         <>
         {
@@ -63,13 +75,36 @@ const ListItemCard = ({ product }) => {
                         {product.brand} {product.name}
                     </h3>
                     <div className='flex flex-col gap-4 mt-auto'>
-                        <div className='w-36 drop-shadow-sm'>
-                            <img
-                                src={product.img}
-                                alt={product.name}
-                                className='block w-full rounded drop-shadow aspect-square object-cover'
-                            />
-                        </div>
+                        {
+                            !isAdmin ?
+                                <div className='w-36 drop-shadow-sm'>
+                                    <img
+                                        src={product.img}
+                                        alt={product.name}
+                                        className='block w-full rounded drop-shadow aspect-square object-cover'
+                                    />
+                                </div>
+                            :
+                                <div className='flex'>
+                                    <div className='w-36 drop-shadow-sm'>
+                                        <img
+                                            src={product.img}
+                                            alt={product.name}
+                                            className='block w-full rounded drop-shadow aspect-square object-cover'
+                                        />
+                                    </div>
+                                    <button
+                                        type='button'
+                                        className='self-end'
+                                        onClick={() => setShowEditItemModal(true)}
+                                    >
+                                        <span className='ml-10 py-2 px-[.6rem] bg-zinc-900 text-white rounded-lg shadow-sm
+                                        text-lg transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'>
+                                            <MdEdit className='block' />
+                                        </span>
+                                    </button>
+                                </div>
+                        }
                         {
                             product.sizes ?
                                 <div className='flex flex-col'>
@@ -98,14 +133,14 @@ const ListItemCard = ({ product }) => {
                     <p className='text-sm text-zinc-900 drop-shadow-sm my-1'>
                         {shortenText((product.desc), 95)}
                     </p>
-                    <div className='mt-auto flex w-full gap-5'>
+                    <div className='mt-auto flex w-full gap-2'>
                         <button
                             type='button'
                             className='px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm
                             transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                            onClick={() => setShowModal(true)}
+                            onClick={() => setShowBuyItemModal(true)}
                         >
-                            <span className='tracking-wider text-[.8rem] font-Raleway'>
+                            <span className='tracking-wider text-[.75rem] font-Raleway'>
                                 Agregar
                             </span>
                         </button>
@@ -115,17 +150,36 @@ const ListItemCard = ({ product }) => {
                             transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
                             onClick={() => navigate((`/categorias/${product.category}/${product.subcategory}/detalle/${product.id}`))}                        
                         >
-                            <span className='tracking-wider text-[.8rem] font-Raleway'>
+                            <span className='tracking-wider text-[.75rem] font-Raleway'>
                                 Detalle
                             </span>
                         </button>
+                        <Link
+                            to='/carrito'
+                            className='px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm
+                            transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
+                        >
+                            <span className='tracking-wider text-[.75rem] font-Raleway'>
+                                Carrito
+                            </span>
+                        </Link>
                     </div>
                 </div>
                 {
-                    showModal ?
+                    showBuyItemModal ?
                         <BuyItemModal
                             product={product}
-                            setShowModal={setShowModal}
+                            setShowBuyItemModal={setShowBuyItemModal}
+                            cardRef={cardRef.current}
+                        />
+                    :
+                        null
+                }
+                {
+                    showEditItemModal ?
+                        <EditProductModal
+                            product={product}
+                            setShowEditItemModal={setShowEditItemModal}
                             cardRef={cardRef.current}
                         />
                     :
