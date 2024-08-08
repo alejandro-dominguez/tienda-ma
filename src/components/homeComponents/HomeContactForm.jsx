@@ -28,6 +28,7 @@ const HomeContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            const localDate = Date.now()
             await addDoc(collection(db, 'messages'),
                 {
                     fullName: contactFormMessage.contactFullName,
@@ -35,6 +36,7 @@ const HomeContactForm = () => {
                     email: contactFormMessage.contactEmail,
                     message: contactFormMessage.contactMessage,
                     messageDate: new Date().toLocaleString(),
+                    dateFilter: localDate,
                     read: false
                 }
             )

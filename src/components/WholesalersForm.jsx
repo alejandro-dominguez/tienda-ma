@@ -28,6 +28,7 @@ const WholesalersForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            const localDate = Date.now()
             await addDoc(collection(db, 'wholesalers'),
                 {
                     wholesalerFullName: wholesalersFormMessage.wholesalerFullName,
@@ -35,6 +36,7 @@ const WholesalersForm = () => {
                     wholesalerEmail: wholesalersFormMessage.wholesalerEmail,
                     wholesalerMessage: wholesalersFormMessage.wholesalerMessage,
                     messageDate: new Date().toLocaleString(),
+                    dateFilter: localDate,
                     read: false
                 }
             )

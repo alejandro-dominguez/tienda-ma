@@ -23,7 +23,7 @@ const ContactMessageProvider = ({ children }) => {
             try {
                 setLoadingMessages(true)
                 const collectionRef = collection(db, 'messages')
-                const q = query(collectionRef, orderBy('messageDate', 'desc'))
+                const q = query(collectionRef, orderBy('dateFilter', 'desc'))
                 const querySnapshot = await getDocs(q)
                 const firebaseMessages = []
                 querySnapshot.forEach((doc) => {

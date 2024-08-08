@@ -23,7 +23,7 @@ const WholesalerMessageProvider = ({ children }) => {
             try {
                 setLoadingWholesalersMessages(true)
                 const collectionRef = collection(db, 'wholesalers')
-                const q = query(collectionRef, orderBy('messageDate', 'desc'))
+                const q = query(collectionRef, orderBy('dateFilter', 'desc'))
                 const querySnapshot = await getDocs(q)
                 const firebaseWholesalersMessages = []
                 querySnapshot.forEach((doc) => {
