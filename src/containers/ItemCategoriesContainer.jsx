@@ -8,7 +8,7 @@ import { RiHandSanitizerFill } from 'react-icons/ri';
 import { GoSortDesc } from 'react-icons/go';
 import useGetSubcategories from '../customHooks/useGetSubcategories';
 import useGetFirebaseCategoriesData from '../customHooks/useGetFirebaseCategoriesData';
-import ItemCard from '../components/ItemCard';
+import ListItemCard from '../components/ListItemCard';
 import ErrorPage from '../pages/ErrorPage';
 import scrollToElement from '../utilities/scrollToElement';
 
@@ -54,9 +54,8 @@ const ItemCategoriesContainer = () => {
                             {
                                 data.map(product => {
                                     return (
-                                        <ItemCard
+                                        <ListItemCard
                                             product={product}
-                                            itemList={true}
                                             key={product.id}
                                         />
                                 )})

@@ -20,7 +20,10 @@ const WhatsAppBtn = () => {
         <>
         {
             showBtn ?
-                <div className='fixed bottom-[16%] sm:bottom-[17%] right-2 grid place-items-center'>
+                <div
+                    className='fixed bottom-[16%] sm:bottom-[17%] right-2 grid place-items-center'
+                    id='wspBtn'
+                >
                     <Link
                         to='https://wa.me/+5493416630000'
                         referrerPolicy='no-referrer'

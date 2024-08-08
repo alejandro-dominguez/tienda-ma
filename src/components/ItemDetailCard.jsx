@@ -10,7 +10,7 @@ import { ShopContext } from '../contexts/shopContext';
 import ItemSuggestions from '../components/itemComponents/ItemSuggestions';
 import ItemDetailInfo from './itemComponents/ItemDetailInfo';
 import ItemBabySizes from './itemComponents/ItemBabySizes';
-import ItemAdultSizes from './itemComponents/ItemAdultSizes.jsx';
+import ItemAdultSizes from './itemComponents/ItemAdultSizes';
 import ItemCount from './itemComponents/ItemCount';
 
 const ItemDetailCard = ({
@@ -84,6 +84,7 @@ const ItemDetailCard = ({
                                 confirmPurchase={confirmPurchase}
                                 initial={1}
                                 quantity={product.quantity}
+                                modal={false}
                             />
                     }
                 </div>

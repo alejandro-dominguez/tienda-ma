@@ -23,7 +23,10 @@ const Root = () => {
     }, [location])
     
     return (
-        <div className='relative min-h-[100svh] w-full'>
+        <div
+            className='relative min-h-[100svh] w-full'
+            id='router'
+        >
             <NavBar />
             <Outlet />
             <WhatsAppBtn />

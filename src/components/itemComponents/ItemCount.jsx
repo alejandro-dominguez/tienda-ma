@@ -8,7 +8,8 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 const ItemCount = ({
     confirmPurchase,
     quantity,
-    initial
+    initial,
+    modal
 }) => {
     const [ count, setCount ] = useState(initial)
 
@@ -25,7 +26,14 @@ const ItemCount = ({
     }
 
     return (
-        <div className='flex flex-col self-center md:self-end mt-4 md:mt-0 gap-2 drop-shadow-md'>
+        <div className=
+            {
+                !modal ?
+                    'flex flex-col self-center md:self-end mt-4 md:mt-0 gap-2 drop-shadow-md'
+                :
+                    'flex flex-col self-center mt-4 md:mt-0 gap-2 drop-shadow-md'
+            }
+        >
             <div className='flex items-center justify-between px-11'>
                 <button
                     type='button'
@@ -42,7 +50,7 @@ const ItemCount = ({
                     onClick={() => onPlus()}
                     className='transition-colors text-zinc-800/95 hover:text-teal-600/90 focus:text-teal-600/90'
                 >
-                    <FaPlusCircle  className='block'/>
+                    <FaPlusCircle className='block'/>
                 </button>
             </div>
             <button

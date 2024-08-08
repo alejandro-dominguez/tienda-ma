@@ -69,7 +69,6 @@ footer {
 	.contact-textarea::placeholder, .cart-textarea::placeholder {
 		@apply tracking-normal;
 	}
-	
 
 	.about-us-banner {
 		background-image: url('./assets/about-us-banner.jpg');

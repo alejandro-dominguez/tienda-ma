@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { BlogContext } from '../contexts/blogContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import ItemCard from '../components/ItemCard';
+import FeaturedItemCard from '../components/FeaturedItemCard';
 import FeaturedBlog from '../components/blogComponents/FeaturedBlog';
 import ErrorPage from '../pages/ErrorPage';
 import useGetFirebaseData from '../customHooks/useGetFirebaseData';
@@ -34,10 +34,9 @@ const FeaturedItemsContainer = () => {
                             {
                                 data.map((productData, i) => {
                                     return (
-                                        <ItemCard
+                                        <FeaturedItemCard
                                             key={i}
                                             product={productData}
-                                            itemList={false}
                                         />
                                     )
                                 })

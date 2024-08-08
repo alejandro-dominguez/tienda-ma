@@ -1,7 +1,7 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import ErrorPage from '../pages/ErrorPage';
-import ItemCard from '../components/ItemCard';
+import ListItemCard from '../components/ListItemCard';
 import useGetFirebaseBrandData from '../customHooks/useGetFirebaseBrandData';
 
 const BrandItemListContainer = () => {
@@ -19,9 +19,8 @@ const BrandItemListContainer = () => {
                         {
                             data.map(product => {
                                 return (
-                                    <ItemCard
+                                    <ListItemCard
                                         product={product}
-                                        itemList={true}
                                         key={product.id}
                                     />
                             )})
