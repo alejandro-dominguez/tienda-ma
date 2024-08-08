@@ -106,7 +106,7 @@ const ListItemCard = ({ product }) => {
                             onClick={() => setShowModal(true)}
                         >
                             <span className='tracking-wider text-[.8rem] font-Raleway'>
-                                Comprar
+                                Agregar
                             </span>
                         </button>
                         <button
