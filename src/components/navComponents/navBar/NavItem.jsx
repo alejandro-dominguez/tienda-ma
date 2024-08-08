@@ -1,6 +1,19 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavItem = ({ navItem }) => {
+const NavItem = ({ navItem, setHideMenu }) => {
+    const [ responsiveMenu, setResponsiveMenu ] = useState(false)
+
+    const responsiveViewport = () => window.visualViewport.width < 1024 ? setResponsiveMenu(true) : setResponsiveMenu(false)
+    
+    useEffect(() => {
+        responsiveViewport()
+    }, [])
+
+    const responsiveLink = () => {
+        responsiveMenu ? setHideMenu(true) : setHideMenu(false)
+    }
+
     return (
         <NavLink
             to={navItem.url}
@@ -9,6 +22,7 @@ const NavItem = ({ navItem }) => {
             after:scale-x-0 after:w-full after:transition-all after:ease-in-out after:duration-[250ms] after:origin-left
             after:blur-[.45px] after:bottom-[.15rem] after:hover:scale-x-100 after:hover:drop-shadow-sm after:focus:scale-x-100
             after:focus:drop-shadow-sm"
+            onClick={() => responsiveLink()}
         >
             {
                 !navItem.twoLines ?

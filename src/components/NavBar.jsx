@@ -102,6 +102,7 @@ const NavBar = () => {
                     navData={navData}
                     hideMenu={hideMenu}
                     showNav={showNav}
+                    setHideMenu={setHideMenu}
                 />
                 <div className='absolute inset-0 lg:static w-full bg-white lg:w-fit flex items-center justify-center gap-40 mt-2 lg:mt-0'>
                     <CartCounter />

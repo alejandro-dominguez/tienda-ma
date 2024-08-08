@@ -8,7 +8,8 @@ import SearchBar from './navBar/SearchBar';
 const NavItemMenu = ({
     navData,
     hideMenu,
-    showNav
+    showNav,
+    setHideMenu
 }) => {
     const [ inputValue, setInputValue ] = useState('')
     const [ showSearch, setShowSearch ] = useState(true)
@@ -52,7 +53,7 @@ const NavItemMenu = ({
                         <NavItem
                             navItem={data}
                             key={i}
-                            hideMenu={hideMenu}
+                            setHideMenu={setHideMenu}
                         />
                 )})
             }
