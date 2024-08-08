@@ -13,7 +13,7 @@ const ListItemCard = ({ product }) => {
     const navigate = useNavigate()
     const [ showModal, setShowModal ] = useState(false)
     const [ isMobile, setIsMobile ] = useState(false)
-    const buttonRef = useRef()
+    const cardRef = useRef()
 
     const responsiveViewport = () => window.visualViewport.width < 1024 ? setIsMobile(true) : setIsMobile(false)
 
@@ -55,7 +55,10 @@ const ListItemCard = ({ product }) => {
         {
             product.stock ?
                 <>
-                <div className='flex flex-col items-start justify-start m-4 py-4 px-5 bg-white rounded gap-1 shadow-sm drop-shadow-sm'>
+                <div
+                    className='flex flex-col items-start justify-start m-4 py-4 px-5 bg-white rounded gap-1 shadow-sm drop-shadow-sm'
+                    ref={cardRef}
+                >
                     <h3 className='font-Raleway font-black drop-shadow-sm tracking-wide text-[.9rem] mb-1'>
                         {product.brand} {product.name}
                     </h3>
@@ -100,7 +103,6 @@ const ListItemCard = ({ product }) => {
                             type='button'
                             className='px-3 py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm
                             transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                            ref={buttonRef}
                             onClick={() => setShowModal(true)}
                         >
                             <span className='tracking-wider text-[.8rem] font-Raleway'>
@@ -124,7 +126,7 @@ const ListItemCard = ({ product }) => {
                         <BuyItemModal
                             product={product}
                             setShowModal={setShowModal}
-                            buttonRef={buttonRef.current}
+                            cardRef={cardRef.current}
                         />
                     :
                         null

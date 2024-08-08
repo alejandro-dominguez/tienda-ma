@@ -1,6 +1,7 @@
 import {
     useContext,
-    useState
+    useState,
+    useEffect
 } from 'react';
 import {
     Toaster,
@@ -12,8 +13,10 @@ import ItemBabySizes from './ItemBabySizes';
 import ItemAdultSizes from './ItemAdultSizes';
 import ItemCount from './ItemCount';
 
-const BuyItemModal = ({ product, setShowModal, buttonRef }) => {
+const BuyItemModal = ({ product, setShowModal, cardRef }) => {
     const { addProduct } = useContext(ShopContext)
+    const [ isMobile, setIsMobile ] = useState(false)
+    const [ marginTop, setMarginTop ] = useState(false)
     const [ , setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
     const [ selectedAdultSize, setSelectedAdultSize ] = useState('')
@@ -52,8 +55,18 @@ const BuyItemModal = ({ product, setShowModal, buttonRef }) => {
 
     const closeModal = () => {
         setShowModal(false)
-        buttonRef.scrollIntoView({behavior: 'smooth'})
+        cardRef.scrollIntoView({behavior: 'smooth'})
     }
+
+    const responsiveViewport = () => window.visualViewport.width < 1024 ? setIsMobile(true) : setIsMobile(false)
+
+    useEffect(() => {
+        responsiveViewport()
+    }, [])
+
+    useEffect(() => {
+        isMobile ? setMarginTop(true) : setMarginTop(false) 
+    }, [marginTop])
 
     return (
         <>
@@ -61,7 +74,14 @@ const BuyItemModal = ({ product, setShowModal, buttonRef }) => {
             className='fixed top-0 left-0 w-full h-full bg-black/30 z-40'
             onClick={() => closeModal()}
         />
-        <div className='absolute top-[6.5rem] left-0 w-full h-full flex flex-col items-center text-center'>
+        <div className=
+            {
+                marginTop ?
+                    'absolute top-[6.5rem] left-0 w-full h-full flex flex-col items-center text-center'
+                :
+                    'absolute top-5 left-0 w-full h-full flex flex-col items-center text-center'
+            }
+        >
             <div className='relative flex flex-col items-center gap-4 py-6 bg-white rounded shadow-sm
             drop-shadow-sm z-50 min-w-[19.9rem]'>
                 <button 
@@ -72,7 +92,7 @@ const BuyItemModal = ({ product, setShowModal, buttonRef }) => {
                 >
                     <FaCircleXmark className='block'/>
                 </button>
-                <h3 className='font-Raleway font-black drop-shadow-sm tracking-wide text-lg mb-1'>
+                <h3 className='font-Raleway font-black drop-shadow-sm tracking-wide text-lg mb-1 px-5'>
                     {product.brand}
                     <br/>
                     {product.name}
