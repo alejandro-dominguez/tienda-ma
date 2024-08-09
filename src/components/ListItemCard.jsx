@@ -8,8 +8,8 @@ import {
     useNavigate
 } from 'react-router-dom';
 import { MdEdit } from 'react-icons/md';
-import BuyItemModal from './itemComponents/BuyItemModal';
-import EditProductModal from '../components/adminComponents/adminEditForms/EditProductModal';
+import BuyItemModal from './listComponents/BuyItemModal';
+import EditProductModal from './listComponents/EditProductModal';
 import shortenText from '../utilities/shortenText';
 import numberFormater from '../utilities/numberFormater';
 import scrollTop from '../utilities/scrollTop';
@@ -39,13 +39,14 @@ const ListItemCard = ({ product }) => {
         const cartEl = document.getElementById('cartLink')
         const wspBtnEl = document.getElementById('wspBtn')
 
-        isMobile && (showBuyItemModal || showEditItemModal) ?
-            (
-                scrollTop(),
-                bodyEl.style.overflowY = 'hidden'
-            )
-        :
-            showBuyItemModal || showEditItemModal ?
+        isMobile && showEditItemModal ?
+            scrollTop()
+            : isMobile && showBuyItemModal ?
+                (
+                    scrollTop(),
+                    bodyEl.style.overflowY = 'hidden'
+                )
+            : showBuyItemModal ?
                 (   
                     scrollTop(),
                     bodyEl.style.overflowY = 'hidden',
@@ -53,7 +54,10 @@ const ListItemCard = ({ product }) => {
                     cartEl.style.paddingRight = '17px',
                     wspBtnEl.style.paddingRight = '17px'
                 )
-        :
+            : showEditItemModal ?
+                scrollTop()
+            
+        :   
             (   
                 bodyEl.style.overflowY = 'auto',
                 routerEl.style.paddingRight = '0',

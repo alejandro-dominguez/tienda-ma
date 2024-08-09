@@ -9,9 +9,9 @@ import {
 } from 'sonner';
 import { ShopContext } from '../../contexts/shopContext';
 import { FaCircleXmark } from 'react-icons/fa6';
-import ItemBabySizes from './ItemBabySizes';
-import ItemAdultSizes from './ItemAdultSizes';
-import ItemCount from './ItemCount';
+import ItemBabySizes from '../itemComponents/ItemBabySizes';
+import ItemAdultSizes from '../itemComponents/ItemAdultSizes';
+import ItemCount from '../itemComponents/ItemCount';
 
 const BuyItemModal = ({
     product,
