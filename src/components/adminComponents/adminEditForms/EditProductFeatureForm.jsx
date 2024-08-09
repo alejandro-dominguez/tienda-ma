@@ -59,9 +59,13 @@ const EditProductFeatureForm = ({
                 </button>
                 </>
             :
+                <>
+                <h3 className='text-sm font-bold mt-2'>
+                    Este producto se encuentra destacado
+                </h3>
                 <button
                     type='button'
-                    className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
+                    className='mt-6 px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                     ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start w-fit self-center'
                     onClick={() => updateActiveProduct(product.id)}
                 >
@@ -69,6 +73,7 @@ const EditProductFeatureForm = ({
                         No Destacar producto
                     </span>
                 </button>
+                </>
         }
         </div>
     )
