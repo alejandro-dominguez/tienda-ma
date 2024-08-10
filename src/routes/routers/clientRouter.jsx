@@ -35,6 +35,7 @@ import AdminOrdersDetailPage from '../../pages/adminPages/adminDetailPages/Admin
 import AdminWholesalersDetailPage from '../../pages/adminPages/adminDetailPages/AdminWholesalersDetailPage';
 import AdminMessagesDetailPage from '../../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
 import ProtectedRoute from '../ProtectedRoute';
+import AboutClientPage from '../../pages/AboutClientPage';
 
 const clientRouter = createBrowserRouter([
     {
@@ -130,6 +131,11 @@ const clientRouter = createBrowserRouter([
             {
                 path: '/mayoristas',
                 element: <WholesalersPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/sobreUstedes',
+                element: <AboutClientPage />,
                 errorElement: <ErrorPage />,
             },
             {

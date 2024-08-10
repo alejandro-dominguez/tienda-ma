@@ -11,6 +11,7 @@ import WholesalerMessageProvider from './contexts/wholesalerMessageContext';
 import OrderProvider from './contexts/orderContext';
 import PromoProvider from './contexts/promoContext';
 import PaymentProvider from './contexts/paymentContext';
+import CommentsProvider from './contexts/commentsContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -18,17 +19,19 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <AuthContextProvider>
                 <ShopContextProvider>
                     <BlogContextProvider>
-                        <ContactMessageProvider>
-                            <WholesalerMessageProvider>
-                                <OrderProvider>
-                                    <PromoProvider>
-                                        <PaymentProvider>
-                                            <App />
-                                        </PaymentProvider>
-                                    </PromoProvider>
-                                </OrderProvider>
-                            </WholesalerMessageProvider>
-                        </ContactMessageProvider>
+                        <CommentsProvider>
+                            <ContactMessageProvider>
+                                <WholesalerMessageProvider>
+                                    <OrderProvider>
+                                        <PromoProvider>
+                                            <PaymentProvider>
+                                                <App />
+                                            </PaymentProvider>
+                                        </PromoProvider>
+                                    </OrderProvider>
+                                </WholesalerMessageProvider>
+                            </ContactMessageProvider>
+                        </CommentsProvider>
                     </BlogContextProvider>
                 </ShopContextProvider>
             </AuthContextProvider>

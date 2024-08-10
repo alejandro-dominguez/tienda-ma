@@ -62,6 +62,7 @@ const HomeContactForm = () => {
     }
 
     return (
+        <>
         <section
             id='contact-section'
             className='grid place-items-center pt-10 w-full pb-24'
@@ -138,17 +139,18 @@ const HomeContactForm = () => {
                     </span>
                 </button>
             </form>
-            <Toaster
-                richColors
-                toastOptions={{
-                    unstyled: false,
-                    classNames: {
-                        toast: 'h-24 mb-60',
-                        title: 'text-lg',
-                    },
-                }}
-            />
         </section>
+        <Toaster
+            richColors
+            toastOptions={{
+                unstyled: false,
+                classNames: {
+                    toast: 'h-24 mb-60',
+                    title: 'text-lg',
+                },
+            }}
+        />
+        </>
     )
 };
 

@@ -7,12 +7,16 @@ import HomeSlider from '../components/homeComponents/HomeSlider';
 const HeroSection = () => {
     const [ btnsData, ] = useState([
         {
-            'name': 'Contacto',
-            'section': 'contact-section'
+            'name': 'Historias de crianza',
+            'url': 'sobreUstedes'
         },
         {
             'name': 'Formas de pago',
             'url': 'formasDePago'
+        },
+        {
+            'name': 'Contacto',
+            'section': 'contact-section'
         }
     ])
 
