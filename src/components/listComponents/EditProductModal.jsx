@@ -60,7 +60,8 @@ const EditProductModal = ({
             onClick={() => closeModal()}
         />
         <div className='absolute top-12 left-0 w-full h-full flex flex-col items-center text-center px-4 md:px-10'>
-            <div className='w-full relative flex flex-col items-center gap-4 py-6 pb-10 bg-white rounded shadow-sm drop-shadow-sm z-50'>
+            <div className='w-full relative flex flex-col items-center gap-4 py-6 pb-10 bg-white
+            rounded shadow-sm drop-shadow-sm z-50'>
                 <h1 className='flex flex-col font-bold font-Raleway text-lg text-center drop-shadow-sm mx-auto px-4 md:px-0'>
                     <span className='text-[1.05rem]'>
                         Producto:

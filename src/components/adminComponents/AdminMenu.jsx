@@ -95,6 +95,7 @@ const AdminMenu = ({ adminMenuData }) => {
                 {
                     enableSite.enabled ?
                         <button
+                            type='button'
                             className='py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
                             onClick={() => disableMainSite()}
                         >
@@ -104,6 +105,7 @@ const AdminMenu = ({ adminMenuData }) => {
                         </button>
                     :
                         <button
+                        type='button'
                             className='py-2 px-3 grid place-items-center bg-green-600 rounded-lg w-44'
                             onClick={() => enableMainSite()}
                         >
@@ -113,6 +115,7 @@ const AdminMenu = ({ adminMenuData }) => {
                         </button>
                 }
                 <button
+                type='button'
                     className='py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
                     onClick={() => signOut()}
                 >

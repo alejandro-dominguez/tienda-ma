@@ -17,19 +17,19 @@ const ItemSuggestionsCard = ({
                             key={product.id}
                             to={(`/categorias/${product.category}/${product.subcategory}/detalle/${product.id}`)}
                         >
-                            <div className='grid place-items-start gap-[.3rem] min-h-[10rem]'>
+                            <div className='grid place-items-start min-h-[10rem]'>
                                 <h3 className='font-Raleway font-black drop-shadow-sm tracking-wide text-[.85rem]'>
                                     {product.brand} {product.name}
                                 </h3>
                                 <div className='grid place-items-start self-end gap-3'>
-                                    <div className='w-[4.5rem] drop-shadow'>
+                                    <div className='w-[4.5rem] drop-shadow -mt-24'>
                                         <img
                                             src={product.img}
                                             alt={product.name}
                                             className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                                         />
                                     </div>
-                                    <span className='text-[.835rem] font-black tracking-wide -mt-[.2rem]'>
+                                    <span className='text-[.835rem] font-black -mt-7 tracking-wide'>
                                         {numberFormater(product.price)}
                                     </span>
                                 </div>

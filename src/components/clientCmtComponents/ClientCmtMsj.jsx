@@ -37,7 +37,7 @@ const ClientCmtMsj = ({
     }
 
     return (
-        <div className='bg-white w-full drop-shadow-sm px-4 py-3 relative'>
+        <div className='bg-white w-full drop-shadow-sm px-4 py-3 relative rounded-sm'>
             <h3>
                 {
                     comment.sender === '' ?
