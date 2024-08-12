@@ -20,34 +20,34 @@ const ItemDetailInfo = ({ product }) => {
                     </p>
                     <div className='flex flex-col sm:flex-row h-fit my-2 gap-2 sm:gap-5'>
                         {
-                            product.img1 !== '' ?
+                            product.img1 === undefined || product.img1 === '' || ' ' ?
+                                null
+                            :
                                 <ItemImg
                                     img={product.img1}
                                     product={product}
                                     mainImg={false}
                                 />
-                            :
-                                null
                         }
                         {
-                            product.img2 !== '' ?
+                            product.img2 === undefined || product.img2 === '' || ' ' ?
+                            null
+                            :
                                 <ItemImg
                                     img={product.img2}
                                     product={product}
                                     mainImg={false}
                                 />
-                            :
-                                null
                         }
                         {
-                            product.img3 !== '' ?
+                            product.img3 === undefined || product.img3 === '' || ' ' ?
+                                null
+                            :
                                 <ItemImg
                                     img={product.img3}
                                     product={product}
                                     mainImg={false}
                                 />
-                            :
-                                null
                         }
                     </div>
                 </div>
