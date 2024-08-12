@@ -50,19 +50,19 @@ const EditProductImg3Form = ({
                     className='mt-2'    
                 >
                 {
-                    product.img3 !== ('' || ' ') ?
-                        'Link imagen 4:'
-                    :
+                    product.img3 === undefined || product.img3 === ('' || ' ') ?
                         'Aún no hay imagen 4'
+                    :
+                        'Link imagen 4:'
                 }
                 </label>
                 {
-                    product.img3 !== ('' || ' ') ?
+                    product.img3 === undefined || product.img3 === ('' || ' ') ?
+                        null
+                    :
                         <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
                             {product.img3}
                         </span>
-                    :
-                        null
                 }
                 <input
                     type='text' name='productImg3' id='productImg3'

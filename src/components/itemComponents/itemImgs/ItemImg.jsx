@@ -61,7 +61,7 @@ const ItemImg = ({
             type='button'
             className=
                 {
-                    mainImg ?
+                    mainImg === true ?
                         `w-40 mt-[.1rem] md:mt-2 drop-shadow cursor-pointer transition-shadow border border-transparent
                         hover:border-zinc-700/[45%] hover:shadow hover:drop-shadow rounded`
                     :
