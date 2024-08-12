@@ -23,8 +23,8 @@ const ItemSuggestions = ({
     }, [])
 
     return (
-        <div className='flex flex-col items-center md:items-start py-5 px-7 bg-white rounded-lg shadow-sm drop-shadow-sm
-        w-full mt-5 mb-20'>
+        <div className='flex flex-col items-center md:items-start py-3 px-7 bg-white rounded-lg shadow-sm drop-shadow-sm
+        w-full mb-20 mt-5'>
             <h2 className='font-Raleway text-[.9rem] drop-shadow-sm font-semibold tracking-wide self-start'>
                 Productos similares:
             </h2>

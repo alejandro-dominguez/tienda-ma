@@ -14,6 +14,9 @@ import EditProductLineForm from '../../../components/adminComponents/adminEditFo
 import EditProductSizesForm from '../../../components/adminComponents/adminEditForms/EditProductSizesForm';
 import EditProductImgsForm from '../../../components/adminComponents/adminEditForms/EditProductImgsForm';
 import AdminErrorPage from '../../../pages/AdminErrorPage';
+import EditProductImg1Form from '../../../components/adminComponents/adminEditForms/EditProductImg1Form';
+import EditProductImg2Form from '../../../components/adminComponents/adminEditForms/EditProductImg2Form';
+import EditProductImg3Form from '../../../components/adminComponents/adminEditForms/EditProductImg3Form';
 
 const EditProductPage = () => {
     const { id } = useParams()
@@ -99,6 +102,22 @@ const EditProductPage = () => {
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
+                        <EditProductImg1Form
+                            product={product}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}
+                        />
+                        <EditProductImg2Form
+                            product={product}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}
+                        />
+                        <EditProductImg3Form
+                            product={product}
+                            setActiveToast={setActiveToast}
+                            setErrorToast={setErrorToast}
+                        />
+
                     </div>
                     <Toaster
                         visibleToasts={1}

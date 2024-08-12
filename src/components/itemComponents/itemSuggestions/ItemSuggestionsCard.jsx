@@ -6,7 +6,7 @@ const ItemSuggestionsCard = ({
     productDetail
 }) => {
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-3 gap-3'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-1 gap-3'>
             {
                 products.filter(prod => {
                     return productDetail.brand === prod.brand && productDetail.id !== prod.id
@@ -29,7 +29,7 @@ const ItemSuggestionsCard = ({
                                             className='block w-full rounded drop-shadow-sm aspect-square object-cover'
                                         />
                                     </div>
-                                    <span className='text-[.835rem] font-black -mt-7 tracking-wide'>
+                                    <span className='text-[.835rem] font-black -mt-8 tracking-wide'>
                                         {numberFormater(product.price)}
                                     </span>
                                 </div>

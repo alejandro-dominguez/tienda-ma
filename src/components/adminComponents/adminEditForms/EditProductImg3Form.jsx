@@ -5,13 +5,13 @@ import {
 import { db } from '../../../firebase/config';
 import { useState } from 'react';
 
-const EditProductImgsForm = ({
+const EditProductImg3Form = ({
     product, 
     setActiveToast,
     setErrorToast
 }) => {
     const [ newInfo, setNewInfo ] = useState({
-        productImg: '',
+        productImg3: '',
     })
 
     const registerInputs = ({ target: {name, value} }) => {
@@ -26,7 +26,7 @@ const EditProductImgsForm = ({
         try {
             const docRef = doc(db, 'products', product.id)
             await updateDoc(docRef, {
-                img: newInfo.productImg,
+                img3: newInfo.productImg3,
             })
             setActiveToast(true)
         } catch (error) {
@@ -39,27 +39,36 @@ const EditProductImgsForm = ({
 
     return (
         <form
-            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white
-            w-fit max-w-[15rem] md:max-w-fit mx-auto'
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-fit mx-auto'
             autoComplete='off'
             onSubmit={handleSubmit}
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
                 <label
-                    htmlFor='productImg'
+                    htmlFor='productImg3'
                     className='mt-2'    
                 >
-                    Link imagen principal:
+                {
+                    product.img3 !== '' ?
+                        'Link imagen 4:'
+                    :
+                        'Aún no hay imagen 4'
+                }
                 </label>
-                <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
-                    {product.img}
-                </span>
+                {
+                    product.img3 !== '' ?
+                        <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
+                            {product.img3}
+                        </span>
+                    :
+                        null
+                }
                 <input
-                    type='text' name='productImg' id='productImg'
-                    placeholder='...' min={8} required
+                    type='text' name='productImg3' id='productImg3'
+                    placeholder='ingresa un enlace' min={8} required
                     className='text-[.8rem] mt-3 bg-teal-500/[8%] shadow-sm py-2 px-4
-                    rounded-sm drop-shadow-sm text-black'
+                    rounded-sm drop-shadow-sm text-black placeholder:tracking-wide'
                     onChange={registerInputs}
                 />
             </div>
@@ -76,4 +85,4 @@ const EditProductImgsForm = ({
     )
 };
 
-export default EditProductImgsForm;
+export default EditProductImg3Form;

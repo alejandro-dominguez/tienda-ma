@@ -1,4 +1,4 @@
-import ItemMainImg from './itemImgs/ItemMainImg';
+import ItemImg from './itemImgs/ItemImg';
 import numberFormater from '../../utilities/numberFormater';
 
 const ItemDetailInfo = ({ product }) => {
@@ -8,11 +8,49 @@ const ItemDetailInfo = ({ product }) => {
                 {product.brand} {product.name}
             </h1>
             <div className='flex flex-col md:flex-row items-start gap-2 md:gap-4'>
-                <ItemMainImg product={product} />
-                <p className='mt-[.1rem] md:mt-[.3rem] w-full sm:w-[21rem] lg:w-[35rem] leading-[1.15rem]
+                <ItemImg
+                    img={product.img}
+                    product={product}
+                    mainImg={true}
+                />
+                <div className='mt-[.1rem] md:mt-[.3rem] w-full sm:w-[21rem] lg:w-[35rem] leading-[1.15rem] flex-col items-stretch
                 md:leading-5 font-bold text-zinc-800/[96] text-sm md:text-[.9rem] drop-shadow-sm tracking-tight'>
-                    {product.desc}
-                </p>
+                    <p className='h-fit'>
+                        {product.desc}
+                    </p>
+                    <div className='flex flex-col sm:flex-row h-fit my-2 gap-2 sm:gap-5'>
+                        {
+                            product.img1 !== '' ?
+                                <ItemImg
+                                    img={product.img1}
+                                    product={product}
+                                    mainImg={false}
+                                />
+                            :
+                                null
+                        }
+                        {
+                            product.img2 !== '' ?
+                                <ItemImg
+                                    img={product.img2}
+                                    product={product}
+                                    mainImg={false}
+                                />
+                            :
+                                null
+                        }
+                        {
+                            product.img3 !== '' ?
+                                <ItemImg
+                                    img={product.img3}
+                                    product={product}
+                                    mainImg={false}
+                                />
+                            :
+                                null
+                        }
+                    </div>
+                </div>
             </div>
             <div className='flex flex-col mt-[.2rem] md:mt-[.45rem]'>
                 <span className='text-sm md:text-[.9rem] font-bold'>

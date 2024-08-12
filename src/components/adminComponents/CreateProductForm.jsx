@@ -20,6 +20,9 @@ const CreateProductForm = ({
     const [ productPrice, setProductPrice ] = useState(0)
     const [ productSubcategory, setProductSubcategory ] = useState('')
     const [ productLine, setProductLine ] = useState('')
+    const [ productImg1, setProductImg1 ] = useState('')
+    const [ productImg2, setProductImg2 ] = useState('')
+    const [ productImg3, setProductImg3 ] = useState('')
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
     
@@ -52,6 +55,42 @@ const CreateProductForm = ({
         }
     }
 
+    const registerProductImg1 = (e) => {
+        if (e.target.value !== ' ' || '') {
+            setProductImg1(
+                e.target.value
+                )
+        } else {                
+            setProductImg1(
+                ''
+            )
+        }
+    }
+
+    const registerProductImg2 = (e) => {
+        if (e.target.value !== ' ' || '') {
+            setProductImg2(
+                e.target.value
+                )
+        } else {                
+            setProductImg2(
+                ''
+            )
+        }
+    }
+
+    const registerProductImg3 = (e) => {
+        if (e.target.value !== ' ' || '') {
+            setProductImg3(
+                e.target.value
+                )
+        } else {                
+            setProductImg3(
+                ''
+            )
+        }
+    }
+
     const registerBabySizes = (e) => {
         if (!e.target.value) {
             setProductBabySizes(false)
@@ -77,6 +116,9 @@ const CreateProductForm = ({
                     subcategory: productSubcategory,
                     desc: newProduct.productDesc,
                     img: newProduct.productImg,
+                    img1: productImg1,
+                    img2: productImg2,
+                    img3: productImg3,
                     price: productPrice,
                     sizes: productBabySizes,
                     adultSizes: productAdultSizes,
@@ -220,7 +262,7 @@ const CreateProductForm = ({
                             htmlFor='productImg'
                             className='mt-2'    
                         >
-                            Link imagen:
+                            Link imagen principal:
                         </label>
                         <input
                             type='text' name='productImg' id='productImg'
@@ -281,6 +323,51 @@ const CreateProductForm = ({
                             onChange={registerProductLine}
                         />
                     </div>
+                </div>
+                <div className='flex flex-col'>
+                    <label
+                        htmlFor='productImg1'
+                        className='mt-2'    
+                    >
+                        Link imagen 2:
+                    </label>
+                    <input
+                        type='text' name='productImg1' id='productImg1'
+                        placeholder='...' min={8}
+                        className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                        rounded-sm drop-shadow-sm text-black'
+                        onChange={registerProductImg1}
+                    />
+                </div>
+                <div className='flex flex-col'>
+                    <label
+                        htmlFor='productImg2'
+                        className='mt-2'    
+                    >
+                        Link imagen 3:
+                    </label>
+                    <input
+                        type='text' name='productImg2' id='productImg2'
+                        placeholder='...' min={8}
+                        className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                        rounded-sm drop-shadow-sm text-black'
+                        onChange={registerProductImg2}
+                    />
+                </div>
+                <div className='flex flex-col mb-1'>
+                    <label
+                        htmlFor='productImg3'
+                        className='mt-2'    
+                    >
+                        Link imagen 4:
+                    </label>
+                    <input
+                        type='text' name='productImg3' id='productImg3'
+                        placeholder='...' min={8}
+                        className='text-[.8rem] mt-2 bg-teal-500/[8%] shadow-sm py-2 px-4
+                        rounded-sm drop-shadow-sm text-black'
+                        onChange={registerProductImg3}
+                    />
                 </div>
             </div>
             <button

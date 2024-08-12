@@ -16,7 +16,12 @@ const Root = () => {
     const location = useLocation()
     
     useEffect(() => {
-        (location.pathname === ('/') || location.pathname.includes('/blogs') || location.pathname.includes('/detalle')) ?
+        (
+            location.pathname === ('/') ||
+            location.pathname.includes('/blogs') ||
+            location.pathname.includes('/detalle') ||
+            location.pathname.includes('/carrito')
+        ) ?
             setRestoreScroll(true) 
         :
             setRestoreScroll(false)

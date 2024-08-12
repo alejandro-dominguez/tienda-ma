@@ -8,6 +8,9 @@ import EditProductPriceForm from '../adminComponents/adminEditForms/EditProductP
 import EditProductStockForm from '../adminComponents/adminEditForms/EditProductStockForm';
 import EditProductLineForm from '../adminComponents/adminEditForms/EditProductLineForm';
 import EditProductImgsForm from '../adminComponents/adminEditForms/EditProductImgsForm';
+import EditProductImg1Form from '../adminComponents/adminEditForms/EditProductImg1Form';
+import EditProductImg2Form from '../adminComponents/adminEditForms/EditProductImg2Form';
+import EditProductImg3Form from '../adminComponents/adminEditForms/EditProductImg3Form';
 import EditProductInfoForm from '../adminComponents/adminEditForms/EditProductInfoForm';
 import EditProductCategoriesForm from '../adminComponents/adminEditForms/EditProductCategoriesForm';
 import EditProductSizesForm from '../adminComponents/adminEditForms/EditProductSizesForm';
@@ -88,6 +91,23 @@ const EditProductModal = ({
                         setErrorToast={setErrorToast}
                     />
                     <EditProductLineForm
+                        product={product}
+                        setActiveToast={setActiveToast}
+                        setErrorToast={setErrorToast}
+                    />
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-3 md:gap-5'>
+                    <EditProductImg1Form
+                        product={product}
+                        setActiveToast={setActiveToast}
+                        setErrorToast={setErrorToast}
+                    />
+                    <EditProductImg2Form
+                        product={product}
+                        setActiveToast={setActiveToast}
+                        setErrorToast={setErrorToast}
+                    />
+                    <EditProductImg3Form
                         product={product}
                         setActiveToast={setActiveToast}
                         setErrorToast={setErrorToast}
