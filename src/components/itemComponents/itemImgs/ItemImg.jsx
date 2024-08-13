@@ -63,10 +63,12 @@ const ItemImg = ({
                 {
                     mainImg === true ?
                         `w-40 mt-[.1rem] md:mt-2 drop-shadow cursor-pointer transition-shadow border border-transparent
-                        hover:border-zinc-700/[45%] hover:shadow hover:drop-shadow rounded`
+                        hover:border-zinc-700/[45%] hover:shadow hover:drop-shadow focus:border-zinc-700/[45%]
+                        focus:shadow focus:drop-shadow rounded`
                     :
                         `w-20 mt-[.1rem] md:mt-2 drop-shadow cursor-pointer transition-shadow border border-transparent
-                        hover:border-zinc-700/[45%] hover:shadow hover:drop-shadow rounded`
+                        hover:border-zinc-700/[45%] hover:shadow hover:drop-shadow focus:border-zinc-700/[45%]
+                        focus:shadow focus:drop-shadow rounded`
                 }
             onClick={() => openModal()}
         >
