@@ -23,7 +23,7 @@ const BrandItemListContainer = () => {
     }, [])
     
     useEffect(() => {
-        isMobile ? setItemsQuantity(4) : setItemsQuantity(12)
+        isMobile ? setItemsQuantity(6) : setItemsQuantity(12)
     }, [isMobile])
     
 
