@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import numberFormater from '../../../utilities/numberFormater';
-import ItemsPagination from '../ItemsPagination';
+import ItemSuggestionsPagination from './itemSuggestionsPagination/ItemSuggestionsPagination';
 
 const ItemSuggestionsCard = ({
     products,
@@ -38,12 +38,16 @@ const ItemSuggestionsCard = ({
                     )}
                 )
             }
-            <ItemsPagination
-                pages={pages}
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-                suggestions={true}
-            />
+            {
+                pages > 1 ?
+                    <ItemSuggestionsPagination
+                        pages={pages}
+                        setCurrentPage={setCurrentPage}
+                        currentPage={currentPage}
+                    />
+                :
+                    null
+            }
         </div>
     )
 };

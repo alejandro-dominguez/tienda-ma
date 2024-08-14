@@ -32,6 +32,7 @@ const ItemListContainer = () => {
 
     const products = data.slice(iniIndex, finIndex)
     const pages = Math.ceil(data.length / itemsQuantity)
+    const pagesQuantity = [...Array(pages + 1).keys()].slice(1)
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -64,12 +65,17 @@ const ItemListContainer = () => {
                                     />
                             )})
                         }
-                        <ItemsPagination
-                            pages={pages}
-                            setCurrentPage={setCurrentPage}
-                            currentPage={currentPage}
-                            suggestions={false}
-                        />
+                        {
+                            pages > 1 ?
+                                <ItemsPagination
+                                    pages={pages}
+                                    pagesQuantity={pagesQuantity}
+                                    setCurrentPage={setCurrentPage}
+                                    currentPage={currentPage}
+                                />
+                            : 
+                                null
+                        }
                     </div>
                 : !error ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
