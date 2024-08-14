@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import numberFormater from '../../../utilities/numberFormater';
+import ItemsPagination from '../ItemsPagination';
 
 const ItemSuggestionsCard = ({
     products,
-    productDetail
+    setCurrentPage,
+    currentPage,
+    pages
 }) => {
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full mt-1 gap-3'>
             {
-                products.filter(prod => {
-                    return productDetail.brand === prod.brand && productDetail.id !== prod.id
-                })
-                .map(product => {
+                products.map(product => {
                     return (
                         <Link
                             key={product.id}
@@ -38,6 +38,12 @@ const ItemSuggestionsCard = ({
                     )}
                 )
             }
+            <ItemsPagination
+                pages={pages}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                suggestions={true}
+            />
         </div>
     )
 };

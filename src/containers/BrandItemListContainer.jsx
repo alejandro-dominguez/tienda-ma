@@ -54,6 +54,7 @@ const BrandItemListContainer = () => {
                             pages={pages}
                             setCurrentPage={setCurrentPage}
                             currentPage={currentPage}
+                            suggestions={false}
                         />
                     </div>
                 : !error ?
