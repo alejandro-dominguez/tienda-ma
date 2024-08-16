@@ -70,7 +70,7 @@ const AdminBlogCard = ({
                     src={blog.img1}
                     alt='imagen de portada del blog'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'
-                    />
+                />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
                 {blog.title}
@@ -82,7 +82,7 @@ const AdminBlogCard = ({
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => navigate((`/blogs/${blog.id}`))}
-                        >
+                    >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Ver artículo
                         </span>
@@ -92,7 +92,7 @@ const AdminBlogCard = ({
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
                         onClick={() => storeAndNavigate()}
-                        >
+                    >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar
                         </span>
@@ -100,7 +100,7 @@ const AdminBlogCard = ({
                     <BsFillTrash3Fill
                         className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
                         onClick={() => deleteBlog(blog.id)}
-                        />
+                    />
                 </div>
                 <div>
                     {

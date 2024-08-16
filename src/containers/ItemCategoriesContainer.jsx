@@ -70,7 +70,7 @@ const ItemCategoriesContainer = () => {
                                 className='w-fit mx-auto pt-2 flex gap-1 items-center'
                                 onClick={() => scrollToElement('subcategories-filter')}
                             >
-                                <GoSortDesc className='text-2xl'/>
+                                <GoSortDesc className='block text-2xl'/>
                                 <span className='font-bold tracking-wide'>
                                     Filtro
                                 </span>

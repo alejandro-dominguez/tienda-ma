@@ -88,7 +88,7 @@ const Footer = () => {
                         Términos y condiciones
                     </span>
                 </Link>
-                <Link to='/devoluciones' >
+                <Link to='/devoluciones'>
                     <span className='font-bold tracking-wide text-[.9rem] drop-shadow-sm'>
                         Devoluciones
                     </span>
