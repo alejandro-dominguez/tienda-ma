@@ -34,6 +34,10 @@ const AdminLandingPage = () => {
             'name': 'Mensajes contacto',
             'url': 'mensajesContacto'
         },
+        {
+            'name': 'Comentarios',
+            'url': 'comentarios'
+        },
     ])
 
     return (

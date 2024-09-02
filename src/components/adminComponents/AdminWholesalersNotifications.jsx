@@ -1,9 +1,9 @@
-import { RotatingLines } from 'react-loader-spinner';
 import {
     useState,
     useContext,
     useEffect
 } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 import { WholesalerMessageContext } from '../../contexts/wholesalerMessageContext';
 
 const AdminWholesalersNotifications = () => {

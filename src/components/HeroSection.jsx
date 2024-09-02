@@ -1,10 +1,15 @@
+import {
+    useEffect,
+    useState
+} from 'react';
 import { BsBagHeartFill } from 'react-icons/bs';
-import { useState } from 'react';
 import video from '../assets/video-hero.mp4';
 import HeroBtn from './homeComponents/HeroBtn';
 import HomeSlider from '../components/homeComponents/HomeSlider';
+import ClientCmtsNotifications from '../components/homeComponents/ClientCmtsNotifications';
 
 const HeroSection = () => {
+    const [ isAdmin, setIsAdmin ] = useState(false)
     const [ btnsData, ] = useState([
         {
             'name': 'Historias de crianza',
@@ -20,6 +25,11 @@ const HeroSection = () => {
         }
     ])
 
+    useEffect(() => {
+        const admin = JSON.parse(localStorage.getItem('authUser'))
+        admin === true ? setIsAdmin(true) : setIsAdmin(false)
+    }, [])
+
     return (
         <main className='w-full grid place-items-center'>
             <div className='w-full flex flex-col md:flex-row relative'>
@@ -28,7 +38,7 @@ const HeroSection = () => {
                     muted={true}
                     autoPlay={true}
                     loop={true}
-                    type={'video/mp4'}
+                    type='video/mp4'
                     className='block w-full h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
                 />
                 <div className='absolute top-32 flex flex-col items-start sm:ml-10 px-4 sm:px-0'>
@@ -42,7 +52,12 @@ const HeroSection = () => {
                             Todo lo que buscas en un mismo lugar
                         </h2>
                     </div>
-                    <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-16 sm:mt-20'>
+                    <div className='flex flex-col items-start justify-center gap-3 sm:gap-4 mt-16 sm:mt-20 relative'>
+                        {
+                            isAdmin ?
+                                <ClientCmtsNotifications />
+                            : null
+                        }
                         {
                             btnsData.map((data, i) => {
                                 return <HeroBtn btnData={data} key={i}/>

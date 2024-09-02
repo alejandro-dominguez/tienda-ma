@@ -22,6 +22,7 @@ import SizesGuide from '../../pages/SizesGuide';
 import PaymentsPage from '../../pages/PaymentsPage';
 import WholesalersPage from '../../pages/WholesalersPage';
 import AdminPromotionsPage from '../../pages/adminPages/AdminPromotionsPage';
+import AdminCommentsPage from '../../pages/adminPages/AdminCommentsPage';
 import AdminProductsPage from '../../pages/adminPages/AdminProductsPage';
 import AdminBlogsPage from '../../pages/adminPages/AdminBlogsPage';
 import AdminPaymentsPage from '../../pages/adminPages/AdminPaymentsPage';
@@ -144,6 +145,10 @@ const clientRouter = createBrowserRouter([
                     {
                         path: '/admin/consola',
                         element: <AdminLandingPage />,
+                    },
+                    {
+                        path: '/admin/consola/comentarios',
+                        element: <AdminCommentsPage />,
                     },
                     {
                         path: '/admin/consola/promociones',

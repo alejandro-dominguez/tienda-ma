@@ -17,9 +17,7 @@ const ClientCmtContainer = ({
     const [ clientComments, setClientComments ] = useState({})
 
     useEffect(() => {
-        if (localStorage.commentsData) {
-            setClientComments(JSON.parse(localStorage.commentsData))
-        }
+        if (localStorage.commentsData) {setClientComments(JSON.parse(localStorage.commentsData))}
     }, [])
 
     return (

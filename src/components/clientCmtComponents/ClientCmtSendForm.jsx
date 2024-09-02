@@ -1,8 +1,4 @@
 import {
-    Toaster,
-    toast
-} from 'sonner';
-import {
     addDoc,
     collection,
 } from 'firebase/firestore';
@@ -34,6 +30,7 @@ const ClientCmtSendForm = ({
                     message: sentComment.cmtMessage,
                     sender: sentComment.cmtName,
                     dateFilter: localDate,
+                    approved: false,
                 }
             )
             setActiveToast(true)

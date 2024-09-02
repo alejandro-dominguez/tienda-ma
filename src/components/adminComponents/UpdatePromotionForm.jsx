@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
     Toaster,
     toast
@@ -7,6 +6,7 @@ import {
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { useState } from 'react';
 import { db } from '../../firebase/config';
 
 const UpdatePromotionForm = () => {
