@@ -83,6 +83,7 @@ const ListItemCard = ({ product }) => {
                             !isAdmin ?
                                 <div className='w-36 drop-shadow-sm'>
                                     <img
+                                        
                                         src={product.img}
                                         alt={product.name}
                                         className='block w-full rounded drop-shadow aspect-square object-cover'
@@ -92,6 +93,7 @@ const ListItemCard = ({ product }) => {
                                 <div className='flex'>
                                     <div className='w-36 drop-shadow-sm'>
                                         <img
+                                            
                                             src={product.img}
                                             alt={product.name}
                                             className='block w-full rounded drop-shadow aspect-square object-cover'

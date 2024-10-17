@@ -17,6 +17,7 @@ const HomeSlider = () => {
             <div className='w-full flex justify-between items-center'>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo1}
                         alt='logo Pampers'
                         className='block w-full drop-shadow-sm'
@@ -24,6 +25,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo2}
                         alt='logo Huggies'
                         className='block w-full drop-shadow-sm'
@@ -31,6 +33,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo3}
                         alt='logo Nonisec'
                         className='block w-full drop-shadow-sm'
@@ -38,6 +41,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo4}
                         alt='logo Comodin'
                         className='block w-full drop-shadow-sm'
@@ -45,6 +49,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo5}
                         alt='logo Estrella'
                         className='block w-full drop-shadow-sm'
@@ -52,6 +57,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo6}
                         alt='logo Plenitud'
                         className='block w-full drop-shadow-sm'
@@ -59,6 +65,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-16 sm:w-20 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo7}
                         alt='logo Duffy'
                         className='block w-full drop-shadow-sm'
@@ -66,6 +73,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo8}
                         alt='logo Trifarma'
                         className='block w-full drop-shadow-sm'
@@ -73,6 +81,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo9}
                         alt='logo Paez'
                         className='block w-full drop-shadow-sm'
@@ -80,6 +89,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo10}
                         alt='logo Doncella'
                         className='block w-full drop-shadow-sm'
@@ -87,6 +97,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo11}
                         alt='logo Kimbies'
                         className='block w-full drop-shadow-sm'
@@ -94,6 +105,7 @@ const HomeSlider = () => {
                 </div>
                 <div className='w-20 sm:w-24 mx-[.95rem] sm:mx-8'>
                     <img
+                        
                         src={logo12}
                         alt='logo Q Soft'
                         className='block w-full drop-shadow-sm'

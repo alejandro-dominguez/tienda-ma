@@ -27,7 +27,7 @@ const FeaturedBlogArticleContainer = () => {
     return (
         <main className='w-full grid place-items-start min-h-[100svh]'>
             {
-                (blogs.length && !loadingBlogs && !errorBlogs) ?
+                (JSON.stringify(blog) !== '{}' && !loadingBlogs && !errorBlogs) ?
                     <FeaturedBlogArticle blog={blog} />
                 : !errorBlogs ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>

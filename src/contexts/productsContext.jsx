@@ -1,6 +1,7 @@
 import {
     useState,
-    useEffect
+    useEffect,
+    createContext
 } from 'react';
 import {
     collection,
@@ -9,47 +10,50 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-const useGetAllProducts = () => {
+export const ProductsContext = createContext();
+
+const ProductsProvider = ({ children }) => {
     const [ error, setError ] = useState('')
     const [ loading, setLoading ] = useState(false)
-    const [ prods, setProds ] = useState({})
-    const [ subcategories, setSubcategories ] = useState({})
+    const [ prods, setProds ] = useState([])
+    const [ categories, setCategories ] = useState([])
+    const [ subcategories, setSubcategories ] = useState([])
     const [ brands, setBrands ] = useState({})
     const [ productLines, setProductLines ] = useState({})
     const [ featuredProducts, setFeaturedProducts ] = useState({})
     const [ stockedProducts, setStockedProducts ] = useState({})
     const [ notStockedProducts, setNotStockedProducts ] = useState({})
-    
+
     const filterProds = (firebaseProds) => {
+        const categoriesList = []
         const subcategoriesList = []
         const brandsList = []
         const productLinesList = []
+        
         firebaseProds.map(prod => {
             return (
+                categoriesList.push(prod.category),
                 subcategoriesList.push(prod.subcategory),
                 brandsList.push(prod.brand),
                 productLinesList.push(prod.productLine)
             )
         })
-        const featuredProductsList = firebaseProds.filter(prod => {
-            return prod.featured === true
-        })
-
-        const stockedProductsList = firebaseProds.filter(prod => {
-            return prod.stock === true
-        })
-        const notStockedProductsList = firebaseProds.filter(prod => {
-            return prod.stock === false
-        })
+        
+        const featuredProductsList = firebaseProds.filter(prod => prod.featured === true)
+        const stockedProductsList = firebaseProds.filter(prod => prod.stock === true)
+        const notStockedProductsList = firebaseProds.filter(prod => prod.stock === false)
+        const filteredCategoriesList = [...new Set(categoriesList)]
         const filteredSubcategoriesList = [...new Set(subcategoriesList)]
         const filteredBrandsList = [...new Set(brandsList)]
         const filteredProductLinesList = [...new Set(productLinesList)]
-        setSubcategories(filteredSubcategoriesList)
-        setBrands(filteredBrandsList)
-        setProductLines(filteredProductLinesList)
+        
         setFeaturedProducts(featuredProductsList)
         setStockedProducts(stockedProductsList)
         setNotStockedProducts(notStockedProductsList)
+        setCategories(filteredCategoriesList)
+        setSubcategories(filteredSubcategoriesList)
+        setBrands(filteredBrandsList)
+        setProductLines(filteredProductLinesList)
         setLoading(false)
     }
 
@@ -65,17 +69,31 @@ const useGetAllProducts = () => {
                 })
                 setProds(firebaseProds)
                 filterProds(firebaseProds)
-                setLoading(false)
             } catch (error) {
                 setError(error.message)
-                setLoading(false)
-            } finally {
                 setLoading(false)
             }
         })()
     }, [])
 
-    return [ prods, subcategories, brands, productLines, featuredProducts, stockedProducts, notStockedProducts, error, loading ]
+    return (
+        <ProductsContext.Provider
+            value={{
+                prods,
+                categories,
+                subcategories,
+                brands,
+                productLines,
+                featuredProducts,
+                stockedProducts,
+                notStockedProducts,
+                error,
+                loading
+            }}
+        >
+            {children}
+        </ProductsContext.Provider>
+    )
 };
 
-export default useGetAllProducts;
+export default ProductsProvider;

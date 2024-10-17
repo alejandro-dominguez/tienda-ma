@@ -17,7 +17,6 @@ const BlogsContainer = () => {
             setBlogArticles(JSON.parse(localStorage.blogsData))
         }
     }, [])
-    
 
     return (
         <main className='w-full min-h-[100svh]'>

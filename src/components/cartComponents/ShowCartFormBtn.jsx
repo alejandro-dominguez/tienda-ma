@@ -10,7 +10,8 @@ const ShowCartFormBtn = ({ setShowForm }) => {
         onClick={() => setShowForm(true)}
         >
             <div className='w-[1.2rem]'>
-                <img 
+                <img
+                     
                     src={cartCheck}
                     alt='carrito de compras tildado'
                     className='block w-full'

@@ -67,6 +67,7 @@ const AdminBlogCard = ({
         <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
                 <img
+                    
                     src={blog.img1}
                     alt='imagen de portada del blog'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'

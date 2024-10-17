@@ -1,47 +1,67 @@
 import { 
     useEffect, 
-    useState
+    useState,
+    useContext
 } from 'react';
 import {
     Link,
     useParams
 } from 'react-router-dom';
+import { ProductsContext } from '../contexts/productsContext';
+import { SubcategoriesContext } from '../contexts/subcategoriesContext';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaGem } from 'react-icons/fa6';
 import { RiHandSanitizerFill } from 'react-icons/ri';
 import { GoSortDesc } from 'react-icons/go';
-import useGetSubcategories from '../customHooks/useGetSubcategories';
-import useGetFirebaseCategoriesData from '../customHooks/useGetFirebaseCategoriesData';
 import ListItemCard from '../components/ListItemCard';
 import ErrorPage from '../pages/ErrorPage';
 import scrollToElement from '../utilities/scrollToElement';
 import ItemsPagination from '../components/itemComponents/ItemsPagination';
 
 const ItemCategoriesContainer = () => {
+    const { prods, error, loading } = useContext(ProductsContext)
+    const { subcategories, errorSubcategories, loadingSubcategories } = useContext(SubcategoriesContext)
     const { categoryId } = useParams()
-    const [ subcategories, error, loading ] = useGetSubcategories(categoryId)
-    const [ data, errorCategories, loadingCategories ] = useGetFirebaseCategoriesData(categoryId)
+    const [ products, setProducts ] = useState([])
+    const [ currentSubcategories, setCurrentSubcategories ] = useState([])
+    const [ pages, setPages ] = useState(0)
+    const [ pagesQuantity, setPagesQuantity ] = useState(0)
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
     const [ currentPage, setCurrentPage ] = useState(1)
-    const [ isMobile, setIsMobile ] = useState(false)
-    
-    const responsiveViewport = () => window.visualViewport.width < 1024 ? setIsMobile(true) : setIsMobile(false)
 
     useEffect(() => {
-        responsiveViewport()
+        const isMobileViewport = window.visualViewport.width < 1024
+        if (isMobileViewport) setItemsQuantity(6)
     }, [])
     
     useEffect(() => {
-        isMobile ? setItemsQuantity(6) : setItemsQuantity(12)
-    }, [isMobile])
-    
+        if (prods.length && categoryId) {
+            const filteredProducts = prods.filter(product => product.category === categoryId)
+            setProducts(filteredProducts.slice(iniIndex, finIndex))
+        }
+    }, [prods, categoryId])
+
+    useEffect(() => {
+        if (subcategories.length && categoryId) {
+            const filteredSubcategories = subcategories.filter(subcategory => subcategory.category === categoryId)
+            const uniqueSubcategories = filteredSubcategories.filter((value, index, self) => 
+                index === self.findIndex((t) => (
+                    t.subcategory === value.subcategory
+                ))
+            )
+            setCurrentSubcategories(uniqueSubcategories)
+        }
+    }, [subcategories, categoryId])
+
+    useEffect(() => {
+        if (products.length) {
+            setPages(Math.ceil(products.length / itemsQuantity))
+            setPagesQuantity([...Array(pages + 1).keys()].slice(1))
+        }
+    }, [products])
 
     const finIndex = currentPage * itemsQuantity
-    const iniIndex = finIndex - itemsQuantity
-
-    const products = data.slice(iniIndex, finIndex)
-    const pages = Math.ceil(data.length / itemsQuantity)
-    const pagesQuantity = [...Array(pages + 1).keys()].slice(1)
+    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -62,7 +82,7 @@ const ItemCategoriesContainer = () => {
                 }
             </h1>
             {
-                (subcategories.length && data.length && !error && !errorCategories && !loading && !loadingCategories) ?
+                (currentSubcategories.length && products.length && !error && !errorSubcategories && !loading && !loadingSubcategories) ?
                     <>
                         <div className='w-full grid place-items-center'>
                             <button
@@ -103,21 +123,22 @@ const ItemCategoriesContainer = () => {
                             id='subcategories-filter'
                         >
                             {
-                                subcategories.map((subcategory, i) => {
+                                currentSubcategories.map((subcategory, i) => {
                                     return (
                                         <Link
-                                            to={`/categorias/${categoryId}/${subcategory}`}
+                                            to={`/categorias/${categoryId}/${subcategory.subcategory}`}
                                             key={i}
                                             className='grid place-items-center'
-                                            id={subcategory}
+                                            id={subcategory.subcategory}
                                         >
                                             <span className='mx-3 my-[.57rem] font-bold text-sm tracking-wide
                                             drop-shadow-sm py-[.35rem] px-2 text-center border-2 w-28 rounded-lg
                                             border-red-500/50 bg-red-100/[7%]'>
-                                                {subcategory}
+                                                {subcategory.subcategory}
                                             </span>
                                         </Link>
-                                )})
+                                    )
+                                })
                             }
                         </div>
                         {
@@ -134,7 +155,7 @@ const ItemCategoriesContainer = () => {
                                 null
                         }
                     </>
-                : (!error && !errorCategories) ?
+                : (!error && !errorSubcategories) ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines

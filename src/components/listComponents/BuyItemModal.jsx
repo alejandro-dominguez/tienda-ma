@@ -103,6 +103,7 @@ const BuyItemModal = ({
                 </h3>
                 <div className='w-40 mt-[.1rem] md:mt-2 drop-shadow'>
                     <img
+                        
                         src={product.img}
                         alt={product.name}
                         className='block w-full rounded drop-shadow-sm aspect-square object-cover'

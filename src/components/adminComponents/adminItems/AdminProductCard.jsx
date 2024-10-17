@@ -59,6 +59,7 @@ const AdminProductCard = ({
         <div className='p-5 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-40 drop-shadow-sm'>
                 <img
+                    
                     src={prod.img}
                     alt='imagen de producto'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'

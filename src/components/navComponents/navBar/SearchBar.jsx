@@ -1,5 +1,6 @@
+import { useContext, useEffect } from 'react';
+import { ProductsContext } from '../../../contexts/productsContext';
 import { FaSearch } from 'react-icons/fa';
-import useGetAllProducts from '../../../customHooks/useGetAllProducts';
 import BrandsSearchItems from './searchBarItems/BrandsSearchItems';
 import SubcategoriesSearchItems from './searchBarItems/SubcategoriesSearchItems';
 import ProductsSearchItems from './searchBarItems/ProductsSearchItems';
@@ -12,8 +13,15 @@ const SearchBar = ({
     setInputValue,
     setShowSearch
 }) => {
-    const [ prods, subcategories, brands, productLines,,,, error, loading ] = useGetAllProducts()
-    
+    const {
+        prods,
+        subcategories,
+        brands,
+        productLines,
+        error,
+        loading
+    } = useContext(ProductsContext)
+
     const getValue = (e) => {
         setInputValue(e.target.value)
     }
@@ -21,7 +29,7 @@ const SearchBar = ({
     const searchItems = (searchTerm) => {
         setInputValue(searchTerm)
     }
-    
+
     return (
         <label
             htmlFor='searchBar'

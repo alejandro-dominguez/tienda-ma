@@ -1,26 +1,29 @@
 import {
+    useState,
+    useContext
+} from 'react';
+import {
     Toaster,
     toast
 } from 'sonner';
+import { ProductsContext } from '../../contexts/productsContext';
 import { RotatingLines } from 'react-loader-spinner';
-import { useState } from 'react';
-import useGetAllProducts from '../../customHooks/useGetAllProducts';
 import CreateProductForm from '../../components/adminComponents/CreateProductForm';
 import AdminProductsContainer from '../../components/adminComponents/AdminProductsContainer';
 import AdminSubcategoriesContainer from '../../components/adminComponents/AdminSubcategoriesContainer';
 import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminProductsPage = () => {
-    const [
+    const {
         prods,
         subcategories,
-        brands,,
+        brands,
         featuredProducts,
         stockedProducts,
         notStockedProducts,
         error,
         loading
-    ] = useGetAllProducts()
+    } = useContext(ProductsContext)
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 

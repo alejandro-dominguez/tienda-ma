@@ -15,8 +15,9 @@ import ItemCount from './itemComponents/ItemCount';
 
 const ItemDetailCard = ({
     products,
-    product
+    prod
 }) => {
+    const product = prod[0]
     const { addProduct } = useContext(ShopContext)
     const [ , setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')

@@ -6,6 +6,7 @@ const SizesBrandGuide = ({
         <div className='flex flex-col w-full mb-16'>
             <div className='w-32 self-center'>
                 <img
+                    
                     src={logo}
                     alt='logo empresa de pañales'
                     className='block w-full aspect-square object-contain'

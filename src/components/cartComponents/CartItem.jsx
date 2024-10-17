@@ -24,6 +24,7 @@ const CartItem = ({ item }) => {
                 <div className='flex gap-5'>
                     <div className='w-20 drop-shadow'>
                         <img
+                            
                             src={item.img}
                             alt={item.name}
                             className='w-full block aspect-square object-cover rounded drop-shadow-sm'

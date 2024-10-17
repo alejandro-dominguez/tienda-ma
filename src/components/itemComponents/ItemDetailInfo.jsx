@@ -2,8 +2,6 @@ import ItemImg from './itemImgs/ItemImg';
 import numberFormater from '../../utilities/numberFormater';
 
 const ItemDetailInfo = ({ product }) => {
-    console.log(product);
-    
     return (
         <>
             <h1 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-base'>

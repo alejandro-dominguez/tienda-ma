@@ -73,6 +73,7 @@ const ItemImg = ({
             onClick={() => openModal()}
         >
             <img
+                
                 src={img}
                 alt={product.name}
                 className='block w-full rounded drop-shadow-sm aspect-square object-cover'
@@ -85,6 +86,7 @@ const ItemImg = ({
         >
             <div className='bg-white shadow-sm drop-shadow-sm w-72 md:w-96 rounded mx-auto'>
                 <img
+                    
                     src={img}
                     alt={product.name}
                     className='block w-full rounded aspect-square object-contain'

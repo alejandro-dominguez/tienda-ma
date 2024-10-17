@@ -16,6 +16,7 @@ const FeaturedItemCard = ({ product }) => {
                     <div className='flex flex-col lg:flex-row gap-4'>
                         <div className='w-36 drop-shadow-sm'>
                             <img
+                                
                                 src={product.img}
                                 alt={product.name}
                                 className='block w-full rounded drop-shadow-sm aspect-square object-cover'

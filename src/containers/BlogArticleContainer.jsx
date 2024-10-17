@@ -27,7 +27,7 @@ const BlogArticleContainer = () => {
     return (
         <main className='w-full grid place-items-start min-h-[100svh]'>
             {
-                (blogs.length && !loadingBlogs && !errorBlogs) ?
+                (JSON.stringify(blog) !== '{}' && !loadingBlogs && !errorBlogs) ?
                     <BlogArticle blog={blog} />
                 : !errorBlogs ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
@@ -41,7 +41,8 @@ const BlogArticleContainer = () => {
                             />
                         </div>
                     </div>
-                : <ErrorPage />
+                :
+                    <ErrorPage />
             }
         </main>
     )

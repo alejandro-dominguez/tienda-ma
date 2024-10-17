@@ -23,6 +23,7 @@ const NoRelatedProductsCard = () => {
                     </div>
                     <div className='w-7 mx-auto mt-6'>
                         <img
+                            
                             src={icon}
                             alt='icono tienda ma'
                             className='block w-full'
