@@ -13,33 +13,43 @@ import ItemsPagination from '../components/itemComponents/ItemsPagination';
 const SubcategoriesItemListContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
     const { subcategoryId } = useParams()
+    const [ filteredProducts, setFilteredProducts ] = useState([])
     const [ products, setProducts ] = useState([])
     const [ pages, setPages ] = useState(0)
-    const [ pagesQuantity, setPagesQuantity ] = useState(0)
+    const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
     const [ currentPage, setCurrentPage ] = useState(1)
     
+    const finIndex = currentPage * itemsQuantity
+    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+
     useEffect(() => {
         const isMobileViewport = window.visualViewport.width < 1024
         if (isMobileViewport) setItemsQuantity(6)
-    }, [])
-    
+    }, [])    
+
     useEffect(() => {
         if (prods.length && subcategoryId) {
-            const filteredProducts = prods.filter(product => product.subcategory === subcategoryId)
-            setProducts(filteredProducts.slice(iniIndex, finIndex))
+            const filterProducts = prods.filter(product => product.subcategory === subcategoryId)
+            setFilteredProducts(filterProducts)
+            setCurrentPage(1)
         }
     }, [prods, subcategoryId])
 
     useEffect(() => {
-        if (products.length) {
-            setPages(Math.ceil(products.length / itemsQuantity))
-            setPagesQuantity([...Array(pages + 1).keys()].slice(1))
+        if (filteredProducts.length) {
+            const slicedProducts = filteredProducts.slice(iniIndex, finIndex)
+            setProducts(slicedProducts)
         }
-    }, [products])
+    }, [filteredProducts, currentPage, itemsQuantity])
 
-    const finIndex = currentPage * itemsQuantity
-    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+    useEffect(() => {
+        if (filteredProducts.length) {
+            const totalPages = Math.ceil(filteredProducts.length / itemsQuantity)
+            setPages(totalPages)
+            setPagesQuantity([...Array(totalPages).keys()].map(n => n + 1))
+        }
+    }, [filteredProducts, itemsQuantity])
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -59,7 +69,7 @@ const SubcategoriesItemListContainer = () => {
                 }
             </h1>
             {
-                (products.length && !loading && !error) ?
+                (filteredProducts.length && !loading && !error) ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4'>
                         {
                             products.map(product => {

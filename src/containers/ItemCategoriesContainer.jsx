@@ -22,13 +22,17 @@ const ItemCategoriesContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
     const { subcategories, errorSubcategories, loadingSubcategories } = useContext(SubcategoriesContext)
     const { categoryId } = useParams()
+    const [ filteredProducts, setFilteredProducts ] = useState([])
     const [ products, setProducts ] = useState([])
     const [ currentSubcategories, setCurrentSubcategories ] = useState([])
     const [ pages, setPages ] = useState(0)
-    const [ pagesQuantity, setPagesQuantity ] = useState(0)
+    const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
     const [ currentPage, setCurrentPage ] = useState(1)
 
+    const finIndex = currentPage * itemsQuantity
+    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+    
     useEffect(() => {
         const isMobileViewport = window.visualViewport.width < 1024
         if (isMobileViewport) setItemsQuantity(6)
@@ -36,10 +40,18 @@ const ItemCategoriesContainer = () => {
     
     useEffect(() => {
         if (prods.length && categoryId) {
-            const filteredProducts = prods.filter(product => product.category === categoryId)
-            setProducts(filteredProducts.slice(iniIndex, finIndex))
+            const filterProducts = prods.filter(product => product.category === categoryId)
+            setFilteredProducts(filterProducts)
+            setCurrentPage(1)
         }
     }, [prods, categoryId])
+
+    useEffect(() => {
+        if (filteredProducts.length) {
+            const slicedProducts = filteredProducts.slice(iniIndex, finIndex)
+            setProducts(slicedProducts)
+        }
+    }, [filteredProducts, currentPage, itemsQuantity])
 
     useEffect(() => {
         if (subcategories.length && categoryId) {
@@ -54,14 +66,12 @@ const ItemCategoriesContainer = () => {
     }, [subcategories, categoryId])
 
     useEffect(() => {
-        if (products.length) {
-            setPages(Math.ceil(products.length / itemsQuantity))
-            setPagesQuantity([...Array(pages + 1).keys()].slice(1))
+        if (filteredProducts.length) {
+            const totalPages = Math.ceil(filteredProducts.length / itemsQuantity)
+            setPages(totalPages)
+            setPagesQuantity([...Array(totalPages).keys()].map(n => n + 1))
         }
-    }, [products])
-
-    const finIndex = currentPage * itemsQuantity
-    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+    }, [filteredProducts, itemsQuantity])
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -82,7 +92,7 @@ const ItemCategoriesContainer = () => {
                 }
             </h1>
             {
-                (currentSubcategories.length && products.length && !error && !errorSubcategories && !loading && !loadingSubcategories) ?
+                (currentSubcategories.length && filteredProducts.length && !error && !errorSubcategories && !loading && !loadingSubcategories) ?
                     <>
                         <div className='w-full grid place-items-center'>
                             <button

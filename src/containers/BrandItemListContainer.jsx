@@ -13,12 +13,16 @@ import ItemsPagination from '../components/itemComponents/ItemsPagination';
 const BrandItemListContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
     const { brandId } = useParams()
-    const [ brandItems, setBrandItems ] = useState([])
+    const [ filteredProducts, setFilteredProducts ] = useState([])
+    const [ products, setProducts ] = useState([])
     const [ pages, setPages ] = useState(0)
-    const [ pagesQuantity, setPagesQuantity ] = useState(0)
+    const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
     const [ currentPage, setCurrentPage ] = useState(1)
 
+    const finIndex = currentPage * itemsQuantity
+    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+    
     useEffect(() => {
         const isMobileViewport = window.visualViewport.width < 1024
         if (isMobileViewport) setItemsQuantity(6)
@@ -26,20 +30,26 @@ const BrandItemListContainer = () => {
 
     useEffect(() => {
         if (prods.length && brandId) {
-            const filteredProducts = prods.filter(product => product.brand === brandId)
-            setBrandItems(filteredProducts.slice(iniIndex, finIndex))
+            const filterProducts = prods.filter(product => product.brand === brandId)
+            setFilteredProducts(filterProducts)
+            setCurrentPage(1)
         }
     }, [prods, brandId])
 
     useEffect(() => {
-        if (brandItems.length) {
-            setPages(Math.ceil(brandItems.length / itemsQuantity))
-            setPagesQuantity([...Array(pages + 1).keys()].slice(1))
+        if (filteredProducts.length) {
+            const slicedProducts = filteredProducts.slice(iniIndex, finIndex)
+            setProducts(slicedProducts)
         }
-    }, [brandItems])
+    }, [filteredProducts, currentPage, itemsQuantity])
 
-    const finIndex = currentPage * itemsQuantity
-    const iniIndex = Math.max(finIndex - itemsQuantity, 0)
+    useEffect(() => {
+        if (filteredProducts.length) {
+            const totalPages = Math.ceil(filteredProducts.length / itemsQuantity)
+            setPages(totalPages)
+            setPagesQuantity([...Array(totalPages).keys()].map(n => n + 1))
+        }
+    }, [filteredProducts, itemsQuantity])
 
     return (
         <main className='w-full min-h-[100svh]'>
@@ -52,10 +62,10 @@ const BrandItemListContainer = () => {
                     null
             }
             {
-                (brandItems.length && !loading && !error) ?
+                (filteredProducts.length && !loading && !error) ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4'>
                         {
-                            brandItems.map(product => {
+                            products.map(product => {
                                 return (
                                     <ListItemCard
                                         product={product}
