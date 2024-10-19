@@ -1,6 +1,7 @@
 import {
     useContext,
-    useState
+    useState,
+    useEffect
 } from 'react';
 import {
     Toaster,
@@ -19,9 +20,10 @@ const ItemDetailCard = ({
 }) => {
     const product = prod[0]
     const { addProduct } = useContext(ShopContext)
-    const [ , setItemDetailQuantity ] = useState(1)
+    const [ itemDetailQuantity, setItemDetailQuantity ] = useState(1)
     const [ selectedSize, setSelectedSize ] = useState('')
     const [ selectedAdultSize, setSelectedAdultSize ] = useState('')
+    const [ successfulPurchase, setSuccessfulPurchase ] = useState(false)
     const prodId = Math.floor(Math.random() * 100) * Date.now()
 
     const confirmPurchase = (quantity) => {
@@ -33,27 +35,37 @@ const ItemDetailCard = ({
             }
         )
         product.sizes ?
-            (addProduct({ ...product, quantity, selectedSize, prodId }),
-            setItemDetailQuantity(quantity),
-            setTimeout(() => {
-                setSelectedSize('')
-                setItemDetailQuantity(1)
-            }, 150))
-        :
-        product.adultSizes ?
-            (addProduct({ ...product, quantity, selectedAdultSize, prodId }),
-            setItemDetailQuantity(quantity),
-            setTimeout(() => {
-                setSelectedAdultSize('')
-                setItemDetailQuantity(1)
-            }, 150))
+            (
+                addProduct({ ...product, quantity, selectedSize, prodId }),
+                setItemDetailQuantity(quantity),
+                setSuccessfulPurchase(true)
+            )
+        : product.adultSizes ?
+            (
+                addProduct({ ...product, quantity, selectedAdultSize, prodId }),
+                setItemDetailQuantity(quantity),
+                setSuccessfulPurchase(true)
+            )
         :
             addProduct({ ...product, quantity, prodId })
             setItemDetailQuantity(quantity)
-            setTimeout(() => {
-                setItemDetailQuantity(1)
-            }, 150)
+            setSuccessfulPurchase(true)
     }
+
+    useEffect(() => {
+        successfulPurchase && product.sizes ?
+            (
+                setSelectedSize(''),
+                setItemDetailQuantity(1)
+            )
+        : product.adultSizes ?
+            (
+                setSelectedAdultSize(''),
+                setItemDetailQuantity(1)
+            )
+        :
+            setItemDetailQuantity(1)
+    }, [successfulPurchase])
 
     return (
         <>
@@ -83,7 +95,7 @@ const ItemDetailCard = ({
                         :
                             <ItemCount
                                 confirmPurchase={confirmPurchase}
-                                initial={1}
+                                initial={itemDetailQuantity}
                                 quantity={product.quantity}
                                 modal={false}
                             />

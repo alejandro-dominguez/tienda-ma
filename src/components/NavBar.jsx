@@ -57,8 +57,6 @@ const NavBar = () => {
         window.scrollY > 120 ? setShowNav(false) : setShowNav(true)
     }
     
-    const responsiveViewport = () => window.visualViewport.width < 1024 ? setHideMenu(true) : setHideMenu(false)
-
     useEffect(() => {
         window.addEventListener('scroll', controlNavBar)
         return () => window.removeEventListener('scroll', controlNavBar)
@@ -69,7 +67,8 @@ const NavBar = () => {
     }, [location])
 
     useEffect(() => {
-        responsiveViewport()
+        const isMobileViewport = window.visualViewport.width < 1024
+        isMobileViewport ? setHideMenu(true) : setHideMenu(false)
     }, [])
 
     return (

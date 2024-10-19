@@ -1,8 +1,11 @@
+import {
+    useState,
+    useEffect
+ } from 'react';
 import { 
     FaPlusCircle,
     FaMinusCircle
 } from 'react-icons/fa';
-import { useState } from 'react';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 const ItemCount = ({
@@ -12,6 +15,10 @@ const ItemCount = ({
     modal
 }) => {
     const [ count, setCount ] = useState(initial)
+
+    useEffect(() => {
+        setCount(initial)
+    }, [initial])
 
     const handlePurchase = (count) => {
         confirmPurchase(count)

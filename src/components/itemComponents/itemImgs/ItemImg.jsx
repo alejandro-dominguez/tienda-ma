@@ -13,10 +13,9 @@ const ItemImg = ({
     const [ isModalVisible, setIsModalVisible ] = useState(false)
     const dialogRef = useRef()
 
-    const responsiveViewport = () => window.visualViewport.width < 1024 ? setIsMobile(true) : setIsMobile(false)
-
     useEffect(() => {
-        responsiveViewport()
+        const isMobileViewport = window.visualViewport.width < 1024
+        isMobileViewport ? setIsMobile(true) : setIsMobile(false)
     }, [])
 
     const openModal = () => {

@@ -7,10 +7,9 @@ import { Link } from 'react-router-dom';
 const AboutUsPage = () => {
     const [ swichImg, setSwichImg] = useState(false)
 
-    const responsiveViewport = () => window.visualViewport.width < 768 ? setSwichImg(true) : setSwichImg(false)
-    
     useEffect(() => {
-        responsiveViewport()
+        const isMobileViewport = window.visualViewport.width < 1024
+        isMobileViewport ? setSwichImg(true) : setSwichImg(false)
     }, [])
     
     return (

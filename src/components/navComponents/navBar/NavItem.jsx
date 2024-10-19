@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom';
 const NavItem = ({ navItem, setHideMenu }) => {
     const [ responsiveMenu, setResponsiveMenu ] = useState(false)
 
-    const responsiveViewport = () => window.visualViewport.width < 1024 ? setResponsiveMenu(true) : setResponsiveMenu(false)
-    
     useEffect(() => {
-        responsiveViewport()
+        const isMobileViewport = window.visualViewport.width < 1024
+        isMobileViewport ? setResponsiveMenu(true) : setResponsiveMenu(false)
     }, [])
 
     const responsiveLink = () => {
