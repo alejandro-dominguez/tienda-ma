@@ -1,12 +1,16 @@
 import {
     createContext,
     useState,
+    useEffect
 } from 'react';
 
 export const ShopContext = createContext({});
 
 const ShopProvider = ({ children }) => {
-    const [ products, setProducts ] = useState([])
+    const [products, setProducts] = useState(() => {
+        const storedProducts = localStorage.getItem('cartData')
+        return storedProducts ? JSON.parse(storedProducts) : []
+    })
 
     const addProduct = ( productToAdd ) => {
         const newProduct =  {...productToAdd}
@@ -47,6 +51,13 @@ const ShopProvider = ({ children }) => {
         const cartQuantity = products.reduce((acc, cartProducts) => acc += cartProducts.quantity, 0)
         return cartQuantity
     }
+
+    useEffect(() => {
+        products.length > 0 ?
+            localStorage.setItem('cartData', JSON.stringify(products))
+        :
+            localStorage.removeItem('cartData')
+    }, [products])
 
     return (
         <ShopContext.Provider
