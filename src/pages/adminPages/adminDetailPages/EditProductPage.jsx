@@ -1,11 +1,14 @@
 import {
+    useContext,
+    useState
+} from 'react';
+import {
     Toaster,
     toast
 } from 'sonner';
+import { ProductsContext } from '../../../contexts/productsContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { useState } from 'react';
-import useGetItemDetail from '../../../customHooks/useGetItemDetail';
 import EditProductPriceForm from '../../../components/adminComponents/adminEditForms/EditProductPriceForm';
 import EditProductStockForm from '../../../components/adminComponents/adminEditForms/EditProductStockForm';
 import EditProductInfoForm from '../../../components/adminComponents/adminEditForms/EditProductInfoForm';
@@ -20,9 +23,17 @@ import EditProductImg3Form from '../../../components/adminComponents/adminEditFo
 
 const EditProductPage = () => {
     const { id } = useParams()
-    const [ product, errorProduct, loadingProduct ] = useGetItemDetail(id)
+    const { prods, error, loading } = useContext(ProductsContext)
+    const [ prod, setProd ] = useState([])
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
+    
+    useEffect(() => {
+        if (prods.length && id) {
+            const productDetail = prods.filter(product => product.id === id)
+            setProd(productDetail)
+        }
+    }, [prods, id])
 
     if (activeToast && errorToast === '') {
         toast.success(
@@ -54,70 +65,69 @@ const EditProductPage = () => {
     return (
         <main className='w-full flex flex-col gap-4 mt-28 mb-20 min-h-[100svh] px-4 md:px-10'>
             {
-                (JSON.stringify(product) !== '{}' && !loadingProduct && !errorProduct) ?
+                (prod.length && !loading && !error) ?
                 <>
                     <h1 className='flex flex-col font-bold font-Raleway text-lg text-center mt-3 drop-shadow-sm mx-auto'>
                         <span className='text-[1.05rem]'>
                             Producto:
                         </span>
-                        {product.name}
+                        {prod.name}
                     </h1>
                     <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                         <EditProductPriceForm
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <EditProductStockForm
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                     </div>
                     <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                         <EditProductInfoForm
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <div className='flex-col mx-auto'>
                             <EditProductCategoriesForm
-                                product={product}
+                                product={prod}
                                 setActiveToast={setActiveToast}
                                 setErrorToast={setErrorToast}    
                             />
                             <EditProductLineForm
-                                product={product}
+                                product={prod}
                                 setActiveToast={setActiveToast}
                                 setErrorToast={setErrorToast}    
                             />
                         </div>
                         <EditProductSizesForm
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <EditProductImgsForm
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg1Form
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg2Form
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg3Form
-                            product={product}
+                            product={prod}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
-
                     </div>
                     <Toaster
                         visibleToasts={1}
@@ -127,7 +137,7 @@ const EditProductPage = () => {
                         }}
                     />
                 </>
-                : !errorProduct ?
+                : !error ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
