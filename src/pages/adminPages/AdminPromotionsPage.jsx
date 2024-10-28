@@ -6,7 +6,7 @@ import AdminErrorPage from '../../pages/AdminErrorPage';
 
 const AdminPromotionsPage = () => {
     const { promo, errorPromo, loadingPromo } = useContext(PromoContext)
-
+    
     return (
         <main className='w-full flex flex-col gap-4 mt-28 min-h-[100svh]'>
             {

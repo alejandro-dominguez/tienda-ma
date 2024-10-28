@@ -34,7 +34,6 @@ const HeroSection = () => {
         <main className='w-full grid place-items-center'>
             <div className='w-full flex flex-col md:flex-row relative'>
                 <video
-                    
                     src={video}
                     muted={true}
                     autoPlay={true}
@@ -57,7 +56,8 @@ const HeroSection = () => {
                         {
                             isAdmin ?
                                 <ClientCmtsNotifications />
-                            : null
+                            :
+                                null
                         }
                         {
                             btnsData.map((data, i) => {

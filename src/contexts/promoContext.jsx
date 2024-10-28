@@ -20,7 +20,7 @@ const PromoProvider = ({ children }) => {
         (async () => {
             try {
                 setLoadingPromo(true)
-                const docRef = doc(db, 'promos', import.meta.env.VITE_FIREBASE_PROMO_ID)
+                const docRef = doc(db, 'promo', import.meta.env.VITE_FIREBASE_PROMO_ID)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     setPromo({ ...docSnap.data(), id: docSnap.id })

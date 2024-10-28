@@ -20,12 +20,14 @@ const AdminCommentsPage = () => {
     const [ pendingComments, setPendingComments ] = useState(0)
 
     useEffect(() => {
-        if (comments.length && !errorComments && !loadingComments) {
-            const commentsData = comments.filter(cmt => !cmt.approved)
-            setPendingCommentsData(commentsData)
-            setPendingComments(comments.reduce((acc, cmt) => acc += !cmt.approved, 0))
-        }
-    }, [comments])
+        (comments.length && !errorComments && !loadingComments) ?
+            (
+                setPendingCommentsData(comments.filter(cmt => !cmt.approved)),
+                setPendingComments(comments.reduce((acc, cmt) => acc += !cmt.approved, 0))
+            )
+        :
+            null
+    }, [])
 
     if (activeToast && errorToast === '') {
         toast.success(
@@ -59,43 +61,50 @@ const AdminCommentsPage = () => {
             <h1 className='font-bold font-Raleway text-lg md:text-xl mt-5 drop-shadow-sm mx-auto'>
                 Comentarios
             </h1>
-            {
-                (comments.length && !loadingComments && !errorComments && pendingComments > 0 && pendingCommentsData.length) ?
-                    <div className='mx-auto flex flex-col'>
-                        <AdminCommentsContainer
-                            pendingCommentsData={pendingCommentsData}
-                            setActiveToast={setActiveToast}
-                            setErrorToast={setErrorToast}
-                        />
-                        <Toaster
-                            visibleToasts={1}
-                            richColors
-                            toastOptions={{
-                                className: 'text-center',
-                            }}
-                        />
-                    </div>
-                : (comments.length && !loadingComments && !errorComments && pendingComments === 0 && pendingCommentsData.length) ?
-                    <div className='mx-auto flex flex-col'>
-                        <p>
-                            No tienes comentarios pendientes por aprobar
-                        </p>
-                    </div>
-                : !errorComments ?
-                    <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
-                        <div className='p-5 bg-teal-600/20 rounded-lg'>
-                            <RotatingLines
-                                strokeColor='white'
-                                strokeWidth='5'
-                                animationDuration='0.75'
-                                width='70'
-                                visible={true}
-                            />
+            <>
+                {
+                    (comments.length && !errorComments && !loadingComments) ?
+                        <>
+                            {
+                                pendingComments > 0 ?
+                                    <div className='mx-auto flex flex-col'>
+                                        <AdminCommentsContainer
+                                            pendingCommentsData={pendingCommentsData}
+                                            setActiveToast={setActiveToast}
+                                            setErrorToast={setErrorToast}
+                                        />
+                                        <Toaster
+                                            visibleToasts={1}
+                                            richColors
+                                            toastOptions={{
+                                                className: 'text-center',
+                                            }}
+                                        />
+                                    </div>
+                                :
+                                    <div className='mx-auto flex flex-col'>
+                                        <p>
+                                            No tienes comentarios pendientes por aprobar.
+                                        </p>
+                                    </div>
+                            }
+                        </>
+                    : !errorComments ?
+                        <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
+                            <div className='p-5 bg-teal-600/20 rounded-lg'>
+                                <RotatingLines
+                                    strokeColor='white'
+                                    strokeWidth='5'
+                                    animationDuration='0.75'
+                                    width='70'
+                                    visible={true}
+                                />
+                            </div>
                         </div>
-                    </div>
-                :
-                    <AdminErrorPage />
-            }
+                    :
+                        <AdminErrorPage />
+                }
+            </>
         </main>
     )
 };

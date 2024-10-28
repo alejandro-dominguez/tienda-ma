@@ -16,7 +16,7 @@ export const CommentsContext = createContext();
 const CommentsProvider = ({ children }) => {
     const [ errorComments, setErrorComments ] = useState('')
     const [ loadingComments, setLoadingComments ] = useState(false)
-    const [ comments, setComments ] = useState({})
+    const [ comments, setComments ] = useState([])
 
     useEffect(() => {
         (async () => {

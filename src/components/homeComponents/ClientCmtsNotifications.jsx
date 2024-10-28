@@ -14,11 +14,12 @@ const ClientCmtsNotifications = () => {
     useEffect(() => {
         (comments.length && !errorComments && !loadingComments) ?
             setPendingComments(comments.reduce((acc, cmt) => acc += !cmt.approved, 0))
-        : null
-    }, [comments])
-
+        :
+            null
+    }, [])
+        
     return (
-        <>
+<>
             {
                 (comments.length && !errorComments && !loadingComments) ?
                     <>
@@ -79,3 +80,4 @@ const ClientCmtsNotifications = () => {
 };
 
 export default ClientCmtsNotifications;
+        
