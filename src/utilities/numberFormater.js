@@ -5,6 +5,6 @@ const numberFormater = (number) => {
             style: 'currency',
             currency: 'ARS'
         }).format(number)
-}
+};
 
 export default numberFormater;
