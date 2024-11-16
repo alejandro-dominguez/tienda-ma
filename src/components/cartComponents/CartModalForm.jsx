@@ -13,6 +13,7 @@ import {
 import { ShopContext } from '../../contexts/shopContext';
 import { BiSolidShare } from 'react-icons/bi';  
 import { db } from '../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 import numberFormater from '../../utilities/numberFormater';
 
 const CartModalForm = ({
@@ -34,6 +35,7 @@ const CartModalForm = ({
     const { emptyCart, calculateCartTotal } = useContext(ShopContext)
     const orderTotalAmount = numberFormater(calculateCartTotal())
     const orderId = (Math.floor(Math.random() * 10) + 1) * Date.now()
+    const navigate = useNavigate()
 
     const registerInputs = ({ target: {name, value} }) => {
         setOrder({
@@ -75,8 +77,10 @@ const CartModalForm = ({
             )
             setTimeout(() => {
                 emptyCart()
-                setShowForm(false)
-            }, 11000)
+            }, 10100)
+            setTimeout(() => {
+                navigate('/')
+            }, 10110)
         } catch (error) {
             setErrorOrder(error.message)
             toast.error(

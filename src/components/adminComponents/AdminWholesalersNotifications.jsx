@@ -25,7 +25,7 @@ const AdminWholesalersNotifications = () => {
                         <span className='font-bold'>
                             {pendingWholesalersMessages}
                         </span>
-                        mensaje/es
+                        mensaje/es&nbsp;
                     </div>
                     de mayoristas sin leer.
                 </span>

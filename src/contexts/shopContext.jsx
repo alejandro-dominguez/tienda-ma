@@ -39,6 +39,7 @@ const ShopProvider = ({ children }) => {
     }
 
     const emptyCart = () => {
+        localStorage.removeItem('cartData')
         setProducts([])
     }
 
@@ -53,7 +54,7 @@ const ShopProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        products.length > 0 ?
+        products.length ?
             localStorage.setItem('cartData', JSON.stringify(products))
         :
             localStorage.removeItem('cartData')
