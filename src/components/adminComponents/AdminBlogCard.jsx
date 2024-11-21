@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { db } from '../../firebase/config';
 import {
     deleteDoc,
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../firebase/config';
 
 const AdminBlogCard = ({
     blog,
@@ -67,7 +67,6 @@ const AdminBlogCard = ({
         <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
                 <img
-                    
                     src={blog.img1}
                     alt='imagen de portada del blog'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'

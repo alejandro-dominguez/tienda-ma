@@ -15,9 +15,7 @@ const FeaturedBlogArticleContainer = () => {
     const [ blog, setBlog ] = useState({})
 
     useEffect(() => {
-        if (localStorage.featuredBlogData) {
-            setBlog(JSON.parse(localStorage.featuredBlogData))
-        }
+        if (localStorage.featuredBlogData) setBlog(JSON.parse(localStorage.featuredBlogData))
         else if (blogs.length && !loadingBlogs && !errorBlogs) {
             const getBlogId = blogs.find(blog => blog.id === id)
             setBlog(getBlogId)

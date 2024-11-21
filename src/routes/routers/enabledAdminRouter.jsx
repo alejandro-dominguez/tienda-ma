@@ -6,7 +6,7 @@ import ErrorPage from '../../pages/ErrorPage';
 import AdminErrorPage from '../../pages/AdminErrorPage';
 import AdminPage from '../../pages/AdminPage';
 import TermsAndConditionsPage from '../../pages/TermsAndConditionsPage';
-import RefoundsPage from '../../pages/RefundsPage';
+import RefundsPage from '../../pages/RefundsPage';
 import AdminLandingPage from '../../pages/AdminLandingPage';
 import ItemCategoriesContainer from '../../containers/ItemCategoriesContainer';
 import CartContainer from '../../containers/CartContainer';
@@ -126,7 +126,7 @@ const enabledAdminRouter = createBrowserRouter([
             },
             {
                 path: '/devoluciones',
-                element: <RefoundsPage />,
+                element: <RefundsPage />,
                 errorElement: <ErrorPage />,
             },
             {

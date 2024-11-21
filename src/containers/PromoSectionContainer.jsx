@@ -12,9 +12,7 @@ const PromoSectionContainer = () => {
     const [ promotion, setPromotion ] = useState({})
 
     useEffect(() => {
-        if (localStorage.promoData) {
-            setPromotion(JSON.parse(localStorage.promoData))
-        }
+        if (localStorage.promoData) setPromotion(JSON.parse(localStorage.promoData))
     }, [])
 
     return (

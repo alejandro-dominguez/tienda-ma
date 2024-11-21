@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { FaTruck } from 'react-icons/fa';
-import { FaClock } from 'react-icons/fa6';
-import { db } from '../../../firebase/config';
 import {
     deleteDoc,
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { FaTruck } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa6';
+import { db } from '../../../firebase/config';
 
 const AdminOrderCard = ({
     order,
@@ -62,7 +62,6 @@ const AdminOrderCard = ({
     const storeOrder = () => {
         localStorage.setItem('orderData', JSON.stringify(order))
     }
-
 
     return (
         <div className='flex flex-col items-start justify-start gap-2'>

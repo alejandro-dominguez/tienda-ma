@@ -20,6 +20,23 @@ import AdminOrdersDetailPage from '../../pages/adminPages/adminDetailPages/Admin
 import AdminWholesalersDetailPage from '../../pages/adminPages/adminDetailPages/AdminWholesalersDetailPage';
 import AdminMessagesDetailPage from '../../pages/adminPages/adminDetailPages/AdminMessagesDetailPage';
 import ProtectedRoute from '../ProtectedRoute';
+import AboutClientPage from '../../pages/AboutClientPage';
+import WholesalersPage from '../../pages/WholesalersPage';
+import TermsAndConditionsPage from '../../pages/TermsAndConditionsPage';
+import CartContainer from '../../containers/CartContainer';
+import SizesGuide from '../../pages/SizesGuide';
+import PaymentsPage from '../../pages/PaymentsPage'; 
+import RefundsPage from '../../pages/RefundsPage'; 
+import FeaturedBlogArticleContainer from '../../containers/FeaturedBlogArticleContainer';
+import BlogArticleContainer from '../../containers/BlogArticleContainer';
+import BlogsContainer from '../../containers/BlogsContainer';
+import AboutUsPage from '../../pages/AboutUsPage';
+import ProductLineItemListContainer from '../../containers/ProductLineItemListContainer';
+import SubcategoriesItemListContainer from '../../containers/SubcategoriesItemListContainer';
+import BrandItemListContainer from '../../containers/BrandItemListContainer';
+import ItemDetailContainer from '../../containers/ItemDetailContainer';
+import ItemListContainer from '../../containers/ItemListContainer';
+import ItemCategoriesContainer from '../../containers/ItemCategoriesContainer';
 
 const disabledAdminRouter = createBrowserRouter([
     {
@@ -30,6 +47,102 @@ const disabledAdminRouter = createBrowserRouter([
             {
                 path: '/',
                 element: <DisabledSite />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/:categoryId',
+                element: <ItemCategoriesContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/:categoryId/:subcategoryId',
+                element: <ItemListContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/:categoryId/:subcategoryId/detalle/:id',
+                element: <ItemDetailContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/marcas/:brandId',
+                element: <BrandItemListContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/subcategorias/:subcategoryId',
+                element: <SubcategoriesItemListContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/categorias/lineasDeProducto/:productLineId',
+                element: <ProductLineItemListContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/nosotros',
+                element: <AboutUsPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/blogs',
+                element: <BlogsContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/blogs/:id',
+                element: <BlogArticleContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/blogs/destacado/:id',
+                element: <FeaturedBlogArticleContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/formasDePago',
+                element: <PaymentsPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/talles',
+                element: <SizesGuide />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/carrito',
+                element: <CartContainer />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/terminos&condiciones',
+                element: <TermsAndConditionsPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/devoluciones',
+
+
+
+
+
+                element: <RefundsPage />,
+                errorElement: <ErrorPage />,
+
+
+
+
+
+                
+            },
+            {
+                path: '/mayoristas',
+                element: <WholesalersPage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: '/sobreUstedes',
+                element: <AboutClientPage />,
                 errorElement: <ErrorPage />,
             },
             {

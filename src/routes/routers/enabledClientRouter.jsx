@@ -5,7 +5,7 @@ import AboutUsPage from '../../pages/AboutUsPage';
 import ErrorPage from '../../pages/ErrorPage';
 import AdminPage from '../../pages/AdminPage';
 import TermsAndConditionsPage from '../../pages/TermsAndConditionsPage';
-import RefoundsPage from '../../pages/RefundsPage';
+import RefundsPage from '../../pages/RefundsPage';
 import ItemCategoriesContainer from '../../containers/ItemCategoriesContainer';
 import CartContainer from '../../containers/CartContainer';
 import BlogsContainer from '../../containers/BlogsContainer';
@@ -109,7 +109,7 @@ const enabledClientRouter = createBrowserRouter([
             },
             {
                 path: '/devoluciones',
-                element: <RefoundsPage />,
+                element: <RefundsPage />,
                 errorElement: <ErrorPage />,
             },
             {

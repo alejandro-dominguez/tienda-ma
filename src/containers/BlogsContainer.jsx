@@ -13,9 +13,7 @@ const BlogsContainer = () => {
     const [ blogArticles, setBlogArticles ] = useState({})
 
     useEffect(() => {
-        if (localStorage.blogsData) {
-            setBlogArticles(JSON.parse(localStorage.blogsData))
-        }
+        if (localStorage.blogsData) setBlogArticles(JSON.parse(localStorage.blogsData))
     }, [])
 
     return (

@@ -92,7 +92,6 @@ const NavBar = () => {
                         onClick={() => {navigateHome ? navigate('/') : null}}
                     >
                         <img
-                            
                             src={headerLogo}
                             alt='logo tienda Ma'
                             className='w-full block'

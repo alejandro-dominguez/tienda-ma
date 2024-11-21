@@ -4,6 +4,7 @@ import {
     useContext
 } from 'react';
 import { ProductsContext } from '../contexts/productsContext';
+import { AuthContext } from '../contexts/authContext';
 import { useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import ErrorPage from '../pages/ErrorPage';
@@ -12,13 +13,19 @@ import ItemsPagination from '../components/itemComponents/ItemsPagination';
 
 const BrandItemListContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
+    const { authUser } = useContext(AuthContext)
     const { brandId } = useParams()
     const [ filteredProducts, setFilteredProducts ] = useState([])
     const [ products, setProducts ] = useState([])
     const [ pages, setPages ] = useState(0)
     const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
-    const [ currentPage, setCurrentPage ] = useState(1)
+    const [ currentPage, setCurrentPage ] = useState(
+        (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+            JSON.parse(localStorage.getItem('itemPages'))
+        :
+            1
+    )
 
     const finIndex = currentPage * itemsQuantity
     const iniIndex = Math.max(finIndex - itemsQuantity, 0)
@@ -32,7 +39,12 @@ const BrandItemListContainer = () => {
         if (prods.length && brandId) {
             const filterProducts = prods.filter(product => product.brand === brandId)
             setFilteredProducts(filterProducts)
-            setCurrentPage(1)
+            setCurrentPage(
+                (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+                    JSON.parse(localStorage.getItem('itemPages'))
+                :
+                    1
+            )
         }
     }, [prods, brandId])
 

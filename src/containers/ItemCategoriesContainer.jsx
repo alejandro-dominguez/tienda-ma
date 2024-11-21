@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { ProductsContext } from '../contexts/productsContext';
 import { SubcategoriesContext } from '../contexts/subcategoriesContext';
+import { AuthContext } from '../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaGem } from 'react-icons/fa6';
 import { RiHandSanitizerFill } from 'react-icons/ri';
@@ -20,6 +21,7 @@ import ItemsPagination from '../components/itemComponents/ItemsPagination';
 
 const ItemCategoriesContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
+    const { authUser } = useContext(AuthContext)
     const { subcategories, errorSubcategories, loadingSubcategories } = useContext(SubcategoriesContext)
     const { categoryId } = useParams()
     const [ filteredProducts, setFilteredProducts ] = useState([])
@@ -28,7 +30,12 @@ const ItemCategoriesContainer = () => {
     const [ pages, setPages ] = useState(0)
     const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
-    const [ currentPage, setCurrentPage ] = useState(1)
+    const [ currentPage, setCurrentPage ] = useState(
+        (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+            JSON.parse(localStorage.getItem('itemPages'))
+        :
+            1
+    )
 
     const finIndex = currentPage * itemsQuantity
     const iniIndex = Math.max(finIndex - itemsQuantity, 0)
@@ -42,7 +49,12 @@ const ItemCategoriesContainer = () => {
         if (prods.length && categoryId) {
             const filterProducts = prods.filter(product => product.category === categoryId)
             setFilteredProducts(filterProducts)
-            setCurrentPage(1)
+            setCurrentPage(
+                (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+                    JSON.parse(localStorage.getItem('itemPages'))
+                :
+                    1
+            )
         }
     }, [prods, categoryId])
 

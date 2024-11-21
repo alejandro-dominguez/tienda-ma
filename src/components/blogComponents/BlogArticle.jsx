@@ -19,7 +19,6 @@ const BlogArticle = ({ blog }) => {
                 </div>
                 <div className='w-full sm:w-1/2 md:w-2/5 lg:w-[29%] mx-auto  md:mr-4 sm:ml-0 drop-shadow-sm mt-6 md:mt-0'>
                     <img
-                        
                         src={blog.img1}
                         alt='imagen de portada de blog'
                         className='block w-full object-cover aspect-square object-center drop-shadow-sm'
@@ -42,7 +41,6 @@ const BlogArticle = ({ blog }) => {
             </p>
             <div className='w-full sm:w-1/2 md:w-1/3 drop-shadow-sm mt-7 sm:mr-auto'>
                 <img
-                    
                     src={blog.img2}
                     alt='imagen de mitad de blog'
                     className='block w-full object-cover aspect-square object-center drop-shadow-sm'

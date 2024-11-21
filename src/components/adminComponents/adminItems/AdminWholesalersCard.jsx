@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { IoEyeSharp } from 'react-icons/io5';
-import { db } from '../../../firebase/config';
 import {
     deleteDoc,
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { IoEyeSharp } from 'react-icons/io5';
+import { db } from '../../../firebase/config';
 
 const AdminWholesalersCard = ({
     message,

@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { db } from '../../firebase/config';
 import {
     addDoc,
     collection,
 } from 'firebase/firestore';
+import { useState } from 'react';
+import { db } from '../../firebase/config';
 
 const CreatePaymentsForm = ({
     setActiveToast,

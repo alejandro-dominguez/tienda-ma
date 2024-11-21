@@ -1,8 +1,8 @@
-import { db } from '../../../firebase/config';
 import {
     updateDoc,
     doc,
 } from 'firebase/firestore';
+import { db } from '../../../firebase/config';
 
 const AdminCmtCard = ({
     setActiveToast,

@@ -1,4 +1,8 @@
-import { useEffect } from 'react';
+import {
+    useEffect,
+    useContext
+ } from 'react';
+ import { AuthContext } from '../../contexts/authContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowForward} from 'react-icons/io';
 import scrollTop from '../../utilities/scrollTop';
@@ -9,9 +13,24 @@ const ItemsPagination = ({
     setCurrentPage,
     currentPage,
 }) => {
+    const { authUser } = useContext(AuthContext)
+
     useEffect(() => {
-        setCurrentPage(1)
+        localStorage.getItem('authUser') || authUser ?
+            (
+                localStorage.setItem('itemPages', JSON.stringify(currentPage)),
+                setCurrentPage(currentPage)
+            )
+        :
+            setCurrentPage(1)
     }, [])
+
+    useEffect(() => {
+        (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+            localStorage.setItem('itemPages', JSON.stringify(currentPage))
+        :
+            null
+    }, [currentPage])
 
     const nextPage = (e) => {
         e.currentTarget.blur()

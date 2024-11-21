@@ -4,6 +4,7 @@ import {
     useContext
 } from 'react';
 import { ProductsContext } from '../contexts/productsContext';
+import { AuthContext } from '../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import ErrorPage from '../pages/ErrorPage';
@@ -12,13 +13,19 @@ import ItemsPagination from '../components/itemComponents/ItemsPagination';
 
 const ProductLineItemListContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
+    const { authUser } = useContext(AuthContext)
     const { productLineId } = useParams()
     const [ filteredProducts, setFilteredProducts ] = useState([])
     const [ products, setProducts ] = useState([])
     const [ pages, setPages ] = useState(0)
     const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
-    const [ currentPage, setCurrentPage ] = useState(1)
+    const [ currentPage, setCurrentPage ] = useState(
+        (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+            JSON.parse(localStorage.getItem('itemPages'))
+        :
+            1
+    )
 
     const finIndex = currentPage * itemsQuantity
     const iniIndex = Math.max(finIndex - itemsQuantity, 0)
@@ -32,7 +39,12 @@ const ProductLineItemListContainer = () => {
         if (prods.length && productLineId) {
             const filterProducts = prods.filter(product => product.productLine === productLineId)
             setFilteredProducts(filterProducts)
-            setCurrentPage(1)
+            setCurrentPage(
+                (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+                    JSON.parse(localStorage.getItem('itemPages'))
+                :
+                    1
+            )
         }
     }, [prods, productLineId])
 
@@ -53,7 +65,6 @@ const ProductLineItemListContainer = () => {
 
     return (
         <main className='w-full min-h-[100svh]'>
-            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-12 mt-20 w-fit mx-auto'>
             {
                 productLineId ?
                     <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-3 pt-12 mt-20 w-fit mx-auto'>
@@ -62,7 +73,6 @@ const ProductLineItemListContainer = () => {
                 : 
                     null
             }
-            </h1>
             {
                 (filteredProducts.length && !loading && !error) ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4'>

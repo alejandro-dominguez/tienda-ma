@@ -1,14 +1,14 @@
 import {
-    useEffect,
-    createContext,
-    useState
-} from 'react';
-import {
     collection,
     query,
     getDocs,
     orderBy
 } from 'firebase/firestore';
+import {
+    useEffect,
+    createContext,
+    useState
+} from 'react';
 import { db } from '../firebase/config';
 
 export const CommentsContext = createContext();

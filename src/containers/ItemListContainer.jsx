@@ -1,5 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import {
+    useEffect,
+    useState,
+    useContext
+} from 'react';
 import { ProductsContext } from '../contexts/productsContext';
+import { AuthContext } from '../contexts/authContext';
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import ListItemCard from '../components/ListItemCard';
@@ -8,13 +13,19 @@ import ErrorPage from '../pages/ErrorPage';
 
 const ItemListContainer = () => {
     const { prods, error, loading } = useContext(ProductsContext)
+    const { authUser } = useContext(AuthContext)
     const { categoryId, subcategoryId } = useParams()
     const [ filteredProducts, setFilteredProducts ] = useState([])
     const [ products, setProducts ] = useState([])
     const [ pages, setPages ] = useState(0)
     const [ pagesQuantity, setPagesQuantity ] = useState([])
     const [ itemsQuantity, setItemsQuantity ] = useState(12)
-    const [ currentPage, setCurrentPage ] = useState(1)
+    const [ currentPage, setCurrentPage ] = useState(
+        (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+            JSON.parse(localStorage.getItem('itemPages'))
+        :
+            1
+    )
     
     const finIndex = currentPage * itemsQuantity
     const iniIndex = Math.max(finIndex - itemsQuantity, 0)
@@ -28,7 +39,12 @@ const ItemListContainer = () => {
         if (prods.length && categoryId && subcategoryId) {
             const filterProducts = prods.filter(product => product.category === categoryId && product.subcategory === subcategoryId)
             setFilteredProducts(filterProducts)
-            setCurrentPage(1)
+            setCurrentPage(
+                (localStorage.getItem('authUser') || authUser) && localStorage.getItem('itemPages') ?
+                    JSON.parse(localStorage.getItem('itemPages'))
+                :
+                    1
+            )
         }
     }, [prods, categoryId, subcategoryId])
 

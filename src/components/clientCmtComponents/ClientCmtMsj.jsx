@@ -2,11 +2,11 @@ import {
     useEffect,
     useState
 } from 'react';
-import { db } from '../../firebase/config';
 import {
     deleteDoc,
     doc,
 } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 
 const ClientCmtMsj = ({
     comment,

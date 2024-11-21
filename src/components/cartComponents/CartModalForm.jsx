@@ -236,17 +236,17 @@ const CartModalForm = ({
                         </span>
                     </button>
                 </form>
-                    <Toaster
-                        richColors
-                        toastOptions={{
-                            unstyled: false,
-                            classNames: {
-                                toast: 'h-40 mb-52',
-                                title: 'text-xl',
-                                description: 'text-lg',
-                            },
-                        }}
-                    />
+                <Toaster
+                    richColors
+                    toastOptions={{
+                        unstyled: false,
+                        classNames: {
+                            toast: 'h-40 mb-52',
+                            title: 'text-xl',
+                            description: 'text-lg',
+                        },
+                    }}
+                />
                 </>
             : 
                 null

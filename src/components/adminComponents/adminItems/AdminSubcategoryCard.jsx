@@ -1,5 +1,3 @@
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { db } from '../../../firebase/config';
 import {
     collection,
     query,
@@ -8,6 +6,8 @@ import {
     doc,
     deleteDoc
 } from 'firebase/firestore';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../../firebase/config';
 
 const AdminSubcategoryCard = ({
     subcategory,

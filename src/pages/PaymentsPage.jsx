@@ -43,7 +43,6 @@ const PaymentsPage = () => {
                         </div>
                         <div className='w-8 mx-auto mt-6'>
                             <img
-                                
                                 src={icon}
                                 alt='icono tienda ma'
                                 className='block w-full'
@@ -68,7 +67,6 @@ const PaymentsPage = () => {
                         </div>
                         <div className='w-8 mx-auto mt-6'>
                             <img
-                                
                                 src={icon}
                                 alt='icono tienda ma'
                                 className='block w-full'

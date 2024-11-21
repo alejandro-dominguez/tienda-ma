@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { ProductsContext } from '../../../contexts/productsContext';
 import { FaSearch } from 'react-icons/fa';
 import BrandsSearchItems from './searchBarItems/BrandsSearchItems';

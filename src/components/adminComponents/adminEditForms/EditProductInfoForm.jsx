@@ -43,9 +43,9 @@ const EditProductInfoForm = ({
 
     return (
         <form
-        className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-fit mx-auto self-start'
-        autoComplete='off'
-        onSubmit={handleSubmit}
+            className='flex flex-col pt-3 pb-5 px-4 sm:px-8 mt-5 shadow-sm drop-shadow-sm bg-white w-fit mx-auto self-start'
+            autoComplete='off'
+            onSubmit={handleSubmit}
         >
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col sm:flex-row gap-5'>

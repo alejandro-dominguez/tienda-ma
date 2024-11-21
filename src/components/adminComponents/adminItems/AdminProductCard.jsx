@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { db } from '../../../firebase/config';
 import {
     deleteDoc,
     doc,
     updateDoc
 } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { BsFillTrash3Fill } from 'react-icons/bs';
+import { db } from '../../../firebase/config';
 
 const AdminProductCard = ({
     prod,
@@ -59,11 +59,10 @@ const AdminProductCard = ({
         <div className='p-5 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-40 drop-shadow-sm'>
                 <img
-                    
                     src={prod.img}
                     alt='imagen de producto'
                     className='block w-full object-cover aspect-video object-center drop-shadow-sm'
-                    />
+                />
             </div>
             <h3 className='font-black font-Raleway tracking-wide mt-2'>
                 {prod.brand} {prod.name}

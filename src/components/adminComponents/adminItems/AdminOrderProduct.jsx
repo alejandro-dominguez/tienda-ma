@@ -8,7 +8,6 @@ const AdminOrderProduct = ({ product }) => {
             </h3>
             <div className='w-[4.5rem] drop-shadow mt-1'>
                 <img
-                    
                     src={product.img}
                     alt={product.name}
                     className='block w-full rounded drop-shadow-sm aspect-square object-cover'

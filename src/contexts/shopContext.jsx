@@ -27,8 +27,9 @@ const ShopProvider = ({ children }) => {
         for (const e of products) {
             const e1 = {...e}
             const e2 = {...newProduct}
-            if ((!e2.selectedSize && (e1.id === e2.id)) ||
-            ((e1.id === e2.id) && (e1.selectedSize === e2.selectedSize))
+            if (
+                (!e2.selectedSize && (e1.id === e2.id)) ||
+                ((e1.id === e2.id) && (e1.selectedSize === e2.selectedSize))
             ) return e
         }
     }

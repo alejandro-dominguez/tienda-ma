@@ -1,14 +1,14 @@
 import {
-    useState,
-    useEffect,
-    createContext
-} from 'react';
-import {
     collection,
     query,
     getDocs,
     orderBy
 } from 'firebase/firestore';
+import {
+    useState,
+    useEffect,
+    createContext
+} from 'react';
 import { db } from '../firebase/config';
 
 export const WholesalerMessageContext = createContext();

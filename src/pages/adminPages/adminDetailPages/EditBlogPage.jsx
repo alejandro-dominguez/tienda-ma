@@ -25,7 +25,6 @@ const EditBlogPage = () => {
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
 
-
     useEffect(() => {
         if (localStorage.editBlogData) {
             setBlog(JSON.parse(localStorage.editBlogData))

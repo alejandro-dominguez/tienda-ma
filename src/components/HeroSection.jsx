@@ -3,7 +3,7 @@ import {
     useState
 } from 'react';
 import { BsBagHeartFill } from 'react-icons/bs';
-import video from '../assets/video-hero.mp4';
+import heroBg from '../assets/hero-img-desktop.jpg';
 import HeroBtn from './homeComponents/HeroBtn';
 import HomeSlider from '../components/homeComponents/HomeSlider';
 import ClientCmtsNotifications from '../components/homeComponents/ClientCmtsNotifications';
@@ -33,13 +33,9 @@ const HeroSection = () => {
     return (
         <main className='w-full grid place-items-center'>
             <div className='w-full flex flex-col md:flex-row relative'>
-                <video
-                    src={video}
-                    muted={true}
-                    autoPlay={true}
-                    loop={true}
-                    type='video/mp4'
-                    className='block w-full h-[100svh] object-cover grayscale-[.5] blur-[2px] brightness-[.8] saturate-[1.25]'
+                <img
+                    src={heroBg}
+                    className='block w-full h-[100svh] object-cover grayscale-[.25] blur-[1px] brightness-[.8] saturate-[1.25]'
                 />
                 <div className='absolute top-32 flex flex-col items-start sm:ml-10 px-4 sm:px-0'>
                     <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm
@@ -66,7 +62,7 @@ const HeroSection = () => {
                         }
                     </div>
                 </div>
-                <div className='absolute w-full bottom-0 py-[1.1rem] overflow-x-hidden whitespace-nowrap bg-white/5 backdrop-blur-sm'>
+                <div className='absolute w-full bottom-0 py-[1.1rem] overflow-x-hidden whitespace-nowrap bg-black/10 backdrop-blur-sm'>
                     <HomeSlider />
                     <HomeSlider />
                 </div>

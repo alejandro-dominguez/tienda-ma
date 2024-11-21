@@ -22,7 +22,6 @@ const NoCartItemsCard = () => {
                 </h1>
                 <div className='w-[7.5rem]'>
                     <img
-                        
                         src={logo}
                         alt='logo tienda Ma'
                         className='block w-full'

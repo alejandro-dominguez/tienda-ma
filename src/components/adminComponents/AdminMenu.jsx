@@ -115,7 +115,7 @@ const AdminMenu = ({ adminMenuData }) => {
                         </button>
                 }
                 <button
-                type='button'
+                    type='button'
                     className='py-2 px-3 grid place-items-center bg-red-500 rounded-lg w-44'
                     onClick={() => signOut()}
                 >

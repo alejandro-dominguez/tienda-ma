@@ -37,18 +37,18 @@ const AdminProductsContainer = ({
             {
                 products.length ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-3 gap-6'>
-                    {
-                        products.map(prod => {
-                            return (
-                                <AdminProductCard
-                                    prod={prod}
-                                    key={prod.id}
-                                    setActiveToast={setActiveToast}
-                                    setErrorToast={setErrorToast}
-                                />
-                        )})
-                    }
-                  </div>
+                        {
+                            products.map(prod => {
+                                return (
+                                    <AdminProductCard
+                                        prod={prod}
+                                        key={prod.id}
+                                        setActiveToast={setActiveToast}
+                                        setErrorToast={setErrorToast}
+                                    />
+                            )})
+                        }
+                    </div>
                 :
                     <div className='min-w-[93vw] min-h-[20rem] mt-3'>
                         <h3 className='text-lg'>
