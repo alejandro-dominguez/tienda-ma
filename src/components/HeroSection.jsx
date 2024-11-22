@@ -3,8 +3,8 @@ import {
     useState
 } from 'react';
 import { BsBagHeartFill } from 'react-icons/bs';
-import heroBg from '../assets/hero-img-desktop.jpg';
 import HeroBtn from './homeComponents/HeroBtn';
+import HeroImg from './homeComponents/HeroImg';
 import HomeSlider from '../components/homeComponents/HomeSlider';
 import ClientCmtsNotifications from '../components/homeComponents/ClientCmtsNotifications';
 
@@ -33,10 +33,7 @@ const HeroSection = () => {
     return (
         <main className='w-full grid place-items-center'>
             <div className='w-full flex flex-col md:flex-row relative'>
-                <img
-                    src={heroBg}
-                    className='block w-full h-[100svh] object-cover grayscale-[.25] blur-[1px] brightness-[.8] saturate-[1.25]'
-                />
+                <HeroImg />
                 <div className='absolute top-32 flex flex-col items-start sm:ml-10 px-4 sm:px-0'>
                     <h1 className='text-white font-Raleway font-bold text-3xl md:text-5xl drop-shadow-sm
                     leading-8 sm:leading-normal'>
