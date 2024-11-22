@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import numberFormater from '../../../utilities/numberFormater';
 import ItemSuggestionsPagination from './itemSuggestionsPagination/ItemSuggestionsPagination';
+import CustomImg from '../../customImg/CustomImg';
 
 const ItemSuggestionsCard = ({
     products,
@@ -23,10 +24,12 @@ const ItemSuggestionsCard = ({
                                 </h3>
                                 <div className='grid place-items-start self-end gap-3'>
                                     <div className='w-[4.5rem] drop-shadow -mt-24'>
-                                        <img
+                                        <CustomImg
                                             src={product.img}
                                             alt={product.name}
-                                            className='block w-full rounded drop-shadow-sm aspect-square object-cover'
+                                            contain={false}
+                                            center={false}
+                                            aspectVideo={false}
                                         />
                                     </div>
                                     <span className='text-[.835rem] font-black -mt-8 tracking-wide'>

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import shortenText from '../utilities/shortenText';
 import numberFormater from '../utilities/numberFormater';
+import CustomImg from './customImg/CustomImg';
 
 const FeaturedItemCard = ({ product }) => {
     const navigate = useNavigate()
@@ -15,10 +16,12 @@ const FeaturedItemCard = ({ product }) => {
                     </h3>
                     <div className='flex flex-col lg:flex-row gap-4'>
                         <div className='w-36 drop-shadow-sm'>
-                            <img
+                            <CustomImg
                                 src={product.img}
                                 alt={product.name}
-                                className='block w-full rounded drop-shadow-sm aspect-square object-cover'
+                                contain={false}
+                                center={false}
+                                aspectVideo={false}
                             />
                         </div>
                         <div className='flex flex-col w-fit'>

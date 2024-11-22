@@ -77,7 +77,7 @@ const ItemsPagination = ({
                             pagesQuantity.map((nPage,i) => {
                                 return (
                                     <button
-                                    type='button'
+                                        type='button'
                                         key={i}
                                         disabled={nPage === currentPage ? true : false}
                                         className=
@@ -87,9 +87,9 @@ const ItemsPagination = ({
                                                 rounded border border-zinc-700/[90%] transition`
                                             :
                                                 `px-3 md:px-4 py-2 bg-white drop-shadow-sm rounded border
-                                                border-transparent transition shadow-sm hover:shadow hover:drop-shadow
-                                                hover:border-zinc-700/[45%] focus:shadow focus:drop-shadow
-                                                focus:border-zinc-700/[45%]`
+                                                border-transparent transition shadow-sm hover:shadow
+                                                hover:drop-shadow hover:border-zinc-700/[45%] focus:shadow
+                                                focus:drop-shadow focus:border-zinc-700/[45%]`
                                         }
                                         onClick={() => changePage(nPage)}
                                     >
@@ -108,7 +108,7 @@ const ItemsPagination = ({
                         className='bg-zinc-900 text-white p-[.3rem] shadow-sm rounded-full text-lg md:text-xl w-fit h-fit
                         hover:bg-zinc-700 focus:bg-zinc-700 transition-colors ease-in-out'
                     >
-                        <IoIosArrowForward  className='block'/>
+                        <IoIosArrowForward className='block'/>
                     </button>
                 </div>
             </div>

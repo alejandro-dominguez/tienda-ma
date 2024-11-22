@@ -12,6 +12,7 @@ import { FaCircleXmark } from 'react-icons/fa6';
 import ItemBabySizes from '../itemComponents/ItemBabySizes';
 import ItemAdultSizes from '../itemComponents/ItemAdultSizes';
 import ItemCount from '../itemComponents/ItemCount';
+import CustomImg from '../customImg/CustomImg';
 
 const BuyItemModal = ({
     product,
@@ -112,10 +113,12 @@ const BuyItemModal = ({
                     {product.name}
                 </h3>
                 <div className='w-40 mt-[.1rem] md:mt-2 drop-shadow'>
-                    <img
+                    <CustomImg
                         src={product.img}
                         alt={product.name}
-                        className='block w-full rounded drop-shadow-sm aspect-square object-cover'
+                        contain={false}
+                        center={false}
+                        aspectVideo={false}
                     />
                 </div>
                 {

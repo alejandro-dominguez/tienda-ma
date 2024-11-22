@@ -107,9 +107,6 @@ const Footer = () => {
                         <span>
                             Alejandro Dominguez
                         </span>
-                        <span>
-                            Yamil Gaggiotti
-                        </span>
                     </small>
                 </Link>
             </div>

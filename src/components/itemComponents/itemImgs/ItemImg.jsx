@@ -3,6 +3,7 @@ import {
     useState,
     useEffect
 } from 'react';
+import CustomImg from '../../customImg/CustomImg';
 
 const ItemImg = ({
     img,
@@ -71,10 +72,12 @@ const ItemImg = ({
                 }
             onClick={() => openModal()}
         >
-            <img
+            <CustomImg
                 src={img}
                 alt={product.name}
-                className='block w-full rounded drop-shadow-sm aspect-square object-cover'
+                contain={false}
+                center={false}
+                aspectVideo={false}
             />
         </button>
         <dialog
@@ -83,10 +86,12 @@ const ItemImg = ({
             onClick={(e) => closeModal(e)}
         >
             <div className='bg-white shadow-sm drop-shadow-sm w-72 md:w-96 rounded mx-auto'>
-                <img
+                <CustomImg
                     src={img}
                     alt={product.name}
-                    className='block w-full rounded aspect-square object-contain'
+                    contain={true}
+                    center={false}
+                    aspectVideo={false}
                 />
             </div>
         </dialog>

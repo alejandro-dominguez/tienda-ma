@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { ShopContext } from '../../contexts/shopContext';
 import { MdEdit } from 'react-icons/md';
+import CustomImg from '../customImg/CustomImg';
 import numberFormater from '../../utilities/numberFormater';
 
 const CartItem = ({ item }) => {
@@ -23,10 +24,12 @@ const CartItem = ({ item }) => {
             <div className='flex flex-col md:flex-row'>
                 <div className='flex gap-5'>
                     <div className='w-20 drop-shadow'>
-                        <img
+                        <CustomImg
                             src={item.img}
                             alt={item.name}
-                            className='w-full block aspect-square object-cover rounded drop-shadow-sm'
+                            contain={false}
+                            center={false}
+                            aspectVideo={false}
                         />
                     </div>
                     <div className='flex flex-col items-start justify-start leading-[1.325rem] gap-[.1rem] w-fit'>

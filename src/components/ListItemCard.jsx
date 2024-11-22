@@ -11,6 +11,7 @@ import { MdEdit } from 'react-icons/md';
 import BuyItemModal from './listComponents/BuyItemModal';
 import EditProductModal from './listComponents/EditProductModal';
 import shortenText from '../utilities/shortenText';
+import CustomImg from './customImg/CustomImg';
 import numberFormater from '../utilities/numberFormater';
 import scrollTop from '../utilities/scrollTop';
 
@@ -81,19 +82,23 @@ const ListItemCard = ({ product }) => {
                         {
                             !isAdmin ?
                                 <div className='w-36 drop-shadow-sm'>
-                                    <img
+                                    <CustomImg
                                         src={product.img}
                                         alt={product.name}
-                                        className='block w-full rounded drop-shadow aspect-square object-cover'
+                                        contain={false}
+                                        center={false}
+                                        aspectVideo={false}
                                     />
                                 </div>
                             :
                                 <div className='flex'>
                                     <div className='w-36 drop-shadow-sm'>
-                                        <img
+                                        <CustomImg
                                             src={product.img}
                                             alt={product.name}
-                                            className='block w-full rounded drop-shadow aspect-square object-cover'
+                                            contain={false}
+                                            center={false}
+                                            aspectVideo={false}
                                         />
                                     </div>
                                     <button
