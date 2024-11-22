@@ -9,7 +9,7 @@ const HeroImg = () => {
             <div
                 className={
                     !isLoaded ?
-                        'block w-full h-[100svh] bg-teal-800/[20%] animate-pulse'
+                        'block w-full h-[100svh] bg-teal-500/[8%] animate-pulse'
                     :
                         'hidden'
                 }
