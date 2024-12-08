@@ -54,7 +54,8 @@ const AboutClientPage = () => {
     return (
         <>
         <div className='w-full min-h-[100svh] px-4 md:px-10 mb-20'>
-            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-2 pt-12 mt-20 w-fit mx-auto'>
+            <h1 className='font-bold font-Raleway text-[1.75rem] md:text-3xl drop-shadow-sm pb-2 pt-12 mt-20 w-fit
+            mx-auto leading-8 sm:leading-normal'>
                 Eso que no le dijiste a nadie
             </h1>
             <p className='leading-5 font-semibold max-w-2xl mx-auto px-4 text-center text-[.95rem]'>
