@@ -56,14 +56,13 @@ const ListItemCard = ({ product }) => {
                 )
             : showEditItemModal ?
                 scrollTop()
-            
-        :   
-            (   
-                bodyEl.style.overflowY = 'auto',
-                routerEl.style.paddingRight = '0',
-                cartEl.style.paddingRight = '0',
-                wspBtnEl.style.paddingRight = '0'
-            )
+            :   
+                (   
+                    bodyEl.style.overflowY = 'auto',
+                    routerEl.style.paddingRight = '0',
+                    cartEl.style.paddingRight = '0',
+                    wspBtnEl.style.paddingRight = '0'
+                )
     }, [ showBuyItemModal, showEditItemModal ])
 
     return (
@@ -81,7 +80,10 @@ const ListItemCard = ({ product }) => {
                     <div className='flex flex-col gap-4 mt-auto'>
                         {
                             !isAdmin ?
-                                <div className='w-36 drop-shadow-sm'>
+                                <div
+                                    className='w-36 drop-shadow-sm cursor-pointer'
+                                    onClick={() => setShowBuyItemModal(true)}
+                                >
                                     <CustomImg
                                         src={product.img}
                                         alt={product.name}
@@ -92,7 +94,10 @@ const ListItemCard = ({ product }) => {
                                 </div>
                             :
                                 <div className='flex'>
-                                    <div className='w-36 drop-shadow-sm'>
+                                    <div
+                                        className='w-36 drop-shadow-sm'
+                                        onClick={() => setShowBuyItemModal(true)}
+                                    >
                                         <CustomImg
                                             src={product.img}
                                             alt={product.name}
