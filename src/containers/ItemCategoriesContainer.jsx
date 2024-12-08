@@ -114,7 +114,7 @@ const ItemCategoriesContainer = () => {
                             >
                                 <GoSortDesc className='block text-2xl'/>
                                 <span className='font-bold tracking-wide'>
-                                    Filtro
+                                    Filtros
                                 </span>
                             </button>
                         </div>

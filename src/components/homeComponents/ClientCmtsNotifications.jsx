@@ -24,7 +24,7 @@ const ClientCmtsNotifications = () => {
                 (comments.length && !errorComments && !loadingComments) ?
                     <>
                     {
-                        pendingComments > 0 ?
+                        pendingComments ?
                             <Link
                                 to={'/admin/consola/comentarios'}
                                 className='absolute -top-[4.15rem] text-center mt-2 md:mt-0'
