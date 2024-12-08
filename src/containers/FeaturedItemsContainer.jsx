@@ -7,7 +7,7 @@ import { BlogContext } from '../contexts/blogContext';
 import { ProductsContext } from '../contexts/productsContext';
 import { RotatingLines } from 'react-loader-spinner';
 import FeaturedItemCard from '../components/FeaturedItemCard';
-import FeaturedBlog from '../components/blogComponents/FeaturedBlog';
+import FeaturedBlogCard from '../components/blogComponents/FeaturedBlogCard';
 import ErrorPage from '../pages/ErrorPage';
 
 const FeaturedItemsContainer = () => {
@@ -38,7 +38,7 @@ const FeaturedItemsContainer = () => {
                         {
                             featuredBlogs.map(blog => {
                                 return (
-                                    <FeaturedBlog
+                                    <FeaturedBlogCard
                                         blogData={blog}
                                         key={blog.id}
                                     />

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import CustomImg from '../customImg/CustomImg';
 
-const FeaturedBlog = ({ blogData }) => {
+const FeaturedBlogCard = ({ blogData }) => {
     const navigate = useNavigate()
 
     const storeAndNavigate = () => {
@@ -10,7 +10,10 @@ const FeaturedBlog = ({ blogData }) => {
     }
 
     return (
-        <div className='bg-white px-6 py-5 shadow-sm drop-shadow-sm'>
+        <div
+            className='bg-white px-6 py-5 shadow-sm drop-shadow-sm cursor-pointer'
+            onClick={() => storeAndNavigate()}
+        >
             <div className='w-full drop-shadow-sm'>
                 <CustomImg
                     src={blogData.img1}
@@ -40,4 +43,4 @@ const FeaturedBlog = ({ blogData }) => {
     )
 };
 
-export default FeaturedBlog;
+export default FeaturedBlogCard;

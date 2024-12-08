@@ -11,7 +11,10 @@ const BlogCard = ({ blog }) => {
     }
 
     return (
-        <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
+        <div
+            className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col cursor-pointer'
+            onClick={() => storeAndNavigate()}
+        >
             <div className='w-full drop-shadow-sm'>
                 <CustomImg
                     src={blog.img1}
