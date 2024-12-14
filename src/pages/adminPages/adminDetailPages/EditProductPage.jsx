@@ -1,6 +1,7 @@
 import {
     useContext,
-    useState
+    useState,
+    useEffect
 } from 'react';
 import {
     Toaster,
