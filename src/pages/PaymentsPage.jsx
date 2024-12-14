@@ -45,7 +45,6 @@ const PaymentsPage = () => {
                             <img
                                 src={icon}
                                 alt='icono tienda ma'
-                                className='block w-full'
                             />
                         </div>
                     </div>
@@ -69,7 +68,6 @@ const PaymentsPage = () => {
                             <img
                                 src={icon}
                                 alt='icono tienda ma'
-                                className='block w-full'
                             />
                         </div>
                     </div>

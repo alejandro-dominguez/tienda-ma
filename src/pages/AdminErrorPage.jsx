@@ -33,7 +33,6 @@ const AdminErrorPage = () => {
                             <img
                                 src={logo}
                                 alt='logo tienda Ma'
-                                className='block w-full'
                             />
                         </div>
                     </Link>

@@ -13,7 +13,6 @@ const ShowCartFormBtn = ({ setShowForm }) => {
                 <img
                     src={cartCheck}
                     alt='carrito de compras tildado'
-                    className='block w-full'
                 />
             </div>
             <span className='font-Raleway text-[.9rem] tracking-wider font-bold'>

@@ -6,6 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { db } from '../../firebase/config';
+import CustomImg from '../customImg/CustomImg';
 
 const AdminBlogCard = ({
     blog,
@@ -66,10 +67,12 @@ const AdminBlogCard = ({
     return (
         <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
-                <img
+                <CustomImg
                     src={blog.img1}
                     alt='imagen de portada del blog'
-                    className='block w-full object-cover aspect-video object-center drop-shadow-sm'
+                    contain={false}
+                    center={false}
+                    aspectVideo={true}
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>

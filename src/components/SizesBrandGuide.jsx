@@ -1,3 +1,5 @@
+import CustomImg from './customImg/CustomImg';
+
 const SizesBrandGuide = ({
     brand,
     logo
@@ -5,10 +7,12 @@ const SizesBrandGuide = ({
     return (
         <div className='flex flex-col w-full mb-16'>
             <div className='w-32 self-center'>
-                <img
+                <CustomImg
                     src={logo}
                     alt='logo empresa de pañales'
-                    className='block w-full aspect-square object-contain'
+                    contain={true}
+                    center={false}
+                    aspectVideo={false}
                 />
             </div>
             <div className='grid grid-cols-2 w-fit gap-14 self-center'>

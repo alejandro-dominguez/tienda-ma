@@ -72,60 +72,60 @@ const EditProductPage = () => {
                         <span className='text-[1.05rem]'>
                             Producto:
                         </span>
-                        {prod.name}
+                        {prod[0].brand} {prod[0].name}
                     </h1>
                     <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                         <EditProductPriceForm
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <EditProductStockForm
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                     </div>
                     <div className='grid grid-cols-1 lg:grid-cols-2 place-items-start w-fit gap-8 mx-auto'>
                         <EditProductInfoForm
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <div className='flex-col mx-auto'>
                             <EditProductCategoriesForm
-                                product={prod}
+                                product={prod[0]}
                                 setActiveToast={setActiveToast}
                                 setErrorToast={setErrorToast}    
                             />
                             <EditProductLineForm
-                                product={prod}
+                                product={prod[0]}
                                 setActiveToast={setActiveToast}
                                 setErrorToast={setErrorToast}    
                             />
                         </div>
                         <EditProductSizesForm
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}    
                         />
                         <EditProductImgsForm
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg1Form
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg2Form
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />
                         <EditProductImg3Form
-                            product={prod}
+                            product={prod[0]}
                             setActiveToast={setActiveToast}
                             setErrorToast={setErrorToast}
                         />

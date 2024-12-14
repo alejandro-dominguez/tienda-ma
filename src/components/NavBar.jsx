@@ -94,7 +94,6 @@ const NavBar = () => {
                         <img
                             src={headerLogo}
                             alt='logo tienda Ma'
-                            className='w-full block'
                         />
                     </div>
                 <NavItemMenu

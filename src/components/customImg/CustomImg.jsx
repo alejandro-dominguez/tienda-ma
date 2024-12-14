@@ -22,13 +22,13 @@ const CustomImg = ({
             <img
                 className={
                     isLoaded && !contain && !center && !aspectVideo ?
-                        'block w-full rounded drop-shadow-sm aspect-square object-cover'
+                        'rounded drop-shadow-sm aspect-square object-cover'
                         : contain ?
-                            'block w-full rounded drop-shadow-sm aspect-square object-contain'
+                            'rounded drop-shadow-sm aspect-square object-contain'
                         : center ?
-                            'block w-full object-cover aspect-square object-center drop-shadow-sm'
+                            'object-cover aspect-square object-center drop-shadow-sm'
                         : aspectVideo ?
-                            'block w-full object-cover aspect-video object-center drop-shadow-sm'
+                            'object-cover aspect-video object-center drop-shadow-sm'
                     :
                         'hidden'
                 }

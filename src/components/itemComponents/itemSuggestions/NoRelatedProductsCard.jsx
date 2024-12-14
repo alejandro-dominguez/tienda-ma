@@ -25,7 +25,6 @@ const NoRelatedProductsCard = () => {
                         <img
                             src={icon}
                             alt='icono tienda ma'
-                            className='block w-full'
                         />
                     </div>
                 </div>

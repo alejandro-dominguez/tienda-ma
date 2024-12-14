@@ -17,7 +17,7 @@ const HeroImg = () => {
             <img
                 className={
                     isLoaded ?
-                        'block w-full h-[100svh] object-cover grayscale-[.25] blur-[1px] brightness-[.8] saturate-[1.25]'
+                        'h-[100svh] object-cover grayscale-[.25] blur-[1px] brightness-[.8] saturate-[1.25]'
                     :
                         'hidden'
                 }

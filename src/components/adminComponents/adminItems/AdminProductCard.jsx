@@ -6,6 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { db } from '../../../firebase/config';
+import CustomImg from '../../customImg/CustomImg';
 
 const AdminProductCard = ({
     prod,
@@ -58,10 +59,12 @@ const AdminProductCard = ({
     return (
         <div className='p-5 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-40 drop-shadow-sm'>
-                <img
+                <CustomImg
                     src={prod.img}
                     alt='imagen de producto'
-                    className='block w-full object-cover aspect-video object-center drop-shadow-sm'
+                    contain={false}
+                    center={false}
+                    aspectVideo={true}
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide mt-2'>
