@@ -14,16 +14,18 @@ const ClientCmtContainer = ({
     setAdminToast
 }) => {
     const { comments, errorComments, loadingComments } = useContext(CommentsContext)
-    const [ clientComments, setClientComments ] = useState({})
+    const [ clientComments, setClientComments ] = useState([])
 
     useEffect(() => {
-        if (localStorage.commentsData) setClientComments(JSON.parse(localStorage.commentsData))
+        if (localStorage.commentsData) {
+            setClientComments(JSON.parse(localStorage.commentsData))
+        }
     }, [])
 
     return (
         <main className='p-5 shadow-sm drop-shadow-sm'>
             {
-                JSON.stringify(clientComments) !== '{}' ?
+                clientComments.length ?
                     <div className='grid place-items-start gap-4'>
                         {
                             clientComments.map(comment => {

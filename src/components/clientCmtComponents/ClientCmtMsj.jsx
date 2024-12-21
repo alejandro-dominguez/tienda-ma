@@ -37,34 +37,41 @@ const ClientCmtMsj = ({
     }
 
     return (
-        <div className='bg-white w-full drop-shadow-sm px-4 py-3 relative rounded-sm'>
-            <h3>
-                {
-                    comment.sender === '' ?
-                        'Anónimo:'
-                    :
-                        `${comment.sender}:`
-                }
-            </h3>
-            <p>
-                {comment.message}
-            </p>
-            {
-                isAdmin ?
-                    <button
-                        type='button'
-                        className='px-4 py-1 bg-zinc-900 text-white rounded-lg shadow-sm mt-2
-                        transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                        onClick={() => deleteComment(comment.id)}
-                    >
-                        <span className='tracking-wider text-[.85rem] font-Raleway'>
-                            Borrar mensaje
-                        </span>
-                    </button>
-                :
-                    null
-            }
-        </div>
+        <>
+        {
+            comment.approved ?
+                <div className='bg-white w-full drop-shadow-sm px-4 py-3 relative rounded-sm'>
+                    <h3>
+                        {
+                            comment.sender === '' ?
+                                'Anónimo:'
+                            :
+                                `${comment.sender}:`
+                        }
+                    </h3>
+                    <p>
+                        {comment.message}
+                    </p>
+                    {
+                        isAdmin ?
+                            <button
+                                type='button'
+                                className='px-4 py-1 bg-zinc-900 text-white rounded-lg shadow-sm mt-2
+                                transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
+                                onClick={() => deleteComment(comment.id)}
+                            >
+                                <span className='tracking-wider text-[.85rem] font-Raleway'>
+                                    Borrar mensaje
+                                </span>
+                            </button>
+                        :
+                            null
+                    }
+                </div>
+            :
+                null
+        }
+        </>
     )
 };
 

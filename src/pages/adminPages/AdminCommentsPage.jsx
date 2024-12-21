@@ -67,7 +67,7 @@ const AdminCommentsPage = () => {
                         <>
                             {
                                 pendingComments > 0 ?
-                                    <div className='mx-auto flex flex-col'>
+                                    <div className='mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                                         <AdminCommentsContainer
                                             pendingCommentsData={pendingCommentsData}
                                             setActiveToast={setActiveToast}
