@@ -72,7 +72,7 @@ const NavBar = () => {
     }, [])
 
     return (
-        <nav className=
+        <header className=
             {
                 showNav ?
                     'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear top-0 opacity-100'
@@ -80,7 +80,7 @@ const NavBar = () => {
                     'fixed shadow-sm z-40 w-full transition-all duration-200 ease-linear -top-40 opacity-0'
             }
         >
-            <div className='relative w-full py-3 px-4 md:px-10 bg-white h-fit flex flex-col lg:flex-row justify-between items-center'>
+            <nav className='relative w-full py-3 px-4 md:px-10 bg-white h-fit flex flex-col lg:flex-row justify-between items-center'>
                     <div
                         className=
                             {
@@ -109,8 +109,8 @@ const NavBar = () => {
                         onClick={() => setHideMenu(!hideMenu)}
                     />
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     )
 };
 
