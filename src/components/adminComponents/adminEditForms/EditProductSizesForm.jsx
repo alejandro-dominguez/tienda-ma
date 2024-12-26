@@ -12,6 +12,12 @@ const EditProductSizesForm = ({
 }) => {
     const [ productBabySizes, setProductBabySizes ] = useState(false)
     const [ productAdultSizes, setProductAdultSizes ] = useState(false)
+    const {
+        id,
+        sizes,
+        adultSizes
+    } = product
+
 
     const registerBabySizes = (e) => {
         if (!e.target.value) {
@@ -30,7 +36,7 @@ const EditProductSizesForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 sizes: productBabySizes,
                 adultSizes: productAdultSizes,
@@ -61,7 +67,7 @@ const EditProductSizesForm = ({
                         </label>
                         <span className='text-sm mt-2 shadow p-2'>
                             {
-                                product.sizes ?
+                                sizes ?
                                     'producto con talles de bebé'
                                 :
                                     'producto sin talles de bebé'
@@ -86,7 +92,7 @@ const EditProductSizesForm = ({
                         </label>
                         <span className='text-sm mt-2 shadow p-2'>
                             {
-                                product.adultSizes ?
+                                adultSizes ?
                                     'producto con talles de adulto'
                                 :
                                     'producto sin talles de adulto'

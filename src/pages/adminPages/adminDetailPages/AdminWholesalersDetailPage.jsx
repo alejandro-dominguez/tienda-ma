@@ -33,7 +33,7 @@ const AdminWholesalersDetailPage = () => {
                     !loadingWholesalersMessages &&
                     !errorWholesalersMessages
                 ) ?
-                    <WholesalerMessageDetailCard wholesalerMessage={wholesalerMessage} />
+                    <WholesalerMessageDetailCard message={wholesalerMessage} />
                 : !errorWholesalersMessages ?
                     <div className='w-full grid place-items-center mt-36 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>

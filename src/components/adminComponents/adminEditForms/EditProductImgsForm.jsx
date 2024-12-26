@@ -13,6 +13,10 @@ const EditProductImgsForm = ({
     const [ newInfo, setNewInfo ] = useState({
         productImg: '',
     })
+    const {
+        id,
+        img
+    } = product
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditProductImgsForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 img: newInfo.productImg,
             })
@@ -53,7 +57,7 @@ const EditProductImgsForm = ({
                     Link imagen principal:
                 </label>
                 <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
-                    {product.img}
+                    {img}
                 </span>
                 <input
                     type='text' name='productImg' id='productImg'

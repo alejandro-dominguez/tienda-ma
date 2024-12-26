@@ -14,6 +14,11 @@ const EditBlogImgsForm = ({
         blogImg1: '',
         blogImg2: '',
     })
+    const {
+        id,
+        img1,
+        img2
+    } = blog
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -25,7 +30,7 @@ const EditBlogImgsForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', blog.id)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef, {
                 img1: newInfo.blogImg1,
                 img2: newInfo.blogImg2,
@@ -55,7 +60,7 @@ const EditBlogImgsForm = ({
                         Link imagen 1:
                     </label>
                     <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
-                        {blog.img1}
+                        {img1}
                     </span>
                     <input
                         type='text' name='blogImg1' id='blogImg1'
@@ -73,7 +78,7 @@ const EditBlogImgsForm = ({
                         Link imagen 2:
                     </label>
                     <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
-                        {blog.img2}
+                        {img2}
                     </span>
                     <input
                         type='text' name='blogImg2' id='blogImg2'

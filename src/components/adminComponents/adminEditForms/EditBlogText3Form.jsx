@@ -13,7 +13,11 @@ const EditBlogText3Form = ({
     const [ newInfo, setNewInfo ] = useState({
         blogText3: '',
     })
-
+    const {
+        text3,
+        id
+    } = blog
+    
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
             ...newInfo,
@@ -24,7 +28,7 @@ const EditBlogText3Form = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', blog.id)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef, {
                 text3: newInfo.blogText3,
             })
@@ -53,9 +57,9 @@ const EditBlogText3Form = ({
                         Tercer texto:
                     </label>
                     {
-                        blog.text3 !== '' ?
+                        text3 !== '' ?
                             <span className='text-sm mt-2 shadow p-2 max-h-28 overflow-y-scroll'>
-                                {blog.text3}
+                                {text3}
                             </span>
                         :
                             <span className='text-sm mt-2 shadow p-2 max-h-28 overflow-y-scroll'>

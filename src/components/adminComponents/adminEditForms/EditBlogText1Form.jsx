@@ -13,6 +13,10 @@ const EditBlogText1Form = ({
     const [ newInfo, setNewInfo ] = useState({
         blogText1: '',
     })
+    const {
+        text1,
+        id
+    } = blog
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditBlogText1Form = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', blog.id)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef, {
                 text1: newInfo.blogText1,
             })
@@ -53,7 +57,7 @@ const EditBlogText1Form = ({
                         Primer texto:
                     </label>
                     <span className='text-sm mt-2 shadow p-2 max-h-28 overflow-y-scroll'>
-                        {blog.text1}
+                        {text1}
                     </span>
                     <textarea
                         type='text' name='blogText1' id='blogText1' cols='10' rows='10'

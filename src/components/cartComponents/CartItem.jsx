@@ -9,14 +9,26 @@ import numberFormater from '../../utilities/numberFormater';
 const CartItem = ({ item }) => {
     const { removeProduct } = useContext(ShopContext)
     const navigate = useNavigate()
+    const {
+        prodId,
+        category,
+        subcategory,
+        id,
+        img,
+        name,
+        brand,
+        price,
+        quantity,
+        selectedSize
+    } = item
 
     const editItem = () => {
-        removeProduct(item.prodId)
-        navigate((`/categorias/${item.category}/${item.subcategory}/detalle/${item.id}`))
+        removeProduct(prodId)
+        navigate((`/categorias/${category}/${subcategory}/detalle/${id}`))
     }
 
     const removeItem = () => {
-        removeProduct(item.prodId)
+        removeProduct(prodId)
     }
 
     return (
@@ -25,8 +37,8 @@ const CartItem = ({ item }) => {
                 <div className='flex gap-5'>
                     <div className='w-20 drop-shadow'>
                         <CustomImg
-                            src={item.img}
-                            alt={item.name}
+                            src={img}
+                            alt={name}
                             contain={false}
                             center={false}
                             aspectVideo={false}
@@ -37,26 +49,26 @@ const CartItem = ({ item }) => {
                             Detalle:
                         </h3>
                         <span className='font-black text-[.85rem] tracking-wide leading-5 drop-shadow-sm mt-[.1rem]'>
-                            {item.brand} {item.name}
+                            {brand} {name}
                         </span>
                         <h3 className='font-bold text-sm md:text-[.89rem] mt-1'>
                             Precio x unidad:
                         </h3>
                         <span className='font-black text-[.85rem] tracking-wide leading-5 drop-shadow-sm mt-[.1rem]'>
-                            {numberFormater(item.price)}
+                            {numberFormater(price)}
                         </span>
                         <h3 className='mt-1 font-bold text-sm md:text-[.89rem] flex items-center gap-2'>
                             Cantidad:
                             <span className='font-black text[.975rem] drop-shadow-sm'>
-                                {item.quantity}
+                                {quantity}
                             </span>
                         </h3>
                         {   
-                            item.selectedSize ?    
+                            selectedSize ?    
                                 <span className='mt-1 font-bold text-sm md:text-[.89rem] flex items-baseline gap-2'>
                                     Talle:
                                     <span className='font-black text-[.8rem] drop-shadow-sm'>
-                                        {item.selectedSize}
+                                        {selectedSize}
                                     </span>
                                 </span>
                             :

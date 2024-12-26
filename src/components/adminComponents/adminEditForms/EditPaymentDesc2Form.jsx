@@ -13,6 +13,10 @@ const EditPaymentDesc2Form = ({
     const [ newInfo, setNewInfo ] = useState({
         paymentDesc2: '',
     })
+    const {
+        descLine2,
+        id
+    } = payment
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditPaymentDesc2Form = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'payments', payment.id)
+            const docRef = doc(db, 'payments', id)
             await updateDoc(docRef, {
                 descLine2: newInfo.paymentDesc2,
             })
@@ -53,7 +57,7 @@ const EditPaymentDesc2Form = ({
                         Detalle línea 2:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {payment.descLine2}
+                        {descLine2}
                     </span>
                     <input
                         type='text' name='paymentDesc2' id='paymentDesc2'

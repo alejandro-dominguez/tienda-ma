@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+    useEffect,
+    useState
+} from 'react';
 import AdminProductCard from './adminItems/AdminProductCard';
 import AdminProductFilters from './adminItems/AdminProductFilters';
 

@@ -14,6 +14,11 @@ const EditProductCategoriesForm = ({
         productCategory: '',
         productSubcategory: '',
     })
+    const {
+        id,
+        category,
+        subcategory
+    } = product
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -25,7 +30,7 @@ const EditProductCategoriesForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 category: newInfo.productCategory,
                 subcategory: newInfo.productSubcategory,
@@ -55,7 +60,7 @@ const EditProductCategoriesForm = ({
                         Categoría:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {product.category}
+                        {category}
                     </span>
                     <select
                         name='productCategory' id='productCategory' required
@@ -78,7 +83,7 @@ const EditProductCategoriesForm = ({
                         Subcategoría:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {product.subcategory}
+                        {subcategory}
                     </span>
                     <input
                         type='text' name='productSubcategory' id='productSubcategory'

@@ -11,6 +11,10 @@ const EditProductPriceForm = ({
     setErrorToast
 }) => {
     const [ productPrice, setProductPrice ] = useState(0)
+    const {
+        id,
+        price,
+    } = product
 
     const registerPrice = (e) => {
         setProductPrice(
@@ -21,7 +25,7 @@ const EditProductPriceForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 price: productPrice,
             })
@@ -46,7 +50,7 @@ const EditProductPriceForm = ({
                     Precio actual:
                 </span>
                 <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
-                    {product.price}
+                    {price}
                 </span>
                 <label
                     htmlFor='productPrice'

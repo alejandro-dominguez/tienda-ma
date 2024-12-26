@@ -14,6 +14,21 @@ import { db } from '../../firebase/config';
 import AdminOrderProduct from './adminItems/AdminOrderProduct';
 
 const OrderDetailCard = ({ order }) => {
+    const {
+        clientFullName,
+        orderProducts,
+        orderTotal,
+        clientAdressStreet,
+        clientAdressNumber,
+        clientAdressFloor,
+        clientAdressDoor,
+        clientPhone,
+        clientEmail,
+        orderNotes,
+        orderId,
+        id
+    } = order
+
     const deliveredOrder = async (id) => {
         try {
             const docRef = doc(db, 'orders', id)
@@ -95,11 +110,11 @@ const OrderDetailCard = ({ order }) => {
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5
         drop-shadow-sm shadow-sm mt-4 mb-20 gap-2 relative'>
             <h1 className='font-bold font-Raleway text-[1.05rem] drop-shadow-sm'>
-                Orden de {order.clientFullName}:
+                Orden de {clientFullName}:
             </h1>
             <div className='grid place-items-start grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-2'>
                 {
-                    order.orderProducts.map((product, i) => {
+                    orderProducts.map((product, i) => {
                         return <AdminOrderProduct product={product} key={i}/>
                     })
                 }
@@ -107,30 +122,30 @@ const OrderDetailCard = ({ order }) => {
             <span className='font-bold flex gap-1 items-center'>
                 Total:
                 <span className='font-black text-sm mt-[.1rem]'>
-                    {order.orderTotal}
+                    {orderTotal}
                 </span>
             </span>
             <span className='font-bold flex gap-1 items-center'>
                 Dirección:
                 <span className='flex gap-1 font-normal text-sm mt-[.1rem] tracking-tight'>
                     <span>
-                        {order.clientAdressStreet}
+                        {clientAdressStreet}
                     </span>
                     <span>
-                        {order.clientAdressNumber},
+                        {clientAdressNumber},
                     </span>
                     {
-                        order.clientAdressFloor ?
+                        clientAdressFloor ?
                             <span>
-                                {order.clientAdressFloor}
+                                {clientAdressFloor}
                             </span>
                         :
                             null
                     }
                     {
-                        order.clientAdressDoor ?
+                        clientAdressDoor ?
                             <span>
-                                {order.clientAdressDoor}
+                                {clientAdressDoor}
                             </span>
                         :
                             null
@@ -140,21 +155,21 @@ const OrderDetailCard = ({ order }) => {
             <span className='font-bold flex gap-1 items-center'>
                 Teléfono:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {order.clientPhone}
+                    {clientPhone}
                 </span>
             </span>
             <span className='font-bold flex gap-1 items-center'>
                 Email:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {order.clientEmail}
+                    {clientEmail}
                 </span>
             </span>
             {
-                order.orderNotes ?
+                orderNotes ?
                     <span className='font-bold flex gap-1 items-center'>
                         Notas:
                         <span className='font-normal text-sm mt-[.1rem]'>
-                            {order.orderNotes}
+                            {orderNotes}
                         </span>
                     </span>
                 :
@@ -163,13 +178,13 @@ const OrderDetailCard = ({ order }) => {
             <span className='font-bold flex gap-1 items-center'>
                 Id de orden:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {order.orderId}
+                    {orderId}
                 </span>
             </span>
             <button
                 type='button'
                 className='flex items-center gap-3 mt-5'
-                onClick={() => processingOrder(order.id)}
+                onClick={() => processingOrder(id)}
             >
                 <FaClock className='block text-[1.5rem] mt-2 drop-shadow-sm text-zinc-900/80' />
                 <span className='text-sm font-bold mt-2'>
@@ -179,7 +194,7 @@ const OrderDetailCard = ({ order }) => {
             <button
                 type='button'
                 className='flex items-center gap-3 mt-5'
-                onClick={() => deliveredOrder(order.id)}
+                onClick={() => deliveredOrder(id)}
             >
                 <FaTruck className='block text-[1.7rem] mt-2 drop-shadow-sm text-green-500/90' />
                 <span className='text-sm font-bold mt-2'>
@@ -189,7 +204,7 @@ const OrderDetailCard = ({ order }) => {
             <button
                 type='button'
                 className='flex items-center gap-3 mt-5'
-                onClick={() => deleteOrder(order.id)}
+                onClick={() => deleteOrder(id)}
             >
                 <BsFillTrash3Fill className='block text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
                 <span className='text-sm font-bold mt-2'>

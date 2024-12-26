@@ -13,6 +13,10 @@ const EditProductImg3Form = ({
     const [ newInfo, setNewInfo ] = useState({
         productImg3: '',
     })
+    const {
+        id,
+        img3
+    } = product
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditProductImg3Form = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 img3: newInfo.productImg3,
             })
@@ -50,18 +54,18 @@ const EditProductImg3Form = ({
                     className='mt-2'    
                 >
                 {
-                    product.img3 === undefined || product.img3 === ('' || ' ') ?
+                    img3 === undefined || img3 === ('' || ' ') ?
                         'Aún no hay imagen 4'
                     :
                         'Link imagen 4:'
                 }
                 </label>
                 {
-                    product.img3 === undefined || product.img3 === ('' || ' ') ?
+                    img3 === undefined || img3 === ('' || ' ') ?
                         null
                     :
                         <span className='text-sm mt-2 shadow p-2 max-w-[17rem] break-words'>
-                            {product.img3}
+                            {img3}
                         </span>
                 }
                 <input

@@ -15,6 +15,12 @@ const EditProductInfoForm = ({
         productName: '',
         productDesc: '',
     })
+    const {
+        id,
+        brand,
+        name,
+        desc
+    } = product
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -26,7 +32,7 @@ const EditProductInfoForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 brand: newInfo.productBrand,
                 name: newInfo.productName,
@@ -54,7 +60,7 @@ const EditProductInfoForm = ({
                         Marca actual:
                     </span>
                     <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
-                        {product.brand}
+                        {brand}
                     </span>
                     <label
                         htmlFor='productBrand'
@@ -74,7 +80,7 @@ const EditProductInfoForm = ({
                         Nombre actual:
                     </span>
                     <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
-                        {product.name}
+                        {name}
                     </span>
                     <label
                         htmlFor='productName'
@@ -98,7 +104,7 @@ const EditProductInfoForm = ({
                     Descripción:
                 </label>
                 <span className='text-sm max-h-[4.5rem] overflow-y-scroll mt-2 shadow p-2'>
-                    {product.desc}
+                    {desc}
                 </span>
                 <textarea
                     type='text' name='productDesc' id='productDesc' cols='10' rows='10'

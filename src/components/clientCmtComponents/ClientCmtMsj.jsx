@@ -15,6 +15,12 @@ const ClientCmtMsj = ({
     setAdminToast
 }) => {
     const [ isAdmin, setIsAdmin ] = useState(false)
+    const {
+        approved,
+        sender,
+        message,
+        id
+    } = comment
     
     useEffect(() => {
         const admin = JSON.parse(localStorage.getItem('authUser'))
@@ -39,18 +45,18 @@ const ClientCmtMsj = ({
     return (
         <>
         {
-            comment.approved ?
+            approved ?
                 <div className='bg-white w-full drop-shadow-sm px-4 py-3 relative rounded-sm'>
                     <h3>
                         {
-                            comment.sender === '' ?
+                            sender === '' ?
                                 'Anónimo:'
                             :
-                                `${comment.sender}:`
+                                `${sender}:`
                         }
                     </h3>
                     <p>
-                        {comment.message}
+                        {message}
                     </p>
                     {
                         isAdmin ?
@@ -58,7 +64,7 @@ const ClientCmtMsj = ({
                                 type='button'
                                 className='px-4 py-1 bg-zinc-900 text-white rounded-lg shadow-sm mt-2
                                 transition-colors ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                                onClick={() => deleteComment(comment.id)}
+                                onClick={() => deleteComment(id)}
                             >
                                 <span className='tracking-wider text-[.85rem] font-Raleway'>
                                     Borrar mensaje

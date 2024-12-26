@@ -11,7 +11,15 @@ import { IoEyeSharp } from 'react-icons/io5';
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import { db } from '../../firebase/config';
 
-const MessageDetailCard = ({ message }) => {
+const MessageDetailCard = ({ clientMessage }) => {
+    const {
+        fullName,
+        message,
+        phone,
+        email,
+        id,
+    } = clientMessage
+
     const readMessage = async (id) => {
         try {
             const docRef = doc(db, 'messages', id)
@@ -66,27 +74,27 @@ const MessageDetailCard = ({ message }) => {
         <div className='flex flex-col items-start justify-start w-full bg-white rounded-md p-5
         drop-shadow-sm shadow-sm mt-4 mb-20 gap-2 relative'>
             <h1 className='font-bold font-Raleway text-[1.05rem] drop-shadow-sm'>
-                Mensaje de {message.fullName}:
+                Mensaje de {fullName}:
             </h1>
             <p className='text-[.92rem] leading-[1.35rem]'>
-                {message.message}
+                {message}
             </p>
             <span className='font-bold flex gap-1 items-center'>
                 Teléfono:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {message.phone}
+                    {phone}
                 </span>
             </span>
             <span className='font-bold flex gap-1 items-center'>
                 Email:
                 <span className='font-normal text-sm mt-[.1rem]'>
-                    {message.email}
+                    {email}
                 </span>
             </span>
             <button
                 type='button'
                 className='flex items-center gap-3 mt-5'
-                onClick={() => readMessage(message.id)}
+                onClick={() => readMessage(id)}
             >
                 <IoEyeSharp className='block text-[1.7rem] mt-2 drop-shadow-sm text-zinc-900/80' />
                 <span className='text-sm font-bold mt-2'>
@@ -96,7 +104,7 @@ const MessageDetailCard = ({ message }) => {
             <button
                 type='button'
                 className='flex items-center gap-3 mt-2'
-                onClick={() => deleteMessage(message.id)}
+                onClick={() => deleteMessage(id)}
             >
                 <BsFillTrash3Fill className='block text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80' />
                 <span className='text-sm font-bold mt-2'>

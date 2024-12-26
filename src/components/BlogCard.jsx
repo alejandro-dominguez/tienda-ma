@@ -4,10 +4,16 @@ import shortenText from '../utilities/shortenText';
 
 const BlogCard = ({ blog }) => {
     const navigate = useNavigate()
-    
+    const {
+        id,
+        title,
+        drop,
+        img1
+    } = blog
+
     const storeAndNavigate = () => {
         localStorage.setItem('blogData', JSON.stringify(blog))
-        navigate((`/blogs/${blog.id}`))
+        navigate((`/blogs/${id}`))
     }
 
     return (
@@ -17,7 +23,7 @@ const BlogCard = ({ blog }) => {
         >
             <div className='w-full drop-shadow-sm'>
                 <CustomImg
-                    src={blog.img1}
+                    src={img1}
                     alt='imagen de portada del blog'
                     contain={false}
                     center={false}
@@ -25,10 +31,10 @@ const BlogCard = ({ blog }) => {
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
-                {blog.title}
+                {title}
             </h3>
             <p className='leading-[1.4rem] text-[.9rem] pt-2 pb-4'>
-                {shortenText(blog.drop, 80)}
+                {shortenText(drop, 80)}
             </p>
             <button
                 type='button'

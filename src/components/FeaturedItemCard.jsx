@@ -15,6 +15,19 @@ const FeaturedItemCard = ({ product }) => {
     const [ isMobile, setIsMobile ] = useState(false)
     const cardRef = useRef()
     const navigate = useNavigate()
+    const {
+        stock,
+        brand,
+        name,
+        img,
+        desc,
+        sizes,
+        adultSizes,
+        price,
+        category,
+        subcategory,
+        id
+    } = product
 
     useEffect(() => {
         const isMobileViewport = window.visualViewport.width < 1024
@@ -52,14 +65,14 @@ const FeaturedItemCard = ({ product }) => {
     return (
         <>
         {
-            product.stock ?
+            stock ?
                 <>
                 <div
                     className='flex flex-col items-start justify-start p-5 gap-4 shadow-sm drop-shadow-sm bg-white'
                     ref={cardRef}
                 >
                     <h3 className='font-Raleway font-bold drop-shadow-sm tracking-wide text-lg'>
-                        {product.brand} {product.name}
+                        {brand} {name}
                     </h3>
                     <div className='flex flex-col lg:flex-row gap-4'>
                         <div
@@ -67,8 +80,8 @@ const FeaturedItemCard = ({ product }) => {
                             onClick={() => setShowBuyItemModal(true)}
                         >
                             <CustomImg
-                                src={product.img}
-                                alt={product.name}
+                                src={img}
+                                alt={name}
                                 contain={false}
                                 center={false}
                                 aspectVideo={false}
@@ -76,14 +89,14 @@ const FeaturedItemCard = ({ product }) => {
                         </div>
                         <div className='flex flex-col w-fit'>
                             <p className='text-sm text-zinc-900 drop-shadow-sm w-fit'>
-                                {shortenText((product.desc), 150)}
+                                {shortenText((desc), 150)}
                             </p>
                             {
-                                product.sizes ?
+                                sizes ?
                                     <span className='font-black text-sm mt-2'>
                                         Talles: M - G - XG - XXG
                                     </span>
-                                : product.adultSizes ?
+                                : adultSizes ?
                                     <span className='font-black text-sm mt-2'>
                                         Talles: G - XG
                                     </span>
@@ -91,7 +104,7 @@ const FeaturedItemCard = ({ product }) => {
                                     null
                             }
                             <span className='font-black tracking-wide drop-shadow-sm text-sm mt-2'>
-                                {numberFormater(product.price)}
+                                {numberFormater(price)}
                             </span>
                         </div>
                     </div>
@@ -110,7 +123,7 @@ const FeaturedItemCard = ({ product }) => {
                             type='button'
                             className='mt-1 px-4 py-[.3rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                             ease-in-out hover:bg-zinc-700 focus:bg-zinc-700'
-                            onClick={() => navigate((`/categorias/${product.category}/${product.subcategory}/detalle/${product.id}`))}
+                            onClick={() => navigate((`/categorias/${category}/${subcategory}/detalle/${id}`))}
                         >
                             <span className='tracking-wider text-[.83rem] font-Raleway'>
                                 Ver más

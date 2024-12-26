@@ -13,6 +13,10 @@ const EditProductLineForm = ({
     const [ newInfo, setNewInfo ] = useState({
         productLine: '',
     })
+    const {
+        id,
+        productLine,
+    } = product
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditProductLineForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 productLine: newInfo.productLine,
             })
@@ -47,13 +51,13 @@ const EditProductLineForm = ({
             <div className='flex flex-col sm:flex-row gap-5'>
                 <div className='flex flex-col'>
                     {  
-                        product.productLine ?
+                        productLine ?
                             <>
                                 <span className='text-sm font-bold mt-2'>
                                     Línea de producto actual:
                                 </span>
                                 <span className='text-[.8rem] mt-2 shadow p-2 text-black'>
-                                    {product.productLine}
+                                    {productLine}
                                 </span>
                             </>
                         :

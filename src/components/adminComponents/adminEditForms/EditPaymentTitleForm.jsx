@@ -13,6 +13,10 @@ const EditPaymentTitleForm = ({
     const [ newInfo, setNewInfo ] = useState({
         paymentTitle: '',
     })
+    const {
+        title,
+        id
+    } = payment
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditPaymentTitleForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'payments', payment.id)
+            const docRef = doc(db, 'payments', id)
             await updateDoc(docRef, {
                 title: newInfo.paymentTitle,
             })
@@ -53,7 +57,7 @@ const EditPaymentTitleForm = ({
                         Título:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {payment.title}
+                        {title}
                     </span>
                     <input
                         type='text' name='paymentTitle' id='paymentTitle'

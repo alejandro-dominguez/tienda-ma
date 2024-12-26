@@ -14,6 +14,15 @@ const AdminOrderCard = ({
     setActiveToast,
     setErrorToast
 }) => {
+    const {
+        orderDate,
+        clientFullName,
+        delivered,
+        process,
+        orderId,
+        id
+    } = order
+
     const deliveredOrder = async (id) => {
         try {
             const docRef = doc(db, 'orders', id)
@@ -70,22 +79,22 @@ const AdminOrderCard = ({
                     <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-5'>
                         Fecha:
                         <span className='font-normal text-sm mt-[.21rem]'>
-                            {order.orderDate}
+                            {orderDate}
                         </span>
                     </h3>
                     <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-3'>
                         Remitente:
                         <span className='font-normal text-sm mt-[.21rem]'>
-                            {order.clientFullName}
+                            {clientFullName}
                         </span>
                     </h3>
                     <h3 className='text-[.925rem] font-bold flex justify-between items-start gap-3'>
                         Estado:
                         <span className='font-normal text-sm mt-[.21rem]'>
                             {
-                                order.delivered ?
+                                delivered ?
                                     'Órden entregada'
-                                : !order.delivered && order.process ?
+                                : !delivered && process ?
                                     'En proceso'
                                 :
                                     'No procesada'
@@ -95,11 +104,11 @@ const AdminOrderCard = ({
                     <h3 className='text-[.925rem] font-bold flex flex-col mb-2'>
                         Id de orden:
                         <span className='font-black text-sm mt-2'>
-                            {order.orderId}
+                            {orderId}
                         </span>
                     </h3>
                     <Link
-                        to={`/admin/consola/ordenes/${order.id}`}
+                        to={`/admin/consola/ordenes/${id}`}
                         onClick={() => storeOrder()}
                         className='mt-1 px-3 py-[.27rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out hover:bg-zinc-700 focus:bg-zinc-700 grid place-items-center'
@@ -111,15 +120,15 @@ const AdminOrderCard = ({
                     <div className='flex items-center gap-10 self-center mt-2'>
                         <FaTruck
                             className='block cursor-pointer text-[1.7rem] mt-2 drop-shadow-sm text-green-500/90'
-                            onClick={() => deliveredOrder(order.id)}
+                            onClick={() => deliveredOrder(id)}
                         />
                         <FaClock
                             className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-zinc-900/80'
-                            onClick={() => processingOrder(order.id)}
+                            onClick={() => processingOrder(id)}
                         />
                         <BsFillTrash3Fill
                             className='block cursor-pointer text-[1.5rem] mt-2 drop-shadow-sm text-red-500/80'
-                            onClick={() => deleteOrder(order.id)}
+                            onClick={() => deleteOrder(id)}
                         />
                     </div>
                 </div>

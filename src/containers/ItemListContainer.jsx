@@ -77,7 +77,7 @@ const ItemListContainer = () => {
                 }
             </h1>
             {
-                (filteredProducts.length && !loading && !error) ? (
+                (products.length && !loading && !error) ?
                     <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-20 p-4'>
                         {
                             products.map(product => (
@@ -98,7 +98,7 @@ const ItemListContainer = () => {
                             )
                         }
                     </div>
-                ) : !error ? (
+                : !error ?
                     <div className='w-full grid place-items-center mt-2 py-4 min-h-[24rem]'>
                         <div className='p-5 bg-teal-600/20 rounded-lg'>
                             <RotatingLines
@@ -110,9 +110,8 @@ const ItemListContainer = () => {
                             />
                         </div>
                     </div>
-                ) : (
+                :
                     <ErrorPage />
-                )
             }
         </main>
     )

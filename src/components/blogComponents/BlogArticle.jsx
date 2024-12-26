@@ -3,24 +3,34 @@ import CustomImg from '../customImg/CustomImg';
 
 const BlogArticle = ({ blog }) => {
     const navigate = useNavigate()
+    const {
+        title,
+        subtitle,
+        img1,
+        drop,
+        img2,
+        text1,
+        text2,
+        text3
+    } = blog
 
     return (
         <div className='w-full px-4 md:px-20 lg:px-32 grid place-items-center pt-32 md:pt-36 pb-14'>
             <div className='md:flex md:flex-row-reverse'>
                 <div className='md:w-2/3 md:mr-auto'>
                     <h1 className='font-Raleway font-black text-zinc-700/95 text-xl tracking-wider leading-7'>
-                        {blog.title}
+                        {title}
                     </h1>
                     <h2 className='font-Raleway text-[1.05rem] tracking-wide mt-2'>
-                        {blog.subtitle}
+                        {subtitle}
                     </h2>
                     <p className='mt-2 md:block hidden text-[1.025rem]'>
-                        {blog.text1}
+                        {text1}
                     </p>
                 </div>
                 <div className='w-full sm:w-1/2 md:w-2/5 lg:w-[29%] mx-auto  md:mr-4 sm:ml-0 drop-shadow-sm mt-6 md:mt-0'>
                     <CustomImg
-                        src={blog.img1}
+                        src={img1}
                         alt='imagen de portada de blog'
                         contain={false}
                         center={true}
@@ -29,22 +39,22 @@ const BlogArticle = ({ blog }) => {
                 </div>
             </div>
             {
-                blog.drop !== '' ?
+                drop !== '' ?
                     <h3 className='text-lg font-Raleway font-bold mt-5 leading-6 tracking-wide mr-auto'>
-                        {blog.drop}
+                        {drop}
                     </h3>
                 :
                     null
             }
             <p className='mt-2 md:hidden block text-[1.025rem]'>
-                {blog.text1}
+                {text1}
             </p>
             <p className='mt-3 text-[1.025rem] tracking-wide'>
-                {blog.text2}
+                {text2}
             </p>
             <div className='w-full sm:w-1/2 md:w-1/3 drop-shadow-sm mt-7 sm:mr-auto'>
                 <CustomImg
-                    src={blog.img2}
+                    src={img2}
                     alt='imagen de mitad de blog'
                     contain={false}
                     center={true}
@@ -52,9 +62,9 @@ const BlogArticle = ({ blog }) => {
                 />
             </div>
             {
-                blog.text3 ?
+                text3 ?
                     <p className='mt-6 text-[1.025rem] tracking-wide mr-auto'>
-                        {blog.text3}
+                        {text3}
                     </p>
                 :
                     null

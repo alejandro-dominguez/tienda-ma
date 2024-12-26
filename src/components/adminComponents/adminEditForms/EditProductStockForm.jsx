@@ -11,6 +11,10 @@ const EditProductStockForm = ({
     setErrorToast
 }) => {
     const [ productStock, setProductStock ] = useState(true)
+    const {
+        id,
+        stock,
+    } = product
 
     const registerInputs = (e) => {
         switch (e.target.value) {
@@ -26,7 +30,7 @@ const EditProductStockForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'products', product.id)
+            const docRef = doc(db, 'products', id)
             await updateDoc(docRef, {
                 stock: productStock,
             })
@@ -48,7 +52,7 @@ const EditProductStockForm = ({
             <input autoComplete='false' name='hidden' type='text' className='hidden'/>
             <div className='flex flex-col'>
                 {
-                    !product.stock ?
+                    !stock ?
                         <label
                             htmlFor='productStock'
                             className='text-sm font-bold mt-2'>

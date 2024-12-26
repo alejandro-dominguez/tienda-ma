@@ -14,6 +14,11 @@ const AdminBlogCard = ({
     setErrorToast
 }) => {
     const navigate = useNavigate()
+    const {
+        id,
+        img1,
+        title,
+    } = blog
 
     const deleteBlog = async (id) => {
         try {
@@ -46,7 +51,7 @@ const AdminBlogCard = ({
 
     const storeAndNavigate = () => {
         localStorage.setItem('editBlogData', JSON.stringify(blog))
-        navigate((`/admin/consola/blogs/editar/${blog.id}`))
+        navigate((`/admin/consola/blogs/editar/${id}`))
     }
 
     const updateActiveBlog = async (id) => {
@@ -68,7 +73,7 @@ const AdminBlogCard = ({
         <div className='p-6 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-full drop-shadow-sm'>
                 <CustomImg
-                    src={blog.img1}
+                    src={img1}
                     alt='imagen de portada del blog'
                     contain={false}
                     center={false}
@@ -76,7 +81,7 @@ const AdminBlogCard = ({
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide text-lg mt-2'>
-                {blog.title}
+                {title}
             </h3>
             <div className='flex flex-col gap-1 mt-auto'>
                 <div className='flex items-center justify-between'>
@@ -84,7 +89,7 @@ const AdminBlogCard = ({
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
-                        onClick={() => navigate((`/blogs/${blog.id}`))}
+                        onClick={() => navigate((`/blogs/${id}`))}
                     >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Ver artículo
@@ -102,7 +107,7 @@ const AdminBlogCard = ({
                     </button>
                     <BsFillTrash3Fill
                         className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                        onClick={() => deleteBlog(blog.id)}
+                        onClick={() => deleteBlog(id)}
                     />
                 </div>
                 <div>
@@ -112,7 +117,7 @@ const AdminBlogCard = ({
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
-                                onClick={() => updateInactiveBlog(blog.id)}
+                                onClick={() => updateInactiveBlog(id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
                                     Destacar blog
@@ -123,7 +128,7 @@ const AdminBlogCard = ({
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
-                                onClick={() => updateActiveBlog(blog.id)}
+                                onClick={() => updateActiveBlog(id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
                                     No Destacar blog

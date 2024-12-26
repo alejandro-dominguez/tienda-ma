@@ -104,7 +104,7 @@ const ItemCategoriesContainer = () => {
                 }
             </h1>
             {
-                (currentSubcategories.length && filteredProducts.length && !error && !errorSubcategories && !loading && !loadingSubcategories) ?
+                (currentSubcategories.length && products.length && !error && !errorSubcategories && !loading && !loadingSubcategories) ?
                     <>
                         <div className='w-full grid place-items-center'>
                             <button

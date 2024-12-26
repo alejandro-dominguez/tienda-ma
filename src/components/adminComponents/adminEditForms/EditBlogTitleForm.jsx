@@ -13,6 +13,10 @@ const EditBlogTitleForm = ({
     const [ newInfo, setNewInfo ] = useState({
         blogTitle: '',
     })
+    const {
+        id,
+        title
+    } = blog
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -24,7 +28,7 @@ const EditBlogTitleForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', blog.id)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef, {
                 title: newInfo.blogTitle,
             })
@@ -53,7 +57,7 @@ const EditBlogTitleForm = ({
                         Título:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {blog.title}
+                        {title}
                     </span>
                     <input
                         type='text' name='blogTitle' id='blogTitle'

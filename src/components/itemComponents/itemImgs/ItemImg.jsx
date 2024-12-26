@@ -13,6 +13,7 @@ const ItemImg = ({
     const [ isMobile, setIsMobile ] = useState(false)
     const [ isModalVisible, setIsModalVisible ] = useState(false)
     const dialogRef = useRef()
+    const { name } = product
 
     useEffect(() => {
         const isMobileViewport = window.visualViewport.width < 1024
@@ -74,7 +75,7 @@ const ItemImg = ({
         >
             <CustomImg
                 src={img}
-                alt={product.name}
+                alt={name}
                 contain={false}
                 center={false}
                 aspectVideo={false}
@@ -88,7 +89,7 @@ const ItemImg = ({
             <div className='bg-white shadow-sm drop-shadow-sm w-72 md:w-96 rounded mx-auto'>
                 <CustomImg
                     src={img}
-                    alt={product.name}
+                    alt={name}
                     contain={true}
                     center={false}
                     aspectVideo={false}

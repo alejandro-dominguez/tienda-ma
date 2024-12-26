@@ -14,6 +14,14 @@ const AdminProductCard = ({
     setErrorToast
 }) => {
     const navigate = useNavigate()
+    const {
+        img,
+        brand,
+        name,
+        id,
+        subcategory,
+        category
+    } = prod
 
     const deleteProduct = async (id) => {
         try {
@@ -60,7 +68,7 @@ const AdminProductCard = ({
         <div className='p-5 bg-white drop-shadow-sm shadow-sm flex flex-col'>
             <div className='w-40 drop-shadow-sm'>
                 <CustomImg
-                    src={prod.img}
+                    src={img}
                     alt='imagen de producto'
                     contain={false}
                     center={false}
@@ -68,7 +76,7 @@ const AdminProductCard = ({
                 />
             </div>
             <h3 className='font-black font-Raleway tracking-wide mt-2'>
-                {prod.brand} {prod.name}
+                {brand} {name}
             </h3>
             <div className='flex flex-col gap-1 mt-auto'>
                 <div className='flex items-center gap-4'>
@@ -76,7 +84,7 @@ const AdminProductCard = ({
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
-                        onClick={() => navigate((`/categorias/${prod.category}/${prod.subcategory}/detalle/${prod.id}`))}
+                        onClick={() => navigate((`/categorias/${category}/${subcategory}/detalle/${id}`))}
                     >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Ver producto
@@ -86,7 +94,7 @@ const AdminProductCard = ({
                         type='button'
                         className='mt-[.6rem] px-[.8rem] py-[.2rem] bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                         ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700'
-                        onClick={() => navigate((`/admin/consola/productos/editar/${prod.id}`))}
+                        onClick={() => navigate((`/admin/consola/productos/editar/${id}`))}
                     >
                         <span className='tracking-wider text-[.8rem] font-Raleway'>
                             Editar
@@ -94,7 +102,7 @@ const AdminProductCard = ({
                     </button>
                     <BsFillTrash3Fill
                         className='block cursor-pointer text-[1.3rem] mt-2 drop-shadow-sm text-red-500/80'
-                        onClick={() => deleteProduct(prod.id)}
+                        onClick={() => deleteProduct(id)}
                     />
                 </div>
                 <div>
@@ -104,7 +112,7 @@ const AdminProductCard = ({
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
-                                onClick={() => updateInactiveProduct(prod.id)}
+                                onClick={() => updateInactiveProduct(id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
                                     Destacar producto
@@ -115,7 +123,7 @@ const AdminProductCard = ({
                                 type='button'
                                 className='mt-[.6rem] px-[.8rem] py-2 bg-zinc-900 text-white rounded-lg shadow-sm transition-colors
                                 ease-in-out duration-200 hover:bg-zinc-700 focus:bg-zinc-700 leading-[1.1rem] text-start'
-                                onClick={() => updateActiveProduct(prod.id)}
+                                onClick={() => updateActiveProduct(id)}
                             >
                                 <span className='tracking-wider text-[.8rem] font-Raleway'>
                                     No Destacar producto

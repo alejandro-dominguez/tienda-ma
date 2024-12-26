@@ -16,7 +16,7 @@ const HomeContactForm = () => {
         contactEmail: '',
         contactMessage: '',
     })
-    const [ errorMessage, setErrorMessage ] = ('')
+    const [ errorMessage, setErrorMessage ] = useState('')
 
     const registerInputs = ({ target: {name, value} }) => {
         setContactFormMessage({

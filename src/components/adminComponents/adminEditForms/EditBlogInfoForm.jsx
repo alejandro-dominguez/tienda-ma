@@ -14,6 +14,11 @@ const EditBlogInfoForm = ({
         blogSubtitle: '',
         blogDrop: '',
     })
+    const {
+        id,
+        subtitle,
+        drop
+    } = blog
 
     const registerInputs = ({ target: {name, value} }) => {
         setNewInfo({
@@ -25,7 +30,7 @@ const EditBlogInfoForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const docRef = doc(db, 'blogs', blog.id)
+            const docRef = doc(db, 'blogs', id)
             await updateDoc(docRef, {
                 subtitle: newInfo.blogSubtitle,
                 drop: newInfo.blogDrop,
@@ -55,7 +60,7 @@ const EditBlogInfoForm = ({
                         Subtítulo:
                     </label>
                     <span className='text-sm mt-2 shadow p-2'>
-                        {blog.subtitle}
+                        {subtitle}
                     </span>
                     <input
                         type='text' name='blogSubtitle' id='blogSubtitle'
@@ -73,7 +78,7 @@ const EditBlogInfoForm = ({
                         Bajada:
                     </label>
                     <span className='text-sm mt-2 shadow p-2 max-h-[5.5rem] overflow-y-scroll'>
-                        {blog.drop}
+                        {drop}
                     </span>
                     <textarea
                         type='text' name='blogDrop' id='blogDrop' cols='10' rows='10' placeholder='...'

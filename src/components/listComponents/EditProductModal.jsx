@@ -23,6 +23,7 @@ const EditProductModal = ({
 }) => {
     const [ activeToast, setActiveToast ] = useState(false)
     const [ errorToast, setErrorToast ] = useState('')
+    const { name } = product
 
     if (activeToast && errorToast === '') {
         toast.success(
@@ -69,7 +70,7 @@ const EditProductModal = ({
                     <span className='text-[1.05rem]'>
                         Producto:
                     </span>
-                    {product.name}
+                    {name}
                 </h1>
                 <button 
                     type='button'

@@ -16,7 +16,7 @@ const WholesalersForm = () => {
         wholesalerEmail: '',
         wholesalerMessage: '',
     })
-    const [ errorMessage, setErrorMessage ] = ('')
+    const [ errorMessage, setErrorMessage ] = useState('')
 
     const registerInputs = ({ target: {name, value} }) => {
         setWholesalersFormMessage({
